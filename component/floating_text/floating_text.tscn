@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn1jgytq2igd0"]
+
+[ext_resource type="Script" path="res://component/floating_text/floating_text.gd" id="1_f0j53"]
+[ext_resource type="FontFile" uid="uid://c0olpd1acvy4u" path="res://assets/AlimamaShuHeiTi-Bold.ttf" id="2_idxtc"]
+
+[node name="FloatingText" type="Node2D"]
+script = ExtResource("1_f0j53")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 24)
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_idxtc")
+theme_override_font_sizes/font_size = 25
+text = "97647182"
+horizontal_alignment = 1
+vertical_alignment = 1

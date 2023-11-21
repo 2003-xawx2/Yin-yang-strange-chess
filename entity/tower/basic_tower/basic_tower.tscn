@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://mhn18ulve8gm"]
+
+[ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower.gd" id="1_21n1h"]
+[ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="2_c4aqh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbwkc"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8282"]
+radius = 500.0
+
+[node name="BasicTower" type="StaticBody2D"]
+script = ExtResource("1_21n1h")
+
+[node name="StaticCollison" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mbwkc")
+
+[node name="TowerImage" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("2_c4aqh")
+
+[node name="BulletSpawnPosition" type="Marker2D" parent="TowerImage"]
+position = Vector2(-0.5001, -27.5)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_d8282")
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

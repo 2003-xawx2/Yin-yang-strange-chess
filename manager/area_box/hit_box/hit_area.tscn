@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2857igu33yqo"]
+
+[ext_resource type="Script" path="res://manager/area_box/hit_box/hit_area.gd" id="1_wnyxs"]
+[ext_resource type="PackedScene" uid="uid://cn1jgytq2igd0" path="res://component/floating_text/floating_text.tscn" id="2_iyl70"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsvuc"]
+radius = 20.0
+
+[node name="HitArea" type="Area2D"]
+script = ExtResource("1_wnyxs")
+floating_text_scence = ExtResource("2_iyl70")
+text_up_height = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsvuc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
