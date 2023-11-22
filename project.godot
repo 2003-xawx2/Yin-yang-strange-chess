@@ -33,6 +33,7 @@ window/size/viewport_width=2304
 window/size/viewport_height=1296
 window/size/mode=2
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/Mouse.png"
 
 [dotnet]
 

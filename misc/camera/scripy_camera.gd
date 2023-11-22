@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@export var tile_map:TileMap
+@export var map:Sprite2D
 @export_category("camera_move")
 @export var acceleration : float = 100
 @export var speed :float = 500
@@ -20,12 +20,11 @@ var current_speed:Vector2=Vector2.ZERO
 func _ready():
 	Global.camera = camera_2d
 	#根据地图设置摄像机的边界
-	var used :Rect2i =tile_map.get_used_rect().grow(0)
-	var tile_size :Vector2i= tile_map.tile_set.tile_size
-	camera_2d.limit_bottom=used.end.y*tile_size.y*tile_map.scale.y
-	camera_2d.limit_top=used.position.y*tile_size.y*tile_map.scale.y
-	camera_2d.limit_left=used.position.x*tile_size.x*tile_map.scale.x
-	camera_2d.limit_right=used.end.x*tile_size.x*tile_map.scale.x
+	var used :Rect2i =map.get_rect()
+	camera_2d.limit_bottom=used.end.y*map.scale.y+map.global_position.y+2
+	camera_2d.limit_top=used.position.y*map.scale.y+map.global_position.y-2
+	camera_2d.limit_left=used.position.x*map.scale.x+map.global_position.x+2
+	camera_2d.limit_right=used.end.x*map.scale.x+map.global_position.x-2
 	camera_2d.reset_smoothing()
 	#
 	zoom = camera_2d.zoom.x

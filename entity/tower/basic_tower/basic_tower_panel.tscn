@@ -1,12 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqpcqyf0qffky"]
+[gd_scene load_steps=6 format=3 uid="uid://dqpcqyf0qffky"]
 
 [ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="1_16ag2"]
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower_panel.gd" id="1_okasp"]
-[ext_resource type="Shader" path="res://entity/tower/basic_tower/basic_tower_panel.gdshader" id="3_0cqny"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwxs8"]
-shader = ExtResource("3_0cqny")
-shader_parameter/y_ratio = 1.0
+[sub_resource type="Animation" id="Animation_hhbrv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoolColor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_1rset"]
+resource_name = "cool"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoolColor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, -1), Vector2(1, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g02uw"]
+_data = {
+"RESET": SubResource("Animation_hhbrv"),
+"cool": SubResource("Animation_1rset")
+}
 
 [node name="BasicTowerPanel" type="Panel"]
 custom_minimum_size = Vector2(80, 80)
@@ -20,13 +51,11 @@ rotation = 1.5708
 texture = ExtResource("1_16ag2")
 
 [node name="CoolColor" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_kwxs8")
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = 79.0
+offset_right = 80.0
+offset_bottom = 159.0
+scale = Vector2(1, 2.08165e-12)
 mouse_filter = 1
 
 [node name="ClickTimer" type="Timer" parent="."]
@@ -35,6 +64,12 @@ one_shot = true
 
 [node name="CoolTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "cool"
+libraries = {
+"": SubResource("AnimationLibrary_g02uw")
+}
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

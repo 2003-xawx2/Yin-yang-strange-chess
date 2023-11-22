@@ -1,20 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dax31awb6jmcx"]
+[gd_scene load_steps=2 format=3 uid="uid://dax31awb6jmcx"]
 
 [ext_resource type="PackedScene" uid="uid://cw03ey1o8y532" path="res://entity/enemy/basic_enemy/basic_solider.tscn" id="1_ab5qr"]
 
-[sub_resource type="Curve2D" id="Curve2D_0761e"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 68, 1, 0, 0, 0, 0, 314, 117, 0, 0, 0, 0, 502, 204, 0, 0, 0, 0, 656, 279, 0, 0, 0, 0, 867, 374, 0, 0, 0, 0, 1036, 442, 0, 0, 0, 0, 1171, 493, 0, 0, 0, 0, 1558, 652, 0, 0, 0, 0, 1749, 740, 0, 0, 0, 0, 1964, 834, 0, 0, 0, 0, 2081, 891, 0, 0, 0, 0, 2036, 672, 0, 0, 0, 0, 1970, 505, 0, 0, 0, 0, 1844, 228, 0, 0, 0, 0, 1527, 237, 0, 0, 0, 0, 988, 778, 0, 0, 0, 0, 619, 1150, 0, 0, 0, 0, 396, 1184, 0, 0, 0, 0, 362, 1310, 0, 0, 0, 0, 304, 1338, 0, 0, 0, 0, 24, 1317)
-}
-point_count = 21
-
-[node name="PathStage1" type="Path2D"]
-curve = SubResource("Curve2D_0761e")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
+[node name="YingFollower" type="PathFollow2D"]
 position = Vector2(68, 1)
 rotates = false
 loop = false
 
-[node name="BasicSolider" parent="PathFollow2D" instance=ExtResource("1_ab5qr")]
+[node name="BasicSolider" parent="." instance=ExtResource("1_ab5qr")]
 faction = 1

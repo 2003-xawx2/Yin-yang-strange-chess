@@ -98,7 +98,7 @@ func stand(delta:float)->void:
 
 func _on_health_bar_die()->void:
 	died = true
-	get_parent().get_parent().queue_free()
+	get_parent().queue_free()
 
 
 func arrive_path_end()->void:

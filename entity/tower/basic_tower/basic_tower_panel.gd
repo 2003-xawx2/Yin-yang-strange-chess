@@ -22,9 +22,9 @@ var click:bool = false:
 
 
 func _ready():
-	$CoolColor.material.set_shader_parameter("y_ratio",1)
+	$CoolColor.scale.y=0
 	set_process(false)
-	cool_shadow(1)
+	$AnimationPlayer.play("cool")
 
 
 func _process(delta):
@@ -111,12 +111,7 @@ func settle_success()->void:
 func cool_shadow(time:float)->void:
 	$CoolTimer.start(success_settle_cool_time)
 	var tween :Tween=create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_method(set_y_ratio,0,1,time)
-
-
-func set_y_ratio(temp:float)->void:
-	$CoolColor.material.set_shader_parameter("y_ratio",temp)
-
+	tween.tween_property($CoolColor,"scale:y",0,time).from(-1)
 
 
 func _on_mouse_entered():

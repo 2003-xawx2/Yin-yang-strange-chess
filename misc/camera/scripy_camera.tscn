@@ -6,7 +6,8 @@
 position = Vector2(1000, 600)
 script = ExtResource("1_xfy3b")
 acceleration = 0.001
+zoom_min_limit = 0.6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(4, 2)
-zoom = Vector2(0.9, 0.9)
+zoom = Vector2(0.8, 0.8)
