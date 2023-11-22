@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw03ey1o8y532"]
+[gd_scene load_steps=15 format=3 uid="uid://cw03ey1o8y532"]
 
 [ext_resource type="Script" path="res://entity/enemy/basic_enemy/basic_solider.gd" id="1_o2750"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://manager/health_manager/health_manager.tscn" id="2_bcltw"]
 [ext_resource type="Texture2D" uid="uid://c21e7kry4pi6u" path="res://assets/enemy/tile_0112.png" id="2_yoqom"]
-[ext_resource type="PackedScene" uid="uid://b2857igu33yqo" path="res://manager/area_box/hit_box/hit_area.tscn" id="4_8m00a"]
-[ext_resource type="PackedScene" uid="uid://cagffuj02mn7x" path="res://manager/area_box/hurt_box/hurt_area.tscn" id="5_fj0xy"]
+[ext_resource type="Script" path="res://manager/area_box/hit_box/hit_area.gd" id="4_ufci3"]
+[ext_resource type="PackedScene" uid="uid://cn1jgytq2igd0" path="res://component/floating_text/floating_text.tscn" id="5_o8s58"]
 [ext_resource type="Script" path="res://manager/machine_state.gd" id="6_jysqy"]
+[ext_resource type="Script" path="res://manager/area_box/hurt_box/hurt_area.gd" id="6_o1qcj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ofhj4"]
 radius = 6.0
@@ -98,7 +99,12 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3ady"]
-radius = 32.4174
+radius = 63.3895
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsvuc"]
+radius = 13.0171
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nob0j"]
 
 [node name="BasicSolider" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(3, 3)
@@ -110,6 +116,7 @@ script = ExtResource("1_o2750")
 hit_box = NodePath("../HitArea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.333333, -5)
 shape = SubResource("CircleShape2D_ofhj4")
 
 [node name="SoliderA" type="Sprite2D" parent="."]
@@ -123,20 +130,37 @@ libraries = {
 }
 
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_j3ady")
 
-[node name="HitArea" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_8m00a")]
+[node name="HitArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 12
+script = ExtResource("4_ufci3")
 health_component = NodePath("../HealthBar")
+floating_text_scence = ExtResource("5_o8s58")
+text_up_height = 30
 
-[node name="HurtArea" parent="." instance=ExtResource("5_fj0xy")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_xsvuc")
+
+[node name="HurtArea" type="Area2D" parent="."]
+position = Vector2(0, -3.66667)
 collision_layer = 16
 collision_mask = 0
+script = ExtResource("6_o1qcj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_nob0j")
 
 [node name="machine_state" type="Node" parent="."]
 script = ExtResource("6_jysqy")
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
+[connection signal="area_entered" from="HitArea" to="HitArea" method="_on_area_entered" flags=18]

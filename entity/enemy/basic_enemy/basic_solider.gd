@@ -7,19 +7,32 @@ enum State{
 	BACK_PATH,
 }
 
-@export var max_speed :float = 1000
-@export var acceleration :float = 300
+@export var max_speed :float = 100
+@export var acceleration :float = 100
 
 @onready var path :PathFollow2D = get_parent()
 @onready var health_bar = $HealthBar
+@onready var hit_area = $HitArea
+@onready var hurt_area = $HurtArea
 
+#阵营
+@export var faction:=Global.Faction.Yang
 
+var died:=false
 var speed:float = 0
 var direction:Vector2 = Vector2.ZERO
 
 
 func _ready():
 	health_bar.value = health_bar.max_value
+	if faction == Global.Faction.Ying:
+		modulate = Color.BLACK
+		hit_area.set_collision_mask_value(4,false)
+		hit_area.set_collision_mask_value(5,true)
+		hurt_area.set_collision_layer_value(4,true)
+		hurt_area.set_collision_layer_value(5,false)
+	else:
+		modulate = Color.WHITE
 
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
@@ -84,7 +97,8 @@ func stand(delta:float)->void:
 
 
 func _on_health_bar_die()->void:
-	queue_free()
+	died = true
+	get_parent().get_parent().queue_free()
 
 
 func arrive_path_end()->void:

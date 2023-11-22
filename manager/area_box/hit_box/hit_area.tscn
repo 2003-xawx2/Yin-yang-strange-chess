@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cn1jgytq2igd0" path="res://component/floating_text/floating_text.tscn" id="2_iyl70"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xsvuc"]
-radius = 20.0
+radius = 13.0171
 
 [node name="HitArea" type="Area2D"]
 script = ExtResource("1_wnyxs")

@@ -1,16 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://mhn18ulve8gm"]
+[gd_scene load_steps=7 format=3 uid="uid://mhn18ulve8gm"]
 
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower.gd" id="1_21n1h"]
 [ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="2_c4aqh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0xad"]
+bg_color = Color(0.427451, 0.627451, 0.745098, 0.572549)
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+shadow_size = 30
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbwkc"]
-radius = 32.0
+radius = 61.131
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8282"]
-radius = 500.0
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0c1ij"]
+radius = 154.052
 
 [node name="BasicTower" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_21n1h")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k0xad")
 
 [node name="StaticCollison" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mbwkc")
@@ -34,6 +53,14 @@ shape = SubResource("CircleShape2D_d8282")
 
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="SettleArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SettleArea"]
+shape = SubResource("CircleShape2D_0c1ij")
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]

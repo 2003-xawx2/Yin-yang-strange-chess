@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://couedrr35ulmi"]
+
+[ext_resource type="PackedScene" uid="uid://cw03ey1o8y532" path="res://entity/enemy/basic_enemy/basic_solider.tscn" id="1_1bgb0"]
+
+[sub_resource type="Curve2D" id="Curve2D_ww113"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2251, 1274, 0, 0, 0, 0, 1851, 235, 0, 0, 0, 0, 1538, 228, 0, 0, 0, 0, 980, 798, 0, 0, 0, 0, 595, 1143, 0, 0, 0, 0, 390, 1192, 0, 0, 0, 0, 196, 650, 0, 0, 0, 0, 40, -6, 0, 0, 0, 0, 164, 34, 0, 0, 0, 0, 1187, 497, 0, 0, 0, 0, 1210, 547, 0, 0, 0, 0, 1193, 576, 0, 0, 0, 0, 628, 1124, 0, 0, 0, 0, 423, 1222, 0, 0, 0, 0, 356, 1321, 0, 0, 0, 0, 60, 1321)
+}
+point_count = 16
+
+[node name="stage_1_Yang" type="Path2D"]
+curve = SubResource("Curve2D_ww113")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(2251, 1274)
+rotates = false
+loop = false
+
+[node name="BasicSolider" parent="PathFollow2D" instance=ExtResource("1_1bgb0")]
+scale = Vector2(3, 3)

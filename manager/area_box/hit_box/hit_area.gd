@@ -4,15 +4,15 @@ extends Area2D
 signal be_hit()
 
 @export var health_component:HealthManager
-@export var collision_radiuis:= 20
+#@export var collision_radiuis:= 20
 @export_category("FloatingText")
 @export var floating_text_scence:PackedScene
 @export var text_spawn_height := 20
 @export var text_up_height :=40
 
 
-func _ready():
-	$CollisionShape2D.shape.radius = collision_radiuis
+#func _ready():
+#	$CollisionShape2D.shape.radius = collision_radiuis
 
 
 func _on_area_entered(area: Area2D) -> void:

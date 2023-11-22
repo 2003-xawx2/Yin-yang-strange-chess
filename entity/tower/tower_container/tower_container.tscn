@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu1qgln4rm4rm"]
+
+[ext_resource type="Texture2D" uid="uid://xwku3wv33ur7" path="res://assets/tower_defense/PNG/github.png" id="1_qwf17"]
+[ext_resource type="Script" path="res://entity/tower/tower_container/tower_container.gd" id="2_m5dxi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kxxg"]
+radius = 207.635
+
+[node name="TowerContainer" type="Sprite2D" groups=["tower_container"]]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_qwf17")
+script = ExtResource("2_m5dxi")
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_0kxxg")
+
+[connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
+[connection signal="area_exited" from="DetectArea" to="." method="_on_detect_area_area_exited"]

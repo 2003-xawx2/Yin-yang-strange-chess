@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn3oniutt1wks"]
+
+[ext_resource type="PackedScene" uid="uid://dqpcqyf0qffky" path="res://entity/tower/basic_tower/basic_tower_panel.tscn" id="1_8mjgl"]
+
+[node name="InGameUI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1003.0
+offset_top = 995.0
+offset_right = 2303.0
+offset_bottom = 1295.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(1304, 302)
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 73.0
+offset_right = 758.0
+offset_bottom = 153.0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(153.667, 20.3333)
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="BasicTowerPanel" parent="Panel/FlowContainer" instance=ExtResource("1_8mjgl")]
+layout_mode = 2

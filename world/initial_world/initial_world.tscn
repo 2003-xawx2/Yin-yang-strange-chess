@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=8 format=3 uid="uid://0m30030spux7"]
 
+[ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
 [ext_resource type="Texture2D" uid="uid://dw4f2n3gdg7v3" path="res://assets/tower_defense/Tilesheet/towerDefense_tilesheet.png" id="1_ul3u8"]
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="2_krvyn"]
 [ext_resource type="PackedScene" uid="uid://dwm1bdc1qdow4" path="res://misc/camera/scripy_camera.tscn" id="3_ye0bx"]
-[ext_resource type="PackedScene" uid="uid://mhn18ulve8gm" path="res://entity/tower/basic_tower/basic_tower.tscn" id="4_o5vcc"]
+[ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="5_flcsm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kbutu"]
 texture = ExtResource("1_ul3u8")
@@ -456,9 +457,21 @@ layer_0/tile_data = PackedInt32Array(0, 65539, 4, 65536, 262147, 3, 131072, 3, 4
 [node name="PathSpawner" parent="." instance=ExtResource("2_krvyn")]
 
 [node name="ScripyCamera" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("3_ye0bx")]
-position = Vector2(573, 297)
 tile_map = NodePath("../WorldMap")
 acceleration = 2.4
 
-[node name="BasicTower" parent="." instance=ExtResource("4_o5vcc")]
-position = Vector2(795, 584)
+[node name="InGameUI" parent="." instance=ExtResource("1_ja3ku")]
+
+[node name="TowerContainerHolder" type="Node2D" parent="."]
+
+[node name="TowerContainer" parent="TowerContainerHolder" instance=ExtResource("5_flcsm")]
+position = Vector2(1175, 294)
+
+[node name="TowerContainer3" parent="TowerContainerHolder" instance=ExtResource("5_flcsm")]
+position = Vector2(1308, 769)
+
+[node name="TowerContainer4" parent="TowerContainerHolder" instance=ExtResource("5_flcsm")]
+position = Vector2(1659, 466)
+
+[node name="TowerContainer2" parent="TowerContainerHolder" instance=ExtResource("5_flcsm")]
+position = Vector2(853, 608)

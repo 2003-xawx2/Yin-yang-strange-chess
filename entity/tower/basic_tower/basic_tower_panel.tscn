@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqpcqyf0qffky"]
+
+[ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="1_16ag2"]
+[ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower_panel.gd" id="1_okasp"]
+[ext_resource type="Shader" path="res://entity/tower/basic_tower/basic_tower_panel.gdshader" id="3_0cqny"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwxs8"]
+shader = ExtResource("3_0cqny")
+shader_parameter/y_ratio = 1.0
+
+[node name="BasicTowerPanel" type="Panel"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_okasp")
+
+[node name="TowerDefenseTile250" type="Sprite2D" parent="."]
+position = Vector2(40, 40)
+rotation = 1.5708
+texture = ExtResource("1_16ag2")
+
+[node name="CoolColor" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_kwxs8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ClickTimer" type="Timer" parent="."]
+wait_time = 400.0
+one_shot = true
+
+[node name="CoolTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
