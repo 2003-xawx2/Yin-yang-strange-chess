@@ -9,13 +9,15 @@ extends Panel
 var current_tilemap:TileMap
 var basic_tower_instance:Node2D
 var offset:Vector2
+var smooth_position:Vector2
 var zoom:Vector2
+var temp_global_position:Vector2
 var if_mouse_in:bool = false
 var click:bool = false:
 	set(value):
 		click = value
 		if value == true:
-#			modulate = Color.BLUE_VIOLET
+			modulate = Color.BLUE_VIOLET
 			pass
 		else:
 			modulate = Color.WHITE
@@ -24,7 +26,6 @@ var click:bool = false:
 func _ready():
 	$CoolColor.scale.y=0
 	set_process(false)
-	$AnimationPlayer.play("cool")
 
 
 func _process(delta):
@@ -33,6 +34,12 @@ func _process(delta):
 	offset = Global.camera.global_position-get_viewport_rect().size/2/zoom	
 	zoom = Global.camera.zoom
 	basic_tower_instance.global_position = get_viewport().get_mouse_position()/zoom+offset
+#	var relative:Vector2 = basic_tower_instance.global_position - temp_global_position
+#	temp_global_position = basic_tower_instance.global_position
+#	if relative.length_squared() > 100:
+#		smooth_position = - relative
+#	smooth_position = smooth_position.lerp(Vector2.ZERO,1-exp(-delta))
+#	basic_tower_instance.global_position += smooth_position
 
 
 func _input(event):
@@ -43,7 +50,10 @@ func _input(event):
 		if click == true:
 			try_to_settle()
 		else:
-			settle_fail()
+			if basic_tower_instance.if_has_settle_place == false:
+				settle_fail()
+			else:
+				settle_success()
 	if event is InputEventMouseButton and event.button_mask == 1 and click == true:
 		if basic_tower_instance.if_has_settle_place == false:
 			if if_mouse_in:
@@ -95,23 +105,29 @@ func settle_fail()->void:
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(basic_tower_instance,"modulate:a",0,.3).from(.6)
 	await tween.finished
-	basic_tower_instance.queue_free()
+	basic_tower_instance.change_modulate(basic_tower_instance.settle_place,1)
+	basic_tower_instance.free_self()
 	cool_shadow(fail_settle_cool_time)
 
 
 func settle_success()->void:
 	set_process(false)
-	basic_tower_instance.global_position = basic_tower_instance.settle_place
+#	Global.current_world.remove_child(basic_tower_instance)
+#	basic_tower_instance.settle_place.get_parent().add_child(basic_tower_instance)
+	basic_tower_instance.global_position = basic_tower_instance.settle_place.global_position
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(basic_tower_instance,"modulate:a",1,.3).from(.6)
 	basic_tower_instance.attracted_to = true
+#	basic_tower_instance.scale = Vector2.ONE*1.0/9
+	basic_tower_instance.settle_place.set_unavailable()
+	basic_tower_instance.settle_place.tower = basic_tower_instance
 	cool_shadow(success_settle_cool_time)
 
 
 func cool_shadow(time:float)->void:
-	$CoolTimer.start(success_settle_cool_time)
-	var tween :Tween=create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property($CoolColor,"scale:y",0,time).from(-1)
+	$CoolTimer.start(time)
+	$AnimationPlayer.speed_scale = 1.0 / time
+	$AnimationPlayer.play("cool")
 
 
 func _on_mouse_entered():

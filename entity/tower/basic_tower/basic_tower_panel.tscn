@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="1_16ag2"]
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower_panel.gd" id="1_okasp"]
 
-[sub_resource type="Animation" id="Animation_hhbrv"]
+[sub_resource type="Animation" id="Animation_ierjx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [Vector2(1, 2.08165e-12)]
 }
 
-[sub_resource type="Animation" id="Animation_1rset"]
+[sub_resource type="Animation" id="Animation_t5s3i"]
 resource_name = "cool"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -33,10 +33,10 @@ tracks/0/keys = {
 "values": [Vector2(1, -1), Vector2(1, 2.08165e-12)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g02uw"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7wub"]
 _data = {
-"RESET": SubResource("Animation_hhbrv"),
-"cool": SubResource("Animation_1rset")
+"RESET": SubResource("Animation_ierjx"),
+"cool": SubResource("Animation_t5s3i")
 }
 
 [node name="BasicTowerPanel" type="Panel"]
@@ -66,9 +66,8 @@ one_shot = true
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "cool"
 libraries = {
-"": SubResource("AnimationLibrary_g02uw")
+"": SubResource("AnimationLibrary_e7wub")
 }
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

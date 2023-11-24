@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="2_c4aqh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0xad"]
-bg_color = Color(0.427451, 0.627451, 0.745098, 0.572549)
+bg_color = Color(1, 1, 1, 0.0980392)
 corner_radius_top_left = 400
 corner_radius_top_right = 400
 corner_radius_bottom_right = 400
@@ -29,7 +29,9 @@ offset_left = -400.0
 offset_top = -400.0
 offset_right = 400.0
 offset_bottom = 400.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k0xad")
+metadata/_edit_use_anchors_ = true
 
 [node name="StaticCollison" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mbwkc")
@@ -56,8 +58,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="SettleArea" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 0
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SettleArea"]
 shape = SubResource("CircleShape2D_0c1ij")
@@ -65,3 +67,5 @@ shape = SubResource("CircleShape2D_0c1ij")
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="area_entered" from="SettleArea" to="." method="_on_settle_area_area_entered"]
+[connection signal="area_exited" from="SettleArea" to="." method="_on_settle_area_area_exited"]

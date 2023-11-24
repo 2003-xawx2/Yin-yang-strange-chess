@@ -10,6 +10,8 @@ func _ready():
 
 
 func _on_timer_timeout():
-	for path in PathArray:
-		var path_stage_1_instance = path.instantiate()
-		add_child(path_stage_1_instance)
+	var i:int = 0
+	for child in get_children():
+		if child is Timer:continue
+		child.add_child(PathArray[i%2].instantiate())
+		i+=1

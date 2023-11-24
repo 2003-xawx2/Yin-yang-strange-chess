@@ -1,22 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu1qgln4rm4rm"]
+[gd_scene load_steps=6 format=3 uid="uid://bu1qgln4rm4rm"]
 
 [ext_resource type="Texture2D" uid="uid://xwku3wv33ur7" path="res://assets/tower_defense/PNG/github.png" id="1_qwf17"]
 [ext_resource type="Script" path="res://entity/tower/tower_container/tower_container.gd" id="2_m5dxi"]
+[ext_resource type="Texture2D" uid="uid://bm5exen3834f0" path="res://assets/tower/-cancel-button.png" id="3_fesqo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kxxg"]
 radius = 207.635
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0xad"]
+bg_color = Color(1, 1, 1, 0.0980392)
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+shadow_size = 30
+
 [node name="TowerContainer" type="Sprite2D" groups=["tower_container"]]
+position = Vector2(45, 44)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_qwf17")
 script = ExtResource("2_m5dxi")
 
 [node name="DetectArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 32
+visible = false
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_0kxxg")
 
-[connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
-[connection signal="area_exited" from="DetectArea" to="." method="_on_detect_area_area_exited"]
+[node name="UiOperationContainer" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+scale = Vector2(0.23, 0.23)
+pivot_offset = Vector2(400, 400)
+theme_override_styles/panel = SubResource("StyleBoxFlat_k0xad")
+
+[node name="TextureButton" type="TextureButton" parent="UiOperationContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.69
+offset_top = 193.32
+offset_right = 119.311
+offset_bottom = 393.32
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_fesqo")
+
+[connection signal="gui_input" from="UiOperationContainer" to="." method="_on_ui_operation_container_gui_input"]
+[connection signal="pressed" from="UiOperationContainer/TextureButton" to="." method="_on_texture_button_pressed"]

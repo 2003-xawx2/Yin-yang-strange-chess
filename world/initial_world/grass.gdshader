@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
-uniform float swing_a = 20;
+uniform float swing_a = 40
+;
 uniform float swing_multipler = .5;
 
 void vertex() {

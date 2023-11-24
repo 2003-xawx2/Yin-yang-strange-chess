@@ -1,20 +1,37 @@
-shader_type spatial;
-render_mode specular_schlick_ggx, unshaded, cull_back;//
+shader_type canvas_item;
 
-uniform vec4 tint_color : source_color = vec4( 0.3, 0.4, 0.45, 1.0);
-uniform sampler2D caustics : hint_default_white;
-uniform float slowdown : hint_range( 0.1, 10.0, 0.1 ) = 5.0;
-uniform float time_caust : hint_range( 0.01, 1.0, 0.01 ) = 0.13;
-uniform float caust_form : hint_range( 0.01, 1.0, 0.01 ) = 0.15;
-uniform float tile: hint_range( 0.1, 16.0, 0.1 ) = 4.0;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform float progression : hint_range(0.0, 1.0) = 0.5;
+
+uniform float fade : hint_range(0.0, 1.0) = 0.9;
+
+uniform float thickness : hint_range(0.01, 1.0) = 0.1;
+
+uniform float wavelet_factor : hint_range(.1, 4.) = 4.;
+
+// In pixels.
+uniform float deformation_length = 16;
+
+uniform vec2 screen_pos;
+
+uniform vec2 screen_size;
+
+uniform vec4 tint : source_color = vec4(.5, .5, .9, 1.);
+
+//const float PI = 3.1415926535897932384626433832795;
 
 void fragment() {
-
-// Caustics
-	float caustics_form = texture(caustics , UV * (tile + sin(TIME / slowdown) * time_caust )).r;//
-	vec2 caustics_uv =  UV * (tile + cos(TIME / slowdown) * time_caust ) + caustics_form * caust_form ;
-	float caustics_final = texture(caustics, caustics_uv).r;
-	ALBEDO = (1.0-SCREEN_UV.y) * caustics_final * tint_color.rgb ;
-	ALPHA = min(SCREEN_UV.y + 0.5, 1.0 ) * tint_color.a;
-		
+	vec2 norm = normalize(UV - vec2(.5));
+	float dist = distance(UV, vec2(.5)) * 2.;
+	float prog = progression * (1. - thickness - 0.01);
+	float distortion = clamp((dist - prog) / thickness, -1., 1.);
+	distortion = mix(cos(distortion * (PI / wavelet_factor)), 0., step(0.99, abs(distortion)));
+	vec2 def = distortion * deformation_length * SCREEN_PIXEL_SIZE;
+	vec2 offset_vector = norm * def;
+	vec2 target_id = screen_pos + ((UV + offset_vector) * screen_size);
+	target_id.y = 1.0 - target_id.y;
+	COLOR = mix(vec4(0.),
+				vec4(texture(SCREEN_TEXTURE, target_id).rgb, mix(1.0, smoothstep(1., 0., (progression - fade) / (1. - fade)),
+				step( fade, progression ))), step(0.01, distortion));
 }

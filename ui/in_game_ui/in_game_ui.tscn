@@ -20,6 +20,7 @@ offset_right = 758.0
 offset_bottom = 153.0
 scale = Vector2(3, 3)
 pivot_offset = Vector2(153.667, 20.3333)
+mouse_filter = 0
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 
