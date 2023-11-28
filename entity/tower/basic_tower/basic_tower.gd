@@ -63,8 +63,8 @@ func return_far_target()->CharacterBody2D:
 	for enemy in enemies:
 		if enemy == null:
 			continue
-		var distance = enemy.get_progress_ratio()
-#		var distance = enemy.global_position.distance_squared_to(global_position)
+#		var distance = enemy.get_progress_ratio()
+		var distance = enemy.global_position.distance_squared_to(global_position)
 		if distance > max_distance:
 			temp_target = enemy
 			max_distance = distance

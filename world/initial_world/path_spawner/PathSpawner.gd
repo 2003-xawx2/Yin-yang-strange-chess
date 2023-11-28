@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var timer = $Timer
+@onready var navigation_region_2d = $NavigationRegion2D
 @onready var enemies:Array[PackedScene] = [
 	preload("res://entity/enemy/snake/snake.tscn"),
 	preload("res://entity/enemy/frog/frog.tscn"),
@@ -21,7 +22,8 @@ func _ready():
 			temp["time"] = enemy.showing_time + i * enemy.show_interval
 			temp["enemy_type"] = enemy.enemy_type
 			temp["enemy_faction"] = enemy.enemy_faction
-			temp["spawn_path"] = enemy.spawn_path
+			temp["spawn_position"] = enemy.spawn_position
+			temp["end_position"] = enemy.end_position
 			spawn_time_line.append(temp)
 	
 	spawn_time_line.sort_custom(_sort)
@@ -35,18 +37,17 @@ func _sort(temp_a:Dictionary,temp_b:Dictionary)->bool:
 		return false
 
 
-
 func _on_timer_timeout():
-	spawn_enemy(spawn_time_line[index]["enemy_type"],\
-	spawn_time_line[index]["enemy_faction"],spawn_time_line[index]["spawn_path"])
+	spawn_enemy(spawn_time_line[index]["enemy_type"],spawn_time_line[index]["enemy_faction"],\
+	spawn_time_line[index]["spawn_position"],spawn_time_line[index]["end_position"])
 	
 	if index+1 == spawn_time_line.size():return
 	
 	var delta_time :float =  spawn_time_line[index+1]["time"] - spawn_time_line[index]["time"]
 	while delta_time==0:
 		index+=1
-		spawn_enemy(spawn_time_line[index]["enemy_type"],\
-		spawn_time_line[index]["enemy_faction"],spawn_time_line[index]["spawn_path"])
+		spawn_enemy(spawn_time_line[index]["enemy_type"],spawn_time_line[index]["enemy_faction"],\
+	spawn_time_line[index]["spawn_position"],spawn_time_line[index]["end_position"])
 		if index+1 == spawn_time_line.size():return
 		delta_time = spawn_time_line[index+1]["time"] - spawn_time_line[index]["time"]
 	index+=1
@@ -54,11 +55,9 @@ func _on_timer_timeout():
 		timer.start(delta_time)
 
 
-func spawn_enemy(enemy_type:Global.EnemyType,enemy_faction:Global.Faction,spawn_path:int):
-	var path:PathFollow2D = PathFollow2D.new()
-	path.rotates = false
-	path.loop = false
-	get_child(spawn_path+1).add_child(path)
+func spawn_enemy(enemy_type:Global.EnemyType,enemy_faction:Global.Faction,spawn_position:Node2D,end_position:Node2D):
 	var enemy_instance = enemies[enemy_type].instantiate()
 	enemy_instance.faction = enemy_faction
-	path.add_child(enemy_instance)
+	enemy_instance.global_position = spawn_position.global_position
+	add_child(enemy_instance)
+	enemy_instance.target_global_position = end_position.global_position

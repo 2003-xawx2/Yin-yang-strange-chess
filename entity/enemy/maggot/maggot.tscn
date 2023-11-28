@@ -20,6 +20,8 @@ radius = 4.0
 radius = 0.01
 
 [node name="Maggot" type="CharacterBody2D" groups=["enemy", "maggot"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_23b4d")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("1_pr854")]
@@ -62,6 +64,8 @@ shape = SubResource("CircleShape2D_iujtn")
 
 [node name="machine_state" type="Node" parent="."]
 script = ExtResource("5_sf6gs")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

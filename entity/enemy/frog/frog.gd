@@ -5,17 +5,14 @@ enum State{
 	PATH_FOLLOWING,
 	WALKING,
 	FIGHTING,
-	BACK_PATH,
 }
 
 @export var jump_speed :float = 200
 @export var acceleration :float = 100
-@export var max_distance_from_path:float = 10
 @export_category("attack")
 @export var first_attack_time:float=1
 @export var attack_interval:float=2
 
-@onready var path :PathFollow2D = get_parent()
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitBox
 @onready var hurt_area = $HurtBox
@@ -23,6 +20,7 @@ enum State{
 @onready var attack_timer = $Timer/AttackTimer
 @onready var detect_area = $DetectArea
 @onready var attack_range:float = 1000
+@onready var navigation_agent_2d = $NavigationAgent2D
 
 #阵营
 @export var faction:=Global.Faction.Yang
@@ -30,9 +28,10 @@ enum State{
 var jumping:bool = false
 var died:=false
 var speed:float = 0
-var direction:Vector2 = Vector2.ZERO
+var target_position:Vector2 = Vector2.ZERO
 var enemies:Array[Node2D]
 var detect_enemy:Node2D = null
+var target_global_position:Vector2
 
 
 func _ready():
@@ -61,9 +60,6 @@ func take_physics(state: State, delta: float) -> void:
 		
 		State.FIGHTING:
 			fight(delta)
-		
-		State.BACK_PATH:
-			move(delta)
 
 #获取下一个状态
 func get_next_state(state: State) -> State:
@@ -72,21 +68,16 @@ func get_next_state(state: State) -> State:
 			if detect_enemy != null:
 				return State.WALKING
 		State.WALKING:
-			if detect_enemy == null:
-				return State.BACK_PATH
 			if detect_enemy.global_position.distance_squared_to(global_position)<=pow(attack_range,2):
 				return State.FIGHTING
 		State.FIGHTING:
 #			update_detect_enemy()
 			if detect_enemy == null:
 				attack_timer.stop()
-				return State.BACK_PATH
+				return State.WALKING
 			if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
 				attack_timer.stop()
 				return State.WALKING
-		State.BACK_PATH:
-			if position.length() < pow(max_distance_from_path,2):
-				return State.PATH_FOLLOWING
 	return state
 
 #状态转换（动画，timer）
@@ -96,29 +87,21 @@ func transition_state(from: State, to: State) -> void:
 		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
+			navigation_agent_2d.target_position = target_global_position
 			animation_player.queue("walk")
 		State.WALKING:
-			direction = detect_enemy.global_position - global_position
+			if detect_enemy == null:
+				return
+			navigation_agent_2d.target_position = detect_enemy.global_position
 			animation_player.queue("walk")
 		State.FIGHTING:
 			_on_attack_timer_timeout()
 			attack_timer.start(first_attack_time)
-		State.BACK_PATH:
-			animation_player.queue("walk")
-			direction = - position
 
 
 func follow_path(delta:float)->void:
-	if jumping:
-		speed = lerp(speed,jump_speed,1-exp(-delta*acceleration*2.0))
-	else:
-		speed = lerp(speed,0.0,1-exp(-delta*acceleration*2.0))
-	path.set_progress(path.progress+speed*delta)
-	velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
-	move_and_slide()
-
-
-func move(delta:float)->void:
+	navigation_agent_2d.target_position = target_global_position
+	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
 	if jumping:
 		velocity = velocity.lerp(direction.normalized()*jump_speed, 1-exp(-delta*acceleration*2.0))
 	else:
@@ -126,7 +109,20 @@ func move(delta:float)->void:
 	move_and_slide()
 
 
+func move(delta:float)->void:
+	navigation_agent_2d.target_position = detect_enemy.global_position
+	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
+	if jumping:
+		velocity = velocity.lerp(direction.normalized()*jump_speed, 1-exp(-delta*acceleration*2.0))
+		if $machine_state.state_time>.26 &&velocity.length()<10:
+			velocity = velocity.rotated(delta*10)
+	else:
+		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
+	move_and_slide()
+
+
 func fight(delta:float)->void:
+	var direction:Vector2 = target_position-global_position
 	if jumping:
 		velocity = velocity.lerp(direction.normalized()*jump_speed*3, 1-exp(-delta*acceleration*4.0))
 	else:
@@ -144,11 +140,7 @@ func arrive_path_end()->void:
 
 
 func free_self()->void:
-	get_parent().call_deferred("queue_free")
-
-
-func get_progress_ratio()->float:
-	return path.progress_ratio
+	call_deferred("queue_free")
 
 
 func update_detect_enemy():
@@ -191,7 +183,7 @@ func _filter_easy(enemy:Node2D)->bool:
 
 
 func _on_attack_timer_timeout():
-	direction = detect_enemy.global_position - global_position
+	target_position = detect_enemy.global_position
 	animation_player.play("attack")
 	attack_timer.start(attack_interval)
 

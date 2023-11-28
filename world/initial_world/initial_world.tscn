@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=27 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
 [ext_resource type="Texture2D" uid="uid://cgfydsls00vih" path="res://assets/level_1/level_1.png" id="2_07q0d"]
@@ -121,45 +121,32 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_lkaib"]
 script = ExtResource("14_10eu2")
-spawn_path = 2
-enemy_type = 0
-enemy_faction = 1
-showing_time = 0.0
-show_interval = 1.0
-show_amounts = 1
+spawn_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-868, 526),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
 
-[sub_resource type="Resource" id="Resource_5nyv3"]
-script = ExtResource("14_10eu2")
-spawn_path = 3
+end_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2797, 501),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
+
 enemy_type = 1
-enemy_faction = 2
-showing_time = 0.0
+enemy_faction = 1
+showing_time = 1.0
 show_interval = 0.2
 show_amounts = 2
 
-[sub_resource type="Curve2D" id="Curve2D_fi3kw"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -131, 530, 0, 0, 0, 0, 20, 499, 0, 0, 0, 0, 427, 176, 0, 0, 0, 0, 684, 110, 0, 0, 0, 0, 848, 105, 0, 0, 0, 0, 986, 93, 0, 0, 0, 0, 1101, 97, 0, 0, 0, 0, 1218, 108, 0, 0, 0, 0, 1350, 135, 0, 0, 0, 0, 1473, 156, 0, 0, 0, 0, 1562, 180, 0, 0, 0, 0, 1988, 522, 0, 0, 0, 0, 2053, 546, 0, 0, 0, 0, 2912, 535, 0, 0, 0, 0, 3043, 559, 0, 0, 0, 0, -1163, 532)
-}
-point_count = 16
+[sub_resource type="Resource" id="Resource_5nyv3"]
+script = ExtResource("14_10eu2")
+spawn_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2797, 501),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
 
-[sub_resource type="Curve2D" id="Curve2D_ae1xe"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3029, 572, 0, 0, 0, 0, 2819, 527, 0, 0, 0, 0, 2072, 514, 0, 0, 0, 0, 1962, 488, 0, 0, 0, 0, 1603, 182, 0, 0, 0, 0, 1415, 110, 0, 0, 0, 0, 1181, 84, 0, 0, 0, 0, 986, 101, 0, 0, 0, 0, 803, 107, 0, 0, 0, 0, 597, 120, 0, 0, 0, 0, 491, 165, 0, 0, 0, 0, 369, 208, 0, 0, 0, 0, 269, 273, 0, 0, 0, 0, 203, 339, 0, 0, 0, 0, 97, 410, 0, 0, 0, 0, 29, 461, 0, 0, 0, 0, -107, 507, 0, 0, 0, 0, -211, 509, 0, 0, 0, 0, -390, 514, 0, 0, 0, 0, -496, 526, 0, 0, 0, 0, -686, 524, 0, 0, 0, 0, -1115, 524)
-}
-point_count = 22
+end_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-868, 526),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
 
-[sub_resource type="Curve2D" id="Curve2D_pyc6u"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1034, 790, 0, 0, 0, 0, -751, 805, 0, 0, 0, 0, -652, 809, 0, 0, 0, 0, -566, 811, 0, 0, 0, 0, -411, 824, 0, 0, 0, 0, -273, 833, 0, 0, 0, 0, -135, 843, 0, 0, 0, 0, -5, 862, 0, 0, 0, 0, 57, 914, 0, 0, 0, 0, 148, 981, 0, 0, 0, 0, 259, 1035, 0, 0, 0, 0, 365, 1124, 0, 0, 0, 0, 493, 1162, 0, 0, 0, 0, 684, 1181, 0, 0, 0, 0, 884, 1188, 0, 0, 0, 0, 1016, 1188, 0, 0, 0, 0, 1201, 1181, 0, 0, 0, 0, 1328, 1175, 0, 0, 0, 0, 1454, 1179, 0, 0, 0, 0, 1581, 1169, 0, 0, 0, 0, 1651, 1122, 0, 0, 0, 0, 1743, 1041, 0, 0, 0, 0, 1837, 943, 0, 0, 0, 0, 1911, 879, 0, 0, 0, 0, 2004, 845, 0, 0, 0, 0, 2106, 833, 0, 0, 0, 0, 2221, 822, 0, 0, 0, 0, 2379, 820, 0, 0, 0, 0, 2511, 811, 0, 0, 0, 0, 2668, 797, 0, 0, 0, 0, 2793, 790, 0, 0, 0, 0, 2880, 775, 0, 0, 0, 0, 2923, 765, 0, 0, 0, 0, 3046, 729, 0, 0, 0, 0, 3077, 714)
-}
-point_count = 35
+enemy_type = 0
+enemy_faction = 2
+showing_time = 1.0
+show_interval = 0.2
+show_amounts = 2
 
-[sub_resource type="Curve2D" id="Curve2D_omw88"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3044, 782, 0, 0, 0, 0, 2156, 813, 0, 0, 0, 0, 2030, 828, 0, 0, 0, 0, 1936, 852, 0, 0, 0, 0, 1598, 1160, 0, 0, 0, 0, 1517, 1183, 0, 0, 0, 0, 1407, 1213, 0, 0, 0, 0, 1292, 1226, 0, 0, 0, 0, 565, 1207, 0, 0, 0, 0, 467, 1203, 0, 0, 0, 0, 393, 1179, 0, 0, 0, 0, 316, 1120, 0, 0, 0, 0, -103, 796, 0, 0, 0, 0, -205, 779, 0, 0, 0, 0, -313, 779, 0, 0, 0, 0, -1039, 775)
-}
-point_count = 16
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7gppw"]
+vertices = PackedVector2Array(-1181, 98, -1219, 99, -2363, 98, -2140, -256, -1240, -249, -1113, -132, -1052, 31, 1212, -247, 2083, -224, 2262, 103, 1052, 98, 1116, -164, 953, -52, 984, -160, -1023, -118, -924, -68, 553, -381, 493, -545, 132, -422, -7, -562, -596, -494, -558, -379, -417, -288, -151, -409, 6, -52, -392, -26, -394, -224, 395, -232, 382, -30, 7, -4, 382, 1, 221, 207, 87, 337, -146, 334, -288, 154, -374, -4, 1054, 101, 2233, 106, 2083, 446, 1328, 461, 1214, 433, 1124, 302, 932, 142, 963, 276, 888, 221, 633, 579, 548, 508, -606, 509, -366, 391, 368, 412, 297, 712, -387, 714, -683, 580, -1157, 338, -1274, 444, -2146, 463, -2213, 105, -1217, 103, -1050, 174, -1056, 288, -948, 238)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(6, 5, 14, 15), PackedInt32Array(13, 12, 16, 17), PackedInt32Array(17, 16, 18, 19), PackedInt32Array(15, 14, 20, 21), PackedInt32Array(22, 21, 20, 19, 23), PackedInt32Array(24, 25, 26, 23, 18, 27), PackedInt32Array(23, 19, 18), PackedInt32Array(24, 27, 28), PackedInt32Array(29, 30, 31, 32, 33, 34, 35), PackedInt32Array(36, 37, 38, 39, 40, 41), PackedInt32Array(42, 36, 41, 43, 44), PackedInt32Array(44, 43, 45, 46), PackedInt32Array(47, 48, 33, 32, 49, 46, 45, 50, 51, 52), PackedInt32Array(53, 54, 55, 56, 57, 58), PackedInt32Array(59, 53, 58), PackedInt32Array(52, 59, 58, 60, 47)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1181, 98, -1052, 31, -924, -68, -558, -379, -417, -288, -151, -409, -394, -224, -392, -26, 6, -52, 382, -30, 395, -232, 132, -422, 553, -381, 953, -52, 1052, 98, 2262, 103, 2083, -224, 1212, -247, 1116, -164, 984, -160, 493, -545, -7, -562, -596, -494, -1023, -118, -1113, -132, -1240, -249, -2140, -256, -2363, 98, -1219, 99), PackedVector2Array(-2213, 105, -2146, 463, -1274, 444, -1157, 338, -1056, 288, -683, 580, -387, 714, 297, 712, 633, 579, 963, 276, 1124, 302, 1214, 433, 1328, 461, 2083, 446, 2233, 106, 1054, 101, 932, 142, 888, 221, 548, 508, 368, 412, 87, 337, 221, 207, 382, 1, 7, -4, -374, -4, -288, 154, -146, 334, -366, 391, -606, 509, -948, 238, -1050, 174, -1217, 103)])
 
 [node name="InitialWorld" type="Node2D"]
 
@@ -172,7 +159,7 @@ position = Vector2(168, 374)
 motion_scale = Vector2(0.2, 2.08165e-12)
 
 [node name="RedBack" type="Sprite2D" parent="Map/ParallaxBackground/BackGround"]
-position = Vector2(1000, 604)
+position = Vector2(1002, 578)
 scale = Vector2(16, 12)
 texture = ExtResource("2_07q0d")
 vframes = 8
@@ -267,19 +254,21 @@ libraries = {
 [node name="PathSpawner" parent="." instance=ExtResource("2_krvyn")]
 PathArray = Array[ExtResource("14_10eu2")]([SubResource("Resource_lkaib"), SubResource("Resource_5nyv3")])
 
-[node name="Path_top_right" type="Path2D" parent="PathSpawner"]
-visible = false
-curve = SubResource("Curve2D_fi3kw")
+[node name="left_top" type="Marker2D" parent="PathSpawner"]
+position = Vector2(-868, 526)
 
-[node name="Path_top_left" type="Path2D" parent="PathSpawner"]
-visible = false
-curve = SubResource("Curve2D_ae1xe")
+[node name="left_bottom" type="Marker2D" parent="PathSpawner"]
+position = Vector2(-887, 882)
 
-[node name="Path_botton_right" type="Path2D" parent="PathSpawner"]
-curve = SubResource("Curve2D_pyc6u")
+[node name="right_top" type="Marker2D" parent="PathSpawner"]
+position = Vector2(2797, 501)
 
-[node name="Path_bottom_left" type="Path2D" parent="PathSpawner"]
-curve = SubResource("Curve2D_omw88")
+[node name="right_bottom" type="Marker2D" parent="PathSpawner"]
+position = Vector2(2808, 873)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="PathSpawner"]
+position = Vector2(1000, 600)
+navigation_polygon = SubResource("NavigationPolygon_7gppw")
 
 [node name="ScripyCamera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("3_ye0bx")]
 map = NodePath("../Map/Flower")

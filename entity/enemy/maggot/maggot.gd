@@ -5,17 +5,14 @@ enum State{
 	PATH_FOLLOWING,
 	WALKING,
 	FIGHTING,
-	BACK_PATH,
 }
 
 @export var max_speed :float = 100
 @export var acceleration :float = 100
-@export var max_distance_from_path:float = 100
 @export_category("attack")
 @export var first_attack_time:float=1
 @export var attack_interval:float=2
 
-@onready var path :PathFollow2D = get_parent()
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitArea
 @onready var hurt_area = $HurtArea
@@ -32,6 +29,7 @@ var speed:float = 0
 var direction:Vector2 = Vector2.ZERO
 var enemies:Array[Node2D]
 var detect_enemy:Node2D = null
+var target_global_position:Vector2
 
 
 func _ready():
@@ -60,10 +58,6 @@ func take_physics(state: State, delta: float) -> void:
 		
 		State.FIGHTING:
 			stand(delta)
-		
-		State.BACK_PATH:
-			follow_path(delta/1.2)
-			move(delta/1.2)
 
 #获取下一个状态
 func get_next_state(state: State) -> State:
@@ -72,21 +66,16 @@ func get_next_state(state: State) -> State:
 			if detect_enemy != null:
 				return State.WALKING
 		State.WALKING:
-			if detect_enemy == null:
-				return State.BACK_PATH
 			if detect_enemy.global_position.distance_squared_to(global_position)<=pow(attack_range,2):
 				return State.FIGHTING
 		State.FIGHTING:
 #			update_detect_enemy()
 			if detect_enemy == null:
 				attack_timer.stop()
-				return State.BACK_PATH
+				return State.WALKING
 			if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
 				attack_timer.stop()
 				return State.WALKING
-		State.BACK_PATH:
-			if position.length() < pow(max_distance_from_path,2):
-				return State.PATH_FOLLOWING
 	return state
 
 #状态转换（动画，timer）
@@ -102,15 +91,11 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.queue("walk")
 		State.FIGHTING:
 			attack_timer.start(first_attack_time)
-		State.BACK_PATH:
-			animation_player.queue("walk")
-			direction = - position
 
 
 func follow_path(delta:float)->void:
 	if speed <max_speed:
 		speed += delta*acceleration
-	path.set_progress(path.progress+speed*delta)
 
 
 func move(delta:float)->void:
@@ -134,10 +119,6 @@ func arrive_path_end()->void:
 
 func free_self()->void:
 	get_parent().call_deferred("queue_free")
-
-
-func get_progress_ratio()->float:
-	return path.progress_ratio
 
 
 func update_detect_enemy():
