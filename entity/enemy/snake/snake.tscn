@@ -1,0 +1,178 @@
+[gd_scene load_steps=15 format=3 uid="uid://cw03ey1o8y532"]
+
+[ext_resource type="Script" path="res://entity/enemy/snake/snake.gd" id="1_q3nru"]
+[ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://manager/health_manager/health_manager.tscn" id="2_vw17d"]
+[ext_resource type="Texture2D" uid="uid://brfg6iu1g3fx1" path="res://assets/enemy/snake.png" id="3_nkg7y"]
+[ext_resource type="Script" path="res://manager/area_box/hit_box/hit_area.gd" id="4_nijqk"]
+[ext_resource type="Script" path="res://manager/area_box/hurt_box/hurt_area.gd" id="6_ljg02"]
+[ext_resource type="Script" path="res://manager/machine_state.gd" id="7_bepxu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ofhj4"]
+radius = 11.3382
+
+[sub_resource type="Animation" id="Animation_gwv1k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnakeSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b5ql6"]
+resource_name = "attack"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnakeSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.03, 0.03), Vector2(1e-05, 1e-05), Vector2(0.03, 0.03)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.19, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_2471f"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnakeSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.366519, 0.15708, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxtaa"]
+_data = {
+"RESET": SubResource("Animation_gwv1k"),
+"attack": SubResource("Animation_b5ql6"),
+"walk": SubResource("Animation_2471f")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3ady"]
+radius = 60.6676
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsvuc"]
+radius = 13.0171
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nob0j"]
+radius = 0.1
+
+[node name="Snake" type="CharacterBody2D" groups=["enemy", "snake"]]
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_q3nru")
+max_speed = 200.0
+first_attack_time = 0.4
+attack_interval = 1.5
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("2_vw17d")]
+hit_box = NodePath("../HitArea")
+max_health = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ofhj4")
+
+[node name="SnakeSprite" type="Sprite2D" parent="."]
+position = Vector2(-0.555557, 5.22222)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_nkg7y")
+offset = Vector2(0, -7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_nxtaa")
+}
+
+[node name="DetectArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_j3ady")
+
+[node name="HitArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -3.66667)
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("4_nijqk")
+health_component = NodePath("../HealthBar")
+text_up_height = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, 5.66667)
+shape = SubResource("CircleShape2D_xsvuc")
+debug_color = Color(0.811765, 0.00392157, 0.984314, 0.258824)
+
+[node name="HurtArea" type="Area2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("6_ljg02")
+damage = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_nob0j")
+disabled = true
+debug_color = Color(1, 0.631373, 0.72549, 1)
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timer"]
+wait_time = 2.0
+one_shot = true
+
+[node name="machine_state" type="Node" parent="."]
+script = ExtResource("7_bepxu")
+
+[connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -17,7 +17,7 @@ func _ready() -> void:
 	current_state=0
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	while true:
 		var next:int = owner.get_next_state(current_state)
 		if next == current_state:

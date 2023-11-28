@@ -50,6 +50,8 @@ func _input(event):
 		if click == true:
 			try_to_settle()
 		else:
+			if basic_tower_instance == null:
+				return
 			if basic_tower_instance.if_has_settle_place == false:
 				settle_fail()
 			else:

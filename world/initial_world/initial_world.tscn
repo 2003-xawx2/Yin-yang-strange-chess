@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=30 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
 [ext_resource type="Texture2D" uid="uid://cgfydsls00vih" path="res://assets/level_1/level_1.png" id="2_07q0d"]
@@ -10,13 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bolxa20u4p6nf" path="res://assets/level_1/river.png" id="4_l2vxh"]
 [ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="5_056wd"]
 [ext_resource type="Texture2D" uid="uid://b3srrqeqj1o2s" path="res://assets/level_1/MiddleLand.png" id="5_tjgwa"]
+[ext_resource type="Texture2D" uid="uid://4ofloiffqrl1" path="res://assets/level_1/grassANDbridge.png" id="6_0uj1a"]
 [ext_resource type="Texture2D" uid="uid://b61k00hgnn8ia" path="res://assets/level_1/right_flag.png" id="6_84wdt"]
 [ext_resource type="Shader" path="res://world/initial_world/grass.gdshader" id="6_nug2j"]
 [ext_resource type="Texture2D" uid="uid://o8vxuneix7k6" path="res://assets/level_1/fog.png" id="6_swpki"]
 [ext_resource type="Texture2D" uid="uid://baaj3bju172fk" path="res://assets/level_1/container.png" id="6_t8nb4"]
 [ext_resource type="Texture2D" uid="uid://b5l78ti50x75g" path="res://assets/level_1/left_flag.png" id="7_yeylc"]
-[ext_resource type="PackedScene" uid="uid://couedrr35ulmi" path="res://world/initial_world/path/stage_1_yang.tscn" id="10_e7ci1"]
-[ext_resource type="PackedScene" uid="uid://dax31awb6jmcx" path="res://world/initial_world/path/stage_1_ying.tscn" id="11_lkx6w"]
+[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="14_10eu2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buc1d"]
 shader = ExtResource("6_nug2j")
@@ -47,10 +47,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightFlag:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftFlag:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_1ohrf"]
 resource_name = "wiggle"
-length = 8.0
+length = 7.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -64,6 +88,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightFlag:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftFlag:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uh6xx"]
 _data = {
@@ -71,23 +119,41 @@ _data = {
 "wiggle": SubResource("Animation_1ohrf")
 }
 
+[sub_resource type="Resource" id="Resource_lkaib"]
+script = ExtResource("14_10eu2")
+spawn_path = 2
+enemy_type = 0
+enemy_faction = 1
+showing_time = 0.0
+show_interval = 1.0
+show_amounts = 1
+
+[sub_resource type="Resource" id="Resource_5nyv3"]
+script = ExtResource("14_10eu2")
+spawn_path = 3
+enemy_type = 1
+enemy_faction = 2
+showing_time = 0.0
+show_interval = 0.2
+show_amounts = 2
+
 [sub_resource type="Curve2D" id="Curve2D_fi3kw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -888, 520, 0, 0, 0, 0, 20, 499, 0, 0, 0, 0, 427, 176, 0, 0, 0, 0, 684, 110, 0, 0, 0, 0, 848, 105, 0, 0, 0, 0, 986, 93, 0, 0, 0, 0, 1101, 97, 0, 0, 0, 0, 1218, 108, 0, 0, 0, 0, 1350, 135, 0, 0, 0, 0, 1473, 156, 0, 0, 0, 0, 1562, 180, 0, 0, 0, 0, 1988, 522, 0, 0, 0, 0, 2053, 546, 0, 0, 0, 0, 2912, 535, 0, 0, 0, 0, 2949, 554)
+"points": PackedVector2Array(0, 0, 0, 0, -131, 530, 0, 0, 0, 0, 20, 499, 0, 0, 0, 0, 427, 176, 0, 0, 0, 0, 684, 110, 0, 0, 0, 0, 848, 105, 0, 0, 0, 0, 986, 93, 0, 0, 0, 0, 1101, 97, 0, 0, 0, 0, 1218, 108, 0, 0, 0, 0, 1350, 135, 0, 0, 0, 0, 1473, 156, 0, 0, 0, 0, 1562, 180, 0, 0, 0, 0, 1988, 522, 0, 0, 0, 0, 2053, 546, 0, 0, 0, 0, 2912, 535, 0, 0, 0, 0, 3043, 559, 0, 0, 0, 0, -1163, 532)
 }
-point_count = 15
+point_count = 16
 
 [sub_resource type="Curve2D" id="Curve2D_ae1xe"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2925, 554, 0, 0, 0, 0, 2819, 527, 0, 0, 0, 0, 2072, 514, 0, 0, 0, 0, 1962, 488, 0, 0, 0, 0, 1603, 182, 0, 0, 0, 0, 1415, 110, 0, 0, 0, 0, 1181, 84, 0, 0, 0, 0, 986, 101, 0, 0, 0, 0, 803, 107, 0, 0, 0, 0, 597, 120, 0, 0, 0, 0, 491, 165, 0, 0, 0, 0, 369, 208, 0, 0, 0, 0, 269, 273, 0, 0, 0, 0, 203, 339, 0, 0, 0, 0, 97, 410, 0, 0, 0, 0, 29, 461, 0, 0, 0, 0, -107, 507, 0, 0, 0, 0, -211, 509, 0, 0, 0, 0, -390, 514, 0, 0, 0, 0, -496, 526, 0, 0, 0, 0, -686, 524, 0, 0, 0, 0, -890, 522)
+"points": PackedVector2Array(0, 0, 0, 0, 3029, 572, 0, 0, 0, 0, 2819, 527, 0, 0, 0, 0, 2072, 514, 0, 0, 0, 0, 1962, 488, 0, 0, 0, 0, 1603, 182, 0, 0, 0, 0, 1415, 110, 0, 0, 0, 0, 1181, 84, 0, 0, 0, 0, 986, 101, 0, 0, 0, 0, 803, 107, 0, 0, 0, 0, 597, 120, 0, 0, 0, 0, 491, 165, 0, 0, 0, 0, 369, 208, 0, 0, 0, 0, 269, 273, 0, 0, 0, 0, 203, 339, 0, 0, 0, 0, 97, 410, 0, 0, 0, 0, 29, 461, 0, 0, 0, 0, -107, 507, 0, 0, 0, 0, -211, 509, 0, 0, 0, 0, -390, 514, 0, 0, 0, 0, -496, 526, 0, 0, 0, 0, -686, 524, 0, 0, 0, 0, -1115, 524)
 }
 point_count = 22
 
 [sub_resource type="Curve2D" id="Curve2D_pyc6u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -890, 780, 0, 0, 0, 0, -751, 805, 0, 0, 0, 0, -652, 809, 0, 0, 0, 0, -566, 811, 0, 0, 0, 0, -411, 824, 0, 0, 0, 0, -273, 833, 0, 0, 0, 0, -135, 843, 0, 0, 0, 0, -5, 862, 0, 0, 0, 0, 57, 914, 0, 0, 0, 0, 148, 981, 0, 0, 0, 0, 259, 1035, 0, 0, 0, 0, 365, 1124, 0, 0, 0, 0, 493, 1162, 0, 0, 0, 0, 684, 1181, 0, 0, 0, 0, 884, 1188, 0, 0, 0, 0, 1016, 1188, 0, 0, 0, 0, 1201, 1181, 0, 0, 0, 0, 1328, 1175, 0, 0, 0, 0, 1454, 1179, 0, 0, 0, 0, 1581, 1169, 0, 0, 0, 0, 1651, 1122, 0, 0, 0, 0, 1743, 1041, 0, 0, 0, 0, 1837, 943, 0, 0, 0, 0, 1911, 879, 0, 0, 0, 0, 2004, 845, 0, 0, 0, 0, 2106, 833, 0, 0, 0, 0, 2221, 822, 0, 0, 0, 0, 2379, 820, 0, 0, 0, 0, 2511, 811, 0, 0, 0, 0, 2668, 797, 0, 0, 0, 0, 2793, 790, 0, 0, 0, 0, 2880, 775, 0, 0, 0, 0, 2923, 765, 0, 0, 0, 0, 3046, 729)
+"points": PackedVector2Array(0, 0, 0, 0, -1034, 790, 0, 0, 0, 0, -751, 805, 0, 0, 0, 0, -652, 809, 0, 0, 0, 0, -566, 811, 0, 0, 0, 0, -411, 824, 0, 0, 0, 0, -273, 833, 0, 0, 0, 0, -135, 843, 0, 0, 0, 0, -5, 862, 0, 0, 0, 0, 57, 914, 0, 0, 0, 0, 148, 981, 0, 0, 0, 0, 259, 1035, 0, 0, 0, 0, 365, 1124, 0, 0, 0, 0, 493, 1162, 0, 0, 0, 0, 684, 1181, 0, 0, 0, 0, 884, 1188, 0, 0, 0, 0, 1016, 1188, 0, 0, 0, 0, 1201, 1181, 0, 0, 0, 0, 1328, 1175, 0, 0, 0, 0, 1454, 1179, 0, 0, 0, 0, 1581, 1169, 0, 0, 0, 0, 1651, 1122, 0, 0, 0, 0, 1743, 1041, 0, 0, 0, 0, 1837, 943, 0, 0, 0, 0, 1911, 879, 0, 0, 0, 0, 2004, 845, 0, 0, 0, 0, 2106, 833, 0, 0, 0, 0, 2221, 822, 0, 0, 0, 0, 2379, 820, 0, 0, 0, 0, 2511, 811, 0, 0, 0, 0, 2668, 797, 0, 0, 0, 0, 2793, 790, 0, 0, 0, 0, 2880, 775, 0, 0, 0, 0, 2923, 765, 0, 0, 0, 0, 3046, 729, 0, 0, 0, 0, 3077, 714)
 }
-point_count = 34
+point_count = 35
 
 [sub_resource type="Curve2D" id="Curve2D_omw88"]
 _data = {
@@ -99,13 +165,19 @@ point_count = 16
 
 [node name="Map" type="Node2D" parent="."]
 
-[node name="RedBack" type="Sprite2D" parent="Map"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Map"]
+
+[node name="BackGround" type="ParallaxLayer" parent="Map/ParallaxBackground"]
+position = Vector2(168, 374)
+motion_scale = Vector2(0.2, 2.08165e-12)
+
+[node name="RedBack" type="Sprite2D" parent="Map/ParallaxBackground/BackGround"]
 position = Vector2(1000, 604)
 scale = Vector2(16, 12)
 texture = ExtResource("2_07q0d")
 vframes = 8
 
-[node name="FarMoutain" type="Sprite2D" parent="Map"]
+[node name="FarMoutain" type="Sprite2D" parent="Map/ParallaxBackground/BackGround"]
 position = Vector2(1000, 604)
 scale = Vector2(9, 9)
 texture = ExtResource("3_ncdct")
@@ -118,8 +190,12 @@ texture = ExtResource("4_l2vxh")
 
 [node name="MiddleLand" type="Sprite2D" parent="Map"]
 position = Vector2(1000, 604)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(9, 9)
 texture = ExtResource("5_tjgwa")
+
+[node name="GAB" type="Sprite2D" parent="Map/MiddleLand"]
+z_index = 1
+texture = ExtResource("6_0uj1a")
 
 [node name="Fog" type="Sprite2D" parent="Map"]
 position = Vector2(1165, 706)
@@ -128,14 +204,16 @@ texture = ExtResource("6_swpki")
 hframes = 9
 
 [node name="RightFlag" type="Sprite2D" parent="Map"]
-position = Vector2(712, -97)
-scale = Vector2(0.9, 0.9)
+position = Vector2(2470, 157)
+scale = Vector2(9, 9)
 texture = ExtResource("6_84wdt")
+hframes = 6
 
 [node name="LeftFlag" type="Sprite2D" parent="Map"]
-position = Vector2(1278, -111)
-scale = Vector2(0.9, 0.9)
+position = Vector2(-504, 164)
+scale = Vector2(9, 9)
 texture = ExtResource("7_yeylc")
+hframes = 6
 
 [node name="Flower" type="Sprite2D" parent="Map"]
 position = Vector2(1000, 549)
@@ -187,12 +265,14 @@ libraries = {
 }
 
 [node name="PathSpawner" parent="." instance=ExtResource("2_krvyn")]
-PathArray = Array[PackedScene]([ExtResource("10_e7ci1"), ExtResource("11_lkx6w")])
+PathArray = Array[ExtResource("14_10eu2")]([SubResource("Resource_lkaib"), SubResource("Resource_5nyv3")])
 
 [node name="Path_top_right" type="Path2D" parent="PathSpawner"]
+visible = false
 curve = SubResource("Curve2D_fi3kw")
 
 [node name="Path_top_left" type="Path2D" parent="PathSpawner"]
+visible = false
 curve = SubResource("Curve2D_ae1xe")
 
 [node name="Path_botton_right" type="Path2D" parent="PathSpawner"]
@@ -204,6 +284,6 @@ curve = SubResource("Curve2D_omw88")
 [node name="ScripyCamera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("3_ye0bx")]
 map = NodePath("../Map/Flower")
 acceleration = 2.4
-zoom_adjust_percent = 0.05
+zoom_adjust_percent = 0.08
 
 [node name="InGameUI" parent="." instance=ExtResource("1_ja3ku")]

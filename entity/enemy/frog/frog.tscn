@@ -1,0 +1,262 @@
+[gd_scene load_steps=15 format=3 uid="uid://de1a1d3ledbwi"]
+
+[ext_resource type="Script" path="res://entity/enemy/frog/frog.gd" id="1_i28k8"]
+[ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://manager/health_manager/health_manager.tscn" id="1_pvpyo"]
+[ext_resource type="Script" path="res://manager/area_box/hit_box/hit_area.gd" id="2_clbrf"]
+[ext_resource type="Texture2D" uid="uid://1mf67fecnh8i" path="res://assets/enemy/pngwing.com.png" id="3_vtkhh"]
+[ext_resource type="Script" path="res://manager/area_box/hurt_box/hurt_area.gd" id="3_x45du"]
+[ext_resource type="Script" path="res://manager/machine_state.gd" id="4_46h4q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drwi5"]
+radius = 25.0799
+
+[sub_resource type="Animation" id="Animation_iyjq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrogSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.11, 0.11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FrogSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 29)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_14lrp"]
+resource_name = "attack"
+length = 0.4
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrogSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.1, 0.12, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.11, 0.11), Vector2(0.11, 0.03), Vector2(0.11, 0.03), Vector2(0.11, 0.11), Vector2(0.11, 0.11)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_jumping_mode"
+}, {
+"args": [false],
+"method": &"set_jumping_mode"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FrogSprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.12, 0.22, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 29), Vector2(0, -27), Vector2(0, 29)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.12, 0.38),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.12, 0.38),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wjd46"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrogSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.2, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.11, 0.11), Vector2(0.11, 0.05), Vector2(0.11, 0.11), Vector2(0.11, 0.11)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.175, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_jumping_mode"
+}, {
+"args": [false],
+"method": &"set_jumping_mode"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FrogSprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 29), Vector2(0, -27), Vector2(0, 29)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ci3n"]
+_data = {
+"RESET": SubResource("Animation_iyjq6"),
+"attack": SubResource("Animation_14lrp"),
+"walk": SubResource("Animation_wjd46")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngf32"]
+radius = 292.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydla2"]
+radius = 30.0666
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euq25"]
+radius = 42.107
+
+[node name="Frog" type="CharacterBody2D" groups=["enemy", "frog"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_i28k8")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("1_pvpyo")]
+offset_left = -39.0
+offset_top = -54.0
+offset_right = 40.0
+offset_bottom = -43.0
+hit_box = NodePath("../HitBox")
+max_health = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_drwi5")
+
+[node name="FrogSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 29)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_vtkhh")
+offset = Vector2(0, -263.636)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_8ci3n")
+}
+
+[node name="DetectArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_ngf32")
+
+[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("2_clbrf")
+health_component = NodePath("../HealthBar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_ydla2")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_x45du")
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_euq25")
+disabled = true
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timer"]
+wait_time = 1.5
+one_shot = true
+
+[node name="machine_state" type="Node" parent="."]
+script = ExtResource("4_46h4q")
+
+[connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]

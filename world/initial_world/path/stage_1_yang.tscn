@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://couedrr35ulmi"]
 
-[ext_resource type="PackedScene" uid="uid://cw03ey1o8y532" path="res://entity/enemy/basic_enemy/basic_solider.tscn" id="1_1bgb0"]
+[ext_resource type="PackedScene" uid="uid://cw03ey1o8y532" path="res://entity/enemy/basic_enemy/snake.tscn" id="1_1bgb0"]
 
 [node name="YangFollower" type="PathFollow2D"]
 position = Vector2(2251, 1274)

@@ -1,13 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://6mbeay3b7br3"]
 
 [ext_resource type="Script" path="res://world/initial_world/path_spawner/PathSpawner.gd" id="1_g6oma"]
-[ext_resource type="PackedScene" uid="uid://dax31awb6jmcx" path="res://world/initial_world/path/stage_1_ying.tscn" id="2_dlrjb"]
-[ext_resource type="PackedScene" uid="uid://couedrr35ulmi" path="res://world/initial_world/path/stage_1_yang.tscn" id="3_bnuu5"]
+[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="2_il3b0"]
+
+[sub_resource type="Resource" id="Resource_r8mjl"]
+script = ExtResource("2_il3b0")
+spawn_path = 0
+enemy_type = 0
+enemy_faction = 0
+showing_time = 0.0
+show_interval = 0.1
+show_amounts = 3
 
 [node name="PathSpawner" type="Node2D"]
 script = ExtResource("1_g6oma")
-PathArray = Array[PackedScene]([ExtResource("2_dlrjb"), ExtResource("3_bnuu5")])
+PathArray = Array[ExtResource("2_il3b0")]([SubResource("Resource_r8mjl")])
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

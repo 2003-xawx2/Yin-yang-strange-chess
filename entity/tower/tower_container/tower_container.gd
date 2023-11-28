@@ -42,6 +42,8 @@ func _unhandled_input(event):
 
 
 func _on_texture_button_pressed():
+	if ui_operation_container.scale != Vector2.ONE:
+		return
 	if tween != null and tween.is_running():
 		await tween.finished
 	tower.free_self()

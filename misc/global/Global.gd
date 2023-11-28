@@ -11,3 +11,9 @@ enum Faction{
 	Ying,
 	Yang
 }
+
+enum EnemyType {
+	snake,
+	frog,
+	maggot
+}
