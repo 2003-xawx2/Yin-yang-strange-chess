@@ -7,26 +7,41 @@ enum State{
 	FIGHTING,
 }
 
-@export var max_speed :float = 100
-@export var acceleration :float = 100
+@export var max_speed :float = 250
+@export var acceleration :float = 500
 @export_category("attack")
-@export var first_attack_time:float=1
-@export var attack_interval:float=2
+@export var first_attack_time:float= .3
+@export var attack_interval:float= 2
 
 @onready var health_bar = $HealthBar
-@onready var hit_area = $HitArea
-@onready var hurt_area = $HurtArea
+@onready var hit_area = $HitBox
+@onready var hurt_area = $HurtBox
 @onready var animation_player = $AnimationPlayer
 @onready var attack_timer = $Timer/AttackTimer
 @onready var detect_area = $DetectArea
-var attack_range:float = 150
+@onready var navigation_agent_2d = $NavigationAgent2D
+var attack_range:float = 70
 
 #阵营
-@export var faction:=Global.Faction.Yang
+var faction:Global.Faction:
+	set(value):
+		if value == Global.Faction.Ying:
+			modulate = Color.BLACK
+			hit_area.set_collision_mask_value(4,false)
+			hit_area.set_collision_mask_value(5,true)
+			hurt_area.set_collision_layer_value(4,true)
+			hurt_area.set_collision_layer_value(5,false)
+		else:
+			modulate = Color.WHITE
+			hit_area.set_collision_mask_value(5,false)
+			hit_area.set_collision_mask_value(4,true)
+			hurt_area.set_collision_layer_value(5,true)
+			hurt_area.set_collision_layer_value(4,false)
+		faction = value
 
 var died:=false
 var speed:float = 0
-var direction:Vector2 = Vector2.ZERO
+var target_position:Vector2 = Vector2.ZERO
 var enemies:Array[Node2D]
 var detect_enemy:Node2D = null
 var target_global_position:Vector2
@@ -34,26 +49,24 @@ var target_global_position:Vector2
 
 func _ready():
 	health_bar.value = health_bar.max_value
-	if faction == Global.Faction.Ying:
-		modulate = Color.BLACK
-		hit_area.set_collision_mask_value(4,false)
-		hit_area.set_collision_mask_value(5,true)
-		hurt_area.set_collision_layer_value(4,true)
-		hurt_area.set_collision_layer_value(5,false)
-	else:
-		modulate = Color.WHITE
 
 
 func  _physics_process(delta):
 	update_detect_enemy()
+	if velocity.x>5:
+		$MaggotSprite.flip_h = true
+	elif velocity.x<=5:
+		$MaggotSprite.flip_h = false
 
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
 	match state:
 		State.PATH_FOLLOWING:
+			look_at(global_position+velocity)
 			follow_path(delta)
 			
 		State.WALKING:
+			look_at(global_position+velocity)
 			move(delta)
 		
 		State.FIGHTING:
@@ -66,16 +79,19 @@ func get_next_state(state: State) -> State:
 			if detect_enemy != null:
 				return State.WALKING
 		State.WALKING:
+			if detect_enemy == null:
+				return State.PATH_FOLLOWING
 			if detect_enemy.global_position.distance_squared_to(global_position)<=pow(attack_range,2):
 				return State.FIGHTING
 		State.FIGHTING:
 #			update_detect_enemy()
 			if detect_enemy == null:
 				attack_timer.stop()
-				return State.WALKING
-			if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
-				attack_timer.stop()
-				return State.WALKING
+				return State.PATH_FOLLOWING
+			if $machine_state.state_time>attack_interval:
+				if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
+					attack_timer.stop()
+					return State.WALKING
 	return state
 
 #状态转换（动画，timer）
@@ -85,21 +101,30 @@ func transition_state(from: State, to: State) -> void:
 		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
+#			navigation_agent_2d.target_position = target_global_position
 			animation_player.queue("walk")
 		State.WALKING:
-			direction = detect_enemy.global_position - global_position
+#			navigation_agent_2d.target_position = detect_enemy.global_position
 			animation_player.queue("walk")
 		State.FIGHTING:
+			rotation = 0
+			$AnimationPlayer.play("ready_attack")
 			attack_timer.start(first_attack_time)
 
 
 func follow_path(delta:float)->void:
-	if speed <max_speed:
-		speed += delta*acceleration
+	navigation_agent_2d.target_position = target_global_position
+	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
+	velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	move_and_slide()
 
 
 func move(delta:float)->void:
+	navigation_agent_2d.target_position = detect_enemy.global_position
+	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
 	velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	if $machine_state.state_time>.2&&velocity.length()<10:
+		velocity = velocity.rotated(delta*20)
 	move_and_slide()
 
 
@@ -118,7 +143,7 @@ func arrive_path_end()->void:
 
 
 func free_self()->void:
-	get_parent().call_deferred("queue_free")
+	call_deferred("queue_free")
 
 
 func update_detect_enemy():
@@ -161,9 +186,16 @@ func _filter_easy(enemy:Node2D)->bool:
 
 
 func _on_attack_timer_timeout():
-	$HurtArea/CollisionShape2D.global_position = detect_enemy.global_position
+	if detect_enemy == null:
+		return
 	animation_player.play("attack")
 	attack_timer.start(attack_interval)
+
+
+func track_attack_target()->void:
+	if detect_enemy == null:
+		return
+	$HurtBox/CollisionShape2D.global_position = detect_enemy.global_position
 
 
 func _on_detect_area_body_entered(body):

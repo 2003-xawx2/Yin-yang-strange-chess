@@ -5,7 +5,7 @@ extends Node2D
 @onready var enemies:Array[PackedScene] = [
 	preload("res://entity/enemy/snake/snake.tscn"),
 	preload("res://entity/enemy/frog/frog.tscn"),
-	preload("res://entity/enemy/maggot/maggot.tscn")
+	preload("res://entity/enemy/maggot/maggot_spawner.tscn")
 ]
 
 @export var PathArray:Array[enemy_spawner]
@@ -19,7 +19,9 @@ func _ready():
 	for enemy in PathArray:
 		for i in range(enemy.show_amounts): 
 			var temp:Dictionary
-			temp["time"] = enemy.showing_time + i * enemy.show_interval
+			if enemy.show_interval == 0:
+				enemy.show_interval = .1
+			temp["time"] = enemy.showing_time + i * enemy.show_interval + .5
 			temp["enemy_type"] = enemy.enemy_type
 			temp["enemy_faction"] = enemy.enemy_faction
 			temp["spawn_position"] = enemy.spawn_position
@@ -55,9 +57,13 @@ func _on_timer_timeout():
 		timer.start(delta_time)
 
 
-func spawn_enemy(enemy_type:Global.EnemyType,enemy_faction:Global.Faction,spawn_position:Node2D,end_position:Node2D):
+func spawn_enemy(enemy_type:Global.EnemyType,enemy_faction:Global.Faction,spawn_position:Vector2,end_position:Vector2):
 	var enemy_instance = enemies[enemy_type].instantiate()
-	enemy_instance.faction = enemy_faction
-	enemy_instance.global_position = spawn_position.global_position
-	add_child(enemy_instance)
-	enemy_instance.target_global_position = end_position.global_position
+	enemy_instance.global_position = spawn_position
+	if enemy_type != Global.EnemyType.maggot:
+		add_child(enemy_instance)
+		enemy_instance.target_global_position = end_position
+		enemy_instance.faction = enemy_faction
+	else:
+		add_child(enemy_instance)
+		enemy_instance.spawn_maggot(enemy_faction,end_position)

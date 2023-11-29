@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=29 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
 [ext_resource type="Texture2D" uid="uid://cgfydsls00vih" path="res://assets/level_1/level_1.png" id="2_07q0d"]
@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://o8vxuneix7k6" path="res://assets/level_1/fog.png" id="6_swpki"]
 [ext_resource type="Texture2D" uid="uid://baaj3bju172fk" path="res://assets/level_1/container.png" id="6_t8nb4"]
 [ext_resource type="Texture2D" uid="uid://b5l78ti50x75g" path="res://assets/level_1/left_flag.png" id="7_yeylc"]
-[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="14_10eu2"]
+[ext_resource type="Resource" uid="uid://ck4mbn35v5g5p" path="res://world/initial_world/path/initial_world.tres" id="15_q648t"]
+[ext_resource type="Resource" uid="uid://bpgppb2ygfnjp" path="res://world/initial_world/path/initial_world_2.tres" id="16_7x6io"]
+[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="17_xe5gv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buc1d"]
 shader = ExtResource("6_nug2j")
@@ -119,29 +121,25 @@ _data = {
 "wiggle": SubResource("Animation_1ohrf")
 }
 
-[sub_resource type="Resource" id="Resource_lkaib"]
-script = ExtResource("14_10eu2")
-spawn_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-868, 526),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
-
-end_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2797, 501),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
-
-enemy_type = 1
+[sub_resource type="Resource" id="Resource_wq4de"]
+script = ExtResource("17_xe5gv")
+spawn_position = Vector2(2808, 873)
+end_position = Vector2(-887, 882)
+enemy_type = 0
 enemy_faction = 1
 showing_time = 1.0
-show_interval = 0.2
+show_interval = 0.0
 show_amounts = 2
 
-[sub_resource type="Resource" id="Resource_5nyv3"]
-script = ExtResource("14_10eu2")
-spawn_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2797, 501),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
-
-end_position = Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-868, 526),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
-
+[sub_resource type="Resource" id="Resource_c4l2k"]
+script = ExtResource("17_xe5gv")
+spawn_position = Vector2(-887, 882)
+end_position = Vector2(2808, 873)
 enemy_type = 0
 enemy_faction = 2
-showing_time = 1.0
-show_interval = 0.2
-show_amounts = 2
+showing_time = 10.0
+show_interval = 0.0
+show_amounts = 1
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7gppw"]
 vertices = PackedVector2Array(-1181, 98, -1219, 99, -2363, 98, -2140, -256, -1240, -249, -1113, -132, -1052, 31, 1212, -247, 2083, -224, 2262, 103, 1052, 98, 1116, -164, 953, -52, 984, -160, -1023, -118, -924, -68, 553, -381, 493, -545, 132, -422, -7, -562, -596, -494, -558, -379, -417, -288, -151, -409, 6, -52, -392, -26, -394, -224, 395, -232, 382, -30, 7, -4, 382, 1, 221, 207, 87, 337, -146, 334, -288, 154, -374, -4, 1054, 101, 2233, 106, 2083, 446, 1328, 461, 1214, 433, 1124, 302, 932, 142, 963, 276, 888, 221, 633, 579, 548, 508, -606, 509, -366, 391, 368, 412, 297, 712, -387, 714, -683, 580, -1157, 338, -1274, 444, -2146, 463, -2213, 105, -1217, 103, -1050, 174, -1056, 288, -948, 238)
@@ -252,18 +250,18 @@ libraries = {
 }
 
 [node name="PathSpawner" parent="." instance=ExtResource("2_krvyn")]
-PathArray = Array[ExtResource("14_10eu2")]([SubResource("Resource_lkaib"), SubResource("Resource_5nyv3")])
+PathArray = Array[ExtResource("17_xe5gv")]([ExtResource("15_q648t"), ExtResource("16_7x6io"), SubResource("Resource_wq4de"), SubResource("Resource_c4l2k")])
 
-[node name="left_top" type="Marker2D" parent="PathSpawner"]
+[node name="left_top" type="Node2D" parent="PathSpawner"]
 position = Vector2(-868, 526)
 
-[node name="left_bottom" type="Marker2D" parent="PathSpawner"]
+[node name="left_bottom" type="Node2D" parent="PathSpawner"]
 position = Vector2(-887, 882)
 
-[node name="right_top" type="Marker2D" parent="PathSpawner"]
+[node name="right_top" type="Node2D" parent="PathSpawner"]
 position = Vector2(2797, 501)
 
-[node name="right_bottom" type="Marker2D" parent="PathSpawner"]
+[node name="right_bottom" type="Node2D" parent="PathSpawner"]
 position = Vector2(2808, 873)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="PathSpawner"]

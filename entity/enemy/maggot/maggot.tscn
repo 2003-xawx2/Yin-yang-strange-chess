@@ -1,28 +1,158 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddxs681lk6j5i"]
+[gd_scene load_steps=16 format=3 uid="uid://ddxs681lk6j5i"]
 
 [ext_resource type="Script" path="res://entity/enemy/maggot/maggot.gd" id="1_23b4d"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://manager/health_manager/health_manager.tscn" id="1_pr854"]
 [ext_resource type="Script" path="res://manager/area_box/hit_box/hit_area.gd" id="2_5xlie"]
-[ext_resource type="Texture2D" uid="uid://pl2lgrb8qhdx" path="res://assets/enemy/pngwing.com copy.png" id="3_5f06h"]
+[ext_resource type="Texture2D" uid="uid://ctj1u4x8t7do" path="res://assets/enemy/maggot/maggot.png" id="3_0ymrg"]
 [ext_resource type="Script" path="res://manager/area_box/hurt_box/hurt_area.gd" id="3_8mref"]
 [ext_resource type="Script" path="res://manager/machine_state.gd" id="5_sf6gs"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_we8l1"]
-radius = 4.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2b38q"]
+radius = 8.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_qb68b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MaggotSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MaggotSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o3avp"]
+resource_name = "attack"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.125, 0.2125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"track_attack_target"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MaggotSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0375, 0.075, 0.1125, 0.15, 0.275),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 7]
+}
+
+[sub_resource type="Animation" id="Animation_nu02h"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MaggotSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fa02p"]
+resource_name = "ready_attack"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MaggotSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2o2w8"]
+_data = {
+"RESET": SubResource("Animation_qb68b"),
+"attack": SubResource("Animation_o3avp"),
+"ready_attack": SubResource("Animation_fa02p"),
+"walk": SubResource("Animation_nu02h")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvsd5"]
-radius = 23.0868
+radius = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iicwt"]
-radius = 4.0
+radius = 10.0499
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iujtn"]
-radius = 0.01
+radius = 1.0
 
 [node name="Maggot" type="CharacterBody2D" groups=["enemy", "maggot"]]
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_23b4d")
+max_speed = 200.0
+attack_interval = 1.0
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("1_pr854")]
 modulate = Color(1, 0.239216, 0.239216, 0)
@@ -32,17 +162,25 @@ offset_right = 16.0
 offset_bottom = -4.0
 scale = Vector2(0.34, 0.34)
 hit_box = NodePath("../HitBox")
+max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_we8l1")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2b38q")
 
 [node name="MaggotSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.002, 0.002)
-texture = ExtResource("3_5f06h")
+position = Vector2(0, -7)
+texture = ExtResource("3_0ymrg")
+hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_2o2w8")
+}
 
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -50,6 +188,9 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_cvsd5")
 
 [node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+visible = false
+collision_layer = 0
+collision_mask = 12
 script = ExtResource("2_5xlie")
 health_component = NodePath("../HealthBar")
 
@@ -57,16 +198,28 @@ health_component = NodePath("../HealthBar")
 shape = SubResource("CircleShape2D_iicwt")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_8mref")
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_iujtn")
+disabled = true
+debug_color = Color(0.854902, 0, 0.364706, 1)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_metadata_flags = 3
+debug_path_custom_color = Color(0.568627, 0, 0.580392, 1)
 
 [node name="machine_state" type="Node" parent="."]
 script = ExtResource("5_sf6gs")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="Timer" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timer"]
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy_spawner" load_steps=2 format=3 uid="uid://ck4mbn35v5g5p"]
+
+[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="1_pygce"]
+
+[resource]
+script = ExtResource("1_pygce")
+spawn_position = Vector2(-887, 882)
+end_position = Vector2(2808, 873)
+enemy_type = 2
+enemy_faction = 2
+showing_time = 3.0
+show_interval = 0.0
+show_amounts = 2

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_spawner" load_steps=2 format=3 uid="uid://bpgppb2ygfnjp"]
+
+[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="1_16fvh"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_16fvh")
+spawn_position = Vector2(2808, 873)
+end_position = Vector2(-887, 882)
+enemy_type = 1
+enemy_faction = 1
+showing_time = 6.0
+show_interval = 1.0
+show_amounts = 1

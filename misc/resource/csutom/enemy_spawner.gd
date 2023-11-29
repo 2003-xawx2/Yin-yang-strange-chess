@@ -2,8 +2,8 @@ extends Resource
 class_name enemy_spawner
 
 
-@export var spawn_position:Node2D
-@export var end_position:Node2D
+@export var spawn_position:Vector2
+@export var end_position:Vector2
 @export_category("spawn_enemy")
 @export var enemy_type:Global.EnemyType
 @export var enemy_faction:Global.Faction

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c21e7kry4pi6u"
-path="res://.godot/imported/tile_0112.png-49eb8ca2c8676e1bd177f42fb960cd84.ctex"
+uid="uid://dug2b8267oc0a"
+path="res://.godot/imported/die.png-d5783583de2ab4f917dad939027917e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/tile_0112.png"
-dest_files=["res://.godot/imported/tile_0112.png-49eb8ca2c8676e1bd177f42fb960cd84.ctex"]
+source_file="res://assets/enemy/sanke/die.png"
+dest_files=["res://.godot/imported/die.png-d5783583de2ab4f917dad939027917e2.ctex"]
 
 [params]
 

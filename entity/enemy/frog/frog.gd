@@ -10,8 +10,8 @@ enum State{
 @export var jump_speed :float = 200
 @export var acceleration :float = 100
 @export_category("attack")
-@export var first_attack_time:float=1
-@export var attack_interval:float=2
+@export var first_attack_time:float=.8
+@export var attack_interval:float=1.8
 
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitBox
@@ -19,11 +19,25 @@ enum State{
 @onready var animation_player = $AnimationPlayer
 @onready var attack_timer = $Timer/AttackTimer
 @onready var detect_area = $DetectArea
-@onready var attack_range:float = 1000
+@onready var attack_range:float = 700
 @onready var navigation_agent_2d = $NavigationAgent2D
 
 #阵营
-@export var faction:=Global.Faction.Yang
+var faction:Global.Faction:
+	set(value):
+		if value == Global.Faction.Ying:
+			modulate = Color.PURPLE
+			hit_area.set_collision_mask_value(4,false)
+			hit_area.set_collision_mask_value(5,true)
+			hurt_area.set_collision_layer_value(4,true)
+			hurt_area.set_collision_layer_value(5,false)
+		else:
+			modulate = Color.WHITE
+			hit_area.set_collision_mask_value(5,false)
+			hit_area.set_collision_mask_value(4,true)
+			hurt_area.set_collision_layer_value(5,true)
+			hurt_area.set_collision_layer_value(4,false)
+		faction = value
 
 var jumping:bool = false
 var died:=false
@@ -36,18 +50,14 @@ var target_global_position:Vector2
 
 func _ready():
 	health_bar.value = health_bar.max_value
-	if faction == Global.Faction.Ying:
-		modulate = Color.BLACK
-		hit_area.set_collision_mask_value(4,false)
-		hit_area.set_collision_mask_value(5,true)
-		hurt_area.set_collision_layer_value(4,true)
-		hurt_area.set_collision_layer_value(5,false)
-	else:
-		modulate = Color.WHITE
 
 
 func  _physics_process(delta):
 	update_detect_enemy()
+	if velocity.x >=5:
+		$FrogSprite.flip_h = false
+	elif velocity.x <=-5:
+		$FrogSprite.flip_h = true
 
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
@@ -68,6 +78,8 @@ func get_next_state(state: State) -> State:
 			if detect_enemy != null:
 				return State.WALKING
 		State.WALKING:
+			if detect_enemy == null:
+				return State.PATH_FOLLOWING
 			if detect_enemy.global_position.distance_squared_to(global_position)<=pow(attack_range,2):
 				return State.FIGHTING
 		State.FIGHTING:
@@ -75,16 +87,17 @@ func get_next_state(state: State) -> State:
 			if detect_enemy == null:
 				attack_timer.stop()
 				return State.WALKING
-			if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
-				attack_timer.stop()
-				return State.WALKING
+			if $machine_state.state_time>attack_interval:
+				if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
+					attack_timer.stop()
+					return State.WALKING
 	return state
 
 #状态转换（动画，timer）
 func transition_state(from: State, to: State) -> void:
 	if from == to : return
-	else:
-		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
+#	else:
+#		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
 			navigation_agent_2d.target_position = target_global_position
