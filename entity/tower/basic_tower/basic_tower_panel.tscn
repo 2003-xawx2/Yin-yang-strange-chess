@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqpcqyf0qffky"]
+[gd_scene load_steps=7 format=3 uid="uid://dqpcqyf0qffky"]
 
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower_panel.gd" id="1_okasp"]
 [ext_resource type="Texture2D" uid="uid://cauuf8ln45577" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile206.png" id="2_r432f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1dea"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 0.270588)
 
 [sub_resource type="Animation" id="Animation_ierjx"]
 length = 0.001
@@ -43,6 +46,7 @@ _data = {
 custom_minimum_size = Vector2(120, 120)
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1dea")
 script = ExtResource("1_okasp")
 
 [node name="Sprite" type="Sprite2D" parent="."]

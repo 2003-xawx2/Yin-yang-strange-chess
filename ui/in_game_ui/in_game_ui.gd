@@ -42,12 +42,13 @@ func move_in(object:CanvasItem)->void:
 func reset_left()->void:
 	var empty_index:int
 	for i in range(in_place_index+1):
-		if in_place.get_child(i).get_child_count()==0:
+		if in_place.get_child(i).get_child_count()==1:
 			empty_index = i
 			break
 	for i in range(empty_index+1,in_place_index):
 		#下面的1是个问题
 		var temp:= in_place.get_child(i).get_child(1)
+		#if temp == null:return
 		var start_position:Vector2 = in_place.get_child(i).global_position
 		in_place.get_child(i).remove_child(temp)
 		in_place.get_child(i-1).add_child(temp)
@@ -57,5 +58,4 @@ func reset_left()->void:
 		tween_2.tween_property(temp,"global_position",end_position,.3)
 
 
-func _on_panel_gui_input(event):
-	pass # Replace with function body.
+

@@ -54,17 +54,20 @@ func _input(event):
 	if Global.if_in_game:
 		if if_in_use:
 			in_game_input(event)
-	#else:
-		#if event is InputEventMouseButton and event.button_mask == 1:
-			#out_game_gui(event)
+	else:
+		if event is InputEventMouseButton and event.button_mask == 1:
+			var x:float=event.position.x-global_position.x
+			var y:float=event.position.y-global_position.y
+			if x>0 and x<120 and y>0 and y <120:
+				out_game_gui(event)
 
 
 func _on_gui_input(event:InputEvent):
 	if Global.if_in_game:
 		if if_in_use:
 			in_game_gui(event)
-	else:
-		out_game_gui(event)
+	#else:
+		#out_game_gui(event)
 
 
 func in_game_input(event:InputEvent)->void:
