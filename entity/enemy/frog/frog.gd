@@ -100,14 +100,17 @@ func transition_state(from: State, to: State) -> void:
 #		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
+			if_visible(false,1.5)
 			navigation_agent_2d.target_position = target_global_position
 			animation_player.queue("walk")
 		State.WALKING:
 			if detect_enemy == null:
 				return
+			if_visible(false,1.5)
 			navigation_agent_2d.target_position = detect_enemy.global_position
 			animation_player.queue("walk")
 		State.FIGHTING:
+			if_visible(true,.5)
 			_on_attack_timer_timeout()
 			attack_timer.start(first_attack_time)
 
@@ -196,6 +199,8 @@ func _filter_easy(enemy:Node2D)->bool:
 
 
 func _on_attack_timer_timeout():
+	if detect_enemy == null:
+		return
 	target_position = detect_enemy.global_position
 	animation_player.play("attack")
 	attack_timer.start(attack_interval)
@@ -212,3 +217,21 @@ func _on_detect_area_body_exited(body):
 
 func set_jumping_mode(flag :bool)->void:
 	jumping = flag
+
+
+var tween:Tween
+func if_visible(flag:bool,time:float)->void:
+	$CollisionShape2D.disabled = !flag
+	if tween!=null && tween.is_running():
+		tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_method(set_alpha,get_alpha(),float(!flag),time)
+
+
+func set_alpha(percent:float)->void:
+	$FrogSprite.material.set_shader_parameter("alpha",percent)
+	health_bar.modulate.a=1-percent
+
+
+func get_alpha()->float:
+	return $FrogSprite.material.get_shader_parameter("alpha")

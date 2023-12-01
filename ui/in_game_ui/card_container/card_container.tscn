@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://nmmk8bp87t0e"]
+
+[ext_resource type="PackedScene" uid="uid://dqpcqyf0qffky" path="res://entity/tower/basic_tower/basic_tower_panel.tscn" id="1_0pjl7"]
+[ext_resource type="Script" path="res://ui/in_game_ui/card_container/card_container.gd" id="1_dhr46"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5k8g"]
+bg_color = Color(0.301961, 0.317647, 0.384314, 0.447059)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(1, 0.501961, 0.505882, 0.0980392)
+border_blend = true
+
+[node name="CardContainer" type="Panel"]
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2174.0
+offset_bottom = -1166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5k8g")
+script = ExtResource("1_dhr46")
+
+[node name="BasicTowerPanel" parent="." instance=ExtResource("1_0pjl7")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 125.0
+offset_bottom = 125.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.203922)
+position = Vector2(65, 65)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)

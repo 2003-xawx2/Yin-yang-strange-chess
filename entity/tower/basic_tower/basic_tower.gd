@@ -147,3 +147,25 @@ func change_modulate(object:Node2D,value:float)->void:
 func free_self()->void:
 	change_modulate(settle_place,1)
 	queue_free()
+
+
+func try_to_settle()->void:
+	modulate.a = .5
+
+
+func settle_fail()->void:
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self,"modulate:a",0,.3).from(.6)
+	await tween.finished
+	change_modulate(self.settle_place,1)
+	free_self()
+
+
+func settle_success()->void:
+	self.global_position = self.settle_place.global_position
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self,"modulate:a",1,.3).from(.6)
+	self.attracted_to = true
+#	self.scale = Vector2.ONE*1.0/9
+	self.settle_place.set_unavailable()
+	self.settle_place.tower = self

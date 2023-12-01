@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqpcqyf0qffky"]
 
-[ext_resource type="Texture2D" uid="uid://pa0wmucsfg7c" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile250.png" id="1_16ag2"]
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower_panel.gd" id="1_okasp"]
+[ext_resource type="Texture2D" uid="uid://cauuf8ln45577" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile206.png" id="2_r432f"]
 
 [sub_resource type="Animation" id="Animation_ierjx"]
 length = 0.001
@@ -40,21 +40,22 @@ _data = {
 }
 
 [node name="BasicTowerPanel" type="Panel"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(120, 120)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_okasp")
 
-[node name="TowerDefenseTile250" type="Sprite2D" parent="."]
-position = Vector2(40, 40)
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(60, 60)
 rotation = 1.5708
-texture = ExtResource("1_16ag2")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_r432f")
 
 [node name="CoolColor" type="Panel" parent="."]
 layout_mode = 1
-offset_top = 79.0
-offset_right = 80.0
-offset_bottom = 159.0
+offset_top = 120.0
+offset_right = 120.0
+offset_bottom = 240.0
 scale = Vector2(1, 2.08165e-12)
 mouse_filter = 1
 

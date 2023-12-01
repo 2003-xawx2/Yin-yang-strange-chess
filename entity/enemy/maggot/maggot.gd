@@ -45,6 +45,7 @@ var target_position:Vector2 = Vector2.ZERO
 var enemies:Array[Node2D]
 var detect_enemy:Node2D = null
 var target_global_position:Vector2
+var target_rotation :Vector2
 
 
 func _ready():
@@ -62,11 +63,12 @@ func  _physics_process(delta):
 func take_physics(state: State, delta: float) -> void:
 	match state:
 		State.PATH_FOLLOWING:
-			look_at(global_position+velocity)
+			if velocity.x>50:
+				target_rotation  = lerp(target_rotation,global_position+velocity,delta*10)
+			look_at(target_rotation)
 			follow_path(delta)
 			
 		State.WALKING:
-			look_at(global_position+velocity)
 			move(delta)
 		
 		State.FIGHTING:
@@ -97,8 +99,8 @@ func get_next_state(state: State) -> State:
 #状态转换（动画，timer）
 func transition_state(from: State, to: State) -> void:
 	if from == to : return
-	else:
-		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
+#	else:
+#		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
 #			navigation_agent_2d.target_position = target_global_position
@@ -123,6 +125,7 @@ func move(delta:float)->void:
 	navigation_agent_2d.target_position = detect_enemy.global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
 	velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	rotation = lerp_angle(rotation,float(0),delta)
 	if $machine_state.state_time>.2&&velocity.length()<10:
 		velocity = velocity.rotated(delta*20)
 	move_and_slide()

@@ -1,28 +1,696 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn3oniutt1wks"]
+[gd_scene load_steps=18 format=3 uid="uid://cn3oniutt1wks"]
 
-[ext_resource type="PackedScene" uid="uid://dqpcqyf0qffky" path="res://entity/tower/basic_tower/basic_tower_panel.tscn" id="1_8mjgl"]
+[ext_resource type="Script" path="res://ui/in_game_ui/in_game_ui.gd" id="1_odvlc"]
+[ext_resource type="Script" path="res://ui/in_game_ui/StartGame.gd" id="2_gvjrl"]
+[ext_resource type="Script" path="res://ui/in_game_ui/card_container/GridCardContainer.gd" id="2_q7ffc"]
+[ext_resource type="PackedScene" uid="uid://mhn18ulve8gm" path="res://entity/tower/basic_tower/basic_tower.tscn" id="3_xma8w"]
+[ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="4_jy7lx"]
+[ext_resource type="Texture2D" uid="uid://cj16w06eae7bu" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile203.png" id="5_aa5x2"]
+[ext_resource type="Texture2D" uid="uid://bla0tpowrhtft" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile204.png" id="6_dn0hu"]
+[ext_resource type="Texture2D" uid="uid://dttp8p32fpof5" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile205.png" id="7_2xj1k"]
+[ext_resource type="Texture2D" uid="uid://cauuf8ln45577" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile206.png" id="8_xvccl"]
+[ext_resource type="PackedScene" uid="uid://nmmk8bp87t0e" path="res://ui/in_game_ui/card_container/card_container.tscn" id="9_twccb"]
 
-[node name="InGameUI" type="CanvasLayer"]
+[sub_resource type="Animation" id="Animation_5ones"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jid0d"]
+resource_name = "ease_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -1169.22), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6ctq"]
+_data = {
+"RESET": SubResource("Animation_5ones"),
+"ease_in": SubResource("Animation_jid0d")
+}
+
+[sub_resource type="Resource" id="Resource_0feoh"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 3.0
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("5_aa5x2")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_h44rp"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("6_dn0hu")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_da6gq"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("7_2xj1k")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_o0s6y"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("8_xvccl")
+basic_tower = ExtResource("3_xma8w")
+
+[node name="InGameUI" type="CanvasLayer" node_paths=PackedStringArray("out_place", "in_place")]
+process_mode = 3
+script = ExtResource("1_odvlc")
+out_place = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer")
+in_place = NodePath("Panel/MarginContainer/HBoxContainer")
+max_in_place_amounts = 10
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 1003.0
-offset_top = 995.0
-offset_right = 2303.0
-offset_bottom = 1295.0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(1304, 302)
+custom_minimum_size = Vector2(2.08165e-12, 140)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -140.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(1150, 126)
+size_flags_vertical = 8
 
-[node name="FlowContainer" type="FlowContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 358.0
-offset_top = 73.0
-offset_right = 758.0
-offset_bottom = 153.0
-scale = Vector2(3, 3)
-pivot_offset = Vector2(153.667, 20.3333)
-mouse_filter = 0
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
 
-[node name="BasicTowerPanel" parent="Panel/FlowContainer" instance=ExtResource("1_8mjgl")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel2" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel3" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel4" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel5" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel6" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel6"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel7" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel7"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel8" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel8"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel9" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel9"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel10" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel10"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel11" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel11"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel12" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel12"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel13" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel13"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel14" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel14"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel15" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel15"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel16" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel16"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel17" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel17"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="Panel18" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Panel18"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "18"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 2304.0
+offset_bottom = 1300.0
+theme_override_constants/margin_left = 360
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 360
+theme_override_constants/margin_bottom = 230
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_n6ctq")
+}
+autoplay = "ease_in"
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(1580, 1000)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -9.0
+offset_right = 5.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(801, 462)
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_right = 55
+theme_override_constants/margin_bottom = 38
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("move_manager")]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 10
+script = ExtResource("2_q7ffc")
+cards = Array[ExtResource("4_jy7lx")]([SubResource("Resource_0feoh"), SubResource("Resource_h44rp"), SubResource("Resource_da6gq"), SubResource("Resource_o0s6y")])
+move_manager = NodePath("../../../../..")
+
+[node name="CardContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer2" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer3" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer4" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer5" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer6" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer7" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer8" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer9" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer10" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer11" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer12" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer13" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer14" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer15" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer16" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer17" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer18" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer19" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer20" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer21" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer22" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer23" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer24" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer25" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer26" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer27" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer28" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer29" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer30" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer31" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer32" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer33" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer34" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer35" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer36" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer37" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer38" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer39" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer40" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer41" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer42" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer43" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer44" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer45" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer46" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer47" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer48" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer49" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="CardContainer50" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="StartGame" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 144.91)
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "START GAME!"
+script = ExtResource("2_gvjrl")
+
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/StartGame" to="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/StartGame" method="_on_pressed"]

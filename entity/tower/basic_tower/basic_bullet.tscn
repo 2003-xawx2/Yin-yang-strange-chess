@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dlop25h5uj1ts"]
 
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_bullet.gd" id="1_pwfdi"]
-[ext_resource type="Script" path="res://manager/area_box/hurt_box/hurt_area.gd" id="2_biquo"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="2_biquo"]
 [ext_resource type="Texture2D" uid="uid://dl5o8hrhw6yy5" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile251.png" id="3_1yvep"]
 [ext_resource type="PackedScene" uid="uid://cc2so62x8uiex" path="res://component/ghost/ghost_spawner.tscn" id="4_lfvnc"]
 

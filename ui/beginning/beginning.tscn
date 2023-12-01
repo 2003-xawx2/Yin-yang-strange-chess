@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://483hcuou81m6"]
+
+[ext_resource type="Texture2D" uid="uid://dwk4g0i241x1h" path="res://assets/icon/mouse_begin/icon.png" id="1_w4g7v"]
+[ext_resource type="Texture2D" uid="uid://gspb3wqjmx5k" path="res://assets/icon/mouse_begin/创飞工作室图标.png" id="2_0lksi"]
+
+[node name="Beginning" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GODOT" type="Sprite2D" parent="."]
+position = Vector2(668, 589)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_w4g7v")
+
+[node name="创飞工作室图标" type="Sprite2D" parent="."]
+position = Vector2(1697, 589)
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("2_0lksi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

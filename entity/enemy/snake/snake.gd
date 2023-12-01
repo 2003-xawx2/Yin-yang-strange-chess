@@ -21,7 +21,8 @@ enum State{
 @onready var attack_timer = $Timer/AttackTimer
 @onready var detect_area = $DetectArea
 @onready var navigation_agent_2d = $NavigationAgent2D
-var attack_range:float = 80
+var attack_range:float = 150
+var walking:bool = false
 
 #阵营
 var faction:Global.Faction:
@@ -57,12 +58,15 @@ func  _physics_process(delta):
 	if velocity.x >=5:
 		$Graphic.scale.x=-1
 		rotation = deg_to_rad(5)
+		health_bar.rotation = -rotation
 	elif velocity.x <=-5:
 		$Graphic.scale.x=1
 		rotation = deg_to_rad(-5)
+		health_bar.rotation = -rotation	
 
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
+	if died:return
 	match state:
 		State.PATH_FOLLOWING:
 			follow_path(delta)
@@ -98,8 +102,8 @@ func get_next_state(state: State) -> State:
 #状态转换（动画，timer）
 func transition_state(from: State, to: State) -> void:
 	if from == to : return
-#	else:
-#		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
+	else:
+		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
 #			navigation_agent_2d.target_position = target_global_position
@@ -115,14 +119,20 @@ func transition_state(from: State, to: State) -> void:
 func follow_path(delta:float)->void:
 	navigation_agent_2d.target_position = target_global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
-	velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	if walking:
+		velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, 1-exp(-delta*acceleration))
 	move_and_slide()
 
 
 func move(delta:float)->void:
 	navigation_agent_2d.target_position = detect_enemy.global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
-	velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	if walking:
+		velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, 1-exp(-delta*acceleration))
 	if $machine_state.state_time>.2&&velocity.length()<10:
 		velocity = velocity.rotated(delta*20)
 	move_and_slide()
@@ -207,3 +217,7 @@ func _on_detect_area_body_entered(body):
 func _on_detect_area_body_exited(body):
 	if enemies.find(body)!=-1:
 		enemies.erase(body)
+
+
+func set_walking(flag:bool)->void:
+	walking = flag

@@ -1,15 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://ddxs681lk6j5i"]
 
 [ext_resource type="Script" path="res://entity/enemy/maggot/maggot.gd" id="1_23b4d"]
-[ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://manager/health_manager/health_manager.tscn" id="1_pr854"]
-[ext_resource type="Script" path="res://manager/area_box/hit_box/hit_area.gd" id="2_5xlie"]
+[ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://c_manager/health_manager/health_manager.tscn" id="1_pr854"]
+[ext_resource type="Script" path="res://c_manager/area_box/hit_box/hit_area.gd" id="2_5xlie"]
 [ext_resource type="Texture2D" uid="uid://ctj1u4x8t7do" path="res://assets/enemy/maggot/maggot.png" id="3_0ymrg"]
-[ext_resource type="Script" path="res://manager/area_box/hurt_box/hurt_area.gd" id="3_8mref"]
-[ext_resource type="Script" path="res://manager/machine_state.gd" id="5_sf6gs"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="3_8mref"]
+[ext_resource type="Script" path="res://c_manager/machine_state.gd" id="5_sf6gs"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2b38q"]
-radius = 8.0
-height = 28.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_djmwg"]
+radius = 20.025
 
 [sub_resource type="Animation" id="Animation_qb68b"]
 length = 0.001
@@ -37,22 +36,10 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MaggotSprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_o3avp"]
 resource_name = "attack"
-length = 0.3
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -87,28 +74,10 @@ tracks/2/path = NodePath("MaggotSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0375, 0.075, 0.1125, 0.15, 0.275),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.35, 0.45),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [7, 8, 9, 10, 11, 7]
-}
-
-[sub_resource type="Animation" id="Animation_nu02h"]
-resource_name = "walk"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MaggotSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_fa02p"]
@@ -128,6 +97,24 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_nu02h"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MaggotSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2o2w8"]
 _data = {
 "RESET": SubResource("Animation_qb68b"),
@@ -137,7 +124,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvsd5"]
-radius = 60.0
+radius = 142.6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iicwt"]
 radius = 10.0499
@@ -151,7 +138,8 @@ collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_23b4d")
-max_speed = 200.0
+max_speed = 150.0
+acceleration = 10.0
 attack_interval = 1.0
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("1_pr854")]
@@ -165,11 +153,13 @@ hit_box = NodePath("../HitBox")
 max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_2b38q")
+shape = SubResource("CircleShape2D_djmwg")
 
 [node name="MaggotSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
+scale = Vector2(2, 2)
 texture = ExtResource("3_0ymrg")
 hframes = 12
 
@@ -180,7 +170,6 @@ libraries = {
 }
 
 [node name="DetectArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -195,6 +184,7 @@ script = ExtResource("2_5xlie")
 health_component = NodePath("../HealthBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+z_index = 1
 shape = SubResource("CircleShape2D_iicwt")
 
 [node name="HurtBox" type="Area2D" parent="."]

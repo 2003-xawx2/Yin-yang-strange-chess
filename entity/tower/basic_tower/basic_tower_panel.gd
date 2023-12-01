@@ -1,17 +1,24 @@
 extends Panel
 
+var reset_position:Vector2
+var id:int
+var fail_settle_cool_time:float=0.5
+var success_settle_cool_time:float = 3
+var tower_sprite:Texture:
+	set(value):
+		$Sprite.texture = value
+var basic_tower:PackedScene = preload("res://entity/tower/basic_tower/basic_tower.tscn")
+var move_manager:Node
 
-@export var fail_settle_cool_time:float=0.5
-@export var success_settle_cool_time:float = 3
+var action_press_key:String = "tower_1"
 
-
-@onready var basic_tower :PackedScene = preload("res://entity/tower/basic_tower/basic_tower.tscn")
 var current_tilemap:TileMap
 var basic_tower_instance:Node2D
 var offset:Vector2
 var smooth_position:Vector2
 var zoom:Vector2
 var temp_global_position:Vector2
+var if_in_use:=false
 var if_mouse_in:bool = false
 var click:bool = false:
 	set(value):
@@ -24,6 +31,7 @@ var click:bool = false:
 
 
 func _ready():
+	reset_position = position
 	$CoolColor.scale.y=0
 	set_process(false)
 
@@ -43,9 +51,26 @@ func _process(delta):
 
 
 func _input(event):
+	if Global.if_in_game:
+		if if_in_use:
+			in_game_input(event)
+	#else:
+		#if event is InputEventMouseButton and event.button_mask == 1:
+			#out_game_gui(event)
+
+
+func _on_gui_input(event:InputEvent):
+	if Global.if_in_game:
+		if if_in_use:
+			in_game_gui(event)
+	else:
+		out_game_gui(event)
+
+
+func in_game_input(event:InputEvent)->void:
 	if $CoolTimer.time_left>0:
 		return
-	if event.is_action_pressed("tower_1"):
+	if event.is_action_pressed(action_press_key):
 		click = true if click == false else false
 		if click == true:
 			try_to_settle()
@@ -69,7 +94,12 @@ func _input(event):
 			click = false
 
 
-func _on_gui_input(event):
+func out_game_gui(event:InputEvent)->void:
+	if event is InputEventMouseButton and event.button_mask == 1:
+		move_manager.move_in(self)
+
+
+func in_game_gui(event:InputEvent)->void:
 	if $CoolTimer.time_left>0:
 		return
 	if event is InputEventMouseButton:
@@ -84,6 +114,10 @@ func _on_gui_input(event):
 				click = true
 			else:
 				click = false
+				if basic_tower_instance==null:
+					settle_fail()
+					$ClickTimer.stop() 
+					return
 				if basic_tower_instance.if_has_settle_place == false:
 					settle_fail()
 				else:
@@ -97,18 +131,14 @@ func try_to_settle()->void:
 	set_process(true)
 	basic_tower_instance = basic_tower.instantiate()
 	Global.current_world.add_child(basic_tower_instance)
-	basic_tower_instance.modulate.a = .5
+	basic_tower_instance.try_to_settle()
 
 
 func settle_fail()->void:
 	set_process(false)
 	if basic_tower_instance == null:
 		return
-	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(basic_tower_instance,"modulate:a",0,.3).from(.6)
-	await tween.finished
-	basic_tower_instance.change_modulate(basic_tower_instance.settle_place,1)
-	basic_tower_instance.free_self()
+	basic_tower_instance.settle_fail()
 	cool_shadow(fail_settle_cool_time)
 
 
@@ -116,13 +146,7 @@ func settle_success()->void:
 	set_process(false)
 #	Global.current_world.remove_child(basic_tower_instance)
 #	basic_tower_instance.settle_place.get_parent().add_child(basic_tower_instance)
-	basic_tower_instance.global_position = basic_tower_instance.settle_place.global_position
-	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(basic_tower_instance,"modulate:a",1,.3).from(.6)
-	basic_tower_instance.attracted_to = true
-#	basic_tower_instance.scale = Vector2.ONE*1.0/9
-	basic_tower_instance.settle_place.set_unavailable()
-	basic_tower_instance.settle_place.tower = basic_tower_instance
+	basic_tower_instance.settle_success()
 	cool_shadow(success_settle_cool_time)
 
 
@@ -138,4 +162,6 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	if_mouse_in = false
+
+
 

@@ -4,4 +4,4 @@
 
 [node name="MaggotSpawner" type="Node2D"]
 script = ExtResource("1_ry0dr")
-spawn_amounts = 8
+spawn_amounts = 4

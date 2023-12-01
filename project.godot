@@ -12,12 +12,12 @@ config_version=5
 
 config/name="阴阳怪棋"
 run/main_scene="res://world/initial_world/initial_world.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.85098, 0.85098, 0.85098, 1)
-boot_splash/image="res://assets/创飞工作室图标.png"
+boot_splash/image="res://assets/icon/mouse_begin/创飞工作室图标.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://assets/创飞工作室图标.png"
+config/icon="res://assets/icon/mouse_begin/创飞工作室图标.png"
 
 [autoload]
 
@@ -34,7 +34,7 @@ window/size/viewport_width=2304
 window/size/viewport_height=1296
 window/size/mode=2
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://assets/Mouse.png"
+mouse_cursor/custom_image="res://assets/icon/mouse_begin/Mouse.png"
 
 [dotnet]
 
@@ -43,6 +43,19 @@ project/assembly_name="----"
 [editor]
 
 movie_writer/movie_file="/Users/liumoyan/Documents/阴阳怪棋/----/movie/movie.avi"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "red",
+"res://c_manager/": "yellow",
+"res://component/": "yellow",
+"res://entity/": "orange",
+"res://misc/": "blue",
+"res://ui/": "blue",
+"res://world/": "purple"
+}
 
 [input]
 
@@ -102,6 +115,7 @@ tower_1={
 [physics]
 
 2d/run_on_separate_thread=true
+3d/run_on_separate_thread=true
 
 [rendering]
 

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd4632pfitjo5"]
+
+[ext_resource type="Texture2D" uid="uid://bdddph0yjgd3e" path="res://assets/enemy/blood.png" id="1_v56yb"]
+[ext_resource type="Script" path="res://component/blood_effect/blood_effect.gd" id="2_1godx"]
+
+[sub_resource type="Gradient" id="Gradient_o0qx0"]
+offsets = PackedFloat32Array(0, 0.458422, 0.837953, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.882353, 0, 0.807843, 1, 0.541176, 0.501961, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dvw5r"]
+gradient = SubResource("Gradient_o0qx0")
+
+[sub_resource type="Curve" id="Curve_crooc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0706709, 0.801752), 1.91265, 1.91265, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qc1wf"]
+curve = SubResource("Curve_crooc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0i3a8"]
+lifetime_randomness = 0.22
+emission_shape = 3
+emission_box_extents = Vector3(1, 5, 1)
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 38.77
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 2.08167e-14
+orbit_velocity_max = 2.08167e-14
+damping_max = 10.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_qc1wf")
+color_ramp = SubResource("GradientTexture1D_dvw5r")
+hue_variation_min = -0.08
+hue_variation_max = 0.08
+
+[node name="BloodEffect" type="GPUParticles2D"]
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_0i3a8")
+texture = ExtResource("1_v56yb")
+lifetime = 0.6
+preprocess = 0.2
+local_coords = true
+script = ExtResource("2_1godx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
