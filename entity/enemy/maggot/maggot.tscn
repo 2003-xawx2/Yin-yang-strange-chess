@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddxs681lk6j5i"]
+[gd_scene load_steps=17 format=3 uid="uid://ddxs681lk6j5i"]
 
 [ext_resource type="Script" path="res://entity/enemy/maggot/maggot.gd" id="1_23b4d"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://c_manager/health_manager/health_manager.tscn" id="1_pr854"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ctj1u4x8t7do" path="res://assets/enemy/maggot/maggot.png" id="3_0ymrg"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="3_8mref"]
 [ext_resource type="Script" path="res://c_manager/machine_state.gd" id="5_sf6gs"]
+[ext_resource type="PackedScene" uid="uid://cu40ducfyqgeb" path="res://entity/enemy/ai/enemy_move_better.tscn" id="6_m0ip8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djmwg"]
 radius = 20.025
@@ -133,11 +134,13 @@ radius = 10.0499
 radius = 1.0
 
 [node name="Maggot" type="CharacterBody2D" groups=["enemy", "maggot"]]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_23b4d")
+ying_color = Color(0.435294, 0.435294, 0.435294, 1)
 max_speed = 150.0
 acceleration = 10.0
 attack_interval = 1.0
@@ -164,10 +167,10 @@ texture = ExtResource("3_0ymrg")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_2o2w8")
 }
+autoplay = "walk"
 
 [node name="DetectArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -188,6 +191,7 @@ z_index = 1
 shape = SubResource("CircleShape2D_iicwt")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_8mref")
@@ -202,12 +206,24 @@ debug_color = Color(0.854902, 0, 0.364706, 1)
 path_metadata_flags = 3
 debug_path_custom_color = Color(0.568627, 0, 0.580392, 1)
 
+[node name="EnemyMoveBetter" parent="." instance=ExtResource("6_m0ip8")]
+scale = Vector2(0.5, 0.5)
+
 [node name="machine_state" type="Node" parent="."]
 script = ExtResource("5_sf6gs")
 
 [node name="Timer" type="Node" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="Timer"]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -53.0
+offset_top = 3.0
+offset_right = 54.0
+offset_bottom = 26.0
+text = "pathfollowing"
+horizontal_alignment = 1
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

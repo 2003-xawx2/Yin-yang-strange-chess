@@ -14,6 +14,7 @@ enum State{
 @export var first_attack_time:float=.4
 @export var attack_interval:float=1.5
 
+@onready var enemy_move_better = $EnemyMoveBetter
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitArea
 @onready var hurt_area = $HurtArea
@@ -55,11 +56,11 @@ func _ready():
 
 func  _physics_process(delta):
 	update_detect_enemy()
-	if velocity.x >=5:
+	if velocity.x >=50:
 		$Graphic.scale.x=-1
 		rotation = deg_to_rad(5)
 		health_bar.rotation = -rotation
-	elif velocity.x <=-5:
+	elif velocity.x <=-50:
 		$Graphic.scale.x=1
 		rotation = deg_to_rad(-5)
 		health_bar.rotation = -rotation	
@@ -119,6 +120,8 @@ func transition_state(from: State, to: State) -> void:
 func follow_path(delta:float)->void:
 	navigation_agent_2d.target_position = target_global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
+	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
+	direction  = direction + unwilling_direction
 	if walking:
 		velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
 	else:
@@ -129,12 +132,12 @@ func follow_path(delta:float)->void:
 func move(delta:float)->void:
 	navigation_agent_2d.target_position = detect_enemy.global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
+	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
+	direction  = direction.normalized() + unwilling_direction.normalized().rotated(PI/2)
 	if walking:
 		velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration))
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, 1-exp(-delta*acceleration))
-	if $machine_state.state_time>.2&&velocity.length()<10:
-		velocity = velocity.rotated(delta*20)
 	move_and_slide()
 
 
@@ -202,6 +205,7 @@ func _filter_easy(enemy:Node2D)->bool:
 func _on_attack_timer_timeout():
 	if detect_enemy == null:
 		return
+	track_attack_target()
 	animation_player.play("attack")
 	attack_timer.start(attack_interval)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1mf67fecnh8i"
-path="res://.godot/imported/pngwing.com.png-870b54122f00ebb6506d898de67fc3d4.ctex"
+uid="uid://b733tiubf2ap7"
+path="res://.godot/imported/frog.png-76fbe3c6b1f98d8c5352ac71a09baf4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/pngwing.com.png"
-dest_files=["res://.godot/imported/pngwing.com.png-870b54122f00ebb6506d898de67fc3d4.ctex"]
+source_file="res://assets/enemy/frog/frog.png"
+dest_files=["res://.godot/imported/frog.png-76fbe3c6b1f98d8c5352ac71a09baf4f.ctex"]
 
 [params]
 

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu40ducfyqgeb"]
+
+[ext_resource type="Script" path="res://entity/enemy/ai/enemy_move_better.gd" id="1_70pl5"]
+
+[node name="EnemyMoveBetter" type="Node2D"]
+script = ExtResource("1_70pl5")
+
+[node name="up" type="RayCast2D" parent="."]
+target_position = Vector2(2.08165e-12, -100)
+collision_mask = 3
+
+[node name="down" type="RayCast2D" parent="."]
+target_position = Vector2(2.08165e-12, 100)
+collision_mask = 3
+
+[node name="left" type="RayCast2D" parent="."]
+target_position = Vector2(-100, 2.08165e-12)
+collision_mask = 3
+
+[node name="right" type="RayCast2D" parent="."]
+target_position = Vector2(100, 2.08165e-12)
+collision_mask = 3
+
+[node name="left_up" type="RayCast2D" parent="."]
+target_position = Vector2(-60, -60)
+collision_mask = 3
+
+[node name="right_up" type="RayCast2D" parent="."]
+target_position = Vector2(60, -60)
+collision_mask = 3
+
+[node name="left_down" type="RayCast2D" parent="."]
+target_position = Vector2(-60, 60)
+collision_mask = 3
+
+[node name="right_down" type="RayCast2D" parent="."]
+target_position = Vector2(60, 60)
+collision_mask = 3

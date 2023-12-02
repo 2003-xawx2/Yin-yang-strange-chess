@@ -5,10 +5,10 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_16fvh")
-spawn_position = Vector2(2797, 501)
-end_position = Vector2(-868, 526)
+spawn_position = 0
+end_position = 2
 enemy_type = 1
 enemy_faction = 1
-showing_time = 12.0
+showing_time = 15.0
 show_interval = 1.0
 show_amounts = 1

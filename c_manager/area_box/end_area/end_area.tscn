@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://4f7p1ekmws4i"]
+
+[ext_resource type="Script" path="res://c_manager/area_box/end_area/end_area.gd" id="1_8tvxs"]
+
+[node name="EndArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8tvxs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

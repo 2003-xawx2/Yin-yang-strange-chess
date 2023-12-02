@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cn3oniutt1wks"]
+[gd_scene load_steps=31 format=3 uid="uid://cn3oniutt1wks"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/in_game_ui.gd" id="1_odvlc"]
 [ext_resource type="Script" path="res://ui/in_game_ui/StartGame.gd" id="2_gvjrl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bla0tpowrhtft" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile204.png" id="6_dn0hu"]
 [ext_resource type="Texture2D" uid="uid://dttp8p32fpof5" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile205.png" id="7_2xj1k"]
 [ext_resource type="Texture2D" uid="uid://cauuf8ln45577" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile206.png" id="8_xvccl"]
+[ext_resource type="Texture2D" uid="uid://e6wijvyhshr7" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile026.png" id="9_jh273"]
 [ext_resource type="PackedScene" uid="uid://nmmk8bp87t0e" path="res://ui/in_game_ui/card_container/card_container.tscn" id="9_twccb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc1s3"]
@@ -109,12 +110,81 @@ success_settle_cool_time = 3.0
 tower_sprite = ExtResource("8_xvccl")
 basic_tower = ExtResource("3_xma8w")
 
+[sub_resource type="Resource" id="Resource_ydm60"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_h3fih"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_ws8p7"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_eqllt"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_jq32m"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_v1yxy"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_wkqgr"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_wi416"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="Resource" id="Resource_chg0x"]
+script = ExtResource("4_jy7lx")
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("9_jh273")
+basic_tower = ExtResource("3_xma8w")
+
+[sub_resource type="InputEventKey" id="InputEventKey_3e55w"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_l5sj6"]
+events = [SubResource("InputEventKey_3e55w")]
+
 [node name="InGameUI" type="CanvasLayer" node_paths=PackedStringArray("out_place", "in_place")]
 process_mode = 3
 script = ExtResource("1_odvlc")
 out_place = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer")
 in_place = NodePath("Panel/MarginContainer/HBoxContainer")
-max_in_place_amounts = 10
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 140)
@@ -392,7 +462,7 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 10
 script = ExtResource("2_q7ffc")
-cards = Array[ExtResource("4_jy7lx")]([SubResource("Resource_0feoh"), SubResource("Resource_h44rp"), SubResource("Resource_da6gq"), SubResource("Resource_o0s6y")])
+cards = Array[ExtResource("4_jy7lx")]([SubResource("Resource_0feoh"), SubResource("Resource_h44rp"), SubResource("Resource_da6gq"), SubResource("Resource_o0s6y"), SubResource("Resource_ydm60"), SubResource("Resource_h3fih"), SubResource("Resource_ws8p7"), SubResource("Resource_eqllt"), SubResource("Resource_jq32m"), SubResource("Resource_v1yxy"), SubResource("Resource_wkqgr"), SubResource("Resource_wi416"), SubResource("Resource_chg0x")])
 move_manager = NodePath("../../../../..")
 
 [node name="CardContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_twccb")]
@@ -556,6 +626,7 @@ theme_override_constants/margin_bottom = 16
 custom_minimum_size = Vector2(2.08165e-12, 144.91)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
+shortcut = SubResource("Shortcut_l5sj6")
 text = "START GAME!"
 script = ExtResource("2_gvjrl")
 

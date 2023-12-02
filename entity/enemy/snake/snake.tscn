@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cw03ey1o8y532"]
+[gd_scene load_steps=17 format=3 uid="uid://cw03ey1o8y532"]
 
 [ext_resource type="Script" path="res://entity/enemy/snake/snake.gd" id="1_q3nru"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://c_manager/health_manager/health_manager.tscn" id="2_vw17d"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://c_manager/area_box/hit_box/hit_area.gd" id="4_nijqk"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="6_ljg02"]
 [ext_resource type="Script" path="res://c_manager/machine_state.gd" id="7_bepxu"]
+[ext_resource type="PackedScene" uid="uid://cu40ducfyqgeb" path="res://entity/enemy/ai/enemy_move_better.tscn" id="7_d50u8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nikpc"]
 radius = 8.33333
@@ -77,27 +78,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("Graphic/SnakeSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"track_attack_target"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Graphic/SnakeSprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -249,10 +236,10 @@ position = Vector2(0, -2.33333)
 shape = SubResource("CapsuleShape2D_nikpc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_nxtaa")
 }
+autoplay = "walk"
 
 [node name="DetectArea" type="Area2D" parent="."]
 position = Vector2(0, -4)
@@ -300,6 +287,9 @@ one_shot = true
 
 [node name="machine_state" type="Node" parent="."]
 script = ExtResource("7_bepxu")
+
+[node name="EnemyMoveBetter" parent="." instance=ExtResource("7_d50u8")]
+scale = Vector2(0.333, 0.333)
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

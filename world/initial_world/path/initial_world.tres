@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_pygce")
-spawn_position = Vector2(-868, 526)
-end_position = Vector2(2797, 501)
+spawn_position = 0
+end_position = 2
 enemy_type = 2
 enemy_faction = 2
 showing_time = 3.0
-show_interval = 0.0
+show_interval = 0.3
 show_amounts = 2

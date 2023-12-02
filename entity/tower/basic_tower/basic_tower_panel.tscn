@@ -42,7 +42,7 @@ _data = {
 "cool": SubResource("Animation_t5s3i")
 }
 
-[node name="BasicTowerPanel" type="Panel"]
+[node name="BasicTowerPanel" type="Panel" groups=["tower_panel"]]
 custom_minimum_size = Vector2(120, 120)
 offset_right = 40.0
 offset_bottom = 40.0

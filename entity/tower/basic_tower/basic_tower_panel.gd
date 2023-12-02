@@ -10,9 +10,9 @@ var tower_sprite:Texture:
 var basic_tower:PackedScene = preload("res://entity/tower/basic_tower/basic_tower.tscn")
 var move_manager:Node
 
-var action_press_key:String = "tower_1"
+var action_press_key:int = 1
 
-var current_tilemap:TileMap
+#var current_tilemap:TileMap
 var basic_tower_instance:Node2D
 var offset:Vector2
 var smooth_position:Vector2
@@ -28,6 +28,7 @@ var click:bool = false:
 			pass
 		else:
 			modulate = Color.WHITE
+static var setting:bool = false
 
 
 func _ready():
@@ -73,9 +74,13 @@ func _on_gui_input(event:InputEvent):
 func in_game_input(event:InputEvent)->void:
 	if $CoolTimer.time_left>0:
 		return
-	if event.is_action_pressed(action_press_key):
+	if event.is_action_pressed(str(action_press_key)):
 		click = true if click == false else false
 		if click == true:
+			for tower_panel in get_tree().get_nodes_in_group("tower_panel"):
+				tower_panel.settle_fail()
+				tower_panel.click = false
+			click = true
 			try_to_settle()
 		else:
 			if basic_tower_instance == null:
@@ -150,7 +155,9 @@ func settle_success()->void:
 #	Global.current_world.remove_child(basic_tower_instance)
 #	basic_tower_instance.settle_place.get_parent().add_child(basic_tower_instance)
 	basic_tower_instance.settle_success()
+	basic_tower_instance = null
 	cool_shadow(success_settle_cool_time)
+	setting = false
 
 
 func cool_shadow(time:float)->void:

@@ -13,6 +13,8 @@ enum State{
 @export var first_attack_time:float=.8
 @export var attack_interval:float=1.8
 
+@onready var recover_timer = $Timer/RecoverTimer
+@onready var enemy_move_better = $EnemyMoveBetter
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitBox
 @onready var hurt_area = $HurtBox
@@ -50,14 +52,15 @@ var target_global_position:Vector2
 
 func _ready():
 	health_bar.value = health_bar.max_value
+	set_alpha(.6)
 
 
 func  _physics_process(delta):
 	update_detect_enemy()
-	if velocity.x >=5:
-		$FrogSprite.flip_h = false
-	elif velocity.x <=-5:
+	if velocity.x >=50:
 		$FrogSprite.flip_h = true
+	elif velocity.x <=-50:
+		$FrogSprite.flip_h = false
 
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
@@ -85,9 +88,13 @@ func get_next_state(state: State) -> State:
 		State.FIGHTING:
 #			update_detect_enemy()
 			if detect_enemy == null:
-				attack_timer.stop()
-				return State.WALKING
-			if $machine_state.state_time>attack_interval:
+				if recover_timer.is_stopped():
+					attack_timer.stop()
+					recover_timer.start()
+				elif recover_timer.time_left < 1:
+					recover_timer.stop()
+					return State.PATH_FOLLOWING
+			elif $machine_state.state_time>attack_interval:
 				if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
 					attack_timer.stop()
 					return State.WALKING
@@ -118,6 +125,8 @@ func transition_state(from: State, to: State) -> void:
 func follow_path(delta:float)->void:
 	navigation_agent_2d.target_position = target_global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
+	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
+	direction  = direction + unwilling_direction
 	if jumping:
 		velocity = velocity.lerp(direction.normalized()*jump_speed, 1-exp(-delta*acceleration*2.0))
 	else:
@@ -128,6 +137,8 @@ func follow_path(delta:float)->void:
 func move(delta:float)->void:
 	navigation_agent_2d.target_position = detect_enemy.global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
+	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
+	direction  = direction + unwilling_direction
 	if jumping:
 		velocity = velocity.lerp(direction.normalized()*jump_speed, 1-exp(-delta*acceleration*2.0))
 		if $machine_state.state_time>.26 &&velocity.length()<10:
@@ -140,9 +151,9 @@ func move(delta:float)->void:
 func fight(delta:float)->void:
 	var direction:Vector2 = target_position-global_position
 	if jumping:
-		velocity = velocity.lerp(direction.normalized()*jump_speed*3, 1-exp(-delta*acceleration*4.0))
+		velocity = velocity.lerp(direction.normalized()*jump_speed*4, 1-exp(-delta*acceleration*4.0))
 	else:
-		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
+		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta*acceleration/2))
 	move_and_slide()
 
 
@@ -225,7 +236,8 @@ func if_visible(flag:bool,time:float)->void:
 	if tween!=null && tween.is_running():
 		tween.kill()
 	tween = create_tween().set_ease(Tween.EASE_IN)
-	tween.tween_method(set_alpha,get_alpha(),float(!flag),time)
+	var percent:float = .6 if flag == false else 0
+	tween.tween_method(set_alpha,get_alpha(),float(percent),time)
 
 
 func set_alpha(percent:float)->void:
