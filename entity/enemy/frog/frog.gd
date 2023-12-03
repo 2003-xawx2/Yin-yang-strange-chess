@@ -236,7 +236,7 @@ func if_visible(flag:bool,time:float)->void:
 	if tween!=null && tween.is_running():
 		tween.kill()
 	tween = create_tween().set_ease(Tween.EASE_IN)
-	var percent:float = .6 if flag == false else 0
+	var percent:float = 0.6 if flag == false else 0
 	tween.tween_method(set_alpha,get_alpha(),float(percent),time)
 
 

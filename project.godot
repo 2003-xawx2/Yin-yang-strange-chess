@@ -44,6 +44,10 @@ project/assembly_name="----"
 
 movie_writer/movie_file="/Users/liumoyan/Documents/阴阳怪棋/----/movie/movie.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/aseprite-importers/addons/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -157,6 +161,7 @@ folder_colors={
 2d_physics/layer_4="YING_hurt_box"
 2d_physics/layer_5="YANG_hurt_box"
 2d_physics/layer_6="Tower"
+2d_physics/layer_7="ui"
 
 [physics]
 

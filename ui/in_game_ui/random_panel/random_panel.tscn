@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccm3axekxda35"]
+
+[ext_resource type="Shader" path="res://ui/in_game_ui/random_panel/band.gdshader" id="1_865jg"]
+[ext_resource type="Texture2D" uid="uid://cxschrd5ciucc" path="res://assets/tower_defense/line.png" id="2_6yp6m"]
+[ext_resource type="Script" path="res://ui/in_game_ui/random_panel/random_panel.gd" id="3_uxvog"]
+[ext_resource type="Resource" uid="uid://de2a5xxlpb8jj" path="res://magic/magic_resource/倒转乾坤.tres" id="4_ajtul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkn8w"]
+shader = ExtResource("1_865jg")
+shader_parameter/speed = -0.25
+shader_parameter/size_scale = 1.0
+shader_parameter/color = Color(0.717647, 0.482353, 0.639216, 0.137255)
+shader_parameter/pattern = ExtResource("2_6yp6m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5imj"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.45098, 0.784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpycw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.945098, 0, 0.627451, 1)
+border_blend = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qurg0"]
+size = Vector2(173.5, 243)
+
+[node name="RandomPanel" type="Panel"]
+material = SubResource("ShaderMaterial_qkn8w")
+custom_minimum_size = Vector2(2.08165e-12, 140)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -140.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(1150, 126)
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_m5imj")
+script = ExtResource("3_uxvog")
+magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("4_ajtul")])
+
+[node name="Border" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mpycw")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="End" type="StaticBody2D" parent="."]
+position = Vector2(16, 0)
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2(-86, 70)
+shape = SubResource("RectangleShape2D_qurg0")
+
+[node name="SpawPosition" type="Node2D" parent="."]
+position = Vector2(2304, 10)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

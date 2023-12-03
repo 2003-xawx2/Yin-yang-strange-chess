@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://hwjvikxtn2nd"]
+
+[ext_resource type="Script" path="res://magic/magic_card/magic_card_container.gd" id="1_5wg40"]
+[ext_resource type="PackedScene" uid="uid://pm0bndb3p488" path="res://magic/magic_card/magic_card.tscn" id="1_dvpvd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft53n"]
+size = Vector2(120, 120)
+
+[node name="MagicCardContainer3" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_5wg40")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_ft53n")
+
+[node name="MagicCard" parent="." instance=ExtResource("1_dvpvd")]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(60, 60)
+target_position = Vector2(-65, 2.08165e-12)
+collision_mask = 64

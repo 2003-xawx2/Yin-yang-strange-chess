@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://pm0bndb3p488"]
+
+[ext_resource type="Script" path="res://magic/magic_card/magic_card.gd" id="1_yicec"]
+
+[node name="MagicCard" type="Panel"]
+custom_minimum_size = Vector2(120, 120)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yicec")
+
+[node name="MagicSprite" type="Sprite2D" parent="."]
+position = Vector2(60, 60)
+
+[node name="ClickTimer" type="Timer" parent="."]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
