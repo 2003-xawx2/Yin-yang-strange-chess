@@ -1,0 +1,167 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2tqxya7186np"]
+
+[ext_resource type="Script" path="res://ui/in_game_ui/item/item.gd" id="1_j23l1"]
+[ext_resource type="Texture2D" uid="uid://bdddph0yjgd3e" path="res://assets/enemy/blood.png" id="1_ndkif"]
+
+[node name="Item" type="Panel"]
+custom_minimum_size = Vector2(2.08165e-12, 140)
+offset_left = -1.0
+offset_top = 1157.0
+offset_right = 707.0
+offset_bottom = 1297.0
+script = ExtResource("1_j23l1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Dropper" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SnakeDrop" type="VBoxContainer" parent="MarginContainer/Dropper"]
+layout_mode = 2
+
+[node name="SnakeTooth" type="HBoxContainer" parent="MarginContainer/Dropper/SnakeDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/SnakeDrop/SnakeTooth"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/SnakeDrop/SnakeTooth"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnakeTail" type="HBoxContainer" parent="MarginContainer/Dropper/SnakeDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/SnakeDrop/SnakeTail"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/SnakeDrop/SnakeTail"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FrogDrop" type="VBoxContainer" parent="MarginContainer/Dropper"]
+layout_mode = 2
+
+[node name="FrogLeg" type="HBoxContainer" parent="MarginContainer/Dropper/FrogDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/FrogDrop/FrogLeg"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/FrogDrop/FrogLeg"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FrogSilk" type="HBoxContainer" parent="MarginContainer/Dropper/FrogDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/FrogDrop/FrogSilk"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/FrogDrop/FrogSilk"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaggotDrop" type="VBoxContainer" parent="MarginContainer/Dropper"]
+layout_mode = 2
+
+[node name="MaggotFoot" type="HBoxContainer" parent="MarginContainer/Dropper/MaggotDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MaggotDrop/MaggotFoot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/MaggotDrop/MaggotFoot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaggotLink" type="HBoxContainer" parent="MarginContainer/Dropper/MaggotDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MaggotDrop/MaggotLink"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/MaggotDrop/MaggotLink"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MiscDrop" type="VBoxContainer" parent="MarginContainer/Dropper"]
+layout_mode = 2
+
+[node name="Bone" type="HBoxContainer" parent="MarginContainer/Dropper/MiscDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MiscDrop/Bone"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/MiscDrop/Bone"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coin" type="HBoxContainer" parent="MarginContainer/Dropper/MiscDrop"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MiscDrop/Coin"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_ndkif")
+
+[node name="Label" type="Label" parent="MarginContainer/Dropper/MiscDrop/Coin"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1

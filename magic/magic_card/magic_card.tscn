@@ -1,17 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://pm0bndb3p488"]
+[gd_scene load_steps=3 format=3 uid="uid://pm0bndb3p488"]
 
 [ext_resource type="Script" path="res://magic/magic_card/magic_card.gd" id="1_yicec"]
+[ext_resource type="Texture2D" uid="uid://brcqbm116ua5p" path="res://assets/magic_card/乾坤卡牌.png" id="2_w1sb3"]
 
 [node name="MagicCard" type="Panel"]
-custom_minimum_size = Vector2(120, 120)
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(100, 120)
+offset_right = 100.0
+offset_bottom = 120.0
 script = ExtResource("1_yicec")
 
 [node name="MagicSprite" type="Sprite2D" parent="."]
-position = Vector2(60, 60)
+position = Vector2(50, 60)
+scale = Vector2(3.81, 3.81)
+texture = ExtResource("2_w1sb3")
 
 [node name="ClickTimer" type="Timer" parent="."]
+wait_time = 400.0
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

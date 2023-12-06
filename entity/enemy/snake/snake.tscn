@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw03ey1o8y532"]
+[gd_scene load_steps=21 format=3 uid="uid://cw03ey1o8y532"]
 
 [ext_resource type="Script" path="res://entity/enemy/snake/snake.gd" id="1_q3nru"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://c_manager/health_manager/health_manager.tscn" id="2_vw17d"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="6_ljg02"]
 [ext_resource type="Script" path="res://c_manager/machine_state.gd" id="7_bepxu"]
 [ext_resource type="PackedScene" uid="uid://cu40ducfyqgeb" path="res://entity/enemy/ai/enemy_move_better.tscn" id="7_d50u8"]
+[ext_resource type="PackedScene" uid="uid://c3l3ywjv6roah" path="res://c_manager/drop_manager/drop_manager.tscn" id="8_o66p7"]
+[ext_resource type="Resource" uid="uid://c4cybhmod4kwp" path="res://entity/enemy/drop/bone.tres" id="9_qrqm8"]
+[ext_resource type="Resource" uid="uid://chi6h8n1rgg1j" path="res://entity/enemy/drop/snake_tooth.tres" id="10_dbimy"]
+[ext_resource type="Resource" uid="uid://b52wj2x3uxhm5" path="res://entity/enemy/drop/snake_tail.tres" id="11_jqpxo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nikpc"]
 radius = 8.33333
@@ -205,7 +209,9 @@ collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_q3nru")
-Ying_Modulate = Color(0.392157, 0.392157, 0.392157, 1)
+Ying_Modulate = Color(0.450207, 0.523782, 0.798711, 1)
+Yang_Modulate = Color(0.94902, 0.909804, 0.839216, 1)
+Human_Modulate = Color(0.870588, 0, 0.607843, 1)
 max_speed = 200.0
 acceleration = 5.0
 
@@ -225,7 +231,8 @@ offset = Vector2(0, -7)
 hframes = 12
 
 [node name="Area2D" type="StaticBody2D" parent="Graphic/SnakeSprite"]
-collision_layer = 2
+visible = false
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Graphic/SnakeSprite/Area2D"]
@@ -251,8 +258,9 @@ shape = SubResource("CircleShape2D_j3ady")
 
 [node name="HitArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 visible = false
+z_index = 1
 position = Vector2(0, -3.66667)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 12
 script = ExtResource("4_nijqk")
 health_component = NodePath("../HealthBar")
@@ -275,9 +283,8 @@ shape = SubResource("CircleShape2D_nob0j")
 disabled = true
 debug_color = Color(1, 0.329412, 0.560784, 1)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-debug_path_custom_color = Color(1, 0, 0, 1)
+[node name="EnemyMoveBetter" parent="." instance=ExtResource("7_d50u8")]
+scale = Vector2(0.333, 0.333)
 
 [node name="Timer" type="Node" parent="."]
 
@@ -285,13 +292,22 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 wait_time = 2.0
 one_shot = true
 
+[node name="AffectTimer" type="Timer" parent="Timer"]
+one_shot = true
+
 [node name="machine_state" type="Node" parent="."]
 script = ExtResource("7_bepxu")
 
-[node name="EnemyMoveBetter" parent="." instance=ExtResource("7_d50u8")]
-scale = Vector2(0.333, 0.333)
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="DropManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("8_o66p7")]
+health_manager = NodePath("../HealthBar")
+droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("9_qrqm8"), ExtResource("10_dbimy"), ExtResource("11_jqpxo")])
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 [connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Timer/AffectTimer" to="." method="_on_affect_timer_timeout"]

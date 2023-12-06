@@ -137,7 +137,7 @@ script = ExtResource("17_xe5gv")
 spawn_position = 2
 end_position = 0
 enemy_type = 1
-enemy_faction = 2
+enemy_faction = 1
 showing_time = 10.0
 show_interval = 0.0
 show_amounts = 1
@@ -186,7 +186,7 @@ scale = Vector2(9, 9)
 texture = ExtResource("5_tjgwa")
 
 [node name="GAB" type="Sprite2D" parent="Map/MiddleLand"]
-z_index = 1
+z_index = 2
 texture = ExtResource("6_0uj1a")
 
 [node name="Fog" type="Sprite2D" parent="Map"]
@@ -239,7 +239,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("6_t8nb4")
 
 [node name="seedpod" type="Sprite2D" parent="Map"]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_usj5o")
 position = Vector2(1000.4, 603.8)
@@ -247,7 +247,7 @@ scale = Vector2(9, 9)
 texture = ExtResource("3_1xti3")
 
 [node name="ForeGlass" type="Sprite2D" parent="Map"]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_2alot")
 position = Vector2(1000, 604)
@@ -263,7 +263,7 @@ speed_scale = 0.8
 
 [node name="PathSpawner" parent="." instance=ExtResource("2_krvyn")]
 random_spawn = true
-spawn_multipler = 0.3
+spawn_multipler = 0.5
 PathArray = Array[ExtResource("17_xe5gv")]([ExtResource("15_q648t"), ExtResource("16_7x6io"), SubResource("Resource_wq4de"), SubResource("Resource_c4l2k")])
 
 [node name="left_top" type="Node2D" parent="PathSpawner"]

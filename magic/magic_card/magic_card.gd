@@ -13,7 +13,6 @@ var zoom:Vector2
 var if_mouse_in:bool = false
 var click:bool = false:
 	set(value):
-		print(value)
 		click = value
 		if value == true:
 			modulate = Color.BLUE_VIOLET
@@ -29,10 +28,10 @@ func _ready():
 func _process(delta):
 	if magic_instance == null:
 		return
-	#offset = Global.camera.global_position-get_viewport_rect().size/2/zoom	
-	#zoom = Global.camera.zoom
-	#magic_instance.global_position = get_viewport().get_mouse_position()/zoom+offset
-	magic_instance.global_position = get_viewport().get_mouse_position()
+	offset = Global.camera.global_position-get_viewport_rect().size/2/zoom	
+	zoom = Global.camera.zoom
+	magic_instance.global_position = get_viewport().get_mouse_position()/zoom+offset
+	#magic_instance.global_position = get_viewport().get_mouse_position()
 
 
 func _input(event):
@@ -69,6 +68,7 @@ func in_game_gui(event:InputEvent)->void:
 					settle_fail()
 				else:
 					settle_success()
+			click_timer.stop()
 
 
 
@@ -77,8 +77,7 @@ func try_to_settle()->void:
 		magic_instance.queue_free()
 	set_process(true)
 	magic_instance = magic.instantiate()
-	#get_parent().get_parent().
-	add_child(magic_instance)
+	Global.current_world.add_child(magic_instance)
 	magic_instance.try_to_settle()
 
 
@@ -88,7 +87,6 @@ func settle_fail()->void:
 		return
 	magic_instance.settle_fail()
 	click = false
-	print("settle_fail")
 
 
 func settle_success()->void:
@@ -96,7 +94,7 @@ func settle_success()->void:
 	magic_instance.settle_success()
 	magic_instance = null
 	click = false
-	print("settle_success")
+	get_parent().free_self()
 
 
 func _on_mouse_entered():

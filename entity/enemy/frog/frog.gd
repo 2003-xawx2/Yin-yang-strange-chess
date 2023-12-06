@@ -7,13 +7,18 @@ enum State{
 	FIGHTING,
 }
 
+@export var Ying_Modulate:Color
+@export var Yang_Modulate:Color
+@export var Human_Modulate:Color
 @export var jump_speed :float = 200
 @export var acceleration :float = 100
 @export_category("attack")
 @export var first_attack_time:float=.8
 @export var attack_interval:float=1.8
 
+@onready var frider____1_ = $"frider 无脚(1)"
 @onready var recover_timer = $Timer/RecoverTimer
+@onready var affected_timer = $Timer/AffectedTimer
 @onready var enemy_move_better = $EnemyMoveBetter
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitBox
@@ -24,27 +29,43 @@ enum State{
 @onready var attack_range:float = 700
 @onready var navigation_agent_2d = $NavigationAgent2D
 
+var stop_frames:int:
+	set(value):
+		$machine_state.stop_frames = stop_frames
+	get:
+		return $machine_state.stop_frames
 #阵营
 var faction:Global.Faction:
 	set(value):
 		if value == Global.Faction.Ying:
-			modulate = Color.PURPLE
+			frider____1_.material.set_shader_parameter("modulate",Ying_Modulate)
+			modulate = Ying_Modulate
 			hit_area.set_collision_mask_value(4,false)
 			hit_area.set_collision_mask_value(5,true)
 			hurt_area.set_collision_layer_value(4,true)
 			hurt_area.set_collision_layer_value(5,false)
-		else:
-			modulate = Color.WHITE
+		elif value == Global.Faction.Yang:
+			frider____1_.material.set_shader_parameter("modulate",Yang_Modulate)
+			modulate = Yang_Modulate
 			hit_area.set_collision_mask_value(5,false)
 			hit_area.set_collision_mask_value(4,true)
 			hurt_area.set_collision_layer_value(5,true)
 			hurt_area.set_collision_layer_value(4,false)
+		else:
+			frider____1_.material.set_shader_parameter("modulate",Human_Modulate)
+			modulate = Human_Modulate
+			hit_area.set_collision_mask_value(5,true)
+			hit_area.set_collision_mask_value(4,true)
+			hurt_area.set_collision_layer_value(5,true)
+			hurt_area.set_collision_layer_value(4,true)
+			affected_timer.start(10)
 		faction = value
 
 var jumping:bool = false
 var died:=false
 var speed:float = 0
 var target_position:Vector2 = Vector2.ZERO
+var spawn_position :Vector2
 var enemies:Array[Node2D]
 var detect_enemy:Node2D = null
 var target_global_position:Vector2
@@ -55,15 +76,10 @@ func _ready():
 	set_alpha(.6)
 
 
-func  _physics_process(delta):
-	update_detect_enemy()
-	if velocity.x >=50:
-		$FrogSprite.flip_h = true
-	elif velocity.x <=-50:
-		$FrogSprite.flip_h = false
-
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
+	if died:return
+	update_detect_enemy()
 	match state:
 		State.PATH_FOLLOWING:
 			follow_path(delta)
@@ -89,22 +105,22 @@ func get_next_state(state: State) -> State:
 #			update_detect_enemy()
 			if detect_enemy == null:
 				if recover_timer.is_stopped():
-					attack_timer.stop()
 					recover_timer.start()
 				elif recover_timer.time_left < 1:
 					recover_timer.stop()
 					return State.PATH_FOLLOWING
 			elif $machine_state.state_time>attack_interval:
 				if detect_enemy.global_position.distance_squared_to(global_position)>pow(attack_range,2):
-					attack_timer.stop()
 					return State.WALKING
 	return state
 
 #状态转换（动画，timer）
 func transition_state(from: State, to: State) -> void:
-	if from == to : return
+	if from == to or died: return
 #	else:
 #		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
+	if from == State.FIGHTING:
+		attack_timer.stop()
 	match to:
 		State.PATH_FOLLOWING:
 			if_visible(false,1.5)
@@ -117,6 +133,7 @@ func transition_state(from: State, to: State) -> void:
 			navigation_agent_2d.target_position = detect_enemy.global_position
 			animation_player.queue("walk")
 		State.FIGHTING:
+			animation_player.play("ready")
 			if_visible(true,.5)
 			_on_attack_timer_timeout()
 			attack_timer.start(first_attack_time)
@@ -132,9 +149,14 @@ func follow_path(delta:float)->void:
 	else:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
 	move_and_slide()
+	if velocity.x >=50:
+		frider____1_.flip_h = true
+	elif velocity.x <=-50:
+		frider____1_.flip_h = false
 
 
 func move(delta:float)->void:
+	if detect_enemy == null:return
 	navigation_agent_2d.target_position = detect_enemy.global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
 	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
@@ -146,6 +168,10 @@ func move(delta:float)->void:
 	else:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
 	move_and_slide()
+	if velocity.x >=50:
+		frider____1_.flip_h = true
+	elif velocity.x <=-50:
+		frider____1_.flip_h = false
 
 
 func fight(delta:float)->void:
@@ -155,6 +181,14 @@ func fight(delta:float)->void:
 	else:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta*acceleration/2))
 	move_and_slide()
+	
+	if detect_enemy == null:
+		return
+	
+	if (detect_enemy.global_position - global_position).dot(Vector2.RIGHT)>0:
+		frider____1_.flip_h = true
+	else:
+		frider____1_.flip_h = false
 
 
 func _on_health_bar_die()->void:
@@ -167,15 +201,21 @@ func arrive_path_end()->void:
 
 
 func free_self()->void:
-	call_deferred("queue_free")
+	died = true
+	attack_timer.stop()
+	animation_player.play("die")
+	await animation_player.animation_finished
+	queue_free()
 
 
 func update_detect_enemy():
-	if detect_enemy!= null : return
+	if detect_enemy!=null and detect_enemy.faction != faction:
+		return
+	enemies = detect_area.get_overlapping_bodies()
 	enemies = enemies.filter(_filter_faction)
 	if enemies.size()==0:
 		detect_enemy = null
-		return null
+		return
 	else:
 		#柿子捡软的捏
 		var easy_enemies = enemies.filter(_filter_easy)
@@ -198,6 +238,8 @@ func update_detect_enemy():
 func _filter_faction(enemy:Node2D)->bool:
 	if enemy == null:
 		return false
+	if !enemy is CharacterBody2D:
+		return false
 	if enemy.faction == faction:
 		return false
 	return true
@@ -218,12 +260,14 @@ func _on_attack_timer_timeout():
 
 
 func _on_detect_area_body_entered(body):
-	enemies.push_back(body)
+	#enemies.push_back(body)
+	pass
 
 
 func _on_detect_area_body_exited(body):
-	if enemies.find(body)!=-1:
-		enemies.erase(body)
+	#if enemies.find(body)!=-1:
+		#enemies.erase(body)
+	pass
 
 
 func set_jumping_mode(flag :bool)->void:
@@ -241,9 +285,13 @@ func if_visible(flag:bool,time:float)->void:
 
 
 func set_alpha(percent:float)->void:
-	$FrogSprite.material.set_shader_parameter("alpha",percent)
+	frider____1_.material.set_shader_parameter("alpha",percent)
 	health_bar.modulate.a=1-percent
 
 
 func get_alpha()->float:
-	return $FrogSprite.material.get_shader_parameter("alpha")
+	return frider____1_.material.get_shader_parameter("alpha")
+
+
+func _on_affected_timer_timeout():
+	faction = randi_range(1,2)

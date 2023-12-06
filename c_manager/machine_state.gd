@@ -3,6 +3,7 @@ extends Node
 
 
 var state_time:float
+var stop_frames:=0
 
 
 var current_state:int=0:
@@ -18,6 +19,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if stop_frames > 0:
+		stop_frames-=1
+		get_parent().velocity = Vector2.ZERO
+		get_parent().move_and_slide()
+		return
+
 	while true:
 		var next:int = owner.get_next_state(current_state)
 		if next == current_state:

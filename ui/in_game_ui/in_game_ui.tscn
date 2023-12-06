@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn3oniutt1wks"]
+[gd_scene load_steps=11 format=3 uid="uid://cn3oniutt1wks"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/in_game_ui.gd" id="1_odvlc"]
 [ext_resource type="PackedScene" uid="uid://ccm3axekxda35" path="res://ui/in_game_ui/random_panel/random_panel.tscn" id="2_agrda"]
+[ext_resource type="Resource" uid="uid://de2a5xxlpb8jj" path="res://magic/magic_resource/倒转乾坤.tres" id="3_4024a"]
+[ext_resource type="Resource" uid="uid://r3b5c7fj2c5o" path="res://magic/magic_resource/人皮鼓.tres" id="4_c2cwx"]
+[ext_resource type="Resource" uid="uid://mjj7r5jm5fjq" path="res://magic/magic_resource/小电.tres" id="5_5xw54"]
+[ext_resource type="Resource" uid="uid://c2e6acbiu2tvy" path="res://magic/magic_resource/火球.tres" id="6_q27np"]
+[ext_resource type="Resource" uid="uid://bql2i0yu58o0p" path="res://magic/magic_resource/同归于尽.tres" id="7_33081"]
+[ext_resource type="Resource" uid="uid://evm0jsxfhigt" path="res://magic/magic_resource/盲目.tres" id="8_8v1ec"]
+[ext_resource type="PackedScene" uid="uid://c2tqxya7186np" path="res://ui/in_game_ui/item/item.tscn" id="8_eyfw1"]
+[ext_resource type="Resource" uid="uid://bjwrmwxy4jpgw" path="res://magic/magic_resource/混乱鼠标.tres" id="9_dsljk"]
 
 [node name="InGameUI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_odvlc")
 
 [node name="RandomPanel" parent="." instance=ExtResource("2_agrda")]
+magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("3_4024a"), ExtResource("4_c2cwx"), ExtResource("5_5xw54"), ExtResource("6_q27np"), ExtResource("7_33081"), ExtResource("8_8v1ec"), ExtResource("9_dsljk")])
+
+[node name="Item" parent="." instance=ExtResource("8_eyfw1")]

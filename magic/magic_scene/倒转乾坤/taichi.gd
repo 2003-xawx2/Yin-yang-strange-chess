@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var detect_range:=200
 
 func _ready():
 	change_modulate($Panel,1)
@@ -11,10 +11,34 @@ func try_to_settle()->void:
 
 
 func settle_success()->void:
-	visible = false
+	change_modulate($Panel,0)
+	var enemies :Array = update_enemies()
+	for enemy in enemies:
+		#enemy = enemy.get_parent()
+		if enemy.faction == Global.Faction.Yang:
+			enemy.faction = Global.Faction.Ying
+		else:
+			enemy.faction = Global.Faction.Yang
+		var temp:Vector2 = enemy.target_global_position
+		enemy.target_global_position = enemy.spawn_position
+		enemy.spawn_position = temp
+	
 	$AnimationPlayer.play("ease_in_out")
 	await $AnimationPlayer.animation_finished
 	queue_free()
+
+
+func update_enemies()->Array:
+	var enemies:=get_tree().get_nodes_in_group("enemy")
+	enemies = enemies.filter(_filter)
+	return enemies
+
+
+func _filter(enemy)->bool:
+	if (enemy.global_position-global_position).length()<detect_range:
+		return true
+	else:
+		return false
 
 
 func settle_fail()->void:

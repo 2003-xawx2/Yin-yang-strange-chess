@@ -5,6 +5,7 @@ const float pi = 3.14156;
 
 uniform float dist = 16.;
 uniform float alpha : hint_range(0., 1.) = 1.;
+uniform vec4 modulate :source_color;
 
 void fragment() {
 	vec2 backgroundUV = FRAGCOORD.xy * SCREEN_PIXEL_SIZE.xy;
@@ -20,4 +21,5 @@ void fragment() {
 	vec4 texCol = texture(TEXTURE, UV);
 	
 	COLOR = mix(texCol, texCol.a * vec4(backColR.r, backColG.g, backColB.b, 1.0), alpha);
+	COLOR = COLOR.a*mix(COLOR , modulate,.3);
 }

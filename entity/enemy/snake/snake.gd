@@ -8,12 +8,15 @@ enum State{
 }
 
 @export var Ying_Modulate:Color
+@export var Yang_Modulate:Color
+@export var Human_Modulate:Color
 @export var max_speed :float = 150
 @export var acceleration :float = 100
 @export_category("attack")
 @export var first_attack_time:float=.4
 @export var attack_interval:float=1.5
 
+@onready var affect_timer = $Timer/AffectTimer
 @onready var enemy_move_better = $EnemyMoveBetter
 @onready var health_bar = $HealthBar
 @onready var hit_area = $HitArea
@@ -25,6 +28,18 @@ enum State{
 var attack_range:float = 150
 var walking:bool = false
 
+var stop_frames:int:
+	set(value):
+		$machine_state.stop_frames = stop_frames
+	get:
+		return $machine_state.stop_frames
+
+var infected:bool = false:
+	set(value):
+		if value == true:
+			faction = Global.Faction.Human
+		infected = value
+
 #阵营
 var faction:Global.Faction:
 	set(value):
@@ -34,17 +49,27 @@ var faction:Global.Faction:
 			hit_area.set_collision_mask_value(5,true)
 			hurt_area.set_collision_layer_value(4,true)
 			hurt_area.set_collision_layer_value(5,false)
-		else:
-			modulate = Color.WHITE
+		elif value == Global.Faction.Yang:
+			modulate = Yang_Modulate
 			hit_area.set_collision_mask_value(5,false)
 			hit_area.set_collision_mask_value(4,true)
 			hurt_area.set_collision_layer_value(5,true)
 			hurt_area.set_collision_layer_value(4,false)
+		else:
+			faction = value
+			modulate = Human_Modulate
+			hit_area.set_collision_mask_value(5,true)
+			hit_area.set_collision_mask_value(4,true)
+			hurt_area.set_collision_layer_value(5,true)
+			hurt_area.set_collision_layer_value(4,true)
+			affect_timer.start(10)
+			return
 		faction = value
 
 var died:=false
 var speed:float = 0
 var target_position:Vector2 = Vector2.ZERO
+var spawn_position :Vector2
 var enemies:Array[Node2D]
 var detect_enemy:Node2D = null
 var target_global_position:Vector2
@@ -54,19 +79,10 @@ func _ready():
 	health_bar.value = health_bar.max_value
 
 
-func  _physics_process(delta):
-	update_detect_enemy()
-	if velocity.x >=50:
-		$Graphic.scale.x=-1
-		rotation = deg_to_rad(5)
-		health_bar.rotation = -rotation
-	elif velocity.x <=-50:
-		$Graphic.scale.x=1
-		rotation = deg_to_rad(-5)
-		health_bar.rotation = -rotation	
-
 #每个状态的的行为模式
 func take_physics(state: State, delta: float) -> void:
+	update_detect_enemy()
+
 	if died:return
 	match state:
 		State.PATH_FOLLOWING:
@@ -102,9 +118,9 @@ func get_next_state(state: State) -> State:
 
 #状态转换（动画，timer）
 func transition_state(from: State, to: State) -> void:
-	if from == to : return
-	else:
-		print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
+	if from == to or died: return
+	#else:
+		#print("%s\t->%s" % [State.keys()[from], State.keys()[to]])
 	match to:
 		State.PATH_FOLLOWING:
 #			navigation_agent_2d.target_position = target_global_position
@@ -127,9 +143,19 @@ func follow_path(delta:float)->void:
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, 1-exp(-delta*acceleration))
 	move_and_slide()
+	#
+	if velocity.x >=50:
+		$Graphic.scale.x=-1
+		rotation = deg_to_rad(5)
+		health_bar.rotation = -rotation
+	elif velocity.x <=-50:
+		$Graphic.scale.x=1
+		rotation = deg_to_rad(-5)
+		health_bar.rotation = -rotation
 
 
 func move(delta:float)->void:
+	if detect_enemy == null:return
 	navigation_agent_2d.target_position = detect_enemy.global_position
 	var direction:Vector2 = navigation_agent_2d.get_next_path_position()-global_position
 	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
@@ -139,11 +165,31 @@ func move(delta:float)->void:
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, 1-exp(-delta*acceleration))
 	move_and_slide()
+	#
+	if velocity.x >=50:
+		$Graphic.scale.x=-1
+		rotation = deg_to_rad(5)
+		health_bar.rotation = -rotation
+	elif velocity.x <=-50:
+		$Graphic.scale.x=1
+		rotation = deg_to_rad(-5)
+		health_bar.rotation = -rotation
 
 
 func stand(delta:float)->void:
 	velocity = velocity.lerp( Vector2.ZERO , 1-exp(-delta*acceleration))
 	move_and_slide()
+	#
+	if detect_enemy == null:
+		return
+	if (detect_enemy.global_position - global_position).dot(Vector2.RIGHT)>0:
+		$Graphic.scale.x=-1
+		rotation = deg_to_rad(5)
+		health_bar.rotation = -rotation
+	else:
+		$Graphic.scale.x=1
+		rotation = deg_to_rad(-5)
+		health_bar.rotation = -rotation
 
 
 func _on_health_bar_die()->void:
@@ -164,7 +210,9 @@ func free_self()->void:
 
 
 func update_detect_enemy():
-	if detect_enemy!= null : return
+	if detect_enemy!=null and detect_enemy.faction != faction:
+		return
+	enemies = detect_area.get_overlapping_bodies()
 	enemies = enemies.filter(_filter_faction)
 	if enemies.size()==0:
 		detect_enemy = null
@@ -191,6 +239,8 @@ func update_detect_enemy():
 func _filter_faction(enemy:Node2D)->bool:
 	if enemy == null:
 		return false
+	if !enemy is CharacterBody2D:
+		return false
 	if enemy.faction == faction:
 		return false
 	return true
@@ -203,10 +253,11 @@ func _filter_easy(enemy:Node2D)->bool:
 
 
 func _on_attack_timer_timeout():
-	if detect_enemy == null:
+	if detect_enemy == null or died:
 		return
 	track_attack_target()
 	animation_player.play("attack")
+	if infected: detect_enemy.faction = Global.Faction.Human
 	attack_timer.start(attack_interval)
 
 
@@ -215,13 +266,20 @@ func track_attack_target()->void:
 
 
 func _on_detect_area_body_entered(body):
-	enemies.push_back(body)
+	#enemies.push_back(body)
+	pass
 
 
 func _on_detect_area_body_exited(body):
-	if enemies.find(body)!=-1:
-		enemies.erase(body)
+	#if enemies.find(body)!=-1:
+		#enemies.erase(body)
+	pass
 
 
 func set_walking(flag:bool)->void:
 	walking = flag
+
+
+func _on_affect_timer_timeout():
+	infected = false
+	faction = randi_range(1,2)

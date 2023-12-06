@@ -1,19 +1,30 @@
 extends Panel
 
+@export var expence_on_ran:int =5
 @export var magic_resources:Array[magic_card]
 @export var card_velocity:float = 100
 @export_category("show_up_frequency")
 @export var basic_time_interval:float = 2
 @export var time_offset:float = 1
 
+
+@onready var amount_label = $Panel/MarginContainer/VBoxContainer/AmountLabel
 @onready var magic_card_container = preload("res://magic/magic_card/magic_card_container.tscn")
 @onready var spaw_position = $SpawPosition
 @onready var timer = $Timer
 
-const max_card_amounts = 18
+const max_card_amounts:int=18
 const card_interval:int = 140
 
-var amounts_need_to_spawn:int = 0
+var amounts_need_to_spawn:int:
+	set(value):
+		amount_label.text = "卡牌机里还有" + str(value) + "张"
+		amounts_need_to_spawn = value
+		if value > 0 and timer.is_stopped():
+			timer.start(.5)
+	get:
+		return amounts_need_to_spawn
+
 var weighted_magic:WeightedTable = WeightedTable.new()
 
 func _ready():
@@ -46,10 +57,9 @@ func _on_timer_timeout():
 		timer.start(randf_range(-time_offset,time_offset)+basic_time_interval)
 
 
-
-
-
-
-
-
-
+func _on_button_pressed():
+	var amounts :int= Global.item.item_amounts[Global.item.bone]
+	if amounts <= expence_on_ran:
+		return
+	Global.item.collect(dropper.Drop.bone,-expence_on_ran)
+	amounts_need_to_spawn+=1

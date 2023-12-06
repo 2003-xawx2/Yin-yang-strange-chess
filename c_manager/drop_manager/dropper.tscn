@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8oes8r6spuy4"]
+
+[ext_resource type="Script" path="res://c_manager/drop_manager/dropper.gd" id="1_7g6qg"]
+[ext_resource type="Texture2D" uid="uid://bdddph0yjgd3e" path="res://assets/enemy/blood.png" id="2_tyr65"]
+
+[node name="Dropper" type="Node2D"]
+script = ExtResource("1_7g6qg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_tyr65")

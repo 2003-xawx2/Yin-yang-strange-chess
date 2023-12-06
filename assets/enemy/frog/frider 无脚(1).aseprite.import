@@ -1,28 +1,14 @@
 [remap]
 
-importer="Aseprite Sprite2D Import"
-type="PackedScene"
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
 uid="uid://cvkd3ykgdq5q5"
-path="res://.godot/imported/frider 无脚(1).aseprite-9c391d81c5be7cd6d89d7cd04f026bb8.scn"
+path="res://.godot/imported/frider 无脚(1).aseprite-9c391d81c5be7cd6d89d7cd04f026bb8.res"
 
 [deps]
 
 source_file="res://assets/enemy/frog/frider 无脚(1).aseprite"
-dest_files=["res://.godot/imported/frider 无脚(1).aseprite-9c391d81c5be7cd6d89d7cd04f026bb8.scn"]
+dest_files=["res://.godot/imported/frider 无脚(1).aseprite-9c391d81c5be7cd6d89d7cd04f026bb8.res"]
 
 [params]
 
-spritesheet/layout=0
-spritesheet/fixed_rows_count=1
-spritesheet/fixed_columns_count=1
-spritesheet/border_type=0
-spritesheet/trim=false
-spritesheet/ignore_empty=false
-spritesheet/merge_duplicates=false
-animation/default/name="default"
-animation/default/direction=0
-animation/default/repeat_count=0
-animation/autoplay=""
-sprite2d/centered=true
-animation/strategy_(packed_spritesheet)=0
-animation/strategy_(grid-based_spritesheet)=0

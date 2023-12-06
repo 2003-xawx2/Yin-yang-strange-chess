@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="dropper" load_steps=2 format=3 uid="uid://bmv31tqd68f5q"]
+
+[ext_resource type="Script" path="res://misc/resource/csutom/dropper.gd" id="1_qat6c"]
+
+[resource]
+script = ExtResource("1_qat6c")
+weight = 1
+type = 4

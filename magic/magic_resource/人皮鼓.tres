@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://r3b5c7fj2c5o"]
+
+[ext_resource type="PackedScene" uid="uid://vs1d13qabr5l" path="res://magic/magic_scene/人皮鼓/rubber_drum.tscn" id="1_5nrf8"]
+[ext_resource type="Texture2D" uid="uid://cek2nh4wy51g3" path="res://assets/magic_card/人皮鼓卡牌.png" id="2_1v6nn"]
+[ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_1aklo"]
+
+[resource]
+script = ExtResource("3_1aklo")
+show_weight = 1
+magic_icon = ExtResource("2_1v6nn")
+magic = ExtResource("1_5nrf8")

@@ -80,6 +80,7 @@ func rule_spawn()->void:
 
 func spawn_enemy(enemy_type:Global.EnemyType,enemy_faction:Global.Faction,spawn_position:int,end_position:int):
 	var enemy_instance = enemies[enemy_type].instantiate()
+	enemy_instance.spawn_position = get_child(spawn_position+1).global_position
 	enemy_instance.global_position = get_child(spawn_position+1).global_position
 	if enemy_type != Global.EnemyType.maggot:
 		add_child(enemy_instance)

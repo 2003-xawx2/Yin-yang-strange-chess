@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://c2e6acbiu2tvy"]
+
+[ext_resource type="PackedScene" uid="uid://k1yhb553ekfu" path="res://magic/magic_scene/火球/fire_ball.tscn" id="1_ysql8"]
+[ext_resource type="Texture2D" uid="uid://e6wijvyhshr7" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile026.png" id="2_xw2jy"]
+[ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_a13ml"]
+
+[resource]
+script = ExtResource("3_a13ml")
+show_weight = 1
+magic_icon = ExtResource("2_xw2jy")
+magic = ExtResource("1_ysql8")

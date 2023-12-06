@@ -48,10 +48,6 @@ project/assembly_name="----"
 
 movie_writer/movie_file="/Users/liumoyan/Documents/阴阳怪棋/----/movie/movie.avi"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/aseprite-importers/addons/plugin.cfg", "res://addons/godot-aseprite-wizard-7b29528c022ee01779ac79f518902f0f3639d445/addons/AsepriteWizard/plugin.cfg")
-
 [file_customization]
 
 folder_colors={
@@ -64,6 +60,15 @@ folder_colors={
 "res://misc/": "blue",
 "res://ui/": "blue",
 "res://world/": "purple"
+}
+
+[importer_defaults]
+
+aseprite_wizard.plugin={
+"exclude_layers_pattern": "",
+"only_visible_layers": true,
+"sheet_type": "Packed",
+"split_layers": false
 }
 
 [input]

@@ -14,3 +14,9 @@ var magic:PackedScene:
 func _physics_process(delta):
 	if !ray_cast_2d.is_colliding():
 		position.x-=SPEED*delta
+
+
+func free_self()->void:
+	set_physics_process(false)
+	$CollisionShape2D.disabled = true
+	$AnimationPlayer.play("disappear")
