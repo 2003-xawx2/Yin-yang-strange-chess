@@ -6,6 +6,6 @@
 
 [resource]
 script = ExtResource("3_fw8hd")
-show_weight = 2
+show_weight = 1
 magic_icon = ExtResource("2_e847u")
 magic = ExtResource("1_3kv3y")

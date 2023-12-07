@@ -16,7 +16,7 @@ enum State{
 @export var first_attack_time:float=.8
 @export var attack_interval:float=1.8
 
-@onready var frider____1_ = $"frider 无脚(1)"
+@onready var frider = $"frider 无脚(1)"
 @onready var recover_timer = $Timer/RecoverTimer
 @onready var affected_timer = $Timer/AffectedTimer
 @onready var enemy_move_better = $EnemyMoveBetter
@@ -31,28 +31,28 @@ enum State{
 
 var stop_frames:int:
 	set(value):
-		$machine_state.stop_frames = stop_frames
+		$machine_state.stop_frames = value
 	get:
 		return $machine_state.stop_frames
 #阵营
 var faction:Global.Faction:
 	set(value):
 		if value == Global.Faction.Ying:
-			frider____1_.material.set_shader_parameter("modulate",Ying_Modulate)
+			frider.material.set_shader_parameter("modulate",Ying_Modulate)
 			modulate = Ying_Modulate
 			hit_area.set_collision_mask_value(4,false)
 			hit_area.set_collision_mask_value(5,true)
 			hurt_area.set_collision_layer_value(4,true)
 			hurt_area.set_collision_layer_value(5,false)
 		elif value == Global.Faction.Yang:
-			frider____1_.material.set_shader_parameter("modulate",Yang_Modulate)
+			frider.material.set_shader_parameter("modulate",Yang_Modulate)
 			modulate = Yang_Modulate
 			hit_area.set_collision_mask_value(5,false)
 			hit_area.set_collision_mask_value(4,true)
 			hurt_area.set_collision_layer_value(5,true)
 			hurt_area.set_collision_layer_value(4,false)
 		else:
-			frider____1_.material.set_shader_parameter("modulate",Human_Modulate)
+			frider.material.set_shader_parameter("modulate",Human_Modulate)
 			modulate = Human_Modulate
 			hit_area.set_collision_mask_value(5,true)
 			hit_area.set_collision_mask_value(4,true)
@@ -150,9 +150,9 @@ func follow_path(delta:float)->void:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
 	move_and_slide()
 	if velocity.x >=50:
-		frider____1_.flip_h = true
+		frider.flip_h = true
 	elif velocity.x <=-50:
-		frider____1_.flip_h = false
+		frider.flip_h = false
 
 
 func move(delta:float)->void:
@@ -169,9 +169,9 @@ func move(delta:float)->void:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
 	move_and_slide()
 	if velocity.x >=50:
-		frider____1_.flip_h = true
+		frider.flip_h = true
 	elif velocity.x <=-50:
-		frider____1_.flip_h = false
+		frider.flip_h = false
 
 
 func fight(delta:float)->void:
@@ -186,9 +186,9 @@ func fight(delta:float)->void:
 		return
 	
 	if (detect_enemy.global_position - global_position).dot(Vector2.RIGHT)>0:
-		frider____1_.flip_h = true
+		frider.flip_h = true
 	else:
-		frider____1_.flip_h = false
+		frider.flip_h = false
 
 
 func _on_health_bar_die()->void:
@@ -285,12 +285,12 @@ func if_visible(flag:bool,time:float)->void:
 
 
 func set_alpha(percent:float)->void:
-	frider____1_.material.set_shader_parameter("alpha",percent)
+	frider.material.set_shader_parameter("alpha",percent)
 	health_bar.modulate.a=1-percent
 
 
 func get_alpha()->float:
-	return frider____1_.material.get_shader_parameter("alpha")
+	return frider.material.get_shader_parameter("alpha")
 
 
 func _on_affected_timer_timeout():

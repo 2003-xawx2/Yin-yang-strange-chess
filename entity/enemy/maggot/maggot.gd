@@ -30,7 +30,7 @@ enum State{
 var attack_range:float = 120
 var stop_frames:int:
 	set(value):
-		$machine_state.stop_frames = stop_frames
+		$machine_state.stop_frames = value
 	get:
 		return $machine_state.stop_frames
 #阵营

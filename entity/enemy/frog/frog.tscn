@@ -296,8 +296,8 @@ collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_i28k8")
-Ying_Modulate = Color(0.309804, 0.376471, 0.65098, 1)
-Yang_Modulate = Color(0.950024, 0.90792, 0.839438, 1)
+Ying_Modulate = Color(0.176471, 0.219608, 0.415686, 1)
+Yang_Modulate = Color(0.282353, 0.223529, 0.129412, 1)
 Human_Modulate = Color(0.870588, 0, 0.607843, 1)
 attack_interval = 1.0
 

@@ -4,6 +4,7 @@
 [ext_resource type="Shader" path="res://magic/magic_scene/盲目/blind.gdshader" id="2_gvw6q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00hfi"]
+resource_local_to_scene = true
 shader = ExtResource("2_gvw6q")
 shader_parameter/size = -0.4
 shader_parameter/uv_x = 0.5
@@ -90,3 +91,4 @@ color = Color(0.164706, 0.164706, 0.164706, 0.870588)
 libraries = {
 "": SubResource("AnimationLibrary_gygfw")
 }
+speed_scale = 0.7

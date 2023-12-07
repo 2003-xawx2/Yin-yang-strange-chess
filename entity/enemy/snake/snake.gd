@@ -30,7 +30,7 @@ var walking:bool = false
 
 var stop_frames:int:
 	set(value):
-		$machine_state.stop_frames = stop_frames
+		$machine_state.stop_frames = value
 	get:
 		return $machine_state.stop_frames
 

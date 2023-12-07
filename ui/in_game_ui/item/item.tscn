@@ -41,7 +41,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -57,7 +57,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,7 +76,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -92,7 +92,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -111,7 +111,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -127,7 +127,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -146,7 +146,7 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -162,6 +162,12 @@ texture = ExtResource("1_ndkif")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "000"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="MarginContainer/Dropper/MiscDrop/Coin"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="MarginContainer/Dropper/MiscDrop/Coin/Timer" to="." method="_on_timer_timeout"]

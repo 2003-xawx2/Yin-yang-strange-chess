@@ -13,7 +13,7 @@ extends Panel
 @onready var spaw_position = $SpawPosition
 @onready var timer = $Timer
 
-const max_card_amounts:int=18
+const max_card_amounts:int=15
 const card_interval:int = 140
 
 var amounts_need_to_spawn:int:
@@ -44,6 +44,7 @@ func stop_random_cards()->void:
 
 func _on_timer_timeout():
 	if spaw_position.get_children().size() >=max_card_amounts:
+		timer.start(randf_range(-time_offset,time_offset)+basic_time_interval)
 		return
 	var instance = magic_card_container.instantiate()
 	spaw_position.add_child(instance)

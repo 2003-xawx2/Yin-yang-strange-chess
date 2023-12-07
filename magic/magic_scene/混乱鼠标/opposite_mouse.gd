@@ -23,6 +23,9 @@ func settle_success()->void:
 	back_mode = true
 
 
+func settle_fail()->void:
+	pass
+
 
 func _process(delta):
 	var zoom = Global.camera.zoom

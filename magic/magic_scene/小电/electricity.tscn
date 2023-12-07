@@ -1,9 +1,109 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4jsyqmlqoblj"]
+[gd_scene load_steps=9 format=3 uid="uid://c4jsyqmlqoblj"]
 
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="1_212xo"]
 [ext_resource type="Script" path="res://magic/magic_scene/小电/electricity.gd" id="1_wgxn6"]
+[ext_resource type="Texture2D" uid="uid://bwdmym2mls1ly" path="res://magic/magic_scene/小电/符纸 .png" id="3_caj1o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtjlr"]
+[sub_resource type="Animation" id="Animation_nl8xr"]
+resource_name = "attack"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"freeze"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5ihu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upf2y"]
+_data = {
+"RESET": SubResource("Animation_5ihu3"),
+"attack": SubResource("Animation_nl8xr")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j3p6"]
 bg_color = Color(0, 0, 0, 0.0862745)
 border_width_left = 15
 border_width_top = 15
@@ -11,33 +111,52 @@ border_width_right = 15
 border_width_bottom = 15
 border_color = Color(0.945098, 0, 0.627451, 0.388235)
 border_blend = true
-corner_radius_top_left = 74
-corner_radius_top_right = 74
-corner_radius_bottom_right = 74
-corner_radius_bottom_left = 74
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rlm71"]
-radius = 141.15
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wil3r"]
+size = Vector2(416.561, 104.684)
 
 [node name="Electricity" type="Node2D"]
 script = ExtResource("1_wgxn6")
 
-[node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(150, 150)
-offset_left = -75.0
-offset_top = -75.0
-offset_right = 75.0
-offset_bottom = 75.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_upf2y")
+}
+
+[node name="Graphic" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.694118)
+scale = Vector2(1.3, 1.3)
+
+[node name="Panel" type="Panel" parent="Graphic"]
+offset_left = 6.52898
+offset_top = 13.529
+offset_right = 237.529
+offset_bottom = 71.529
+rotation = -1.57079
 scale = Vector2(1.8, 1.8)
 pivot_offset = Vector2(75, 75)
-theme_override_styles/panel = SubResource("StyleBoxFlat_jtjlr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5j3p6")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="Graphic"]
+position = Vector2(22.3077, 16.1538)
+rotation = -0.785397
+scale = Vector2(1.2, 1.2)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_212xo")
 damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_rlm71")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/HurtBox"]
+position = Vector2(-13, -13)
+rotation = -0.785397
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wil3r")
 disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(16.529, 16.529)
+rotation = -0.785397
+scale = Vector2(3, 3)
+texture = ExtResource("3_caj1o")
+hframes = 8

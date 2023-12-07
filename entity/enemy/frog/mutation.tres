@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8hfppbjnv5dx"]
+
+[ext_resource type="Shader" path="res://entity/enemy/frog/mutation.gdshader" id="1_nrfjh"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_nrfjh")
+shader_parameter/modulate = null
+shader_parameter/alpha = 0.1
+shader_parameter/speed = 1.0
+shader_parameter/tint = Color(1, 1, 0, 1)
+shader_parameter/span = 0.3

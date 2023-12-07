@@ -33,6 +33,7 @@ extends Panel
 
 func _ready():
 	Global.item = self
+	collect(dropper.Drop.coin,10)
 
 
 func collect(drop:dropper.Drop,amount:int=1)->void:
@@ -42,4 +43,8 @@ func collect(drop:dropper.Drop,amount:int=1)->void:
 		item_amounts[add_item]=0
 	#注意label是不是在containr的第二个child
 	var label = add_item.get_child(1) as Label
-	label.text = str(item_amounts[add_item])
+	label.text = str(int(item_amounts[add_item]))
+
+
+func _on_timer_timeout():
+	collect(dropper.Drop.coin,1)
