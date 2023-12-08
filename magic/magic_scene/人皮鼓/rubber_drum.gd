@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var except_range:float = 228
+var strong_shader:ShaderMaterial = preload("res://entity/enemy/frog/mutation.tres")
+
 
 func _ready():
 	$"攻击范围2".modulate.a=0
@@ -14,21 +16,22 @@ func try_to_settle()->void:
 func settle_success()->void:
 	var enemies:Array = $Area2D.get_overlapping_bodies()
 	enemies = enemies.filter(_filter)
-	for enemy in enemies:
-		enemy.infected = true
+	for _frog in enemies:
+		var tween:=create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		tween.tween_property(_frog,"scale",Vector2.ONE*1.4,1)
+		_frog.frider.material = strong_shader
+		_frog.hurt_area.damage*=2
 	change_modulate($"攻击范围2",0)
 	$AnimationPlayer.play("attack!")
 	await $AnimationPlayer.animation_finished
 	queue_free()
 
 
-func _filter(enemy)->bool:
-	if enemy.global_position.distance_squared_to(global_position)<pow(except_range,2):
-		return false
-	if enemy is snake:
+
+func _filter(_frog:Node2D)->bool:
+	if _frog is frog:
 		return true
-	else:
-		return false
+	return false
 
 
 func settle_fail()->void:

@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://cumk6x46s7xv"]
+
+[ext_resource type="Script" path="res://magic/magic_scene/天罚/thunder.gd" id="1_rfmgs"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="1_wa5q4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y06lt"]
+radius = 341.023
+
+[sub_resource type="Animation" id="Animation_n4pm3"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_4bc56"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cdep"]
+_data = {
+"RESET": SubResource("Animation_4bc56"),
+"attack": SubResource("Animation_n4pm3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bguyi"]
+bg_color = Color(0, 0, 0, 0.0862745)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.945098, 0, 0.627451, 0.388235)
+border_blend = true
+corner_radius_top_left = 299
+corner_radius_top_right = 299
+corner_radius_bottom_right = 299
+corner_radius_bottom_left = 299
+
+[node name="Thunder" type="Node2D"]
+script = ExtResource("1_rfmgs")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_wa5q4")
+damage = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_y06lt")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0cdep")
+}
+autoplay = "attack"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -325.0
+offset_top = -336.0
+offset_right = -125.0
+offset_bottom = -136.0
+scale = Vector2(3.24, 3.24)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bguyi")

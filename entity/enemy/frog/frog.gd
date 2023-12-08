@@ -10,7 +10,7 @@ enum State{
 @export var Ying_Modulate:Color
 @export var Yang_Modulate:Color
 @export var Human_Modulate:Color
-@export var jump_speed :float = 200
+@export var max_speed :float = 200
 @export var acceleration :float = 100
 @export_category("attack")
 @export var first_attack_time:float=.8
@@ -145,7 +145,7 @@ func follow_path(delta:float)->void:
 	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
 	direction  = direction + unwilling_direction
 	if jumping:
-		velocity = velocity.lerp(direction.normalized()*jump_speed, 1-exp(-delta*acceleration*2.0))
+		velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration*2.0))
 	else:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta * acceleration * 2.0))
 	move_and_slide()
@@ -162,7 +162,7 @@ func move(delta:float)->void:
 	var unwilling_direction:Vector2 = enemy_move_better.update_colliding()
 	direction  = direction + unwilling_direction
 	if jumping:
-		velocity = velocity.lerp(direction.normalized()*jump_speed, 1-exp(-delta*acceleration*2.0))
+		velocity = velocity.lerp(direction.normalized()*max_speed, 1-exp(-delta*acceleration*2.0))
 		if $machine_state.state_time>.26 &&velocity.length()<10:
 			velocity = velocity.rotated(delta*10)
 	else:
@@ -177,7 +177,7 @@ func move(delta:float)->void:
 func fight(delta:float)->void:
 	var direction:Vector2 = target_position-global_position
 	if jumping:
-		velocity = velocity.lerp(direction.normalized()*jump_speed*4, 1-exp(-delta*acceleration*4.0))
+		velocity = velocity.lerp(direction.normalized()*max_speed*4, 1-exp(-delta*acceleration*4.0))
 	else:
 		velocity = velocity.lerp(Vector2.ZERO,1-exp(-delta*acceleration/2))
 	move_and_slide()

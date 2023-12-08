@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmmwixbqgdegd"]
+
+[ext_resource type="Script" path="res://magic/magic_scene/蛆怒症/more_maggot.gd" id="1_josd7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vih3v"]
+radius = 309.9
+
+[sub_resource type="Animation" id="Animation_kgc6j"]
+resource_name = "attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7e46"]
+_data = {
+"attack": SubResource("Animation_kgc6j")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_to1ow"]
+bg_color = Color(0, 0, 0, 0.0862745)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.945098, 0, 0.627451, 0.388235)
+border_blend = true
+corner_radius_top_left = 299
+corner_radius_top_right = 299
+corner_radius_bottom_right = 299
+corner_radius_bottom_left = 299
+
+[node name="MoreMaggot" type="Node2D"]
+script = ExtResource("1_josd7")
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_vih3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r7e46")
+}
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_to1ow")

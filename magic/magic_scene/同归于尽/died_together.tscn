@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs7ircgekg7kp"]
+[gd_scene load_steps=10 format=3 uid="uid://cs7ircgekg7kp"]
 
 [ext_resource type="Script" path="res://magic/magic_scene/同归于尽/died_together.gd" id="1_2eyvh"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="1_jbsjb"]
 [ext_resource type="Texture2D" uid="uid://4o37cuc3j7fr" path="res://magic/magic_scene/同归于尽/献祭攻击范围.png" id="3_0s5fw"]
 [ext_resource type="Texture2D" uid="uid://bnqs3ljhcn6jy" path="res://magic/magic_scene/同归于尽/献祭.png" id="4_7m6pt"]
 [ext_resource type="Texture2D" uid="uid://8e54fvpw3n25" path="res://magic/magic_scene/同归于尽/坑.png" id="5_14bwp"]
+[ext_resource type="PackedScene" uid="uid://xi3mskq0sk5" path="res://misc/random_player/random_audio_player/random_audio_player.tscn" id="6_pk82f"]
 
 [sub_resource type="Animation" id="Animation_4xp64"]
 length = 0.001
@@ -153,3 +154,5 @@ position = Vector2(0, -132)
 scale = Vector2(2, 2)
 texture = ExtResource("5_14bwp")
 offset = Vector2(-17, 39)
+
+[node name="RandomAudioPlayer" parent="." instance=ExtResource("6_pk82f")]

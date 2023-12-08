@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://bd28jomqsm3d0"]
+
+[ext_resource type="PackedScene" uid="uid://bpx0y4k2ips7o" path="res://magic/magic_scene/天罚/heaven_punish.tscn" id="1_maqjx"]
+[ext_resource type="Texture2D" uid="uid://uur1ba7g5jhd" path="res://assets/drop/drop_icon/蜘蛛丝.png" id="2_wty8p"]
+[ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_cdcpa"]
+
+[resource]
+script = ExtResource("3_cdcpa")
+show_weight = 1
+magic_icon = ExtResource("2_wty8p")
+magic = ExtResource("1_maqjx")

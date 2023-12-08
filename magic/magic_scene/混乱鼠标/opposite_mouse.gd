@@ -44,4 +44,4 @@ func random_cursor()->void:
 	num+=1
 	var noise_x: = tex_x.get_noise_1d(num)
 	var noise_y: = tex_y.get_noise_1d(num)
-	sprite_2d.position+=Vector2.ONE.rotated(noise_y*20)*noise_x*10
+	sprite_2d.position+=Vector2.ONE.rotated(noise_y*20)*noise_x*100

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cn3oniutt1wks"]
+[gd_scene load_steps=14 format=3 uid="uid://cn3oniutt1wks"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/in_game_ui.gd" id="1_odvlc"]
 [ext_resource type="PackedScene" uid="uid://ccm3axekxda35" path="res://ui/in_game_ui/random_panel/random_panel.tscn" id="2_agrda"]
@@ -11,12 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://c2tqxya7186np" path="res://ui/in_game_ui/item/item.tscn" id="8_eyfw1"]
 [ext_resource type="Resource" uid="uid://bjwrmwxy4jpgw" path="res://magic/magic_resource/混乱鼠标.tres" id="9_dsljk"]
 [ext_resource type="Resource" uid="uid://1nwbwgitk83c" path="res://magic/magic_resource/蛙之泪.tres" id="10_cotbt"]
+[ext_resource type="Resource" uid="uid://bd28jomqsm3d0" path="res://magic/magic_resource/天罚.tres" id="11_fcd1y"]
+[ext_resource type="Resource" uid="uid://b6sedrlygy75x" path="res://magic/magic_resource/蛆怒症.tres" id="12_b4xqf"]
 
 [node name="InGameUI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_odvlc")
 
 [node name="RandomPanel" parent="." instance=ExtResource("2_agrda")]
-magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("3_4024a"), ExtResource("4_c2cwx"), ExtResource("5_5xw54"), ExtResource("6_q27np"), ExtResource("7_33081"), ExtResource("8_8v1ec"), ExtResource("9_dsljk"), ExtResource("10_cotbt")])
+magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("3_4024a"), ExtResource("4_c2cwx"), ExtResource("5_5xw54"), ExtResource("6_q27np"), ExtResource("7_33081"), ExtResource("8_8v1ec"), ExtResource("9_dsljk"), ExtResource("10_cotbt"), ExtResource("11_fcd1y"), ExtResource("12_b4xqf")])
 
 [node name="Item" parent="." instance=ExtResource("8_eyfw1")]

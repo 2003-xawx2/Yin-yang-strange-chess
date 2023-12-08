@@ -18,7 +18,7 @@ corner_radius_top_right = 299
 corner_radius_bottom_right = 299
 corner_radius_bottom_left = 299
 
-[node name="FrogTear" type="Node2D"]
+[node name="SnakeTear" type="Node2D"]
 script = ExtResource("1_mhdjv")
 
 [node name="DetectArea" type="Area2D" parent="."]

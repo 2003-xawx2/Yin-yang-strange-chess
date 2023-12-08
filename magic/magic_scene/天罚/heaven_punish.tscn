@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpx0y4k2ips7o"]
+
+[ext_resource type="Script" path="res://magic/magic_scene/天罚/heaven_punish.gd" id="1_4vjby"]
+
+[node name="HeavenPunish" type="Node2D"]
+script = ExtResource("1_4vjby")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

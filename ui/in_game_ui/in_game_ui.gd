@@ -1,8 +1,32 @@
 extends CanvasLayer
 
+@onready var random_panel = $RandomPanel
+
+var time_back_random_panel:Array[PackedScene]=[]
+var time_back_item:Array[Dictionary]=[]
+var index:=0:
+	set(value):
+		if value == max_save_amounts:
+			index = 0
+		else:
+			index = value
+	get:
+		return index
+
+@export var save_interval:=.5
+@export var max_save_amounts:=8
 
 
+func save()->void:
+	var _random_panel := PackedScene.new()
+	_random_panel.pack(random_panel)
+	time_back_random_panel[index] = _random_panel
+	index+=1
 
+
+func load()->void:
+	remove_child(random_panel)
+	add_child(time_back_random_panel[index].instantiate())
 
 
 

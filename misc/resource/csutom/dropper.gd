@@ -13,5 +13,5 @@ enum Drop{
 }
 
 @export var weight:=1
-@export var sprite:Texture
+@export var sprite:Texture = preload("res://assets/enemy/blood.png")
 @export var type:Drop

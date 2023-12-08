@@ -14,7 +14,7 @@ var if_mouse_in:bool = false
 var click:bool = false:
 	set(value):
 		click = value
-		if value == true:
+		if value == true: 
 			modulate = Color.BLUE_VIOLET
 			pass
 		else:

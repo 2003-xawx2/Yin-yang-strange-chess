@@ -1,7 +1,6 @@
 extends Node2D
 
 
-var strong_shader:ShaderMaterial = preload("res://entity/enemy/frog/mutation.tres")
 
 
 func _ready():
@@ -14,21 +13,12 @@ func try_to_settle()->void:
 
 func settle_success()->void:
 	change_modulate($Panel,0)
-	var frogs:Array = $DetectArea.get_overlapping_bodies()
-	frogs = frogs.filter(_filter)
-	for _frog in frogs:
-		var tween:=create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-		tween.tween_property(_frog,"scale",Vector2.ONE*1.4,1)
-		_frog.frider.material = strong_shader
-		_frog.hurt_area.damage*=2
+	var snakes:Array = $DetectArea.get_overlapping_bodies()
+	snakes = snakes.filter(_filter)
+	for enemy in snakes:
+		enemy.infected = true
 	await get_tree().create_timer(1).timeout
 	queue_free()
-
-
-func _filter(_frog:Node2D)->bool:
-	if _frog is frog:
-		return true
-	return false
 
 
 func settle_fail()->void:
@@ -40,3 +30,21 @@ func change_modulate(object:Node,value:float)->void:
 		return
 	var tween:=create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(object,"modulate:a",value,.7)
+
+
+#func settle_success()->void:
+	#var enemies:Array = $Area2D.get_overlapping_bodies()
+	#enemies = enemies.filter(_filter)
+	#for enemy in enemies:
+		#enemy.infected = true
+	#change_modulate($"攻击范围2",0)
+	#$AnimationPlayer.play("attack!")
+	#await $AnimationPlayer.animation_finished
+	#queue_free()
+#
+#
+func _filter(enemy)->bool:
+	if enemy is snake:
+		return true
+	else:
+		return false

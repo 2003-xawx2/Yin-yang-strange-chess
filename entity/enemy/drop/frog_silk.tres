@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="dropper" load_steps=2 format=3 uid="uid://ogo7dyr0i7j3"]
+[gd_resource type="Resource" script_class="dropper" load_steps=3 format=3 uid="uid://ogo7dyr0i7j3"]
 
 [ext_resource type="Script" path="res://misc/resource/csutom/dropper.gd" id="1_pog06"]
+[ext_resource type="Texture2D" uid="uid://uur1ba7g5jhd" path="res://assets/drop/drop_icon/蜘蛛丝.png" id="2_b4wpu"]
 
 [resource]
 script = ExtResource("1_pog06")
 weight = 1
+sprite = ExtResource("2_b4wpu")
 type = 5

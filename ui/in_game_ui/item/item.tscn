@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2tqxya7186np"]
+[gd_scene load_steps=5 format=3 uid="uid://c2tqxya7186np"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/item/item.gd" id="1_j23l1"]
 [ext_resource type="Texture2D" uid="uid://bdddph0yjgd3e" path="res://assets/enemy/blood.png" id="1_ndkif"]
+[ext_resource type="Texture2D" uid="uid://oox8ovainomr" path="res://assets/drop/drop_icon/蹼.png" id="3_ib44j"]
+[ext_resource type="Texture2D" uid="uid://uur1ba7g5jhd" path="res://assets/drop/drop_icon/蜘蛛丝.png" id="4_1vf1a"]
 
 [node name="Item" type="Panel"]
 custom_minimum_size = Vector2(2.08165e-12, 140)
@@ -70,7 +72,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/FrogDrop/FrogLeg"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("3_ib44j")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/FrogDrop/FrogLeg"]
 custom_minimum_size = Vector2(60, 60)
@@ -86,7 +88,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/FrogDrop/FrogSilk"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("4_1vf1a")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/FrogDrop/FrogSilk"]
 custom_minimum_size = Vector2(60, 60)

@@ -22,6 +22,6 @@ func _on_health_died()->void:
 	var drop = dropper_scene.instantiate()
 	get_parent().get_parent().add_child(drop)
 	drop.type = drop_type.type
-	#drop.sprite = drop_type.sprite
+	drop.sprite = drop_type.sprite
 	drop.global_position = global_position
 	drop.init()

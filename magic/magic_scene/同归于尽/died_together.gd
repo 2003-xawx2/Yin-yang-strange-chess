@@ -13,9 +13,11 @@ func try_to_settle()->void:
 
 
 func settle_success()->void:
+	$RandomAudioPlayer.play_random()
 	change_modulate(______,0)
 	
 	$AnimationPlayer.play("attack!")
+	Global.item.collect(dropper.Drop.coin,-20)
 	await  $AnimationPlayer.animation_finished
 	queue_free()
 
