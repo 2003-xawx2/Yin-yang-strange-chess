@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddxs681lk6j5i"]
+[gd_scene load_steps=23 format=3 uid="uid://ddxs681lk6j5i"]
 
 [ext_resource type="Script" path="res://entity/enemy/maggot/maggot.gd" id="1_23b4d"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://c_manager/health_manager/health_manager.tscn" id="1_pr854"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c4cybhmod4kwp" path="res://entity/enemy/drop/bone.tres" id="9_7j34y"]
 [ext_resource type="Resource" uid="uid://b108oqodxrgyc" path="res://entity/enemy/drop/maggot_foot.tres" id="10_pkse7"]
 [ext_resource type="Resource" uid="uid://d4e1e8lwotj6l" path="res://entity/enemy/drop/maggot_link.tres" id="11_8yosg"]
+[ext_resource type="PackedScene" uid="uid://bxyf16v8l6mwg" path="res://c_manager/time/enemy_time_back/enemy_time_back.tscn" id="12_wa0k1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjixu"]
 radius = 25.0799
@@ -302,6 +303,8 @@ horizontal_alignment = 1
 drop_percent = 0.12
 health_manager = NodePath("../HealthBar")
 droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("9_7j34y"), ExtResource("10_pkse7"), ExtResource("11_8yosg")])
+
+[node name="EnemyTimeBack" parent="." instance=ExtResource("12_wa0k1")]
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

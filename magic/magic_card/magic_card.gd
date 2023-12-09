@@ -23,6 +23,8 @@ var click:bool = false:
 
 func _ready():
 	set_process(false)
+	#await get_parent().get_parent().get_parent().ready
+	owner = get_parent().get_parent().get_parent()
 
 
 func _process(delta):

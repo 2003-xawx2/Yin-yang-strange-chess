@@ -37,6 +37,13 @@ func _ready():
 
 
 func collect(drop:dropper.Drop,amount:int=1)->void:
+	
+	var dic:Dictionary = {}
+	dic["drop"] = drop
+	dic["amount"] = amount
+	time_back[index] = dic
+	index+=1
+	
 	var add_item = item_dictionary[drop] as Node
 	item_amounts[add_item]+=amount
 	if item_amounts[add_item]<0:
@@ -48,3 +55,30 @@ func collect(drop:dropper.Drop,amount:int=1)->void:
 
 func _on_timer_timeout():
 	collect(dropper.Drop.coin,1)
+
+
+func fresh_label()->void:
+	for drop in item_dictionary.keys():
+		var add_item = item_dictionary[drop]
+		#注意label是不是在containr的第二个child
+		var label = add_item.get_child(1) as Label
+		label.text = str(int(item_amounts[add_item]))
+
+
+
+var time_back:Array[Dictionary] = [{},{}]
+var index:int = 0:
+	set(value):
+		if value == 2:
+			index = 0
+		else:
+			index = value
+
+
+func save()->void:
+	pass
+
+
+func load()->void:
+	for time in time_back:
+		collect(time["drop"],-time["amount"])

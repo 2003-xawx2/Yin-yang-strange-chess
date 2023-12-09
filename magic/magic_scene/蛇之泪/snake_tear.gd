@@ -13,12 +13,16 @@ func try_to_settle()->void:
 
 func settle_success()->void:
 	change_modulate($Panel,0)
+	$AnimationPlayer.play("attack!")
+	await $AnimationPlayer.animation_finished
+	queue_free()
+
+
+func infect()->void:
 	var snakes:Array = $DetectArea.get_overlapping_bodies()
 	snakes = snakes.filter(_filter)
 	for enemy in snakes:
 		enemy.infected = true
-	await get_tree().create_timer(1).timeout
-	queue_free()
 
 
 func settle_fail()->void:

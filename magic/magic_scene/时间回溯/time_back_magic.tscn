@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dletj04oc6xdb"]
+
+[ext_resource type="Script" path="res://magic/magic_scene/时间回溯/time_back_magic.gd" id="1_wu38m"]
+
+[node name="TimeBackMagic" type="Node2D"]
+script = ExtResource("1_wu38m")

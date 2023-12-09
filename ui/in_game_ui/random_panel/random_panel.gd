@@ -64,3 +64,42 @@ func _on_button_pressed():
 		return
 	Global.item.collect(dropper.Drop.bone,-expence_on_ran)
 	amounts_need_to_spawn+=1
+
+
+var time_back:Array[Array] = []
+var index:int = 0:
+	set(value):
+		if value == 8:
+			index = 0
+		else:
+			index = value
+
+
+func save()->void:
+	var temp_array:Array
+	for child in spaw_position.get_children():
+		var temp:Dictionary={}
+		temp["global_position"] = child.global_position
+		temp["magic"] = child.magic
+		temp["sprite"] = child.sprite
+		temp_array.append(temp)
+	if time_back.size()<8:
+		time_back.append(temp_array)
+	else:
+		time_back[index] = temp_array
+	index+=1
+
+
+
+func load()->void:
+	for child in spaw_position.get_children():
+		spaw_position.remove_child(child)
+	
+	var temp := time_back[index]
+	
+	for card_container in temp:
+		var instance = magic_card_container.instantiate()
+		spaw_position.add_child(instance)
+		instance.sprite = card_container["sprite"]
+		instance.magic = card_container["magic"]
+		instance.global_position = card_container["global_position"]

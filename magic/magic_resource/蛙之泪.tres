@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://1nwbwgitk83c"]
 
-[ext_resource type="PackedScene" uid="uid://c4v0eriv4kc0p" path="res://magic/magic_scene/蛙之泪/frog_tear.tscn" id="1_bv0qr"]
-[ext_resource type="Texture2D" uid="uid://e6wijvyhshr7" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile026.png" id="2_luhpf"]
+[ext_resource type="PackedScene" uid="uid://c4v0eriv4kc0p" path="res://magic/magic_scene/蛇之泪/snake_tear.tscn" id="1_bv0qr"]
+[ext_resource type="Texture2D" uid="uid://dsran8pp7vtpu" path="res://assets/icon/mouse_begin/Mouse.png" id="2_v4a0u"]
 [ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_nlw5e"]
 
 [resource]
 script = ExtResource("3_nlw5e")
 show_weight = 2
-magic_icon = ExtResource("2_luhpf")
+magic_icon = ExtResource("2_v4a0u")
 magic = ExtResource("1_bv0qr")

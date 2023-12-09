@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://de1a1d3ledbwi"]
+[gd_scene load_steps=27 format=3 uid="uid://de1a1d3ledbwi"]
 
 [ext_resource type="Script" path="res://entity/enemy/frog/frog.gd" id="1_i28k8"]
 [ext_resource type="PackedScene" uid="uid://bd4tgln0hqfu0" path="res://c_manager/health_manager/health_manager.tscn" id="1_pvpyo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://c4cybhmod4kwp" path="res://entity/enemy/drop/bone.tres" id="10_sf003"]
 [ext_resource type="Resource" uid="uid://ogo7dyr0i7j3" path="res://entity/enemy/drop/frog_silk.tres" id="11_3he33"]
 [ext_resource type="Resource" uid="uid://bmv31tqd68f5q" path="res://entity/enemy/drop/frog_leg.tres" id="12_hhnkt"]
+[ext_resource type="PackedScene" uid="uid://bxyf16v8l6mwg" path="res://c_manager/time/enemy_time_back/enemy_time_back.tscn" id="13_s64qw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf54n"]
 bg_color = Color(0.239216, 0.239216, 0.239216, 1)
@@ -382,6 +383,8 @@ script = ExtResource("4_46h4q")
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("9_bwt8k")]
 health_manager = NodePath("../HealthBar")
 droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("10_sf003"), ExtResource("11_3he33"), ExtResource("12_hhnkt")])
+
+[node name="EnemyTimeBack" parent="." instance=ExtResource("13_s64qw")]
 
 [connection signal="die" from="HealthBar" to="." method="_on_health_bar_die"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

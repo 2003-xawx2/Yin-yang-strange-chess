@@ -28,6 +28,7 @@ enum State{
 var attack_range:float = 150
 var walking:bool = false
 
+
 var stop_frames:int:
 	set(value):
 		$machine_state.stop_frames = value
