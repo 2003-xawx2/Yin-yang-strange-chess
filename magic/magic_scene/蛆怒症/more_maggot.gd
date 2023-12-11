@@ -14,17 +14,22 @@ func try_to_settle()->void:
 
 
 func settle_success()->void:
-	var enemies:Array = $DetectArea.get_overlapping_bodies()
-	enemies = enemies.filter(_filter)
-	for enemy in enemies:
-		copy_maggot(enemy)
-	#change_modulate($"攻击范围2",0)
+	change_modulate($Panel,0)
 	$AnimationPlayer.play("attack")
 	await $AnimationPlayer.animation_finished
 	queue_free()
 
 
+func copy()->void:
+	var enemies:Array = $DetectArea.get_overlapping_bodies()
+	enemies = enemies.filter(_filter)
+	for enemy in enemies:
+		copy_maggot(enemy)
+
+
 func copy_maggot(copy:maggot)->void:
+	if copy == null:
+		return
 	var maggot_instance=  maggot_scene.instantiate()
 	copy.get_parent().add_child(maggot_instance)
 	maggot_instance.spawn_position = copy.spawn_position
@@ -41,10 +46,8 @@ func _filter(enemy)->bool:
 
 
 func settle_fail()->void:
-	var tween:Tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC)
-	tween.tween_property(self,"modulate:a",0,.5)
-	change_modulate($"攻击范围2",0)
-	await tween.finished
+	change_modulate($Panel,0)
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 

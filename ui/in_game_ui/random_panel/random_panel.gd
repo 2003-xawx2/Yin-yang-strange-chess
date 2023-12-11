@@ -7,13 +7,12 @@ extends Panel
 @export var basic_time_interval:float = 2
 @export var time_offset:float = 1
 
-
 @onready var amount_label = $Panel/MarginContainer/VBoxContainer/AmountLabel
 @onready var magic_card_container = preload("res://magic/magic_card/magic_card_container.tscn")
 @onready var spaw_position = $SpawPosition
 @onready var timer = $Timer
 
-const max_card_amounts:int=15
+const max_card_amounts:int=5
 const card_interval:int = 140
 
 var amounts_need_to_spawn:int:
@@ -30,7 +29,7 @@ var weighted_magic:WeightedTable = WeightedTable.new()
 func _ready():
 	for magic_card_ in magic_resources:
 		weighted_magic.add_item(magic_card_,magic_card_.show_weight)
-	start_random_cards(30)
+	start_random_cards(4)
 
 
 func start_random_cards(amounts:int)->void:

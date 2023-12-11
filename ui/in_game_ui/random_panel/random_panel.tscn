@@ -32,6 +32,7 @@ border_blend = true
 size = Vector2(173.5, 243)
 
 [node name="RandomPanel" type="Panel"]
+process_mode = 1
 material = SubResource("ShaderMaterial_qkn8w")
 custom_minimum_size = Vector2(2.08165e-12, 140)
 anchors_preset = 7
@@ -39,9 +40,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -443.0
+offset_left = 278.0
 offset_top = -139.0
-offset_right = 1157.0
+offset_right = 1153.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -74,12 +75,12 @@ position = Vector2(-86, 70)
 shape = SubResource("RectangleShape2D_qurg0")
 
 [node name="SpawPosition" type="Node2D" parent="."]
-position = Vector2(1600, 10)
+position = Vector2(875, 6)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 1435.0
-offset_right = 1598.0
+offset_left = 712.0
+offset_right = 875.0
 offset_bottom = 140.0
 pivot_offset = Vector2(107, 0)
 

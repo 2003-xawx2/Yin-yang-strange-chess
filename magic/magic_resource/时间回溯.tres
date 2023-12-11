@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://cr0y0n43fvaqm"]
 
 [ext_resource type="PackedScene" uid="uid://dletj04oc6xdb" path="res://magic/magic_scene/时间回溯/time_back_magic.tscn" id="1_loi0t"]
-[ext_resource type="Texture2D" uid="uid://oox8ovainomr" path="res://assets/drop/drop_icon/蹼.png" id="2_sn4ka"]
+[ext_resource type="Texture2D" uid="uid://csy27c8d8kif4" path="res://assets/magic_card/时间回溯卡牌.png" id="2_d14ld"]
 [ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_r5ul1"]
 
 [resource]
 script = ExtResource("3_r5ul1")
 show_weight = 1
-magic_icon = ExtResource("2_sn4ka")
+magic_icon = ExtResource("2_d14ld")
 magic = ExtResource("1_loi0t")

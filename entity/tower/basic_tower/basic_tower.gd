@@ -45,13 +45,13 @@ func _process(delta):
 		rotation = lerp_angle(rotation , target_rotation , 1-exp(-delta*rotate_acceleration))
 
 
-func _on_detect_area_body_entered(body:CharacterBody2D):
+func _on_detect_area_body_entered(body):
 	enemies = detect_area.get_overlapping_bodies()
 	enemies = enemies.filter(_filter)
 	change_timer_state()
 
 
-func _on_detect_area_body_exited(body:CharacterBody2D):
+func _on_detect_area_body_exited(body):
 	enemies = detect_area.get_overlapping_bodies()
 	enemies = enemies.filter(_filter)
 	change_timer_state()

@@ -224,6 +224,7 @@ hit_box = NodePath("../HitBox")
 max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 y_sort_enabled = true
 rotation = 1.5708
 shape = SubResource("CircleShape2D_hjixu")
@@ -239,11 +240,12 @@ autoplay = "walk"
 position = Vector2(-2, -29)
 scale = Vector2(3, 3)
 texture = ExtResource("3_3iywm")
-offset = Vector2(2, 13)
+offset = Vector2(0, 10)
 region_enabled = true
-region_rect = Rect2(88, 144, 52, 16)
+region_rect = Rect2(107, 0, 48, 45)
 
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

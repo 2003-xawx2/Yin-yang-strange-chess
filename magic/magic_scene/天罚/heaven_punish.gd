@@ -15,17 +15,16 @@ func settle_fail()->void:
 
 
 func settle_success()->void:
-	var choice:int = randi_range(1,4)
+	var choice:int = randi_range(1,3)
 	match choice:
 		1:
-			rain()
+			$AnimationPlayer.play("rain")
 		2:
-			clear()
+			$AnimationPlayer.play("clear")
 		3:
-			thunder()
-		4:
-			rain()
-			thunder()
+			$AnimationPlayer.play("thunder")
+	await $AnimationPlayer.animation_finished
+	queue_free()
 
 
 func rain()->void:

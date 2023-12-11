@@ -9,7 +9,7 @@
 custom_minimum_size = Vector2(2.08165e-12, 140)
 offset_left = -1.0
 offset_top = 1157.0
-offset_right = 707.0
+offset_right = 532.77
 offset_bottom = 1297.0
 script = ExtResource("1_j23l1")
 

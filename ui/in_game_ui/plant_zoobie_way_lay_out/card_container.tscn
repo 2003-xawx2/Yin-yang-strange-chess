@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://c78e0tdt8d4r"]
 
-[ext_resource type="Script" path="res://ui/in_game_ui/card_container/GridCardContainer.gd" id="1_gr3bs"]
+[ext_resource type="Script" path="res://ui/in_game_ui/plant_zoobie_way_lay_out/GridCardContainer.gd" id="1_gr3bs"]
 [ext_resource type="PackedScene" uid="uid://mhn18ulve8gm" path="res://entity/tower/basic_tower/basic_tower.tscn" id="2_nfm2s"]
 [ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="3_6d1gc"]
 [ext_resource type="Texture2D" uid="uid://cj16w06eae7bu" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile203.png" id="4_vt045"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cauuf8ln45577" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile206.png" id="7_w2j1e"]
 [ext_resource type="Texture2D" uid="uid://e6wijvyhshr7" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile026.png" id="8_ev0vf"]
 [ext_resource type="PackedScene" uid="uid://nmmk8bp87t0e" path="res://ui/in_game_ui/card_container/card_container.tscn" id="9_no3c5"]
-[ext_resource type="Script" path="res://ui/in_game_ui/card_container/StartGame.gd" id="10_0x4ul"]
+[ext_resource type="Script" path="res://ui/in_game_ui/plant_zoobie_way_lay_out/StartGame.gd" id="10_0x4ul"]
 
 [sub_resource type="Animation" id="Animation_5ones"]
 length = 0.001
