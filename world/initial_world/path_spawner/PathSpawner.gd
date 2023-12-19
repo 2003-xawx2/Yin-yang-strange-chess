@@ -47,6 +47,7 @@ func _sort(temp_a:Dictionary,temp_b:Dictionary)->bool:
 
 
 func _on_timer_timeout():
+	get_tree().call_group("order","queue_redraw")
 	if !random_spawn:
 		rule_spawn()
 	else:
@@ -54,7 +55,7 @@ func _on_timer_timeout():
 
 
 func rand_spawn()->void:
-	var start_position := randi_range(0,3)
+	var start_position :int = randi_range(0,3)
 	var end_position := (start_position+2)%4
 	spawn_enemy(randi_range(0,2),start_position/2+1,start_position,end_position)
 	timer.start(randf_range(0,1)/spawn_multipler)

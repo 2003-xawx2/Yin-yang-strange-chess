@@ -44,4 +44,5 @@ func change_modulate(object:Node,value:float)->void:
 func freeze()->void:
 	var enemies:Array = hurt_box.get_overlapping_bodies()
 	for enemy in enemies:
-		enemy.stop_frames = 60
+		if enemy.is_in_group("enemy"):
+			enemy.stop_frames = 60

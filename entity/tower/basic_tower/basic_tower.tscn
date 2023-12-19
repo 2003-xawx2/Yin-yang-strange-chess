@@ -20,7 +20,7 @@ radius = 400.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0c1ij"]
 radius = 154.052
 
-[node name="BasicTower" type="StaticBody2D"]
+[node name="BasicBase" type="StaticBody2D" groups=["base"]]
 collision_mask = 0
 script = ExtResource("1_21n1h")
 
@@ -36,12 +36,12 @@ metadata/_edit_use_anchors_ = true
 [node name="StaticCollison" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mbwkc")
 
-[node name="TowerImage" type="Sprite2D" parent="."]
+[node name="Image" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(2, 2)
 texture = ExtResource("2_c4aqh")
 
-[node name="BulletSpawnPosition" type="Marker2D" parent="TowerImage"]
+[node name="BulletSpawnPosition" type="Marker2D" parent="Image"]
 position = Vector2(-0.5001, -27.5)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)

@@ -34,5 +34,4 @@ offset_bottom = 125.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.203922)
 position = Vector2(65, 65)
-rotation = 1.5708
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3.3, 3.3)

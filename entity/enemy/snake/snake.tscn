@@ -202,11 +202,11 @@ radius = 13.0171
 [sub_resource type="CircleShape2D" id="CircleShape2D_nob0j"]
 radius = 1.0
 
-[node name="Snake" type="CharacterBody2D" groups=["enemy", "snake"]]
+[node name="Snake" type="CharacterBody2D" groups=["enemy", "order", "snake"]]
 y_sort_enabled = true
 scale = Vector2(3, 3)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_q3nru")
@@ -217,14 +217,16 @@ max_speed = 200.0
 acceleration = 5.0
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("2_vw17d")]
-offset_left = -10.3333
-offset_top = -45.6667
-offset_right = 11.6667
-offset_bottom = -41.6667
+offset_top = -61.0
+offset_right = 12.0
+offset_bottom = -57.0
 hit_box = NodePath("../HitArea")
 max_health = 10
 
 [node name="Graphic" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0.3333, -15.3333)
 
 [node name="SnakeSprite" type="Sprite2D" parent="Graphic"]
 texture = ExtResource("3_d1imk")
@@ -240,7 +242,8 @@ collision_mask = 2
 polygon = PackedVector2Array(-22.9167, 7.91667, -23.3333, 15, -14.1667, 17.5, 11.6667, 17.9167, 14.1667, 9.58333, -12.5, 9.58333, -3.33333, -2.91667, -11.25, -3.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.33333)
+position = Vector2(-3.3617e-05, -2.99997)
+rotation = 1.57079
 shape = SubResource("CapsuleShape2D_nikpc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -250,8 +253,8 @@ libraries = {
 autoplay = "walk"
 
 [node name="DetectArea" type="Area2D" parent="."]
-position = Vector2(0, -4)
-collision_layer = 0
+position = Vector2(0.3333, -19.3333)
+collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
@@ -273,7 +276,7 @@ shape = SubResource("CircleShape2D_xsvuc")
 debug_color = Color(0.811765, 0.00392157, 0.984314, 0.258824)
 
 [node name="HurtArea" type="Area2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0.3333, -13.3333)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("6_ljg02")
@@ -285,6 +288,7 @@ disabled = true
 debug_color = Color(1, 0.329412, 0.560784, 1)
 
 [node name="EnemyMoveBetter" parent="." instance=ExtResource("7_d50u8")]
+position = Vector2(0.333333, -3)
 scale = Vector2(0.333, 0.333)
 
 [node name="Timer" type="Node" parent="."]
@@ -304,6 +308,7 @@ path_postprocessing = 1
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("8_o66p7")]
+position = Vector2(0.3333, -15.3333)
 health_manager = NodePath("../HealthBar")
 droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("9_qrqm8"), ExtResource("10_dbimy"), ExtResource("11_jqpxo")])
 
@@ -314,3 +319,4 @@ droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 [connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Timer/AffectTimer" to="." method="_on_affect_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

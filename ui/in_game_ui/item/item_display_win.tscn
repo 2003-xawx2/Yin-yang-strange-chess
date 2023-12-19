@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://djt33pdyqv4gn"]
+
+[ext_resource type="Texture2D" uid="uid://bdddph0yjgd3e" path="res://assets/enemy/blood.png" id="1_7cyub"]
+[ext_resource type="Script" path="res://ui/in_game_ui/item/item_display_win.gd" id="1_cnfb2"]
+
+[node name="consume" type="HBoxContainer"]
+script = ExtResource("1_cnfb2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_7cyub")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

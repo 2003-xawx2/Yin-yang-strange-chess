@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://b6sedrlygy75x"]
 
 [ext_resource type="PackedScene" uid="uid://cmmwixbqgdegd" path="res://magic/magic_scene/蛆怒症/more_maggot.tscn" id="1_n6ems"]
-[ext_resource type="Texture2D" uid="uid://e6wijvyhshr7" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile026.png" id="2_mrnm4"]
+[ext_resource type="Texture2D" uid="uid://b462yav116pa" path="res://assets/magic_card/石榴蛆 卡牌.png" id="2_dtr80"]
 [ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_o41xr"]
 
 [resource]
 script = ExtResource("3_o41xr")
 show_weight = 1
-magic_icon = ExtResource("2_mrnm4")
+magic_icon = ExtResource("2_dtr80")
 magic = ExtResource("1_n6ems")

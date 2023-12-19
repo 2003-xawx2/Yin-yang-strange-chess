@@ -30,7 +30,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drwi5"]
-radius = 52.0865
+radius = 31.0644
 
 [sub_resource type="Animation" id="Animation_q1xuk"]
 length = 0.001
@@ -289,8 +289,7 @@ radius = 56.4358
 [sub_resource type="CircleShape2D" id="CircleShape2D_euq25"]
 radius = 83.0542
 
-[node name="Frog" type="CharacterBody2D" groups=["enemy", "frog"]]
-z_index = 1
+[node name="Frog" type="CharacterBody2D" groups=["enemy", "frog", "order"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
@@ -304,16 +303,16 @@ attack_interval = 1.0
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("1_pvpyo")]
 offset_left = -39.0
-offset_top = -96.0
+offset_top = -161.0
 offset_right = 40.0
-offset_bottom = -85.0
+offset_bottom = -150.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qf54n")
 theme_override_styles/fill = SubResource("StyleBoxFlat_chbng")
 hit_box = NodePath("../HitBox")
 max_health = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 11)
+position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_drwi5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -325,7 +324,7 @@ autoplay = "walk"
 
 [node name="frider 无脚(1)" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7psc1")
-position = Vector2(2, -18)
+position = Vector2(2, -83)
 scale = Vector2(3, 3)
 texture = ExtResource("3_qa12b")
 offset = Vector2(-1, 17)
@@ -341,6 +340,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_ngf32")
 
 [node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -65)
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("2_clbrf")
@@ -351,6 +351,7 @@ position = Vector2(-2, 11)
 shape = SubResource("CircleShape2D_ydla2")
 
 [node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(0, -65)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_x45du")
@@ -362,6 +363,7 @@ shape = SubResource("CircleShape2D_euq25")
 disabled = true
 
 [node name="EnemyMoveBetter" parent="." instance=ExtResource("7_qkq1r")]
+position = Vector2(1, -15)
 
 [node name="Timer" type="Node" parent="."]
 
@@ -381,6 +383,7 @@ script = ExtResource("4_46h4q")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("9_bwt8k")]
+position = Vector2(0, -65)
 health_manager = NodePath("../HealthBar")
 droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("10_sf003"), ExtResource("11_3he33"), ExtResource("12_hhnkt")])
 
@@ -391,3 +394,4 @@ droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 [connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Timer/AffectedTimer" to="." method="_on_affected_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

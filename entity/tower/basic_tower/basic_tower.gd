@@ -45,7 +45,7 @@ func _process(delta):
 		rotation = lerp_angle(rotation , target_rotation , 1-exp(-delta*rotate_acceleration))
 
 
-func _on_detect_area_body_entered(body):
+func _on_detect_area_body_entered(body:CharacterBody2D):
 	enemies = detect_area.get_overlapping_bodies()
 	enemies = enemies.filter(_filter)
 	change_timer_state()
@@ -162,10 +162,10 @@ func settle_fail()->void:
 
 
 func settle_success()->void:
-	self.global_position = self.settle_place.global_position
+	global_position = settle_place.global_position
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self,"modulate:a",1,.3).from(.6)
-	self.attracted_to = true
+	attracted_to = true
 #	self.scale = Vector2.ONE*1.0/9
-	self.settle_place.set_unavailable()
-	self.settle_place.tower = self
+	settle_place.set_unavailable()
+	settle_place.tower = self

@@ -27,15 +27,15 @@ func copy()->void:
 		copy_maggot(enemy)
 
 
-func copy_maggot(copy:maggot)->void:
-	if copy == null:
+func copy_maggot(_copy:maggot)->void:
+	if _copy == null:
 		return
 	var maggot_instance=  maggot_scene.instantiate()
-	copy.get_parent().add_child(maggot_instance)
-	maggot_instance.spawn_position = copy.spawn_position
-	maggot_instance.target_global_position = copy.target_global_position+Vector2.UP*30
-	maggot_instance.faction = copy.faction
-	maggot_instance.global_position = copy.global_position
+	_copy.get_parent().add_child(maggot_instance)
+	maggot_instance.spawn_position = _copy.spawn_position
+	maggot_instance.target_global_position = _copy.target_global_position+Vector2.UP*30
+	maggot_instance.faction = _copy.faction
+	maggot_instance.global_position = _copy.global_position
 
 
 func _filter(enemy)->bool:

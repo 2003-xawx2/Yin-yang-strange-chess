@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqpcqyf0qffky"]
 
 [ext_resource type="Script" path="res://entity/tower/basic_tower/basic_tower_panel.gd" id="1_okasp"]
-[ext_resource type="Texture2D" uid="uid://cauuf8ln45577" path="res://assets/tower_defense/PNG/Default size/towerDefense_tile206.png" id="2_r432f"]
+[ext_resource type="Texture2D" uid="uid://dyii2uwpwphw2" path="res://entity/tower/base/bone_base/底座.png" id="2_nwwye"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1dea"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 0.270588)
@@ -48,12 +48,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h1dea")
 script = ExtResource("1_okasp")
+click_modulate = Color(0.858824, 0.47451, 0.862745, 1)
+not_consumed_color = Color(0.309804, 0.309804, 0.309804, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(60, 60)
-rotation = 1.5708
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_r432f")
+scale = Vector2(3.3, 3.3)
+texture = ExtResource("2_nwwye")
 
 [node name="CoolColor" type="Panel" parent="."]
 layout_mode = 1
@@ -75,6 +76,51 @@ libraries = {
 "": SubResource("AnimationLibrary_e7wub")
 }
 
+[node name="InformationPanel" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_left = 1.0
+offset_top = -167.0
+offset_right = 280.0
+offset_bottom = -4.0
+pivot_offset = Vector2(0, 133)
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="description" type="Panel" parent="InformationPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InformationPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InformationPanel/HBoxContainer"]
+custom_minimum_size = Vector2(99.7, 2.08165e-12)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="InformationPanel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 28.2)
+layout_mode = 2
+text = "消耗材料： "
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="InformationPanel/HBoxContainer"]
+custom_minimum_size = Vector2(152.22, 127.68)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "dwjhkecxcededededdeded"
+autowrap_mode = 3
+
+[node name="HoverTimer" type="Timer" parent="InformationPanel"]
+wait_time = 1.3
+one_shot = true
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="InformationPanel/HoverTimer" to="." method="_on_hover_timer_timeout"]

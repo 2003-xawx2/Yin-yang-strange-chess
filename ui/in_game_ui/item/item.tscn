@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2tqxya7186np"]
+[gd_scene load_steps=10 format=3 uid="uid://c2tqxya7186np"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/item/item.gd" id="1_j23l1"]
-[ext_resource type="Texture2D" uid="uid://bdddph0yjgd3e" path="res://assets/enemy/blood.png" id="1_ndkif"]
+[ext_resource type="Texture2D" uid="uid://dd8lnqpuvsa1p" path="res://assets/drop/drop_icon/毒牙.png" id="2_66ajn"]
 [ext_resource type="Texture2D" uid="uid://oox8ovainomr" path="res://assets/drop/drop_icon/蹼.png" id="3_ib44j"]
+[ext_resource type="Texture2D" uid="uid://2a1d3h77vlti" path="res://assets/drop/drop_icon/蛇信子.png" id="3_q8tjl"]
 [ext_resource type="Texture2D" uid="uid://uur1ba7g5jhd" path="res://assets/drop/drop_icon/蜘蛛丝.png" id="4_1vf1a"]
+[ext_resource type="Texture2D" uid="uid://d03qgvj2oqmq6" path="res://assets/drop/drop_icon/阴足.png" id="5_curvw"]
+[ext_resource type="Texture2D" uid="uid://c34sesk45sy5j" path="res://assets/drop/drop_icon/环节.png" id="6_qbb8q"]
+[ext_resource type="Texture2D" uid="uid://dtvta0pn46frq" path="res://assets/drop/drop_icon/骨头.png" id="8_ej1jr"]
+[ext_resource type="Texture2D" uid="uid://iju8iavfsse8" path="res://assets/drop/drop_icon/头.png" id="9_6a83b"]
 
 [node name="Item" type="Panel"]
 custom_minimum_size = Vector2(2.08165e-12, 140)
@@ -37,7 +42,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/SnakeDrop/SnakeTooth"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("2_66ajn")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/SnakeDrop/SnakeTooth"]
 custom_minimum_size = Vector2(60, 60)
@@ -53,7 +58,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/SnakeDrop/SnakeTail"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("3_q8tjl")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/SnakeDrop/SnakeTail"]
 custom_minimum_size = Vector2(60, 60)
@@ -107,7 +112,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MaggotDrop/MaggotFoot"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("5_curvw")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MaggotDrop/MaggotFoot"]
 custom_minimum_size = Vector2(60, 60)
@@ -123,7 +128,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MaggotDrop/MaggotLink"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("6_qbb8q")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MaggotDrop/MaggotLink"]
 custom_minimum_size = Vector2(60, 60)
@@ -142,7 +147,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MiscDrop/Bone"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("8_ej1jr")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MiscDrop/Bone"]
 custom_minimum_size = Vector2(60, 60)
@@ -158,7 +163,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Dropper/MiscDrop/Coin"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_ndkif")
+texture = ExtResource("9_6a83b")
 
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MiscDrop/Coin"]
 custom_minimum_size = Vector2(60, 60)

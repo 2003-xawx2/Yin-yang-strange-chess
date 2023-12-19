@@ -13,8 +13,8 @@
 [ext_resource type="Resource" uid="uid://d4e1e8lwotj6l" path="res://entity/enemy/drop/maggot_link.tres" id="11_8yosg"]
 [ext_resource type="PackedScene" uid="uid://bxyf16v8l6mwg" path="res://c_manager/time/enemy_time_back/enemy_time_back.tscn" id="12_wa0k1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hjixu"]
-radius = 25.0799
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7k6h"]
+height = 42.0
 
 [sub_resource type="Animation" id="Animation_qobsm"]
 length = 0.001
@@ -199,7 +199,7 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_iujtn"]
 radius = 1.0
 
-[node name="Maggot" type="CharacterBody2D" groups=["enemy", "maggot"]]
+[node name="Maggot" type="CharacterBody2D" groups=["enemy", "maggot", "order"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
@@ -216,18 +216,18 @@ attack_interval = 1.0
 [node name="HealthBar" parent="." node_paths=PackedStringArray("hit_box") instance=ExtResource("1_pr854")]
 modulate = Color(1, 0.239216, 0.239216, 0)
 offset_left = -4.0
-offset_top = -8.0
+offset_top = -51.5
 offset_right = 16.0
-offset_bottom = -4.0
+offset_bottom = -47.5
 scale = Vector2(0.34, 0.34)
 hit_box = NodePath("../HitBox")
 max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 y_sort_enabled = true
+position = Vector2(4.54747e-13, -10)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_hjixu")
+shape = SubResource("CapsuleShape2D_t7k6h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../maggot 的副本")
@@ -237,7 +237,7 @@ libraries = {
 autoplay = "walk"
 
 [node name="maggot 的副本" type="Sprite2D" parent="."]
-position = Vector2(-2, -29)
+position = Vector2(-2, -72.5)
 scale = Vector2(3, 3)
 texture = ExtResource("3_3iywm")
 offset = Vector2(0, 10)
@@ -276,6 +276,7 @@ disabled = true
 debug_color = Color(0.854902, 0, 0.364706, 1)
 
 [node name="EnemyMoveBetter" parent="." instance=ExtResource("6_m0ip8")]
+position = Vector2(-1, -10)
 scale = Vector2(0.5, 0.5)
 
 [node name="machine_state" type="Node" parent="."]
@@ -302,6 +303,7 @@ text = "pathfollowing"
 horizontal_alignment = 1
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("8_ilbjp")]
+position = Vector2(0, -43.5)
 drop_percent = 0.12
 health_manager = NodePath("../HealthBar")
 droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("9_7j34y"), ExtResource("10_pkse7"), ExtResource("11_8yosg")])
@@ -313,3 +315,4 @@ droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 [connection signal="timeout" from="Timer/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Timer/AffectTimer" to="." method="_on_affect_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

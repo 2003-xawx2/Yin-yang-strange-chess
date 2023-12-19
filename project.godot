@@ -172,6 +172,8 @@ aseprite_wizard.plugin={
 2d_physics/layer_5="YANG_hurt_box"
 2d_physics/layer_6="Tower"
 2d_physics/layer_7="ui"
+2d_physics/layer_8="human_on_base"
+2d_physics/layer_9="base"
 
 [physics]
 

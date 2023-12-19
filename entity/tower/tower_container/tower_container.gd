@@ -29,7 +29,7 @@ func _on_ui_operation_container_gui_input(event):
 		return
 	if tween != null and tween.is_running():
 		await tween.finished
-	if event is InputEventMouseButton and event.button_mask == 1:
+	if event is InputEventMouseButton and event.button_mask == 2:
 		if ui_operation_container.scale == Vector2.ONE:
 			change_ui_scale(Vector2.ONE*.21,0)
 		else:

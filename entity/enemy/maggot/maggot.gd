@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends basic_enemy
 class_name maggot
 
 enum State{
@@ -68,6 +68,7 @@ var target_rotation :float
 
 
 func _ready():
+	
 	health_bar.value = health_bar.max_value
 
 
@@ -231,6 +232,8 @@ func update_detect_enemy():
 func _filter_faction(enemy:Node2D)->bool:
 	if enemy == null:
 		return false
+	if !enemy.is_in_group("enemy"):
+		return false
 	if !enemy is CharacterBody2D:
 		return false
 	if enemy.faction == faction:
@@ -270,3 +273,8 @@ func _on_detect_area_body_exited(body):
 
 func _on_affect_timer_timeout():
 	faction = randi_range(1,2)
+
+
+func _on_navigation_agent_2d_target_reached():
+	if navigation_agent_2d.target_position == target_global_position:
+		on_arrived()

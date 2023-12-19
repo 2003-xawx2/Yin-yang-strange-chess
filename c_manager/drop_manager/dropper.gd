@@ -17,8 +17,8 @@ func _ready():
 
 func init()->void:
 	await get_tree().create_timer(.3).timeout
-	var target_global_position:Vector2 = Global.item.item_dictionary[type].global_position/Global.camera.zoom+\
-	Global.camera.global_position-get_viewport_rect().size/2/Global.camera.zoom+Vector2.ONE*35
+	#var target_global_position:Vector2 = Global.item.item_dictionary[type].global_position/Global.camera.zoom+\
+	#Global.camera.global_position-get_viewport_rect().size/2/Global.camera.zoom+Vector2.ONE*35
 	set_process(true)
 	#var tween:=create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 	#tween.set_parallel()

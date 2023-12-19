@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvvswmn44br2f"]
+
+[ext_resource type="Script" path="res://entity/tower/base/bone_base/bone_base.gd" id="1_pafj0"]
+[ext_resource type="Texture2D" uid="uid://dyii2uwpwphw2" path="res://entity/tower/base/bone_base/底座.png" id="2_1yfum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o704m"]
+size = Vector2(105, 130)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ovmp"]
+radius = 137.058
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7e38"]
+radius = 22.91
+
+[node name="BoneBase" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_pafj0")
+metadata/_edit_horizontal_guides_ = [-118.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -10)
+shape = SubResource("RectangleShape2D_o704m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 3)
+scale = Vector2(4.81, 4.81)
+texture = ExtResource("2_1yfum")
+
+[node name="SettleArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SettleArea"]
+shape = SubResource("CircleShape2D_0ovmp")
+
+[node name="CaptrueArea" type="Area2D" parent="."]
+position = Vector2(0, -26)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptrueArea"]
+shape = SubResource("CircleShape2D_b7e38")
+
+[connection signal="area_entered" from="SettleArea" to="." method="_on_settle_area_area_entered"]
+[connection signal="area_exited" from="SettleArea" to="." method="_on_settle_area_area_exited"]
+[connection signal="area_entered" from="CaptrueArea" to="." method="_on_captrue_area_area_entered"]
+[connection signal="area_exited" from="CaptrueArea" to="." method="_on_captrue_area_area_exited"]

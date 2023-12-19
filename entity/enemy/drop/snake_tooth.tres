@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="dropper" load_steps=2 format=3 uid="uid://chi6h8n1rgg1j"]
+[gd_resource type="Resource" script_class="dropper" load_steps=3 format=3 uid="uid://chi6h8n1rgg1j"]
 
 [ext_resource type="Script" path="res://misc/resource/csutom/dropper.gd" id="1_cyvui"]
+[ext_resource type="Texture2D" uid="uid://dd8lnqpuvsa1p" path="res://assets/drop/drop_icon/毒牙.png" id="2_qreyp"]
 
 [resource]
 script = ExtResource("1_cyvui")
 weight = 1
+sprite = ExtResource("2_qreyp")
 type = 2
