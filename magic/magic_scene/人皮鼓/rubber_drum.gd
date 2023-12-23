@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var except_range:float = 228
-var strong_shader:ShaderMaterial = preload("res://entity/enemy/frog/mutation.tres")
+var strong_shader:ShaderMaterial = preload("res://entity/enemy/initial_enemy/frog/mutation.tres")
 
 
 func _ready():
@@ -19,8 +19,8 @@ func settle_success()->void:
 	for _frog in enemies:
 		var tween:=create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		tween.tween_property(_frog,"scale",Vector2.ONE*1.4,1)
-		_frog.frider.material = strong_shader
-		_frog.hurt_area.damage*=2
+		_frog.enemy_sprite.material = strong_shader
+		_frog.hurt_box.damage*=2
 	change_modulate($"攻击范围2",0)
 	$AnimationPlayer.play("attack!")
 	await $AnimationPlayer.animation_finished

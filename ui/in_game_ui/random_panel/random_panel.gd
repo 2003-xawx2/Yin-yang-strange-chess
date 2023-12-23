@@ -59,7 +59,7 @@ func _on_timer_timeout():
 
 func _on_button_pressed():
 	var amounts :int= Global.item.item_amounts[Global.item.bone]
-	if amounts <= expence_on_ran:
+	if amounts < expence_on_ran:
 		return
 	Global.item.collect(dropper.Drop.bone,-expence_on_ran)
 	amounts_need_to_spawn+=1

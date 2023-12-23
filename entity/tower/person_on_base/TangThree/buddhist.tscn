@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2ro0a4d53v4x"]
+
+[ext_resource type="PackedScene" uid="uid://b4oll5g55rr04" path="res://entity/tower/person_on_base/basic/basic_bullet.tscn" id="1_22nff"]
+[ext_resource type="Script" path="res://entity/tower/person_on_base/TangThree/buddhist.gd" id="2_kebw4"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="3_fgq4l"]
+[ext_resource type="FontFile" uid="uid://ml3cedincjxc" path="res://assets/ui/fonts/Uchen-Regular.ttf" id="4_7r3q0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ns3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6hyl"]
+size = Vector2(239, 38)
+
+[node name="Buddhist" instance=ExtResource("1_22nff")]
+script = ExtResource("2_kebw4")
+speed = 1
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_5ns3p")
+disabled = true
+
+[node name="HurtBox" type="Area2D" parent="." index="3"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_fgq4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(3.5, -7)
+shape = SubResource("RectangleShape2D_f6hyl")
+
+[node name="Label" type="Label" parent="." index="4"]
+modulate = Color(1, 1, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_7r3q0")
+theme_override_font_sizes/font_size = 50
+text = "ཨཝེརཏིོཔའསདྒཧ"
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

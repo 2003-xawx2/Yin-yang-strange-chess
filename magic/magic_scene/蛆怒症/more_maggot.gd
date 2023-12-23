@@ -1,6 +1,6 @@
 extends Node2D
 
-var maggot_scene:=preload("res://entity/enemy/maggot/maggot.tscn")
+var maggot_scene:=preload("res://entity/enemy/initial_enemy/maggot/d_maggot.tscn")
 @export var except_range:float = 228
 
 func _ready():

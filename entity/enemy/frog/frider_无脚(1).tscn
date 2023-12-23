@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://df3ikvomfw717"]
-
-[ext_resource type="PackedScene" uid="uid://cvkd3ykgdq5q5" path="res://assets/enemy/frog/frider 无脚(1).aseprite" id="1_v7thv"]
-
-[node name="frider 无脚(1)" instance=ExtResource("1_v7thv")]
-offset = Vector2(-8, -8)
-region_rect = Rect2(174, 53, 70, 65)

@@ -7,16 +7,16 @@
 [resource]
 script = ExtResource("2_ccros")
 fail_settle_cool_time = 1.0
-success_settle_cool_time = 30.0
+success_settle_cool_time = 1.0
 tower_sprite = ExtResource("3_jf7hv")
 basic_tower = ExtResource("1_7pmu5")
 description = "骨头底座：
 用蛙蛛的蛛丝捆绑骨头做成的精致底座"
 consume = {
-"bone": 2,
+"bone": 0,
 "coin": 0,
 "frog_leg": 0,
-"frog_silk": 1,
+"frog_silk": 0,
 "maggot_foot": 0,
 "maggot_link": 0,
 "snake_tail": 0,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=34 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="Script" path="res://world/initial_world/initial_world.gd" id="1_5lflu"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
@@ -152,6 +152,14 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1181, 98, -1032, 63, -985, -31, -925, -95, -607, -360, -538, -364, -494, -318, -417, -288, -247, -351, -84, -457, -224, -337, -322, -217, -363, -27, -1, -36, 329, -30, 312, -212, 214, -348, 58, -455, 269, -403, 470, -408, 575, -384, 953, -71, 964, 16, 1052, 98, 2262, 103, 2083, -224, 1212, -247, 1099, -154, 1054, -139, 997, -142, 629, -425, 571, -486, 488, -534, -7, -562, -555, -466, -637, -429, -942, -166, -991, -138, -1052, -138, -1131, -156, -1240, -249, -2140, -256, -2363, 98, -1219, 99), PackedVector2Array(-2213, 105, -2146, 463, -1274, 444, -1165, 308, -1129, 285, -1078, 275, -1032, 285, -651, 593, -584, 644, -506, 681, -387, 714, -54, 714, 297, 712, 473, 657, 615, 568, 968, 282, 1022, 265, 1081, 273, 1180, 319, 1214, 433, 1328, 461, 2083, 446, 2233, 106, 1054, 101, 932, 142, 913, 231, 570, 516, 507, 542, 437, 550, 294, 552, 223, 515, 165, 428, 149, 303, 204, 231, 301, 159, 321, -8, 2, -23, -363, -14, -273, 209, -189, 245, -146, 334, -167, 464, -259, 542, -461, 550, -540, 545, -605, 529, -972, 238, -1015, 192, -1097, 142, -1217, 103)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="InputEventKey" id="InputEventKey_5yb8g"]
+device = -1
+keycode = 4194438
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_m4bh4"]
+events = [SubResource("InputEventKey_5yb8g")]
+
 [node name="InitialWorld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5lflu")
@@ -286,10 +294,36 @@ collision_mask = 2
 position = Vector2(975.5, -85)
 shape = SubResource("RectangleShape2D_kmxl8")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+polygon = PackedVector2Array(-66, 890, 314, 1224, 181, 1232, -89, 1005)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(137, -180)
+polygon = PackedVector2Array(-41, 948, 314, 1224, 276, 1275, -89, 1005)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1593, -709)
+polygon = PackedVector2Array(-41, 948, 314, 1224, 276, 1275, -89, 1005)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+polygon = PackedVector2Array(329, 166, -10, 462, -82, 415, 286, 111, 347, 113)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(169, 149)
+polygon = PackedVector2Array(-10, 462, -82, 415, 286, 111, 342, 179)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1710, 774)
+polygon = PackedVector2Array(-12, 471, -82, 415, 286, 111, 342, 179)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1551, 619)
+polygon = PackedVector2Array(-12, 471, -82, 415, 286, 111, 342, 179)
+
 [node name="PathSpawner" parent="." instance=ExtResource("2_krvyn")]
 y_sort_enabled = true
 random_spawn = true
-spawn_multipler = 0.5
+spawn_multipler = 0.3
 PathArray = Array[ExtResource("17_xe5gv")]([ExtResource("15_q648t"), ExtResource("16_7x6io"), SubResource("Resource_wq4de"), SubResource("Resource_c4l2k")])
 
 [node name="left_top" type="Node2D" parent="PathSpawner"]
@@ -318,6 +352,7 @@ zoom_adjust_percent = 0.08
 [node name="Button" type="Button" parent="InGameUI"]
 offset_right = 93.0
 offset_bottom = 42.0
+shortcut = SubResource("Shortcut_m4bh4")
 
 [connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]

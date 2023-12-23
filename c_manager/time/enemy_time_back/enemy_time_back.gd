@@ -11,22 +11,22 @@ var index:int = 0:
 
 
 func _on_timer_timeout():
-	if get_parent().faction == Global.Faction.Ying:
+	if owner.faction == Global.Faction.Ying:
 		remove_from_group("yang_time_back")
 		add_to_group("ying_time_back")
-	if get_parent().faction == Global.Faction.Yang:
+	if owner.faction == Global.Faction.Yang:
 		remove_from_group("ying_time_back")
 		add_to_group("yang_time_back")
 	if time_back.size()<12:
-		time_back.append(get_parent().global_position)
+		time_back.append(owner.global_position)
 	else:
-		time_back[index] =get_parent().global_position
+		time_back[index] =owner.global_position
 	index+=1
 
 
 func load()->void:
 	if time_back.size()<12:
-		get_parent().global_position = time_back[0]
+		owner.global_position = time_back[0]
 	else:
-		get_parent().global_position = time_back[index]
-	get_parent().health_bar.current_health = get_parent().health_bar.max_health
+		owner.global_position = time_back[index]
+	owner.health_manager.current_health = owner.health_manager.max_health

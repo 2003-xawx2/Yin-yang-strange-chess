@@ -13,12 +13,12 @@ basic_tower = ExtResource("1_7gx7i")
 description = "风之使：
 站稳脚跟哦"
 consume = {
-"bone": 1,
+"bone": 0,
 "coin": 0,
 "frog_leg": 0,
 "frog_silk": 0,
 "maggot_foot": 0,
 "maggot_link": 0,
-"snake_tail": 1,
-"snake_tooth": 1
+"snake_tail": 0,
+"snake_tooth": 0
 }

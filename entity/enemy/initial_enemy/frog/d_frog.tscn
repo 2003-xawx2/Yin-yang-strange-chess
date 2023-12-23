@@ -1,0 +1,331 @@
+[gd_scene load_steps=19 format=3 uid="uid://bt07cxg87dxwb"]
+
+[ext_resource type="PackedScene" uid="uid://cu6em875vau65" path="res://entity/enemy/basic_enemy/basic_enemy.tscn" id="1_5jw4i"]
+[ext_resource type="Script" path="res://entity/enemy/initial_enemy/frog/d_frog.gd" id="2_odx8i"]
+[ext_resource type="Resource" uid="uid://bmv31tqd68f5q" path="res://entity/enemy/drop/frog_leg.tres" id="3_al3gp"]
+[ext_resource type="Shader" path="res://entity/enemy/initial_enemy/frog/frog.gdshader" id="3_yxhsf"]
+[ext_resource type="Texture2D" uid="uid://cypxqtgmygvyx" path="res://assets/enemy/frog/frider 无脚(1).png" id="4_1ag0s"]
+[ext_resource type="Resource" uid="uid://ogo7dyr0i7j3" path="res://entity/enemy/drop/frog_silk.tres" id="4_ysf6d"]
+[ext_resource type="Resource" uid="uid://c4cybhmod4kwp" path="res://entity/enemy/drop/bone.tres" id="5_en0a4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysaqn"]
+radius = 25.0799
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7psc1"]
+resource_local_to_scene = true
+shader = ExtResource("3_yxhsf")
+shader_parameter/dist = 16.0
+shader_parameter/alpha = 1.0
+shader_parameter/modulate = Color(0.909804, 0.886275, 0.886275, 1)
+
+[sub_resource type="Animation" id="Animation_q1xuk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Area/HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("./EnemyCollision:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3aurh"]
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-1, 17), Vector2(0, -4), Vector2(-8, -8), Vector2(-1, 2), Vector2(1, 13), Vector2(0, 27), Vector2(-1, 19), Vector2(-1, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(0, 83, 60, 37), Rect2i(0, 120, 60, 37), Rect2i(84, 70, 60, 73), Rect2i(174, 53, 70, 65), Rect2i(0, 0, 84, 83), Rect2i(84, 0, 90, 70), Rect2i(144, 118, 91, 40), Rect2i(174, 0, 88, 53), Rect2i(0, 83, 60, 37)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_jumping_mode"
+}, {
+"args": [false],
+"method": &"set_jumping_mode"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("./Area/HurtBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("./EnemyCollision:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 2.08165e-12), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_crycd"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-1, 20), Vector2(1, 19), Vector2(0, 19), Vector2(1, 19), Vector2(2, 18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(0, 157, 47, 37), Rect2i(200, 158, 44, 35), Rect2i(79, 178, 39, 35), Rect2i(118, 193, 36, 35), Rect2i(166, 158, 34, 46)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("./Graphic/EnemySprite:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0d5dk"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 19), Vector2(-2, 19), Vector2(-1, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(0, 194, 29, 35), Rect2i(118, 158, 48, 35), Rect2i(60, 143, 58, 35), Rect2i(0, 83, 60, 37)]
+}
+
+[sub_resource type="Animation" id="Animation_c7105"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-1, 16), Vector2(0, -11), Vector2(0, 9), Vector2(1, 28), Vector2(0, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(244, 169, 29, 35), Rect2i(244, 53, 28, 58), Rect2i(244, 111, 28, 58), Rect2i(144, 70, 30, 48), Rect2i(154, 204, 30, 17), Rect2i(229, 204, 30, 17), Rect2i(200, 193, 29, 35)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_jumping_mode"
+}, {
+"args": [false],
+"method": &"set_jumping_mode"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0swyh"]
+_data = {
+"RESET": SubResource("Animation_q1xuk"),
+"attack": SubResource("Animation_3aurh"),
+"die": SubResource("Animation_crycd"),
+"ready": SubResource("Animation_0d5dk"),
+"walk": SubResource("Animation_c7105")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j732j"]
+radius = 360.001
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v18np"]
+radius = 37.1214
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qayo"]
+radius = 64.0312
+
+[node name="Frog" groups=["frog"] instance=ExtResource("1_5jw4i")]
+motion_mode = 1
+script = ExtResource("2_odx8i")
+graphic_scale = -1.0
+Ying_Modulate = Color(0.627451, 0.827451, 0.764706, 1)
+Yang_Modulate = Color(0.815686, 0.823529, 0.717647, 1)
+Human_Modulate = Color(1, 0.596078, 0.815686, 1)
+first_attack_time = 0.9
+attack_interval = 1.4
+attack_range = 600.0
+
+[node name="Label" parent="." index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyCollision" parent="." index="1"]
+position = Vector2(1, -13)
+shape = SubResource("CircleShape2D_ysaqn")
+
+[node name="DropManager" parent="." index="2"]
+droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("3_al3gp"), ExtResource("4_ysf6d"), ExtResource("5_en0a4")])
+
+[node name="HealthManager" parent="." index="3"]
+offset_left = -37.0
+offset_top = 34.0
+offset_right = 38.0
+offset_bottom = 46.0
+max_health = 12
+
+[node name="EnemySprite" parent="Graphic" index="0"]
+self_modulate = Color(0.403922, 0.388235, 0.392157, 1)
+material = SubResource("ShaderMaterial_7psc1")
+position = Vector2(2, -83)
+scale = Vector2(3, 3)
+texture = ExtResource("4_1ag0s")
+offset = Vector2(2, 18)
+region_enabled = true
+region_rect = Rect2(166, 158, 34, 46)
+
+[node name="AnimationPlayer" parent="Graphic" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_0swyh")
+}
+
+[node name="CollisionShape2D" parent="Area/DetectArea" index="0"]
+position = Vector2(0, -37)
+shape = SubResource("CircleShape2D_j732j")
+
+[node name="CollisionShape2D" parent="Area/HitBox" index="0"]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_v18np")
+
+[node name="HurtBox" parent="Area" index="2"]
+damage = 2
+
+[node name="CollisionShape2D" parent="Area/HurtBox" index="0"]
+position = Vector2(-2, -40)
+shape = SubResource("CircleShape2D_8qayo")
+disabled = true
+
+[node name="MoveComponent" parent="Component" index="6"]
+acceleration = 100

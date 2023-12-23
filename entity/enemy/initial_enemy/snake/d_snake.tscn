@@ -1,0 +1,260 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxmkt16cl0s3a"]
+
+[ext_resource type="PackedScene" uid="uid://cu6em875vau65" path="res://entity/enemy/basic_enemy/basic_enemy.tscn" id="1_bj1y5"]
+[ext_resource type="Script" path="res://entity/enemy/initial_enemy/snake/d_snake.gd" id="2_nvhi2"]
+[ext_resource type="Resource" uid="uid://b52wj2x3uxhm5" path="res://entity/enemy/drop/snake_tail.tres" id="2_xmcmk"]
+[ext_resource type="Resource" uid="uid://chi6h8n1rgg1j" path="res://entity/enemy/drop/snake_tooth.tres" id="3_bpn1e"]
+[ext_resource type="Resource" uid="uid://c4cybhmod4kwp" path="res://entity/enemy/drop/bone.tres" id="5_8otgt"]
+[ext_resource type="Texture2D" uid="uid://cbtb3gkjg02qb" path="res://assets/enemy/sanke/snake64.png" id="5_p6p5f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_573xx"]
+radius = 12.9412
+height = 57.6471
+
+[sub_resource type="Animation" id="Animation_gwv1k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area/HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/EnemySprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/EnemySprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b5ql6"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area/HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/EnemySprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_u8jqk"]
+resource_name = "die"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/EnemySprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/EnemySprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_2471f"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_walking"
+}, {
+"args": [false],
+"method": &"set_walking"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0i8e"]
+_data = {
+"RESET": SubResource("Animation_gwv1k"),
+"attack": SubResource("Animation_b5ql6"),
+"die": SubResource("Animation_u8jqk"),
+"walk": SubResource("Animation_2471f")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjqkc"]
+radius = 147.116
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqpdw"]
+radius = 37.0611
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ms7tc"]
+radius = 2.0
+
+[node name="dSnake" groups=["snake"] instance=ExtResource("1_bj1y5")]
+scale = Vector2(1.85, 1.85)
+motion_mode = 1
+script = ExtResource("2_nvhi2")
+graphic_scale = -1.5
+
+[node name="Label" parent="." index="0"]
+offset_left = -17.3333
+offset_top = 4.0
+offset_right = 22.6667
+offset_bottom = 27.0
+
+[node name="EnemyCollision" parent="." index="1"]
+position = Vector2(-1.17647, -12.3529)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_573xx")
+
+[node name="DropManager" parent="." index="2"]
+droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("2_xmcmk"), ExtResource("3_bpn1e"), ExtResource("5_8otgt")])
+
+[node name="HealthManager" parent="." index="3"]
+offset_left = -22.3529
+offset_top = -101.765
+offset_right = 22.6471
+offset_bottom = -93.7647
+max_health = 12
+
+[node name="Graphic" parent="." index="4"]
+position = Vector2(6, -42)
+scale = Vector2(1.5, 1.5)
+
+[node name="EnemySprite" parent="Graphic" index="0"]
+position = Vector2(-4, 1.33333)
+texture = ExtResource("5_p6p5f")
+hframes = 12
+
+[node name="AnimationPlayer" parent="Graphic" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_y0i8e")
+}
+
+[node name="CollisionShape2D" parent="Area/DetectArea" index="0"]
+position = Vector2(0.588235, -32.9412)
+shape = SubResource("CircleShape2D_qjqkc")
+
+[node name="HitBox" parent="Area" index="1"]
+position = Vector2(0, -31)
+
+[node name="CollisionShape2D" parent="Area/HitBox" index="0"]
+shape = SubResource("CircleShape2D_jqpdw")
+
+[node name="HurtBox" parent="Area" index="2"]
+position = Vector2(0, -31)
+damage = 6
+
+[node name="CollisionShape2D" parent="Area/HurtBox" index="0"]
+shape = SubResource("CircleShape2D_ms7tc")
+disabled = true
+
+[node name="EnemyMoveBetter" parent="Component" index="5"]
+position = Vector2(0, -8.82353)
+scale = Vector2(0.5, 0.5)

@@ -21,8 +21,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if stop_frames > 0:
 		stop_frames-=1
-		get_parent().velocity = Vector2.ZERO
-		get_parent().move_and_slide()
+		owner.velocity = Vector2.ZERO
+		owner.move_and_slide()
 		return
 
 	while true:

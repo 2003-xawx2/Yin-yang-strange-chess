@@ -36,8 +36,9 @@ gdscript/warnings/unused_parameter=0
 
 window/size/viewport_width=2304
 window/size/viewport_height=1296
-window/size/mode=2
 window/size/initial_position_type=2
+window/size/window_width_override=3456
+window/size/window_height_override=1944
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://assets/icon/mouse_begin/Mouse.png"
 

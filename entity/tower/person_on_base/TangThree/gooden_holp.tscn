@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbbkglngcagbj"]
+
+[ext_resource type="PackedScene" uid="uid://b4oll5g55rr04" path="res://entity/tower/person_on_base/basic/basic_bullet.tscn" id="1_vnhxp"]
+[ext_resource type="Script" path="res://entity/tower/person_on_base/TangThree/gooden_holp.gd" id="2_r5oqn"]
+[ext_resource type="Texture2D" uid="uid://cejkg5fbinhdq" path="res://entity/tower/person_on_base/TangThree/紧箍咒.png" id="3_pws2t"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="4_7fblm"]
+
+[sub_resource type="Animation" id="Animation_s04qn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_tc02i"]
+resource_name = "attack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 2),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1, 1.2, 1.3, 1.5),
+"transitions": PackedFloat32Array(2, 2, 2, 1, 1, 2),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(1.00136e-05, 1.00136e-05)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eher7"]
+_data = {
+"RESET": SubResource("Animation_s04qn"),
+"attack": SubResource("Animation_tc02i")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spy6v"]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpkic"]
+radius = 32.0156
+
+[node name="GoodenHolp" instance=ExtResource("1_vnhxp")]
+script = ExtResource("2_r5oqn")
+
+[node name="Graphic" parent="." index="0"]
+scale = Vector2(1.6, 1.6)
+
+[node name="AnimationPlayer" parent="Graphic" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_eher7")
+}
+
+[node name="Sprite2D" parent="Graphic" index="1"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_pws2t")
+hframes = 6
+
+[node name="HurtBox" type="Area2D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_7fblm")
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_spy6v")
+disabled = true
+
+[node name="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_hpkic")
+disabled = true

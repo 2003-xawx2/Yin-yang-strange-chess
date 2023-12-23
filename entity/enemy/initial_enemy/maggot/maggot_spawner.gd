@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var maggot_scene = preload("res://entity/enemy/maggot/maggot.tscn")
+@onready var maggot_scene = preload("res://entity/enemy/initial_enemy/maggot/d_maggot.tscn")
 
 @export var spawn_amounts:int = 6
 

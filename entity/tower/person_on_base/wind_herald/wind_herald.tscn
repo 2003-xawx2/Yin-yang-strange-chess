@@ -156,10 +156,11 @@ radius = 52.8764
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0xk6"]
 radius = 352.07
 
-[node name="WindHerald" type="Node2D" groups=["order"]]
+[node name="WindHerald" type="Node2D" node_paths=PackedStringArray("sprite") groups=["order"]]
 y_sort_enabled = true
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_32p7i")
+sprite = NodePath("WindHearldSprite")
 metadata/_edit_horizontal_guides_ = [-49.0]
 metadata/_edit_vertical_guides_ = [37.0]
 

@@ -3,9 +3,9 @@ extends Node2D
 @onready var timer = $Timer
 @onready var navigation_region_2d = $NavigationRegion2D
 @onready var enemies:Array[PackedScene] = [
-	preload("res://entity/enemy/snake/snake.tscn"),
-	preload("res://entity/enemy/frog/frog.tscn"),
-	preload("res://entity/enemy/maggot/maggot_spawner.tscn")
+	preload("res://entity/enemy/initial_enemy/snake/d_snake.tscn"),
+	preload("res://entity/enemy/initial_enemy/frog/d_frog.tscn"),
+	preload("res://entity/enemy/initial_enemy/maggot/maggot_spawner.tscn")
 ]
 
 @export var random_spawn:bool = false

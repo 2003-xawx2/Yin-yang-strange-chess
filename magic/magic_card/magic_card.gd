@@ -94,6 +94,7 @@ func settle_fail()->void:
 func settle_success()->void:
 	set_process(false)
 	magic_instance.settle_success()
+	magic_instance.z_index = 100
 	magic_instance = null
 	click = false
 	get_parent().free_self()

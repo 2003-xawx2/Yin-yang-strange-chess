@@ -14,12 +14,14 @@ func _ready():
 
 func set_unavailable()->void:
 	$DetectArea.monitorable = false
+	if_has_tower = true
 	remove_from_group("tower_container")
 	set_deferred("if_has_tower",true)
 
 
 func set_available()->void:
-	$DetectArea.monitorable = true    
+	$DetectArea.monitorable = true
+	if_has_tower = false    
 	add_to_group("tower_container")
 	set_deferred("if_has_tower",false)
 

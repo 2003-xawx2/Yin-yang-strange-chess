@@ -86,7 +86,8 @@ func floating_text(_position:Vector2,content:String,_modulate:Color = Color.WHIT
 
 
 func _on_timer_timeout():
-	collect(dropper.Drop.coin,1)
+	if Global.if_in_game:
+		collect(dropper.Drop.coin,1)
 
 
 func fresh_label()->void:

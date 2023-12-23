@@ -35,6 +35,7 @@ script = ExtResource("1_odvlc")
 in_place = NodePath("InPlace/MarginContainer/HBoxContainer")
 
 [node name="RandomPanel" parent="." instance=ExtResource("2_agrda")]
+expence_on_ran = 0
 magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("3_4024a"), ExtResource("4_c2cwx"), ExtResource("5_5xw54"), ExtResource("6_q27np"), ExtResource("7_33081"), ExtResource("8_8v1ec"), ExtResource("9_dsljk"), ExtResource("10_mi6x0"), ExtResource("11_fcd1y"), ExtResource("12_b4xqf"), ExtResource("13_o3fin")])
 
 [node name="Item" parent="." instance=ExtResource("8_eyfw1")]

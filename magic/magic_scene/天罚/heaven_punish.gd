@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var expense_on_coin:=1
 var thunder_scene:PackedScene = preload("res://magic/magic_scene/天罚/thunder.tscn")
 
 func _ready():
@@ -30,12 +31,12 @@ func settle_success()->void:
 func rain()->void:
 	var enemies:=get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
-		enemy.max_speed /=5
+		enemy.move_com.max_speed /=5
 	await get_tree().create_timer(6).timeout
 	#enemies=get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		if enemy!=null:
-			enemy.max_speed *=5
+			enemy.move_com.max_speed *=5
 
 
 func clear()->void:
@@ -43,8 +44,9 @@ func clear()->void:
 
 
 func thunder()->void:
+	Global.item.collect(dropper.Drop.coin,-expense_on_coin)
 	for i in range(5,10):
 		var thunder_instance = thunder_scene.instantiate()
 		add_child(thunder_instance)
 		var size:=get_viewport_rect().size
-		thunder_instance.global_position = Vector2(randi_range(0,size.x),randi_range(0,size.y))
+		thunder_instance.global_position = Vector2(randf_range(0,size.x),randf_range(0,size.y))

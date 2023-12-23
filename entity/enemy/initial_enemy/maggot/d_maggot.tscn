@@ -1,0 +1,240 @@
+[gd_scene load_steps=17 format=3 uid="uid://c0lqjyqdhkwh6"]
+
+[ext_resource type="PackedScene" uid="uid://cu6em875vau65" path="res://entity/enemy/basic_enemy/basic_enemy.tscn" id="1_hneg0"]
+[ext_resource type="Script" path="res://entity/enemy/initial_enemy/maggot/d_maggot.gd" id="2_l6537"]
+[ext_resource type="Texture2D" uid="uid://da6hnf73ln2g3" path="res://assets/enemy/maggot/maggot 的副本.png" id="3_0loox"]
+[ext_resource type="Resource" uid="uid://c4cybhmod4kwp" path="res://entity/enemy/drop/bone.tres" id="3_4d4d3"]
+[ext_resource type="Resource" uid="uid://d4e1e8lwotj6l" path="res://entity/enemy/drop/maggot_link.tres" id="4_un73e"]
+[ext_resource type="Resource" uid="uid://b108oqodxrgyc" path="res://entity/enemy/drop/maggot_foot.tres" id="5_ym31b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lns5p"]
+radius = 15.0333
+
+[sub_resource type="Animation" id="Animation_qobsm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Area/HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tlw7k"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 10), Vector2(-1, 9), Vector2(-1, 10), Vector2(-1, 12), Vector2(-1, 10), Vector2(-1, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(107, 0, 48, 45), Rect2i(0, 55, 49, 42), Rect2i(52, 0, 55, 41), Rect2i(155, 0, 54, 40), Rect2i(52, 0, 55, 41), Rect2i(0, 55, 49, 42)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("./Area/HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"track_attack_target"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ky4v8"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, 13), Vector2(-1, 15), Vector2(4, 11), Vector2(-1, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(88, 144, 52, 16), Rect2i(0, 153, 54, 12), Rect2i(0, 122, 51, 24), Rect2i(155, 40, 54, 40), Rect2i(52, 41, 54, 40)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.475),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bfp1b"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(6, -4), Vector2(-3, 9), Vector2(-3, 11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2i(0, 0, 52, 55), Rect2i(51, 122, 37, 31), Rect2i(106, 45, 42, 33)]
+}
+
+[sub_resource type="Animation" id="Animation_twq0g"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Graphic/EnemySprite:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 9), Vector2(0, 4), Vector2(1, 6), Vector2(1, 4), Vector2(0, 4), Vector2(-1, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("./Graphic/EnemySprite:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(92, 120, 55, 24), Rect2i(160, 114, 54, 31), Rect2i(160, 80, 56, 34), Rect2i(49, 81, 43, 41), Rect2i(160, 114, 54, 31), Rect2i(140, 145, 57, 14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xh4n7"]
+_data = {
+"RESET": SubResource("Animation_qobsm"),
+"attack": SubResource("Animation_tlw7k"),
+"die": SubResource("Animation_ky4v8"),
+"ready": SubResource("Animation_bfp1b"),
+"walk": SubResource("Animation_twq0g")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6nlbo"]
+radius = 336.043
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkqlu"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34tbu"]
+radius = 1.0
+
+[node name="Maggot" instance=ExtResource("1_hneg0")]
+script = ExtResource("2_l6537")
+
+[node name="EnemyCollision" parent="." index="1"]
+position = Vector2(-1, -24)
+shape = SubResource("CircleShape2D_lns5p")
+
+[node name="DropManager" parent="." index="2"]
+droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("3_4d4d3"), ExtResource("4_un73e"), ExtResource("5_ym31b")])
+
+[node name="HealthManager" parent="." index="3"]
+visible = false
+max_health = 2
+
+[node name="EnemySprite" parent="Graphic" index="0"]
+position = Vector2(0, -40)
+scale = Vector2(2, 2)
+texture = ExtResource("3_0loox")
+offset = Vector2(-1, 15)
+region_enabled = true
+region_rect = Rect2(140, 145, 57, 14)
+
+[node name="AnimationPlayer" parent="Graphic" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_xh4n7")
+}
+
+[node name="CollisionShape2D" parent="Area/DetectArea" index="0"]
+position = Vector2(5, -50)
+shape = SubResource("CircleShape2D_6nlbo")
+
+[node name="CollisionShape2D" parent="Area/HitBox" index="0"]
+position = Vector2(-1, -27)
+shape = SubResource("CircleShape2D_pkqlu")
+
+[node name="HurtBox" parent="Area" index="2"]
+damage = 2
+
+[node name="CollisionShape2D" parent="Area/HurtBox" index="0"]
+position = Vector2(55, -19)
+shape = SubResource("CircleShape2D_34tbu")
+disabled = true
+
+[node name="EnemyMoveBetter" parent="Component" index="5"]
+position = Vector2(-1, -22)
+scale = Vector2(0.5, 0.5)

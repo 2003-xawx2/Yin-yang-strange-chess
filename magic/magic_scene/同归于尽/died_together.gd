@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var expense_on_coin:=10
 @export var detect_range:=200
 @onready var ______ = $"献祭攻击范围"
 @onready var hole = $"坑"
@@ -17,7 +18,7 @@ func settle_success()->void:
 	change_modulate(______,0)
 	
 	$AnimationPlayer.play("attack!")
-	Global.item.collect(dropper.Drop.coin,-20)
+	Global.item.collect(dropper.Drop.coin,-expense_on_coin)
 	await  $AnimationPlayer.animation_finished
 	queue_free()
 

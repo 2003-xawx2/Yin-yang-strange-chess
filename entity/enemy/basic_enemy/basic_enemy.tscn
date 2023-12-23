@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://cu6em875vau65"]
+
+[ext_resource type="Script" path="res://entity/enemy/basic_enemy/basic_enemy.gd" id="1_hpubo"]
+[ext_resource type="Script" path="res://c_manager/health_manager/health_manager.gd" id="2_moelr"]
+[ext_resource type="PackedScene" uid="uid://c3l3ywjv6roah" path="res://c_manager/drop_manager/drop_manager.tscn" id="2_r3lny"]
+[ext_resource type="Script" path="res://c_manager/area_box/hit_box/hit_area.gd" id="4_u34mr"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="5_deil7"]
+[ext_resource type="Script" path="res://c_manager/machine_state.gd" id="6_xa0mo"]
+[ext_resource type="PackedScene" uid="uid://bxyf16v8l6mwg" path="res://c_manager/time/enemy_time_back/enemy_time_back.tscn" id="7_bl2mm"]
+[ext_resource type="PackedScene" uid="uid://cu40ducfyqgeb" path="res://entity/enemy/ai/enemy_move_better.tscn" id="8_wsslp"]
+[ext_resource type="PackedScene" uid="uid://bp8mc1724us81" path="res://component/move_component/move_component.tscn" id="9_0d3gm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn7l8"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc235"]
+bg_color = Color(1, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.313726, 0.313726, 0.313726, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy", "order"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_hpubo")
+Ying_Modulate = Color(0.450207, 0.523782, 0.798711, 1)
+Yang_Modulate = Color(0.950024, 0.90792, 0.839438, 1)
+Human_Modulate = Color(0.870588, 0, 0.607843, 1)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -81.0
+offset_right = 18.0
+offset_bottom = -58.0
+text = "frfrff"
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+
+[node name="DropManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("2_r3lny")]
+health_manager = NodePath("../HealthManager")
+
+[node name="HealthManager" type="ProgressBar" parent="." node_paths=PackedStringArray("hit_box")]
+y_sort_enabled = true
+offset_left = -66.0
+offset_top = -106.0
+offset_right = 66.0
+offset_bottom = -87.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yn7l8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qc235")
+value = 72.03
+show_percentage = false
+script = ExtResource("2_moelr")
+hit_box = NodePath("../Area/HitBox")
+
+[node name="Graphic" type="Node2D" parent="."]
+
+[node name="EnemySprite" type="Sprite2D" parent="Graphic"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphic"]
+root_node = NodePath("../..")
+
+[node name="Area" type="Node2D" parent="."]
+
+[node name="DetectArea" type="Area2D" parent="Area"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/DetectArea"]
+
+[node name="HitBox" type="Area2D" parent="Area" node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("4_u34mr")
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/HitBox"]
+
+[node name="HurtBox" type="Area2D" parent="Area"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("5_deil7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/HurtBox"]
+
+[node name="Component" type="Node2D" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Component"]
+one_shot = true
+
+[node name="AffectTimer" type="Timer" parent="Component"]
+one_shot = true
+
+[node name="_machine_state" type="Node" parent="Component"]
+script = ExtResource("6_xa0mo")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Component"]
+
+[node name="EnemyTimeBack" parent="Component" instance=ExtResource("7_bl2mm")]
+
+[node name="EnemyMoveBetter" parent="Component" instance=ExtResource("8_wsslp")]
+
+[node name="MoveComponent" parent="Component" node_paths=PackedStringArray("move_object") instance=ExtResource("9_0d3gm")]
+move_object = NodePath("../..")
+
+[connection signal="die" from="HealthManager" to="." method="_on_health_bar_die"]
+[connection signal="timeout" from="Component/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Component/AffectTimer" to="." method="_on_affect_timer_timeout"]
+[connection signal="target_reached" from="Component/NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

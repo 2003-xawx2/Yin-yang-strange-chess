@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://c0olpd1acvy4u" path="res://component/floating_text/AlimamaShuHeiTi-Bold.ttf" id="2_xjw23"]
 
 [node name="FloatingText" type="Node2D"]
+z_index = 100
 script = ExtResource("1_f0j53")
 
 [node name="Label" type="Label" parent="."]

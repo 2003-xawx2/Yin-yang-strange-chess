@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8hfppbjnv5dx"]
 
-[ext_resource type="Shader" path="res://entity/enemy/frog/mutation.gdshader" id="1_nrfjh"]
+[ext_resource type="Shader" path="res://entity/enemy/initial_enemy/frog/mutation.gdshader" id="1_nrfjh"]
 
 [resource]
 resource_local_to_scene = true
