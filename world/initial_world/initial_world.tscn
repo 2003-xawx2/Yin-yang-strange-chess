@@ -160,9 +160,10 @@ unicode = 48
 [sub_resource type="Shortcut" id="Shortcut_m4bh4"]
 events = [SubResource("InputEventKey_5yb8g")]
 
-[node name="InitialWorld" type="Node2D"]
+[node name="InitialWorld" type="Node2D" node_paths=PackedStringArray("camera_area")]
 y_sort_enabled = true
 script = ExtResource("1_5lflu")
+camera_area = NodePath("Map/Flower")
 
 [node name="Map" type="Node2D" parent="."]
 

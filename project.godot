@@ -26,6 +26,8 @@ aseprite_executable_path="/Applications/Aseprite.app/Contents/MacOS/aseprite"
 [autoload]
 
 Global="*res://misc/global/Global.gd"
+Transition="*res://misc/global/Transition/transition.tscn"
+BgmPlayer="res://misc/global/bgm/bgm_player.tscn"
 
 [debug]
 
@@ -161,6 +163,11 @@ aseprite_wizard.plugin={
 10={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(497, 36),"global_position":Vector2(505, 116),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 

@@ -10,6 +10,7 @@ var tween_1:Tween
 var tween_2:Tween
 @onready var random_panel = $RandomPanel
 @onready var item = $Item
+const OPTION = preload("res://ui/option_menu/option.tscn")
 
 
 func _on_timer_timeout():
@@ -79,10 +80,5 @@ func reset_left()->void:
 
 
 
-
-
-
-
-
-
-
+func _on_option_pressed() -> void:
+	add_child(OPTION.instantiate())

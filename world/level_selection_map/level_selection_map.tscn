@@ -1,0 +1,421 @@
+[gd_scene load_steps=20 format=3 uid="uid://cep3fconxgk4e"]
+
+[ext_resource type="Script" path="res://world/level_selection_map/level_selection_map.gd" id="1_iyj73"]
+[ext_resource type="Script" path="res://misc/custom_node/interact.gd" id="2_6re3r"]
+[ext_resource type="Texture2D" uid="uid://dxgtkafain8ih" path="res://assets/level_select&borad/level_select/ad8e65e762c742bd89a0b5511e634e8a~tplv-xv4ileqgde-resize-w-750.image.jpeg" id="2_nof18"]
+[ext_resource type="Resource" uid="uid://ckikcbrmccdpb" path="res://world/level_selection_map/check_resources/H1.tres" id="2_sfp75"]
+[ext_resource type="Script" path="res://world/level_selection_map/board/board.gd" id="3_fqcao"]
+[ext_resource type="Resource" uid="uid://tkbew5a7u2y0" path="res://world/level_selection_map/check_resources/H2.tres" id="3_uxpqy"]
+[ext_resource type="PackedScene" uid="uid://l57nab3irni0" path="res://world/level_selection_map/board/piece.tscn" id="4_edby0"]
+[ext_resource type="Resource" uid="uid://bpcg2aqtk5r4v" path="res://world/level_selection_map/check_resources/H3.tres" id="4_pt5hr"]
+[ext_resource type="Resource" uid="uid://1ss06vchhppx" path="res://world/level_selection_map/check_resources/H4.tres" id="5_cx0eg"]
+[ext_resource type="Resource" uid="uid://cutbn55gv1jif" path="res://world/level_selection_map/check_resources/H5.tres" id="6_3pxyu"]
+[ext_resource type="Texture2D" uid="uid://c6xpfd8ia1etk" path="res://assets/level_select&borad/board/pngwing.com.png" id="6_581uo"]
+[ext_resource type="Resource" uid="uid://bnum48le2ykwt" path="res://world/level_selection_map/check_resources/H6.tres" id="7_jxpm2"]
+[ext_resource type="Resource" uid="uid://cusebxgpvkl3l" path="res://world/level_selection_map/check_resources/H7.tres" id="8_axn7b"]
+[ext_resource type="Resource" uid="uid://dqm16eqxgrln4" path="res://world/level_selection_map/check_resources/H8.tres" id="9_litrb"]
+[ext_resource type="Resource" uid="uid://cswmeug2yt0jd" path="res://world/level_selection_map/check_resources/H9.tres" id="10_qolqx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nh7g"]
+radius = 513.264
+
+[sub_resource type="Animation" id="Animation_cf0v4"]
+resource_name = "ease_in"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(2347.79, 0.525024), Vector2(1629.05, 0.525024)]
+}
+
+[sub_resource type="Animation" id="Animation_0q3yh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2347.79, 0.525024)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ly5w8"]
+_data = {
+"RESET": SubResource("Animation_0q3yh"),
+"ease_in": SubResource("Animation_cf0v4")
+}
+
+[node name="LevelSelectionMap" type="Node2D"]
+position = Vector2(1216, 704)
+script = ExtResource("1_iyj73")
+check_point_resources = Array[Resource("res://misc/resource/csutom/check_point.gd")]([ExtResource("2_sfp75"), ExtResource("3_uxpqy"), ExtResource("4_pt5hr"), ExtResource("5_cx0eg"), ExtResource("6_3pxyu"), ExtResource("7_jxpm2"), ExtResource("8_axn7b"), ExtResource("9_litrb"), ExtResource("10_qolqx")])
+max_zoom = Vector2(1.08, 1.08)
+min_zoom = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -320)
+zoom = Vector2(0.5, 0.5)
+limit_left = -1344
+limit_top = -2048
+limit_right = 5050
+limit_bottom = 2752
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="BackGround" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-95.9966, -992.007)
+scale = Vector2(22.6207, 13.3517)
+texture = ExtResource("2_nof18")
+
+[node name="LuoShu" type="Node2D" parent="."]
+
+[node name="H1" type="Area2D" parent="LuoShu"]
+position = Vector2(0, 1088)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H1"]
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H1/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+target_exchange = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H1"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H2" type="Area2D" parent="LuoShu"]
+position = Vector2(1664, -1920)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H2"]
+position = Vector2(-192, 200)
+script = ExtResource("3_fqcao")
+
+[node name="Pngwing_com" type="Sprite2D" parent="LuoShu/H2/board"]
+position = Vector2(188, -208)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_581uo")
+
+[node name="Piece" parent="LuoShu/H2/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+initial_id = 5
+target_exchange = NodePath("../Piece2")
+
+[node name="Piece2" parent="LuoShu/H2/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+position = Vector2(384, -448)
+correct_id = 5
+target_exchange = NodePath("../Piece")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H2"]
+position = Vector2(-7, 0)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H3" type="Area2D" parent="LuoShu"]
+position = Vector2(-1600, -320)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H3"]
+position = Vector2(0, 507)
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H3/board" instance=ExtResource("4_edby0")]
+
+[node name="Piece2" parent="LuoShu/H3/board" instance=ExtResource("4_edby0")]
+position = Vector2(0, -512)
+
+[node name="Piece3" parent="LuoShu/H3/board" instance=ExtResource("4_edby0")]
+position = Vector2(0, -1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H3"]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H4" type="Area2D" parent="LuoShu"]
+position = Vector2(-1536, -1920)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H4"]
+position = Vector2(0, 231)
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+
+[node name="Piece2" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+position = Vector2(256, -256)
+
+[node name="Piece3" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+position = Vector2(0, -512)
+
+[node name="Piece4" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+position = Vector2(-256, -256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H4"]
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H5" type="Area2D" parent="LuoShu"]
+position = Vector2(0, -320)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H5"]
+position = Vector2(10, 312)
+script = ExtResource("3_fqcao")
+
+[node name="p" type="Sprite2D" parent="LuoShu/H5/board"]
+position = Vector2(-159, -308)
+scale = Vector2(0.3655, 0.349609)
+texture = ExtResource("6_581uo")
+
+[node name="p3" type="Sprite2D" parent="LuoShu/H5/board"]
+position = Vector2(148, -312)
+scale = Vector2(0.33175, 0.329102)
+texture = ExtResource("6_581uo")
+
+[node name="p2" type="Sprite2D" parent="LuoShu/H5/board"]
+position = Vector2(-22, -283)
+scale = Vector2(0.67275, 0.705078)
+texture = ExtResource("6_581uo")
+
+[node name="Piece" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+initial_id = 2
+correct_id = 5
+target_exchange = NodePath("../Piece2")
+
+[node name="Piece2" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+position = Vector2(320, -320)
+initial_id = 4
+correct_id = 4
+target_exchange = NodePath("../Piece3")
+
+[node name="Piece3" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+position = Vector2(0, -640)
+initial_id = 6
+correct_id = 7
+target_exchange = NodePath("../Piece4")
+
+[node name="Piece4" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+position = Vector2(-320, -320)
+initial_id = 7
+correct_id = 6
+target_exchange = NodePath("../Piece5")
+
+[node name="Piece5" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+position = Vector2(0, -320)
+initial_id = 5
+correct_id = 2
+target_exchange = NodePath("../Piece2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H5"]
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H6" type="Area2D" parent="LuoShu"]
+position = Vector2(1664, 1088)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H6"]
+position = Vector2(-384, -128)
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+
+[node name="Piece2" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+position = Vector2(256, -256)
+
+[node name="Piece3" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+position = Vector2(256, 256)
+
+[node name="Piece4" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+position = Vector2(512, 0)
+
+[node name="Piece5" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+position = Vector2(512, 512)
+
+[node name="Piece6" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+position = Vector2(768, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H6"]
+position = Vector2(-30, 17)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H7" type="Area2D" parent="LuoShu"]
+position = Vector2(1600, -320)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H7"]
+position = Vector2(-159.997, -352.007)
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+
+[node name="Piece2" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+position = Vector2(-0.00012207, 320)
+
+[node name="Piece3" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+position = Vector2(0, 640)
+
+[node name="Piece4" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+position = Vector2(320, -128)
+
+[node name="Piece5" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+position = Vector2(320, 192)
+
+[node name="Piece6" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+position = Vector2(320, 512)
+
+[node name="Piece7" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+position = Vector2(320, 832)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H7"]
+position = Vector2(18.0034, 16.9929)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H8" type="Area2D" parent="LuoShu"]
+position = Vector2(-1664, 1216)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H8"]
+position = Vector2(236, -512)
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(64, 0)
+
+[node name="Piece2" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(320, 256)
+
+[node name="Piece3" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(-192, 256)
+
+[node name="Piece4" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(64, 512)
+
+[node name="Piece5" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(-448, 512)
+
+[node name="Piece6" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(-192, 768)
+
+[node name="Piece7" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(-704, 768)
+
+[node name="Piece8" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+position = Vector2(-448, 1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H8"]
+position = Vector2(0, -51)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="H9" type="Area2D" parent="LuoShu"]
+position = Vector2(64, -1984)
+script = ExtResource("2_6re3r")
+
+[node name="board" type="Node2D" parent="LuoShu/H9"]
+position = Vector2(-256, 266)
+script = ExtResource("3_fqcao")
+
+[node name="Piece" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(64, 0)
+
+[node name="Piece2" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(448, 0)
+
+[node name="Piece3" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(-128, -256)
+
+[node name="Piece4" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(256, -256)
+
+[node name="Piece5" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(640, -256)
+
+[node name="Piece6" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(-320, -512)
+
+[node name="Piece7" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(64, -512)
+
+[node name="Piece8" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(448, -512)
+
+[node name="Piece9" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+position = Vector2(832, -512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H9"]
+position = Vector2(-25, 64)
+shape = SubResource("CircleShape2D_0nh7g")
+
+[node name="OutGameUi" type="CanvasLayer" parent="."]
+
+[node name="Back" type="Button" parent="OutGameUi"]
+offset_right = 215.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 91
+text = "back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OutGameUi"]
+libraries = {
+"": SubResource("AnimationLibrary_ly5w8")
+}
+
+[node name="Panel" type="Panel" parent="OutGameUi"]
+custom_minimum_size = Vector2(673.2, 1294.95)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 43.79
+offset_top = -647.475
+offset_right = 716.994
+offset_bottom = 647.475
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OutGameUi/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OutGameUi/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="CheckName" type="Label" parent="OutGameUi/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 111
+text = "关卡名字"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckDecription" type="Label" parent="OutGameUi/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(607.91, 782.81)
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "关卡描述：--------------------------------------------------------------------------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StartGame" type="Button" parent="OutGameUi/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 211
+text = "进入"
+
+[connection signal="pressed" from="OutGameUi/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="OutGameUi/Panel/MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

@@ -189,6 +189,3 @@ position = Vector2(0, -31)
 scale = Vector2(3, 3)
 texture = ExtResource("3_pr8f3")
 hframes = 12
-
-[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
-[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]

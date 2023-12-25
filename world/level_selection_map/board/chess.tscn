@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccdhidhcgfeh4"]
+
+[ext_resource type="Script" path="res://world/level_selection_map/board/chess.gd" id="1_0u2ee"]
+[ext_resource type="Texture2D" uid="uid://c34sesk45sy5j" path="res://assets/drop/drop_icon/环节.png" id="1_ecrw5"]
+
+[node name="chess" type="Sprite2D"]
+z_index = 90
+scale = Vector2(3, 3)
+texture = ExtResource("1_ecrw5")
+script = ExtResource("1_0u2ee")
+drop_id = 4

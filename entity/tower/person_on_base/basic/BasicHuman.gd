@@ -11,6 +11,7 @@ class_name basic_human
 @export var back_sprite:=preload("res://entity/tower/person_on_base/wind_herald/飞廉风神back.png")
 @export var front_sprite:=preload("res://entity/tower/person_on_base/wind_herald/飞廉风神front.png")
 
+
 var target:Node2D
 var id:int
 var reset_position:Vector2

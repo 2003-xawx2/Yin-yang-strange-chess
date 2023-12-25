@@ -25,6 +25,7 @@ func hurt_attack()->void:
 func update_enemies_attack()->void:
 	enemies = detect_area.get_overlapping_bodies()
 	if return_target() == null:
-		$AnimationPlayer.play("idle")
+		animation_player.play("idle")
 	else:
-		$AnimationPlayer.play("attack")
+		animation_player.play("attack")
+

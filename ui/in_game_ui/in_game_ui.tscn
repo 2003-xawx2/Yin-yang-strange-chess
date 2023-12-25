@@ -166,4 +166,16 @@ horizontal_alignment = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="Option" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 51
+text = "menu"
+icon_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Option" to="." method="_on_option_pressed"]

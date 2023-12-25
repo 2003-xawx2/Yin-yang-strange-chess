@@ -46,11 +46,11 @@ func _ready():
 func _process(delta):
 	var temp_zoom = get_zoom(delta)
 	camera_2d.zoom = camera_2d.zoom.lerp(temp_zoom,1-exp(-delta*acceleration))
-	target_offset = target_offset.lerp(Vector2.ZERO,1-exp(-delta*acceleration*2))
+	#target_offset = target_offset.lerp(Vector2.ZERO,1-exp(-delta*acceleration*2))
 	if tween !=null:
 		if tween.is_running():
 			return
-	position+=target_offset
+	#position+=target_offset
 	accelerate_to_direction(get_movement(),delta)
 	shake_process(delta)
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="check_point" load_steps=3 format=3 uid="uid://bnum48le2ykwt"]
+
+[ext_resource type="PackedScene" uid="uid://0m30030spux7" path="res://world/initial_world/initial_world.tscn" id="1_bcwih"]
+[ext_resource type="Script" path="res://misc/resource/csutom/check_point.gd" id="2_ejxrd"]
+
+[resource]
+script = ExtResource("2_ejxrd")
+check_name = "h6"
+description = "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，你看不懂哈哈哈"
+check_point_scene = ExtResource("1_bcwih")
+if_checked = false

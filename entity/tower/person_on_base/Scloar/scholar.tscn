@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://we4gu7625hbw"]
+
+[ext_resource type="Script" path="res://entity/tower/person_on_base/Scloar/scholar.gd" id="1_yo565"]
+[ext_resource type="PackedScene" uid="uid://xdpw4663si8y" path="res://entity/tower/person_on_base/human_settle_com/settle_area.tscn" id="2_3d7lf"]
+
+[sub_resource type="Animation" id="Animation_fkaqg"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ayc5x"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_vwrjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ouuk"]
+_data = {
+"RESET": SubResource("Animation_vwrjk"),
+"attack": SubResource("Animation_ayc5x"),
+"idle": SubResource("Animation_fkaqg")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atmv1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85ljq"]
+
+[node name="Scholar" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_yo565")
+sprite = NodePath("Sprite2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_0ouuk")
+}
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="SettleArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_3d7lf")]
+parent = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SettleArea"]
+shape = SubResource("CircleShape2D_atmv1")
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_85ljq")
