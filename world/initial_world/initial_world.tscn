@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=35 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="Script" path="res://world/initial_world/initial_world.gd" id="1_5lflu"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://o8vxuneix7k6" path="res://assets/level_1/fog.png" id="6_swpki"]
 [ext_resource type="Texture2D" uid="uid://baaj3bju172fk" path="res://assets/level_1/container.png" id="6_t8nb4"]
 [ext_resource type="Texture2D" uid="uid://b5l78ti50x75g" path="res://assets/level_1/left_flag.png" id="7_yeylc"]
+[ext_resource type="PackedScene" uid="uid://dx178en2untiq" path="res://misc/light/radial_light/radial_light.tscn" id="8_3tvs2"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="14_e3jfb"]
 [ext_resource type="Resource" uid="uid://ck4mbn35v5g5p" path="res://world/initial_world/path/initial_world.tres" id="15_q648t"]
 [ext_resource type="Resource" uid="uid://bpgppb2ygfnjp" path="res://world/initial_world/path/initial_world_2.tres" id="16_7x6io"]
@@ -199,6 +200,14 @@ texture = ExtResource("5_tjgwa")
 z_index = 2
 texture = ExtResource("6_0uj1a")
 
+[node name="RadialLight" parent="Map/MiddleLand" instance=ExtResource("8_3tvs2")]
+position = Vector2(-209.111, -64.7778)
+energy = 1.0
+
+[node name="RadialLight2" parent="Map/MiddleLand" instance=ExtResource("8_3tvs2")]
+position = Vector2(205.556, -65.6667)
+energy = 1.0
+
 [node name="Fog" type="Sprite2D" parent="Map"]
 position = Vector2(1165, 706)
 scale = Vector2(8, 8)
@@ -218,8 +227,8 @@ texture = ExtResource("7_yeylc")
 hframes = 6
 
 [node name="Flower" type="Sprite2D" parent="Map"]
-position = Vector2(1000, 549)
-scale = Vector2(9, 9)
+position = Vector2(996.994, 549)
+scale = Vector2(8.98605, 9)
 texture = ExtResource("2_07q0d")
 offset = Vector2(-0.444443, 6)
 vframes = 8
@@ -273,10 +282,10 @@ script = ExtResource("14_e3jfb")
 damage = 9999999
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/ForbiddenArea"]
-polygon = PackedVector2Array(28, 309, -117, 231, -1117, 243, -1639, 265, -1629, 1235, -185, 1238, 41, 1079, -219, 1348, -1735, 1359, -1727, 95, -157, 93)
+polygon = PackedVector2Array(29, 295, -29, 335, -118, 238, -1117, 243, -1466, 251, -1456, 1227, -185, 1238, 41, 1079, -219, 1348, -1735, 1359, -1727, 95, -157, 93)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Map/ForbiddenArea"]
-polygon = PackedVector2Array(-159, -185, 2135, -175, 2109, 167, 1992, 307, 2171, 161, 3549, 185, 3555, 1211, 2153, 1181, 1960, 1099, 2133, 1246, 2177, 1379, -105, 1391, -107, 1289, -325, 1407, -329, 1467, 3681, 1391, 3699, -5, 2181, -297, -277, -261, -321, 57, -175, 53)
+polygon = PackedVector2Array(-159, -185, 2135, -175, 2109, 167, 1992, 307, 2171, 161, 3322, 247, 3336, 1187, 2153, 1181, 1960, 1099, 2133, 1246, 2177, 1379, -105, 1391, -107, 1289, -325, 1407, -329, 1467, 3681, 1391, 3699, -5, 2181, -297, -277, -261, -321, 57, -175, 53)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Map/ForbiddenArea"]
 position = Vector2(4, -6)
@@ -305,6 +314,10 @@ polygon = PackedVector2Array(-41, 948, 314, 1224, 276, 1275, -89, 1005)
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
 position = Vector2(1593, -709)
 polygon = PackedVector2Array(-41, 948, 314, 1224, 276, 1275, -89, 1005)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1745, -848)
+polygon = PackedVector2Array(-41, 948, 335, 1289, 271, 1303, -89, 1005)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
 polygon = PackedVector2Array(329, 166, -10, 462, -82, 415, 286, 111, 347, 113)

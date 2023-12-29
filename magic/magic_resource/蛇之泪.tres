@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("3_5h5mk")
+name = "蛇之泪"
 show_weight = 1
 magic_icon = ExtResource("2_tqv8o")
 magic = ExtResource("1_5v5hu")

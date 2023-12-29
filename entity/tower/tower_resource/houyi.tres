@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="card_resource" load_steps=4 format=3 uid="uid://bwio84cwxnkxn"]
+
+[ext_resource type="PackedScene" uid="uid://6wn4wenexneg" path="res://entity/tower/person_on_base/Houyi/hou_yi.tscn" id="1_qh8pv"]
+[ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="2_njmlu"]
+[ext_resource type="Texture2D" uid="uid://be78a185unpjc" path="res://entity/tower/person_on_base/Houyi/houyiICon.png" id="3_p8fwy"]
+
+[resource]
+script = ExtResource("2_njmlu")
+name = "后羿"
+description = "人也是可以成为神的！"
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("3_p8fwy")
+basic_tower = ExtResource("1_qh8pv")
+consume = {
+"bone": 0,
+"coin": 0,
+"frog_leg": 0,
+"frog_silk": 0,
+"maggot_foot": 0,
+"maggot_link": 0,
+"snake_tail": 0,
+"snake_tooth": 0
+}

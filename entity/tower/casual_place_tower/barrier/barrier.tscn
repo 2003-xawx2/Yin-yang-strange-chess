@@ -1,0 +1,191 @@
+[gd_scene load_steps=16 format=3 uid="uid://uyrog2pke48k"]
+
+[ext_resource type="Script" path="res://entity/tower/casual_place_tower/barrier/barrier.gd" id="1_p5igr"]
+[ext_resource type="Shader" path="res://entity/tower/casual_place_tower/barrier/barrier.gdshader" id="2_5nd8g"]
+[ext_resource type="Texture2D" uid="uid://d1dq1oy7pu0ah" path="res://entity/tower/casual_place_tower/barrier/定海神针上.png" id="3_ake7a"]
+[ext_resource type="Texture2D" uid="uid://ch52mgqu4dkc0" path="res://entity/tower/casual_place_tower/barrier/定海神针中.png" id="4_0p4fw"]
+[ext_resource type="Texture2D" uid="uid://c0kk847qkikj1" path="res://entity/tower/casual_place_tower/barrier/定海神针下.png" id="5_mhjnu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uigf2"]
+size = Vector2(24, 484)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb56s"]
+shader = ExtResource("2_5nd8g")
+shader_parameter/alpha = 1.0
+shader_parameter/shine_color = Color(0.913725, 0.854902, 0, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.05
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3kwk"]
+shader = ExtResource("2_5nd8g")
+shader_parameter/alpha = 1.0
+shader_parameter/shine_color = Color(0.992157, 0.956863, 0, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.01
+shader_parameter/shine_angle = 8.2
+
+[sub_resource type="Shader" id="Shader_r8lwi"]
+code = "shader_type canvas_item;
+
+
+uniform vec4 shine_color : source_color  = vec4(1.0);
+uniform float shine_progress : hint_range(0.0, 1.0, 0.01) = 0.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float shine_angle : hint_range(0.0, 89.9, 0.1) = 45.0;
+
+float scale(float value, float inMin, float inMax, float outMin, float outMax) {
+    return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+
+void fragment() {
+    COLOR = texture(TEXTURE, UV);
+	float slope = tan(radians(shine_angle));
+	float progress = scale(shine_progress, 0.0, 1.0, -1.0 - shine_size - shine_size * slope, 1.0 * slope);
+    float shine = step(slope * UV.x - UV.y, progress + shine_size + shine_size * slope) - step(slope * UV.x - UV.y, progress);
+    COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b352y"]
+shader = SubResource("Shader_r8lwi")
+shader_parameter/shine_color = Color(1, 0.898039, 0.619608, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.05
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="Gradient" id="Gradient_y04jk"]
+offsets = PackedFloat32Array(0, 0.525, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.926942, 0.848809, 6.66541e-07, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jsj08"]
+gradient = SubResource("Gradient_y04jk")
+
+[sub_resource type="Animation" id="Animation_yk0uo"]
+resource_name = "shine"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Down:material:shader_parameter/shine_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Middle:material:shader_parameter/shine_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.55, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/Top:material:shader_parameter/shine_progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.55, 0.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_in0xm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Down:material:shader_parameter/shine_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Middle:material:shader_parameter/shine_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/Top:material:shader_parameter/shine_progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi1hx"]
+_data = {
+"RESET": SubResource("Animation_in0xm"),
+"shine": SubResource("Animation_yk0uo")
+}
+
+[node name="Barrier" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_p5igr")
+scale_position_y = 647
+scale_scale = Vector2(3.97, 3.97)
+
+[node name="DisappearTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uigf2")
+
+[node name="Graphic" type="Node2D" parent="."]
+
+[node name="Top" type="Sprite2D" parent="Graphic"]
+material = SubResource("ShaderMaterial_eb56s")
+position = Vector2(0, -217)
+texture = ExtResource("3_ake7a")
+
+[node name="Middle" type="Sprite2D" parent="Graphic"]
+material = SubResource("ShaderMaterial_i3kwk")
+scale = Vector2(1, 12.11)
+texture = ExtResource("4_0p4fw")
+
+[node name="Down" type="Sprite2D" parent="Graphic"]
+material = SubResource("ShaderMaterial_b352y")
+position = Vector2(0, 218)
+texture = ExtResource("5_mhjnu")
+
+[node name="PointLight2D" type="PointLight2D" parent="Graphic"]
+position = Vector2(1, 2)
+scale = Vector2(1.15625, 8.5)
+texture = SubResource("GradientTexture2D_jsj08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pi1hx")
+}
+
+[connection signal="timeout" from="DisappearTimer" to="." method="_on_disappear_timer_timeout"]

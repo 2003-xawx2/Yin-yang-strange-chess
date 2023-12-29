@@ -70,8 +70,7 @@ func transition_state(from: State, to: State) -> void:
 		State.FIGHTING:
 			if_visible(true,.5)
 			move_com.max_speed *= 4
-			if animation.current_animation != "attack":
-				animation.play("ready")
+			animation.play("ready")
 			attack_timer.start(first_attack_time)
 
 

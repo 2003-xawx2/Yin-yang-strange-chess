@@ -8,4 +8,5 @@ script = ExtResource("2_ofngm")
 check_name = "h1"
 description = "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，你看不懂哈哈哈"
 check_point_scene = ExtResource("1_1brbd")
-check_status = 0
+check_status = 1
+reward_tower = "倒转乾坤"

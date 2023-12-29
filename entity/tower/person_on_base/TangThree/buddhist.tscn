@@ -12,7 +12,7 @@ size = Vector2(239, 38)
 
 [node name="Buddhist" instance=ExtResource("1_22nff")]
 script = ExtResource("2_kebw4")
-speed = 1
+speed = 100
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_5ns3p")
@@ -22,6 +22,7 @@ disabled = true
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_fgq4l")
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(3.5, -7)

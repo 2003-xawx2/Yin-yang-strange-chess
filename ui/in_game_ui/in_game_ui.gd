@@ -23,7 +23,6 @@ func load():
 	item.load()
 
 
-
 func _ready():
 	$Timer.start(record_interval)
 	get_tree().paused = true

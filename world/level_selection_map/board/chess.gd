@@ -1,6 +1,6 @@
 @tool
 extends Sprite2D
-
+class_name chess
 
 var icon_arr:Array[Texture]
 
@@ -17,7 +17,7 @@ var icon_arr:Array[Texture]
 func _ready() -> void:
 	icon_arr =  [
 	load("res://assets/drop/drop_icon/骨头.png"),
-	null,
+	load("res://assets/drop/drop_icon/头.png"),
 	load("res://assets/drop/drop_icon/毒牙.png"),
 	load("res://assets/drop/drop_icon/蛇信子.png"),
 	load("res://assets/drop/drop_icon/蹼.png"),

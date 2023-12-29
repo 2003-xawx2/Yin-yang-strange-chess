@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://mjj7r5jm5fjq"]
+[gd_resource type="Resource" script_class="magic_card" load_steps=5 format=3 uid="uid://mjj7r5jm5fjq"]
 
+[ext_resource type="Texture2D" uid="uid://bc72xceg7hpwx" path="res://assets/magic_card/card_back/符纸卡牌.png" id="1_8l3u4"]
 [ext_resource type="PackedScene" uid="uid://c4jsyqmlqoblj" path="res://magic/magic_scene/小电/electricity.tscn" id="1_dpbdm"]
 [ext_resource type="Texture2D" uid="uid://0n6ba3xaoims" path="res://assets/magic_card/符纸卡牌.png" id="2_lriym"]
 [ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_0sqkk"]
 
 [resource]
 script = ExtResource("3_0sqkk")
+name = "小电"
+description = ""
 show_weight = 1
 magic_icon = ExtResource("2_lriym")
+card_sprite = ExtResource("1_8l3u4")
 magic = ExtResource("1_dpbdm")

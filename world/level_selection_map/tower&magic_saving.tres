@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="list_saving" load_steps=20 format=3 uid="uid://cihybajqnvdsm"]
+
+[ext_resource type="Resource" uid="uid://r3b5c7fj2c5o" path="res://magic/magic_resource/人皮鼓.tres" id="1_l5csn"]
+[ext_resource type="Script" path="res://misc/resource/csutom/list_saving.gd" id="1_yxi8r"]
+[ext_resource type="Resource" uid="uid://de2a5xxlpb8jj" path="res://magic/magic_resource/倒转乾坤.tres" id="2_sj5ht"]
+[ext_resource type="Resource" uid="uid://bql2i0yu58o0p" path="res://magic/magic_resource/同归于尽.tres" id="3_dfghy"]
+[ext_resource type="Resource" uid="uid://bd28jomqsm3d0" path="res://magic/magic_resource/天罚.tres" id="4_k3rmi"]
+[ext_resource type="Resource" uid="uid://mjj7r5jm5fjq" path="res://magic/magic_resource/小电.tres" id="5_n501t"]
+[ext_resource type="Resource" uid="uid://cr0y0n43fvaqm" path="res://magic/magic_resource/时间回溯.tres" id="6_iwahu"]
+[ext_resource type="Resource" uid="uid://bjwrmwxy4jpgw" path="res://magic/magic_resource/混乱鼠标.tres" id="7_mq03x"]
+[ext_resource type="Resource" uid="uid://c2e6acbiu2tvy" path="res://magic/magic_resource/火球.tres" id="8_qhrrn"]
+[ext_resource type="Resource" uid="uid://evm0jsxfhigt" path="res://magic/magic_resource/盲目.tres" id="9_nkfo5"]
+[ext_resource type="Resource" uid="uid://b6sedrlygy75x" path="res://magic/magic_resource/蛆怒症.tres" id="10_m3uaf"]
+[ext_resource type="Resource" uid="uid://1nwbwgitk83c" path="res://magic/magic_resource/蛇之泪.tres" id="11_c2itm"]
+[ext_resource type="Resource" uid="uid://beisavhvyigg" path="res://entity/tower/tower_resource/scholar.tres" id="12_hcy2f"]
+[ext_resource type="Resource" uid="uid://d3y3x4cqrvs6k" path="res://entity/tower/tower_resource/bone_base.tres" id="13_meh6r"]
+[ext_resource type="Resource" uid="uid://1p5a6x2qeb2d" path="res://entity/tower/tower_resource/tang_three.tres" id="14_84css"]
+[ext_resource type="Resource" uid="uid://d33gsgauv5wol" path="res://entity/tower/tower_resource/god_god.tres" id="15_02uya"]
+[ext_resource type="Resource" uid="uid://c4voo3m6csxry" path="res://entity/tower/tower_resource/wind_magic.tres" id="15_w4am1"]
+[ext_resource type="Resource" uid="uid://bwio84cwxnkxn" path="res://entity/tower/tower_resource/houyi.tres" id="17_icxaj"]
+[ext_resource type="Resource" uid="uid://c1uopya4p0xsn" path="res://entity/tower/tower_resource/barrier.tres" id="18_1rsl0"]
+
+[resource]
+script = ExtResource("1_yxi8r")
+magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("1_l5csn"), ExtResource("2_sj5ht"), ExtResource("3_dfghy"), ExtResource("4_k3rmi"), ExtResource("5_n501t"), ExtResource("6_iwahu"), ExtResource("7_mq03x"), ExtResource("8_qhrrn"), ExtResource("9_nkfo5"), ExtResource("10_m3uaf"), ExtResource("11_c2itm")])
+tower_resources = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("13_meh6r"), ExtResource("14_84css"), ExtResource("15_w4am1"), ExtResource("15_02uya"), ExtResource("17_icxaj"), ExtResource("18_1rsl0")])
+owned_magic = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("10_m3uaf"), ExtResource("2_sj5ht")])
+owned_tower = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("12_hcy2f"), ExtResource("13_meh6r"), ExtResource("14_84css"), ExtResource("15_02uya"), ExtResource("15_w4am1"), ExtResource("17_icxaj"), ExtResource("18_1rsl0")])
+check_index = -1

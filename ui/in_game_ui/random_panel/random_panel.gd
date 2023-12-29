@@ -1,7 +1,6 @@
 extends Panel
 
 @export var expence_on_ran:int =5
-@export var magic_resources:Array[magic_card]
 @export var card_velocity:float = 100
 @export_category("show_up_frequency")
 @export var basic_time_interval:float = 2
@@ -15,6 +14,7 @@ extends Panel
 const max_card_amounts:int=5
 const card_interval:int = 140
 
+var magic_resources:Array[magic_card]
 var amounts_need_to_spawn:int:
 	set(value):
 		amount_label.text = "卡牌机里还有" + str(value) + "张"
@@ -26,7 +26,9 @@ var amounts_need_to_spawn:int:
 
 var weighted_magic:WeightedTable = WeightedTable.new()
 
+
 func _ready():
+	magic_resources = Global.tower_magic_savings.owned_magic
 	for magic_card_ in magic_resources:
 		weighted_magic.add_item(magic_card_,magic_card_.show_weight)
 	start_random_cards(4)

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("3_r5ul1")
+name = "时间回溯"
 show_weight = 1
 magic_icon = ExtResource("2_d14ld")
 magic = ExtResource("1_loi0t")

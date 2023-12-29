@@ -10,14 +10,29 @@
 [ext_resource type="Resource" uid="uid://bpcg2aqtk5r4v" path="res://world/level_selection_map/check_resources/H3.tres" id="4_pt5hr"]
 [ext_resource type="Resource" uid="uid://1ss06vchhppx" path="res://world/level_selection_map/check_resources/H4.tres" id="5_cx0eg"]
 [ext_resource type="Resource" uid="uid://cutbn55gv1jif" path="res://world/level_selection_map/check_resources/H5.tres" id="6_3pxyu"]
-[ext_resource type="Texture2D" uid="uid://c6xpfd8ia1etk" path="res://assets/level_select&borad/board/pngwing.com.png" id="6_581uo"]
 [ext_resource type="Resource" uid="uid://bnum48le2ykwt" path="res://world/level_selection_map/check_resources/H6.tres" id="7_jxpm2"]
 [ext_resource type="Resource" uid="uid://cusebxgpvkl3l" path="res://world/level_selection_map/check_resources/H7.tres" id="8_axn7b"]
 [ext_resource type="Resource" uid="uid://dqm16eqxgrln4" path="res://world/level_selection_map/check_resources/H8.tres" id="9_litrb"]
 [ext_resource type="Resource" uid="uid://cswmeug2yt0jd" path="res://world/level_selection_map/check_resources/H9.tres" id="10_qolqx"]
+[ext_resource type="PackedScene" uid="uid://bso1iq6giuu31" path="res://ui/magic_tower_manual/magic_tower_manual.tscn" id="16_038tp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nh7g"]
 radius = 513.264
+
+[sub_resource type="Animation" id="Animation_0q3yh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2347.79, 0.525024)]
+}
 
 [sub_resource type="Animation" id="Animation_cf0v4"]
 resource_name = "ease_in"
@@ -33,21 +48,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector2(2347.79, 0.525024), Vector2(1629.05, 0.525024)]
-}
-
-[sub_resource type="Animation" id="Animation_0q3yh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2347.79, 0.525024)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ly5w8"]
@@ -89,6 +89,7 @@ script = ExtResource("2_6re3r")
 script = ExtResource("3_fqcao")
 
 [node name="Piece" parent="LuoShu/H1/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 target_exchange = NodePath(".")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H1"]
@@ -102,11 +103,6 @@ script = ExtResource("2_6re3r")
 [node name="board" type="Node2D" parent="LuoShu/H2"]
 position = Vector2(-192, 200)
 script = ExtResource("3_fqcao")
-
-[node name="Pngwing_com" type="Sprite2D" parent="LuoShu/H2/board"]
-position = Vector2(188, -208)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("6_581uo")
 
 [node name="Piece" parent="LuoShu/H2/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 initial_id = 5
@@ -130,11 +126,14 @@ position = Vector2(0, 507)
 script = ExtResource("3_fqcao")
 
 [node name="Piece" parent="LuoShu/H3/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 
 [node name="Piece2" parent="LuoShu/H3/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(0, -512)
 
 [node name="Piece3" parent="LuoShu/H3/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(0, -1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H3"]
@@ -150,14 +149,18 @@ position = Vector2(0, 231)
 script = ExtResource("3_fqcao")
 
 [node name="Piece" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 
 [node name="Piece2" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(256, -256)
 
 [node name="Piece3" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(0, -512)
 
 [node name="Piece4" parent="LuoShu/H4/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-256, -256)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H4"]
@@ -171,21 +174,6 @@ script = ExtResource("2_6re3r")
 position = Vector2(10, 312)
 script = ExtResource("3_fqcao")
 
-[node name="p" type="Sprite2D" parent="LuoShu/H5/board"]
-position = Vector2(-159, -308)
-scale = Vector2(0.3655, 0.349609)
-texture = ExtResource("6_581uo")
-
-[node name="p3" type="Sprite2D" parent="LuoShu/H5/board"]
-position = Vector2(148, -312)
-scale = Vector2(0.33175, 0.329102)
-texture = ExtResource("6_581uo")
-
-[node name="p2" type="Sprite2D" parent="LuoShu/H5/board"]
-position = Vector2(-22, -283)
-scale = Vector2(0.67275, 0.705078)
-texture = ExtResource("6_581uo")
-
 [node name="Piece" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 initial_id = 2
 correct_id = 5
@@ -193,25 +181,25 @@ target_exchange = NodePath("../Piece2")
 
 [node name="Piece2" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(320, -320)
-initial_id = 4
+initial_id = 6
 correct_id = 4
 target_exchange = NodePath("../Piece3")
 
 [node name="Piece3" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(0, -640)
-initial_id = 6
+initial_id = 4
 correct_id = 7
 target_exchange = NodePath("../Piece4")
 
 [node name="Piece4" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(-320, -320)
-initial_id = 7
+initial_id = 5
 correct_id = 6
 target_exchange = NodePath("../Piece5")
 
 [node name="Piece5" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(0, -320)
-initial_id = 5
+initial_id = 7
 correct_id = 2
 target_exchange = NodePath("../Piece2")
 
@@ -227,23 +215,30 @@ position = Vector2(-384, -128)
 script = ExtResource("3_fqcao")
 
 [node name="Piece" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 
 [node name="Piece2" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(256, -256)
 
 [node name="Piece3" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(256, 256)
 
 [node name="Piece4" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(512, 0)
 
 [node name="Piece5" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(512, 512)
 
 [node name="Piece6" parent="LuoShu/H6/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(768, 256)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H6"]
+visible = false
 position = Vector2(-30, 17)
 shape = SubResource("CircleShape2D_0nh7g")
 
@@ -256,23 +251,30 @@ position = Vector2(-159.997, -352.007)
 script = ExtResource("3_fqcao")
 
 [node name="Piece" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 
 [node name="Piece2" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-0.00012207, 320)
 
 [node name="Piece3" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(0, 640)
 
 [node name="Piece4" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(320, -128)
 
 [node name="Piece5" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(320, 192)
 
 [node name="Piece6" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(320, 512)
 
 [node name="Piece7" parent="LuoShu/H7/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(320, 832)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H7"]
@@ -288,27 +290,35 @@ position = Vector2(236, -512)
 script = ExtResource("3_fqcao")
 
 [node name="Piece" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(64, 0)
 
 [node name="Piece2" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(320, 256)
 
 [node name="Piece3" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-192, 256)
 
 [node name="Piece4" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(64, 512)
 
 [node name="Piece5" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-448, 512)
 
 [node name="Piece6" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-192, 768)
 
 [node name="Piece7" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-704, 768)
 
 [node name="Piece8" parent="LuoShu/H8/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-448, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H8"]
@@ -323,34 +333,62 @@ script = ExtResource("2_6re3r")
 position = Vector2(-256, 266)
 script = ExtResource("3_fqcao")
 
-[node name="Piece" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(64, 0)
+initial_id = 2
+correct_id = 4
+target_exchange = NodePath("../Piece5")
 
-[node name="Piece2" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece2" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(448, 0)
+initial_id = 2
+correct_id = 6
+target_exchange = NodePath("../Piece9")
 
-[node name="Piece3" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece3" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(-128, -256)
+initial_id = 5
+correct_id = 7
+target_exchange = NodePath("../Piece2")
 
 [node name="Piece4" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+self_modulate = Color(0, 1, 0, 1)
 position = Vector2(256, -256)
+initial_id = 1
+correct_id = 1
 
-[node name="Piece5" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece5" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(640, -256)
+initial_id = 5
+correct_id = 7
+target_exchange = NodePath("../Piece3")
 
-[node name="Piece6" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece6" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(-320, -512)
+initial_id = 4
+correct_id = 5
+target_exchange = NodePath("../Piece")
 
-[node name="Piece7" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece7" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(64, -512)
+initial_id = 7
+correct_id = 2
+target_exchange = NodePath("../Piece8")
 
-[node name="Piece8" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece8" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(448, -512)
+initial_id = 7
+correct_id = 2
+target_exchange = NodePath("../Piece6")
 
-[node name="Piece9" parent="LuoShu/H9/board" instance=ExtResource("4_edby0")]
+[node name="Piece9" parent="LuoShu/H9/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
 position = Vector2(832, -512)
+initial_id = 6
+correct_id = 5
+target_exchange = NodePath("../Piece7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H9"]
+visible = false
 position = Vector2(-25, 64)
 shape = SubResource("CircleShape2D_0nh7g")
 
@@ -374,10 +412,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 43.79
-offset_top = -647.475
-offset_right = 716.994
-offset_bottom = 647.475
+offset_left = 2347.79
+offset_top = 0.525024
+offset_right = 3021.0
+offset_bottom = 1295.48
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -404,10 +442,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CheckDecription" type="Label" parent="OutGameUi/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(607.91, 782.81)
+custom_minimum_size = Vector2(596.1, 441.55)
 layout_mode = 2
-theme_override_font_sizes/font_size = 81
-text = "关卡描述：--------------------------------------------------------------------------------------------------------"
+theme_override_font_sizes/font_size = 41
+text = "人怪相化，向人而生。
+引丝传节，方能链接。
+目非眼而装牙，脚无足而生蹼。
+可叹魔失心，相怜神无才。
+本是一脉之源，谁知分生两仪。"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -416,6 +458,8 @@ autowrap_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 211
 text = "进入"
+
+[node name="MagicTowerManual" parent="." instance=ExtResource("16_038tp")]
 
 [connection signal="pressed" from="OutGameUi/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="OutGameUi/Panel/MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

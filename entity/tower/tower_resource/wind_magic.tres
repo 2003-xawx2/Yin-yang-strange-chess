@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_yqyj6")
+name = "风之使"
 fail_settle_cool_time = 0.5
 success_settle_cool_time = 20.0
 tower_sprite = ExtResource("3_ajqit")

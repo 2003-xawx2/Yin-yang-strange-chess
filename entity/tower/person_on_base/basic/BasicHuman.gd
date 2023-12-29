@@ -7,7 +7,7 @@ class_name basic_human
 @onready var detect_area := $DetectArea
 @onready var settle_area := $SettleArea
 
-
+@export var bullet_offset:Vector2 = Vector2(69,-37)
 @export var back_sprite:=preload("res://entity/tower/person_on_base/wind_herald/飞廉风神back.png")
 @export var front_sprite:=preload("res://entity/tower/person_on_base/wind_herald/飞廉风神front.png")
 
@@ -59,10 +59,10 @@ func hurt_attack()->void:
 func adjust_direction(_direction:Vector2)->void:
 	if _direction.dot(Vector2.RIGHT)>0.1:
 		sprite.flip_h = false
-		bullet_position = global_position + Vector2(69,-37)
+		bullet_position = global_position + bullet_offset
 	elif _direction.dot(Vector2.RIGHT)<-0.1:
 		sprite.flip_h = true
-		bullet_position = global_position + Vector2(-69,-37)
+		bullet_position = global_position + Vector2(-bullet_offset.x,bullet_offset.y)
 	if _direction.dot(Vector2.UP)>0.1:
 		sprite.texture = back_sprite
 	elif _direction.dot(Vector2.UP)<-0.1:

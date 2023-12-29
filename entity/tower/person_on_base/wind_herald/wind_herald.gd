@@ -8,7 +8,7 @@ func small_attack()->void:
 	update_direction()
 	recoil()
 	var bullet:=wind.instantiate()
-	get_parent().add_child(bullet)
+	get_parent().get_parent().add_child(bullet)
 	bullet.global_position = bullet_position
 	bullet.init(direction)
 
@@ -17,7 +17,7 @@ func hurt_attack()->void:
 	update_direction()
 	recoil(20)
 	var bullet:=hurricane.instantiate()
-	get_parent().add_child(bullet)
+	get_parent().get_parent().add_child(bullet)
 	bullet.global_position = bullet_position
 	bullet.init(direction)
 

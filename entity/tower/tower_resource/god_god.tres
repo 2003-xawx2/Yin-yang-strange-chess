@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="card_resource" load_steps=4 format=3 uid="uid://d33gsgauv5wol"]
+
+[ext_resource type="PackedScene" uid="uid://s4to23pkiiel" path="res://entity/tower/person_on_base/God/god.tscn" id="1_bsxih"]
+[ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="2_yvqay"]
+[ext_resource type="Texture2D" uid="uid://cwmi3nkvgiasq" path="res://entity/tower/person_on_base/God/神像icon.png" id="3_01c01"]
+
+[resource]
+script = ExtResource("2_yvqay")
+name = "拜火教神像"
+description = "佛教？你在搞笑？拜火教才是世间真理！"
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("3_01c01")
+basic_tower = ExtResource("1_bsxih")
+consume = {
+"bone": 0,
+"coin": 0,
+"frog_leg": 0,
+"frog_silk": 0,
+"maggot_foot": 0,
+"maggot_link": 0,
+"snake_tail": 0,
+"snake_tooth": 0
+}

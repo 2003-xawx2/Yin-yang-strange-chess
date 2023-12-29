@@ -3,17 +3,21 @@ extends StaticBody2D
 @export var speed = 300.0
 var direction:Vector2 = Vector2.ZERO
 var line_position:Vector2=Vector2.ZERO
-var initial_radius:float = 10
-var rotate_position:Vector2 = Vector2.UP*initial_radius
+var initial_radius:float
+var rotate_position:Vector2
 var rotate_mul: = 400
 
 
 func _ready():
 	set_physics_process(false)
 	scale = Vector2.ZERO
+	line_position = Vector2.ZERO
+	initial_radius = 10
+	rotate_position = Vector2.UP*initial_radius
 
 
 func init(_direction):
+	line_position = position
 	direction = _direction
 	if direction.dot(Vector2.UP)>0:
 		z_index = -1
@@ -31,7 +35,7 @@ func init(_direction):
 func _physics_process(delta):
 	#position+=direction.normalized()*speed*delta
 	var last_radius := initial_radius
-	initial_radius+=delta*10
+	initial_radius += delta*10
 	speed -= delta*4
 	line_position+=delta*direction.normalized()*speed
 	rotate_position = rotate_position/last_radius*initial_radius

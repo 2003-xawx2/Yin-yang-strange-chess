@@ -8,6 +8,8 @@ signal arrived
 
 var current_world:Node2D
 
+var tower_magic_savings := preload("res://world/level_selection_map/tower&magic_saving.tres")
+
 var if_in_game:bool=false:
 	set(value):
 		if if_in_game == value:
@@ -35,3 +37,7 @@ enum EnemyType {
 	frog,
 	maggot
 }
+
+
+func _ready() -> void:
+	tower_magic_savings.add("蛆怒症")

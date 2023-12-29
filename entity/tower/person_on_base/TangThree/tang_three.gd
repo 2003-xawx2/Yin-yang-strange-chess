@@ -20,7 +20,7 @@ func small_attack()->void:
 	update_direction()
 	recoil()
 	var bullet:=buddhist.instantiate()
-	get_parent().add_child(bullet)
+	get_parent().get_parent().add_child(bullet)
 	bullet.global_position = bullet_position
 	bullet.init(direction)
 
@@ -32,7 +32,7 @@ func hurt_attack()->void:
 	update_direction()
 	var bullet:= gooden_holp.instantiate()
 	bullet.enemy_tracked = target
-	get_parent().add_child(bullet)
+	get_parent().get_parent().add_child(bullet)
 	bullet.global_position = bullet_position
 	bullet.init(direction)
 
@@ -58,5 +58,7 @@ func _on_attack_timer_timeout() -> void:
 			await get_tree().create_timer(.15).timeout
 			small_attack()
 		2:
-			pass
+			animation_player.play("attack")
+			await get_tree().create_timer(.15).timeout
+			small_attack()
 	attack_timer.start(attack_interval)

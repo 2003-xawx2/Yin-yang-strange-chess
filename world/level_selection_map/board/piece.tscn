@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://l57nab3irni0"]
+[gd_scene load_steps=8 format=3 uid="uid://l57nab3irni0"]
 
 [ext_resource type="Texture2D" uid="uid://cicy0cclwbt1b" path="res://assets/level_select&borad/board/CIRCLE.png" id="1_bohe3"]
 [ext_resource type="Script" path="res://world/level_selection_map/board/piece.gd" id="2_2b4i2"]
@@ -9,7 +9,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fevt"]
 radius = 90.0222
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh05a"]
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+
 [node name="Piece" type="Sprite2D"]
+z_index = 1
 texture = ExtResource("1_bohe3")
 script = ExtResource("2_2b4i2")
 
@@ -20,8 +27,24 @@ script = ExtResource("2_paosy")
 position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_8fevt")
 
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
+pivot_offset = Vector2(90, 90)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_yh05a")
+
 [node name="chess" parent="." instance=ExtResource("4_0j5tq")]
 texture = ExtResource("5_as8sy")
 drop_id = 0
 
+[node name="CorrectDetectTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="interact" from="interact_area" to="." method="_on_interact_area_interact"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]
+[connection signal="timeout" from="CorrectDetectTimer" to="." method="_on_correct_detect_timer_timeout"]

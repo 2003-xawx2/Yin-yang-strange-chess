@@ -5,6 +5,7 @@ extends Node2D
 @onready var check_name: Label = $OutGameUi/Panel/MarginContainer/VBoxContainer/CheckName
 @onready var check_decription: Label = $OutGameUi/Panel/MarginContainer/VBoxContainer/CheckDecription
 @onready var camera: Camera2D = $Camera2D
+@onready var magic_tower_manual: CanvasLayer = $MagicTowerManual
 
 const center_position = Vector2(1216,384)
 
@@ -38,15 +39,15 @@ func update_stats()->void:
 	for _check_point in check_points:
 		match(check_point_resources[i].check_status):
 			check_point.status.unchecked:
-				_check_point.get_child(0).process_mode = PROCESS_MODE_DISABLED
+				_check_point.get_child(0).disable()
 			check_point.status.checked:
 				if if_check:
-					_check_point.get_child(0).process_mode = PROCESS_MODE_INHERIT
+					_check_point.get_child(0).able()
 				else:
-					_check_point.get_child(0).process_mode = PROCESS_MODE_DISABLED
+					_check_point.get_child(0).disable()
 			check_point.status.passed:
 				_check_point.get_child(0).success()
-				_check_point.get_child(0).process_mode = PROCESS_MODE_DISABLED
+				_check_point.get_child(0).disable()
 		#看资源文件里的if_check把棋盘设置成不能动的
 		i+=1
 
@@ -70,7 +71,10 @@ func back_to_center()->void:
 func show_ui()->void:
 	await get_tree().create_timer(.5).timeout
 	check_name.text = current_check.check_name
-	check_decription.text = current_check.description
+	if current_check.check_status == check_point.status.checked:
+		check_decription.text = current_check.riddle
+	else:
+		check_decription.text = current_check.description
 	animation_player.play("ease_in")
 	update_stats()
 
@@ -83,6 +87,8 @@ func hide_ui()->void:
 func _on_success(i:int)->void:
 	var vic_check := check_point_resources[i]
 	vic_check.check_status = check_point.status.passed
+	Global.tower_magic_savings.add(current_check.reward_tower)
+	magic_tower_manual.get_new_card(current_check.reward_tower)
 	ResourceSaver.save(vic_check)
 	update_stats()
 
@@ -91,17 +97,19 @@ func _on_interact(_check_point:int) -> void:
 	if if_check:
 		return
 	if_check = true
+	
 	current_check = check_point_resources[_check_point]
 	ease_in(check_points[_check_point].global_position+camera_offset,max_zoom)
 	show_ui()
+	magic_tower_manual.hide_manual()
 
 #摄像头的移动实现
 func _process(delta: float) -> void:
-	if if_check:
+	if if_check or !magic_tower_manual.if_fold:
 		return
 	var mouse_position_y := get_viewport().get_mouse_position().y
 	var mouse_position_x := get_viewport().get_mouse_position().x
-	if mouse_position_y < 256 and mouse_position_x > 300:
+	if mouse_position_y < 256 and mouse_position_x > 600:
 		camera.position.y -= (256 - mouse_position_y) *delta *camera_mul
 	elif mouse_position_y > 1052:
 		camera.position.y += (mouse_position_y - 1052) *delta *camera_mul
@@ -112,6 +120,7 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_back_pressed() -> void:
+	magic_tower_manual.hide_manual()
 	if tween and tween.is_running():
 		return
 	if if_check:

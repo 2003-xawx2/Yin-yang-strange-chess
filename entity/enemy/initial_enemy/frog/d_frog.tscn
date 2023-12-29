@@ -15,7 +15,7 @@ radius = 25.0799
 resource_local_to_scene = true
 shader = ExtResource("3_yxhsf")
 shader_parameter/dist = 16.0
-shader_parameter/alpha = 1.0
+shader_parameter/alpha = 0.0
 shader_parameter/modulate = Color(0.909804, 0.886275, 0.886275, 1)
 
 [sub_resource type="Animation" id="Animation_q1xuk"]
@@ -158,9 +158,12 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [false],
+"method": &"set_jumping_mode"
+}, {
 "args": [],
 "method": &"queue_free"
 }]
@@ -203,6 +206,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2i(0, 194, 29, 35), Rect2i(118, 158, 48, 35), Rect2i(60, 143, 58, 35), Rect2i(0, 83, 60, 37)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_jumping_mode"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_c7105"]
@@ -302,9 +319,9 @@ material = SubResource("ShaderMaterial_7psc1")
 position = Vector2(2, -83)
 scale = Vector2(3, 3)
 texture = ExtResource("4_1ag0s")
-offset = Vector2(2, 18)
+offset = Vector2(-1, 16)
 region_enabled = true
-region_rect = Rect2(166, 158, 34, 46)
+region_rect = Rect2(244, 169, 29, 35)
 
 [node name="AnimationPlayer" parent="Graphic" index="1"]
 libraries = {

@@ -1,10 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo51ar17h0rh"]
+[gd_scene load_steps=10 format=3 uid="uid://bo51ar17h0rh"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/plant_zoobie_way_lay_out/GridCardContainer.gd" id="1_aa1vr"]
 [ext_resource type="Script" path="res://ui/in_game_ui/plant_zoobie_way_lay_out/pick_card.gd" id="1_xho3l"]
-[ext_resource type="Resource" uid="uid://d3y3x4cqrvs6k" path="res://entity/tower/tower_resource/bone_base.tres" id="3_6wl1c"]
-[ext_resource type="Resource" uid="uid://c4voo3m6csxry" path="res://entity/tower/tower_resource/wind_magic.tres" id="4_c7558"]
-[ext_resource type="Resource" uid="uid://1p5a6x2qeb2d" path="res://entity/tower/tower_resource/tang_three.tres" id="5_4fnr1"]
 [ext_resource type="PackedScene" uid="uid://nmmk8bp87t0e" path="res://ui/in_game_ui/card_container/card_container.tscn" id="9_fjljl"]
 [ext_resource type="Script" path="res://ui/in_game_ui/plant_zoobie_way_lay_out/StartGame.gd" id="10_mn2rw"]
 
@@ -124,7 +121,6 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 10
 script = ExtResource("1_aa1vr")
-cards = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("3_6wl1c"), ExtResource("4_c7558"), ExtResource("5_4fnr1")])
 
 [node name="CardContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_fjljl")]
 layout_mode = 2

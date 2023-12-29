@@ -7,6 +7,7 @@ class_name basic_bullet
 @export var speed = 700
 var direction:Vector2 = Vector2.ZERO
 
+
 func _ready():
 	set_physics_process(false)
 
@@ -21,6 +22,6 @@ func basic_process(delta:float)->void:
 	look_at(direction + global_position)
 
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+

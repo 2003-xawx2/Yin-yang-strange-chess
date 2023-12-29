@@ -1,9 +1,11 @@
 extends GridContainer
 
-@export var cards:Array[card_resource]
 @export var move_manager:Node
+var cards:Array[card_resource]
+
 
 func  _ready():
+	cards = Global.tower_magic_savings.owned_tower
 	var i:int =0
 	for child in get_children():
 		if i<cards.size():

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_ccros")
+name = "骨头底座"
 fail_settle_cool_time = 1.0
 success_settle_cool_time = 1.0
 tower_sprite = ExtResource("3_jf7hv")

@@ -30,7 +30,7 @@ func init(_direction:Vector2)->void:
 
 
 func _physics_process(delta: float) -> void:
-	current_speed *= 1.015999
+	current_speed *= 1.001
 	current_speed = current_speed.rotated(_rotation*delta*5)
 	position += current_speed*delta
 	look_at(global_position+current_speed)

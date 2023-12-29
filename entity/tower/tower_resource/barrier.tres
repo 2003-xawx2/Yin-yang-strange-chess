@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="card_resource" load_steps=5 format=3 uid="uid://c1uopya4p0xsn"]
+
+[ext_resource type="PackedScene" uid="uid://uyrog2pke48k" path="res://entity/tower/casual_place_tower/barrier/barrier.tscn" id="1_j0gkq"]
+[ext_resource type="Texture2D" uid="uid://ccl8ob1yesxq" path="res://assets/magic_card/card_back/乾坤卡牌.png" id="2_1lj37"]
+[ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="3_om2oo"]
+[ext_resource type="Texture2D" uid="uid://d1dq1oy7pu0ah" path="res://entity/tower/casual_place_tower/barrier/定海神针上.png" id="4_tgcny"]
+
+[resource]
+script = ExtResource("3_om2oo")
+name = "定海神针"
+description = "弼马温啥时候能发现耳朵里少了个东西？"
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("4_tgcny")
+card_sprite = ExtResource("2_1lj37")
+basic_tower = ExtResource("1_j0gkq")
+consume = {
+"bone": 0,
+"coin": 0,
+"frog_leg": 0,
+"frog_silk": 0,
+"maggot_foot": 0,
+"maggot_link": 0,
+"snake_tail": 0,
+"snake_tooth": 0
+}

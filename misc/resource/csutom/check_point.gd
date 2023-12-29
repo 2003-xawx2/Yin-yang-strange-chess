@@ -9,9 +9,10 @@ enum status{
 
 @export var check_name:String = "h1"
 @export_multiline var description:String = "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，你看不懂哈哈哈"
+@export_multiline var riddle:String = "你要写什么谜语？"
 
 @export var check_point_scene:PackedScene = preload("res://world/initial_world/initial_world.tscn")
 
 @export var check_status:status = status.unchecked
 
-@export var reward_tower:card_resource
+@export var reward_tower:String = "倒转乾坤"

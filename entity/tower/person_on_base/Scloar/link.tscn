@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://wx1lvrw0y4h4"]
+
+[ext_resource type="PackedScene" uid="uid://b4oll5g55rr04" path="res://entity/tower/person_on_base/basic/basic_bullet.tscn" id="1_e7ctr"]
+[ext_resource type="Texture2D" uid="uid://tmfb0r7g8ltp" path="res://entity/tower/person_on_base/Scloar/笔墨.png" id="2_8dffs"]
+[ext_resource type="Script" path="res://entity/tower/person_on_base/Scloar/link.gd" id="2_sdkn3"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="3_i2psw"]
+
+[sub_resource type="Animation" id="Animation_hknce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f5yos"]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g8ls2"]
+_data = {
+"RESET": SubResource("Animation_hknce"),
+"attack": SubResource("Animation_f5yos")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m50eo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlkyb"]
+
+[node name="Link" instance=ExtResource("1_e7ctr")]
+script = ExtResource("2_sdkn3")
+speed = 1400
+
+[node name="AnimationPlayer" parent="Graphic" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_g8ls2")
+}
+autoplay = "attack"
+
+[node name="Sprite2D" parent="Graphic" index="1"]
+rotation = -0.785398
+texture = ExtResource("2_8dffs")
+hframes = 6
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_m50eo")
+disabled = true
+
+[node name="HurtBox" type="Area2D" parent="." index="3"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_i2psw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_hlkyb")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name basic_base
 
 @onready var settle_area = $SettleArea
 

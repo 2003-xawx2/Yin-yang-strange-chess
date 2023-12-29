@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="magic_card" load_steps=4 format=3 uid="uid://bjwrmwxy4jpgw"]
+[gd_resource type="Resource" script_class="magic_card" load_steps=5 format=3 uid="uid://bjwrmwxy4jpgw"]
 
 [ext_resource type="PackedScene" uid="uid://brlixiallr5d8" path="res://magic/magic_scene/混乱鼠标/opposite_mouse.tscn" id="1_3kv3y"]
+[ext_resource type="Texture2D" uid="uid://dqvewp2d127ts" path="res://assets/magic_card/card_back/混乱鼠标卡牌.png" id="1_y87mo"]
 [ext_resource type="Texture2D" uid="uid://chwv4xbhqw2he" path="res://assets/magic_card/混乱鼠标卡牌.png" id="2_qae7d"]
 [ext_resource type="Script" path="res://misc/resource/csutom/magic_card.gd" id="3_fw8hd"]
 
 [resource]
 script = ExtResource("3_fw8hd")
+name = "混乱鼠标"
+description = ""
 show_weight = 1
 magic_icon = ExtResource("2_qae7d")
+card_sprite = ExtResource("1_y87mo")
 magic = ExtResource("1_3kv3y")

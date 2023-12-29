@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjd3aw22q3mkj"]
+
+[ext_resource type="PackedScene" uid="uid://hty26t0e8n06" path="res://ui/magic_tower_manual/manual_card/manual_card.tscn" id="1_w8y3p"]
+
+[node name="ManualSlot" type="Panel"]
+custom_minimum_size = Vector2(116, 128)
+offset_left = -60.0
+offset_top = -63.0
+offset_right = 56.0
+offset_bottom = 65.0
+pivot_offset = Vector2(58, 62)
+
+[node name="ManualCard" parent="." instance=ExtResource("1_w8y3p")]
+layout_mode = 0
+metadata/_edit_horizontal_guides_ = [663.0]
