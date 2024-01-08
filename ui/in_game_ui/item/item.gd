@@ -38,6 +38,9 @@ var flow_text_offset = Vector2(90,40)
 	snake_tooth:0,
 }
 
+var coins:int = 0
+var moneys := 0
+
 func _ready():
 	Global.item = self
 	Global.arrived.connect(collect.bind(dropper.Drop.coin,-arrive_cost))
@@ -51,7 +54,7 @@ func collect(drop:dropper.Drop,amount:int=1)->void:
 	dic["amount"] = amount
 	time_back[index] = dic
 	index+=1
-	
+	#时间回溯
 	if drop!=dropper.Drop.coin:
 		if amount>0:
 			floating_text.call_deferred(item_dictionary[drop].global_position,"+"+str(amount))
@@ -63,18 +66,26 @@ func collect(drop:dropper.Drop,amount:int=1)->void:
 		else:
 			floating_text.call_deferred(item_dictionary[drop].global_position,"-"+str(-amount),Color.RED)
 	await get_tree().create_timer(.1).timeout
-	
+	#字特效
 	var add_item = item_dictionary[drop] as Node
 	item_amounts[add_item]+=amount
 	if item_amounts[add_item]<0:
 		item_amounts[add_item]=0
 		if drop==dropper.Drop.coin:
-			Global.if_in_game = false
+			Global.emit_game_over()
 	#注意label是不是在containr的第二个child
 	var label = add_item.get_child(1) as Label
 	label.text = str(int(item_amounts[add_item]))
-	
+	#更新label
 	changed.emit()
+	#
+	if drop == dropper.Drop.bone:
+		moneys += float(amount)/2
+	elif drop!= dropper.Drop.coin:
+		moneys += amount
+	elif amount>0:
+		coins+=amount
+	#计算掉落物的总价值
 
 
 func floating_text(_position:Vector2,content:String,_modulate:Color = Color.WHITE)->void:

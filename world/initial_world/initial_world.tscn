@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=36 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="Script" path="res://world/initial_world/initial_world.gd" id="1_5lflu"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
@@ -19,19 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://b5l78ti50x75g" path="res://assets/level_1/left_flag.png" id="7_yeylc"]
 [ext_resource type="PackedScene" uid="uid://dx178en2untiq" path="res://misc/light/radial_light/radial_light.tscn" id="8_3tvs2"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="14_e3jfb"]
+[ext_resource type="Material" uid="uid://8oh6blscb8ew" path="res://assets/world_shared_asset/swing.tres" id="14_hwxqm"]
 [ext_resource type="Resource" uid="uid://ck4mbn35v5g5p" path="res://world/initial_world/path/initial_world.tres" id="15_q648t"]
 [ext_resource type="Resource" uid="uid://bpgppb2ygfnjp" path="res://world/initial_world/path/initial_world_2.tres" id="16_7x6io"]
 [ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="17_xe5gv"]
+[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="22_7huxj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buc1d"]
 shader = ExtResource("6_nug2j")
 shader_parameter/swing_a = 30.0
 shader_parameter/swing_multipler = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_usj5o"]
-shader = ExtResource("6_nug2j")
-shader_parameter/swing_a = 20.0
-shader_parameter/swing_multipler = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2alot"]
 shader = ExtResource("6_nug2j")
@@ -161,10 +158,9 @@ unicode = 48
 [sub_resource type="Shortcut" id="Shortcut_m4bh4"]
 events = [SubResource("InputEventKey_5yb8g")]
 
-[node name="InitialWorld" type="Node2D" node_paths=PackedStringArray("camera_area")]
+[node name="InitialWorld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5lflu")
-camera_area = NodePath("Map/Flower")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -256,7 +252,7 @@ texture = ExtResource("6_t8nb4")
 
 [node name="seedpod" type="Sprite2D" parent="Map"]
 z_index = 2
-material = SubResource("ShaderMaterial_usj5o")
+material = ExtResource("14_hwxqm")
 position = Vector2(1000.4, 603.8)
 scale = Vector2(9, 9)
 texture = ExtResource("3_1xti3")
@@ -367,6 +363,13 @@ zoom_adjust_percent = 0.08
 offset_right = 93.0
 offset_bottom = 42.0
 shortcut = SubResource("Shortcut_m4bh4")
+
+[node name="TimeManager" parent="InGameUI" instance=ExtResource("22_7huxj")]
+offset_left = -78.5
+offset_right = 78.5
+offset_bottom = 84.0
+all_seconds = 5
+all_minutes = 0
 
 [connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]

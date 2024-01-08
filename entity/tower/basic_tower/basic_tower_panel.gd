@@ -120,7 +120,11 @@ func in_game_input(event:InputEvent)->void:
 			else:
 				settle_success()
 	if event is InputEventMouseButton and event.button_mask == 1 and click == true:
-		if basic_tower_instance.if_has_settle_place == false:
+		if basic_tower_instance == null:
+			click = false
+			settle_fail()
+			return
+		elif basic_tower_instance.if_has_settle_place == false:
 			if if_mouse_in:
 				click = true
 				return

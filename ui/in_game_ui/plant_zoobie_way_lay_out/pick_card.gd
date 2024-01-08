@@ -10,4 +10,5 @@ extends MarginContainer
 
 
 func _ready():
+	get_tree().paused = true
 	move_manager.out_place = grid_container

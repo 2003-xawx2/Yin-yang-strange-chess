@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhew2j6mtdgya"]
+
+[ext_resource type="Script" path="res://ui/time_manager/time_manager.gd" id="1_bvsfe"]
+
+[node name="TimeManager" type="Label"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 61
+text = "12:00"
+script = ExtResource("1_bvsfe")
+all_seconds = 1
+all_minutes = 1
+
+[node name="SecondTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]

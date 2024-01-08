@@ -5,12 +5,10 @@
 
 [resource]
 script = ExtResource("2_n3iu6")
-check_name = "h9"
-description = "人怪相化，向死而生。
-引丝传节，方能联结。 
-目非眼而装牙，脚无足而生蹼。
-可叹魔失心，相怜神无才。
-本是一脉之源，谁知分生两仪。"
+check_name = "h1"
+description = "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，你看不懂哈哈哈"
+riddle = "你要写什么谜语？"
 check_point_scene = ExtResource("1_ntit2")
-check_status = 2
+check_score = "未通过"
+check_status = 0
 reward_tower = "倒转乾坤"

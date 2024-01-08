@@ -1,0 +1,343 @@
+[gd_scene load_steps=18 format=3 uid="uid://cwrm11u1xteqh"]
+
+[ext_resource type="Script" path="res://world/second_world/w_2.gd" id="1_w4too"]
+[ext_resource type="Texture2D" uid="uid://bxymgaf4mfdg6" path="res://world/second_world/第二关.png" id="2_iudk4"]
+[ext_resource type="Texture2D" uid="uid://dygkx8cvlglbg" path="res://world/second_world/barrier.png" id="3_l0uo7"]
+[ext_resource type="Texture2D" uid="uid://b2e7ut5ap2fbr" path="res://world/second_world/瀑布.png" id="3_rylxq"]
+[ext_resource type="PackedScene" uid="uid://dx178en2untiq" path="res://misc/light/radial_light/radial_light.tscn" id="4_g53we"]
+[ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="5_pytfn"]
+[ext_resource type="Texture2D" uid="uid://dli41pabumi3h" path="res://world/second_world/base.png" id="6_exdhp"]
+[ext_resource type="Texture2D" uid="uid://ywk84huhal1x" path="res://world/second_world/base_2.png" id="7_trnb3"]
+[ext_resource type="Material" uid="uid://8oh6blscb8ew" path="res://assets/world_shared_asset/swing.tres" id="8_v3jdj"]
+[ext_resource type="PackedScene" uid="uid://dwm1bdc1qdow4" path="res://misc/camera/scripy_camera.tscn" id="10_tx2nb"]
+[ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="11_rrwti"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_gkbsj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erdvx"]
+atlas = ExtResource("3_rylxq")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fvnp"]
+atlas = ExtResource("3_rylxq")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6cuy"]
+atlas = ExtResource("3_rylxq")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wvrt"]
+atlas = ExtResource("3_rylxq")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fffyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erdvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fvnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6cuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wvrt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="W2" type="Node2D"]
+script = ExtResource("1_w4too")
+
+[node name="Map" type="MultiMeshInstance2D" parent="."]
+multimesh = SubResource("MultiMesh_gkbsj")
+
+[node name="BackGround" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(18.26, 18.26)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+
+[node name="Moutain" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 1
+
+[node name="Grass" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Cliff" type="Sprite2D" parent="Map/Grass"]
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 3
+
+[node name="River" type="Sprite2D" parent="Map/Grass"]
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 4
+
+[node name="WaterFall" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 5
+
+[node name="瀑布" type="AnimatedSprite2D" parent="Map/WaterFall"]
+position = Vector2(-51.25, -37.375)
+sprite_frames = SubResource("SpriteFrames_fffyu")
+autoplay = "default"
+frame_progress = 0.988204
+
+[node name="瀑布2" type="AnimatedSprite2D" parent="Map/WaterFall"]
+position = Vector2(-35.25, -37.125)
+sprite_frames = SubResource("SpriteFrames_fffyu")
+autoplay = "default"
+frame_progress = 0.638252
+speed_scale = 0.9
+
+[node name="Road" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 6
+
+[node name="Bridge" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 7
+
+[node name="BackBarrier" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 8
+
+[node name="RightEdge" type="Sprite2D" parent="Map"]
+y_sort_enabled = true
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 12
+
+[node name="Barrier3" type="Sprite2D" parent="Map/RightEdge"]
+position = Vector2(154, 55.875)
+texture = ExtResource("3_l0uo7")
+
+[node name="Light" type="Sprite2D" parent="Map/RightEdge/Barrier3"]
+position = Vector2(-152.5, -55.125)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 14
+
+[node name="RadialLightLeft" parent="Map/RightEdge/Barrier3/Light" instance=ExtResource("4_g53we")]
+position = Vector2(191.5, 43)
+scale = Vector2(0.851562, 0.8125)
+
+[node name="RadialLightRight" parent="Map/RightEdge/Barrier3/Light" instance=ExtResource("4_g53we")]
+position = Vector2(119, 42.75)
+scale = Vector2(0.851562, 0.8125)
+
+[node name="Barrier4" type="Sprite2D" parent="Map/RightEdge"]
+y_sort_enabled = true
+position = Vector2(156.75, 0.375)
+texture = ExtResource("3_l0uo7")
+
+[node name="LeftEdge" type="Sprite2D" parent="Map"]
+y_sort_enabled = true
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 9
+
+[node name="Barrier2" type="Sprite2D" parent="Map/LeftEdge"]
+position = Vector2(-158.25, 0.875)
+texture = ExtResource("3_l0uo7")
+
+[node name="Light" type="Sprite2D" parent="Map/LeftEdge/Barrier2"]
+position = Vector2(158.25, 6.875)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 11
+
+[node name="RadialLightLeft" parent="Map/LeftEdge/Barrier2/Light" instance=ExtResource("4_g53we")]
+position = Vector2(-122.75, -22.25)
+scale = Vector2(0.851562, 0.8125)
+
+[node name="RadialLightRight" parent="Map/LeftEdge/Barrier2/Light" instance=ExtResource("4_g53we")]
+position = Vector2(-195.25, -22.5)
+scale = Vector2(0.851562, 0.8125)
+
+[node name="Barrier" type="Sprite2D" parent="Map/LeftEdge"]
+y_sort_enabled = true
+position = Vector2(-158.5, -65.625)
+texture = ExtResource("3_l0uo7")
+
+[node name="TowerContainer5" parent="Map/LeftEdge" instance=ExtResource("5_pytfn")]
+z_index = 1
+position = Vector2(-136.75, -43.625)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/LeftEdge/TowerContainer5"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("7_trnb3")
+
+[node name="TowerContainer6" parent="Map/LeftEdge" instance=ExtResource("5_pytfn")]
+z_index = 1
+position = Vector2(-181.25, -44.5)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/LeftEdge/TowerContainer6"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("7_trnb3")
+
+[node name="TowerContainer7" parent="Map/LeftEdge" instance=ExtResource("5_pytfn")]
+z_index = 1
+position = Vector2(129.625, 19.625)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/LeftEdge/TowerContainer7"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("7_trnb3")
+
+[node name="TowerContainer8" parent="Map/LeftEdge" instance=ExtResource("5_pytfn")]
+z_index = 1
+position = Vector2(174.875, 18.75)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/LeftEdge/TowerContainer8"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("7_trnb3")
+
+[node name="Decorate" type="Sprite2D" parent="Map"]
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 15
+
+[node name="RoundGrass" type="Sprite2D" parent="Map/Decorate"]
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 16
+
+[node name="Grass2" type="Sprite2D" parent="Map/Decorate"]
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 17
+
+[node name="Tree" type="Sprite2D" parent="Map/Decorate"]
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 18
+
+[node name="Flower" type="Sprite2D" parent="Map/Decorate"]
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 19
+
+[node name="Grass" type="Sprite2D" parent="Map/Decorate"]
+z_index = 6
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 21
+
+[node name="TowerContainer" parent="Map/Decorate" instance=ExtResource("5_pytfn")]
+position = Vector2(66.25, -44.5)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/Decorate/TowerContainer"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("6_exdhp")
+
+[node name="TowerContainer2" parent="Map/Decorate" instance=ExtResource("5_pytfn")]
+position = Vector2(105.25, -43.375)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/Decorate/TowerContainer2"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("6_exdhp")
+
+[node name="TowerContainer3" parent="Map/Decorate" instance=ExtResource("5_pytfn")]
+position = Vector2(141.125, -43.875)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/Decorate/TowerContainer3"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("6_exdhp")
+
+[node name="TowerContainer4" parent="Map/Decorate" instance=ExtResource("5_pytfn")]
+position = Vector2(174.5, -44.75)
+scale = Vector2(0.07625, 0.07625)
+texture = ExtResource("6_exdhp")
+
+[node name="Base" type="Sprite2D" parent="Map/Decorate/TowerContainer4"]
+position = Vector2(-5, 2.50001)
+scale = Vector2(10.04, 10.04)
+texture = ExtResource("6_exdhp")
+
+[node name="Front" type="Sprite2D" parent="Map"]
+z_index = 6
+material = ExtResource("8_v3jdj")
+position = Vector2(1013, 605)
+scale = Vector2(8, 8)
+texture = ExtResource("2_iudk4")
+hframes = 5
+vframes = 5
+frame = 20
+
+[node name="ScripyCamera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("10_tx2nb")]
+map = NodePath("../Map/Grass")
+acceleration = 2.4
+zoom_min_limit = 0.8
+
+[node name="InGameUI" parent="." instance=ExtResource("11_rrwti")]

@@ -9,6 +9,8 @@ class_name card_resource
 @export var card_sprite:Texture = preload("res://assets/magic_card/card_back/乾坤卡牌.png")
 @export var basic_tower:PackedScene = preload("res://entity/tower/basic_tower/basic_tower.tscn")
 
+@export var price:int = 1000
+
 @export var consume:Dictionary = {
 	"bone":0,
 	"coin":0,

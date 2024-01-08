@@ -180,7 +180,7 @@ correct_id = 5
 target_exchange = NodePath("../Piece2")
 
 [node name="Piece2" parent="LuoShu/H5/board" node_paths=PackedStringArray("target_exchange") instance=ExtResource("4_edby0")]
-position = Vector2(320, -320)
+position = Vector2(318, -319)
 initial_id = 6
 correct_id = 4
 target_exchange = NodePath("../Piece3")
@@ -204,6 +204,7 @@ correct_id = 2
 target_exchange = NodePath("../Piece2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LuoShu/H5"]
+visible = false
 shape = SubResource("CircleShape2D_0nh7g")
 
 [node name="H6" type="Area2D" parent="LuoShu"]
@@ -400,6 +401,21 @@ offset_bottom = 133.0
 theme_override_font_sizes/font_size = 91
 text = "back"
 
+[node name="Shop" type="Button" parent="OutGameUi"]
+offset_left = 232.0
+offset_top = 7.0
+offset_right = 447.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 91
+text = "shop"
+
+[node name="Shop2" type="Button" parent="OutGameUi"]
+offset_top = 1178.0
+offset_right = 231.0
+offset_bottom = 1311.0
+theme_override_font_sizes/font_size = 91
+text = "reset"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OutGameUi"]
 libraries = {
 "": SubResource("AnimationLibrary_ly5w8")
@@ -412,10 +428,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 2347.79
-offset_top = 0.525024
-offset_right = 3021.0
-offset_bottom = 1295.48
+offset_left = 43.79
+offset_top = -647.475
+offset_right = 717.001
+offset_bottom = 647.48
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -454,6 +470,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Status" type="Label" parent="OutGameUi/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 111
+text = "未通过"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StartGame" type="Button" parent="OutGameUi/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 211
@@ -462,4 +485,6 @@ text = "进入"
 [node name="MagicTowerManual" parent="." instance=ExtResource("16_038tp")]
 
 [connection signal="pressed" from="OutGameUi/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="OutGameUi/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="OutGameUi/Shop2" to="." method="reset"]
 [connection signal="pressed" from="OutGameUi/Panel/MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

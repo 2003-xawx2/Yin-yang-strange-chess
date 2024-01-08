@@ -1,0 +1,316 @@
+[gd_scene load_steps=22 format=3 uid="uid://b2e8m0138wfq4"]
+
+[ext_resource type="Script" path="res://entity/tower/casual_place_tower/self_explosive_cutty/self_explosion_cutty.gd" id="1_7yqlu"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="1_kgy7h"]
+[ext_resource type="Texture2D" uid="uid://c1gorvo4eydc5" path="res://entity/tower/person_on_base/Houyi/particle.png" id="3_nbnvx"]
+[ext_resource type="Texture2D" uid="uid://4vm3vy6jqayh" path="res://entity/tower/casual_place_tower/self_explosive_cutty/小怪兽.png" id="3_ntiti"]
+[ext_resource type="Texture2D" uid="uid://df4a1444bph3x" path="res://entity/tower/casual_place_tower/self_explosive_cutty/烟火粒子.png" id="5_eo5dg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kdxg"]
+radius = 791.228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6bmu"]
+radius = 204.002
+
+[sub_resource type="Animation" id="Animation_jbhtn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Particle/ExplosiveParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Particle/AlwaysParticle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, -12)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jljfb"]
+resource_name = "explosive"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Particle/ExplosiveParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Particle/AlwaysParticle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.275),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.275, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(11, -12), Vector2(37, -61)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.225, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j7dap"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(11, -12), Vector2(11, -50), Vector2(11, -12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qc7ai"]
+_data = {
+"RESET": SubResource("Animation_jbhtn"),
+"explosive": SubResource("Animation_jljfb"),
+"idle": SubResource("Animation_j7dap")
+}
+
+[sub_resource type="Gradient" id="Gradient_nvu2n"]
+offsets = PackedFloat32Array(0.0635965, 0.405702, 0.844298, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wpwov"]
+gradient = SubResource("Gradient_nvu2n")
+
+[sub_resource type="Curve" id="Curve_pxwy8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0486381, 0.940151), 0.644038, 0.644038, 0, 0, Vector2(0.836576, 0.971896), -0.278762, -0.278762, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_52g5f"]
+curve = SubResource("Curve_pxwy8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7f44i"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = 100.0
+angular_velocity_max = 300.0
+gravity = Vector3(0, 98, 0)
+damping_min = 10.0
+damping_max = 100.0
+scale_min = 0.7
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_52g5f")
+color_ramp = SubResource("GradientTexture1D_wpwov")
+hue_variation_min = -0.01
+hue_variation_max = 0.02
+
+[sub_resource type="Gradient" id="Gradient_ewnb1"]
+offsets = PackedFloat32Array(0, 0.760965, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.833941, 0.805989, 1, 0, 0, 0, 0.321569)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eb2y3"]
+gradient = SubResource("Gradient_ewnb1")
+
+[sub_resource type="Curve" id="Curve_0jn5w"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.180934, 0.955837), 0.644038, 0.644038, 0, 0, Vector2(0.468872, 1), -0.278762, -0.278762, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lwjmo"]
+curve = SubResource("Curve_0jn5w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i2lkj"]
+resource_name = " "
+lifetime_randomness = 0.15
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_lwjmo")
+color_ramp = SubResource("GradientTexture1D_eb2y3")
+hue_variation_max = 0.02
+
+[node name="SelfExplosionCutty" type="Node2D"]
+z_index = 6
+script = ExtResource("1_7yqlu")
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_4kdxg")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_kgy7h")
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_x6bmu")
+disabled = true
+
+[node name="Graphic" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic"]
+position = Vector2(11, -12)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ntiti")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphic"]
+libraries = {
+"": SubResource("AnimationLibrary_qc7ai")
+}
+autoplay = "idle"
+
+[node name="Particle" type="Node2D" parent="."]
+z_index = 100
+
+[node name="AlwaysParticle" type="GPUParticles2D" parent="Particle"]
+position = Vector2(-29, 31)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_7f44i")
+texture = ExtResource("3_nbnvx")
+lifetime = 0.4
+explosiveness = 0.2
+randomness = 0.5
+
+[node name="ExplosiveParticle" type="GPUParticles2D" parent="Particle"]
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_i2lkj")
+texture = ExtResource("5_eo5dg")
+lifetime = 0.5
+explosiveness = 0.24

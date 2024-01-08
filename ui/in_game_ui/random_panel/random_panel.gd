@@ -47,9 +47,10 @@ func _on_timer_timeout():
 	if spaw_position.get_children().size() >=max_card_amounts:
 		timer.start(randf_range(-time_offset,time_offset)+basic_time_interval)
 		return
+	var random_card = weighted_magic.pick_item()
+	if random_card == null:return
 	var instance = magic_card_container.instantiate()
 	spaw_position.add_child(instance)
-	var random_card = weighted_magic.pick_item()
 	instance.sprite = random_card.magic_icon
 	instance.magic = random_card.magic
 	instance.global_position = spaw_position.global_position

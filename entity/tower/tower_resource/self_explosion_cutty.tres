@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="card_resource" load_steps=5 format=3 uid="uid://ch6m28rvct157"]
+
+[ext_resource type="PackedScene" uid="uid://b2e8m0138wfq4" path="res://entity/tower/casual_place_tower/self_explosive_cutty/self_explosion_cutty.tscn" id="1_ibmgn"]
+[ext_resource type="Texture2D" uid="uid://ccl8ob1yesxq" path="res://assets/magic_card/card_back/乾坤卡牌.png" id="2_qb5l7"]
+[ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="3_av6x8"]
+[ext_resource type="Texture2D" uid="uid://c34sesk45sy5j" path="res://assets/drop/drop_icon/环节.png" id="4_yhki7"]
+
+[resource]
+script = ExtResource("3_av6x8")
+name = "自爆小可爱"
+description = "居然让这么可爱的小怪兽当自爆兵，真是太过分了"
+fail_settle_cool_time = 0.5
+success_settle_cool_time = 3.0
+tower_sprite = ExtResource("4_yhki7")
+card_sprite = ExtResource("2_qb5l7")
+basic_tower = ExtResource("1_ibmgn")
+consume = {
+"bone": 0,
+"coin": 0,
+"frog_leg": 0,
+"frog_silk": 0,
+"maggot_foot": 0,
+"maggot_link": 0,
+"snake_tail": 0,
+"snake_tooth": 0
+}

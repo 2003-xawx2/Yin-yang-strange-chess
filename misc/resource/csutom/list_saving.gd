@@ -11,7 +11,17 @@ var resources_dic:Dictionary = {}
 @export var owned_tower:Array[card_resource] = []
 
 
-@export var check_index:int = -1
+@export var moneys:=0
+@export var check_index:int = 0
+
+
+func collect_moneys(amount:int)->bool:
+	if moneys + amount < 0:
+		return false
+	
+	moneys += amount
+	ResourceSaver.save(self)
+	return true
 
 
 func update_check_index(index:int):
@@ -46,5 +56,7 @@ func add(name:String)->void:
 
 func reset()->void:
 	owned_magic.clear()
-	tower_resources.clear()
+	owned_tower.clear()
+	moneys = 0
+	check_index = 0
 	ResourceSaver.save(self)

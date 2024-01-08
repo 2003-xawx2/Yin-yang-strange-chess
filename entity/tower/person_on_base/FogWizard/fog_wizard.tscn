@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://hdxcu8q05nwl"]
+
+[ext_resource type="Script" path="res://entity/tower/person_on_base/FogWizard/fog_wizard.gd" id="1_qfems"]
+[ext_resource type="PackedScene" uid="uid://xdpw4663si8y" path="res://entity/tower/person_on_base/human_settle_com/settle_area.tscn" id="2_bcfkl"]
+
+[sub_resource type="Animation" id="Animation_cut2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7gyoh"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [Vector2(0, 0)],
+"method": &"adjust_direction"
+}, {
+"args": [],
+"method": &"small_attack"
+}, {
+"args": [],
+"method": &"update_enemies_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ge4d1"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ch02d"]
+_data = {
+"RESET": SubResource("Animation_cut2a"),
+"attack": SubResource("Animation_7gyoh"),
+"idle": SubResource("Animation_ge4d1")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryjmc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjpvn"]
+
+[node name="FogWizard" type="Node2D"]
+script = ExtResource("1_qfems")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ch02d")
+}
+
+[node name="Graphic" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic"]
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_ryjmc")
+
+[node name="SettleArea" parent="." instance=ExtResource("2_bcfkl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SettleArea"]
+shape = SubResource("CircleShape2D_xjpvn")

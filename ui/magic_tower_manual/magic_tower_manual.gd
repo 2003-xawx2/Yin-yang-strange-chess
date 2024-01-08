@@ -59,6 +59,7 @@ func _input(event: InputEvent) -> void:
 var if_adding: = false
 var if_fold: = true
 func _on_wake_button_pressed() -> void:
+	update_manul_able()
 	if if_adding:
 		return
 	if if_fold:

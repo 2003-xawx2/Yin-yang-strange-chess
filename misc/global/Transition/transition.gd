@@ -6,6 +6,7 @@ func _ready() -> void:
 
 
 func change_to(path:String)->void:
+	get_tree().paused = false
 	show()
 	$AnimationPlayer.play("ease_in")
 	await $AnimationPlayer.animation_finished
@@ -13,7 +14,6 @@ func change_to(path:String)->void:
 	$AnimationPlayer.play("ease_out")
 	await $AnimationPlayer.animation_finished
 	hide()
-	get_tree().paused = false
 
 
 func change(path:String)->void:

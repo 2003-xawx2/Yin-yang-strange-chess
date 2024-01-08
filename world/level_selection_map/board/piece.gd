@@ -82,7 +82,6 @@ func _reparent(temp:Sprite2D)->void:
 	check_correct()
 
 
-
 func check_correct(flag:=false)->void:
 	if _chess.drop_id == correct_id:
 		change_green(Color.GREEN)
@@ -147,6 +146,7 @@ func disable()->void:
 func able()->void:
 	interact_collision.disabled = false
 	panel.mouse_filter = Control.MOUSE_FILTER_PASS
+
 
 var green_tween:Tween
 func change_green(_modulate:Color)->void:

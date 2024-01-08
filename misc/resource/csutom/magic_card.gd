@@ -8,3 +8,4 @@ class_name magic_card
 @export var card_sprite:Texture = preload("res://assets/magic_card/card_back/乾坤卡牌.png")
 @export var magic:PackedScene = preload("res://entity/tower/basic_tower/basic_tower.tscn")
 
+@export var price:int = 1000

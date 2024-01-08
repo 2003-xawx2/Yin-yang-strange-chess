@@ -57,30 +57,26 @@ func _process(delta):
 
 func accelerate_to_direction(direction:Vector2,delta:float)->void:
 	direction = direction.normalized()
-	if position.x>=limit_right-view_size_x/2/camera_2d.zoom.x :
+	if position.x>limit_right-view_size_x/2/camera_2d.zoom.x :
 	#and current_speed.dot(Vector2.RIGHT)>0 :
 		position.x=limit_right-view_size_x/2/camera_2d.zoom.x
 		direction.x=0
 		current_speed.x = 0
-#		correct_global_position()
-	if position.x<=limit_left+view_size_x/2/camera_2d.zoom.x :
+	if position.x<limit_left+view_size_x/2/camera_2d.zoom.x :
 	#and current_speed.dot(Vector2.LEFT)>0:
 		position.x=limit_left+view_size_x/2/camera_2d.zoom.x
 		direction.x=0
 		current_speed.x = 0
-#		correct_global_position()
-	if position.y>=limit_bottom-view_size_y/2/camera_2d.zoom.x :
+	if position.y>limit_bottom-view_size_y/2/camera_2d.zoom.x :
 	#and current_speed.dot(Vector2.DOWN)>0:
 		position.y=limit_bottom-view_size_y/2/camera_2d.zoom.x
 		direction.y=0
 		current_speed.y = 0
-#		correct_global_position()
-	if position.y<=limit_top+view_size_y/2/camera_2d.zoom.x :
+	if position.y<limit_top+view_size_y/2/camera_2d.zoom.x :
 		#and current_speed.dot(Vector2.UP)>0:
 		position.y=limit_top+view_size_y/2/camera_2d.zoom.x
 		direction.y=0
 		current_speed.y = 0
-#		correct_global_position()
 	
 	current_speed =current_speed.lerp(direction*speed,1-exp(-delta*acceleration))
 	position+=current_speed*delta

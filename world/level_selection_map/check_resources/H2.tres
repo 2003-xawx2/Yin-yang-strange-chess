@@ -5,9 +5,10 @@
 
 [resource]
 script = ExtResource("2_rvbxx")
-check_name = "h2"
+check_name = "h1"
 description = "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，你看不懂哈哈哈"
 riddle = "你要写什么谜语？"
 check_point_scene = ExtResource("1_hsd8p")
+check_score = "未通过"
 check_status = 2
 reward_tower = "倒转乾坤"

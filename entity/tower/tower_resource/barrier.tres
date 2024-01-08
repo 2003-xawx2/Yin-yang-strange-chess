@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uyrog2pke48k" path="res://entity/tower/casual_place_tower/barrier/barrier.tscn" id="1_j0gkq"]
 [ext_resource type="Texture2D" uid="uid://ccl8ob1yesxq" path="res://assets/magic_card/card_back/乾坤卡牌.png" id="2_1lj37"]
 [ext_resource type="Script" path="res://misc/resource/csutom/card_resource.gd" id="3_om2oo"]
-[ext_resource type="Texture2D" uid="uid://d1dq1oy7pu0ah" path="res://entity/tower/casual_place_tower/barrier/定海神针上.png" id="4_tgcny"]
+[ext_resource type="Texture2D" uid="uid://ofh0huhvuhli" path="res://entity/tower/casual_place_tower/barrier/定海神针图标.png" id="4_kbq45"]
 
 [resource]
 script = ExtResource("3_om2oo")
@@ -11,7 +11,7 @@ name = "定海神针"
 description = "弼马温啥时候能发现耳朵里少了个东西？"
 fail_settle_cool_time = 0.5
 success_settle_cool_time = 3.0
-tower_sprite = ExtResource("4_tgcny")
+tower_sprite = ExtResource("4_kbq45")
 card_sprite = ExtResource("2_1lj37")
 basic_tower = ExtResource("1_j0gkq")
 consume = {

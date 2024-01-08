@@ -116,7 +116,7 @@ _data = {
 
 [node name="DiedTogether" type="Node2D"]
 script = ExtResource("1_2eyvh")
-expense_on_coin = 1
+expense_on_coin = 20
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 4

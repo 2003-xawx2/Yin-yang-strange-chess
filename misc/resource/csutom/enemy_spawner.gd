@@ -11,3 +11,5 @@ class_name enemy_spawner
 @export var showing_time:float
 @export var show_interval:float
 @export var show_amounts:int
+
+

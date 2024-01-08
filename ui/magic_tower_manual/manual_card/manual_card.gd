@@ -48,6 +48,7 @@ func _input(event: InputEvent) -> void:
 
 
 func back_to_origin()->void:
+	$GPUParticles2D.emitting = false
 	z_index = 0
 	tween_position(Vector2.ZERO)
 	animation_player.play_backwards("ease_in")
@@ -71,6 +72,8 @@ func tween_position(target_position:Vector2,tween_time:float = .4)->void:
 
 
 func new_card()->void:
+	if tween and tween.is_running():
+		tween.kill()
 	global_position = big_position
 	animation_player.play("new")
 	await get_tree().process_frame

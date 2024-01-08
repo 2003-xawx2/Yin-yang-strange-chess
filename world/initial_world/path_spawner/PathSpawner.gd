@@ -1,5 +1,7 @@
 extends Node2D
 
+signal victory
+
 @onready var timer = $Timer
 @onready var navigation_region_2d = $NavigationRegion2D
 @onready var enemies:Array[PackedScene] = [
@@ -8,8 +10,11 @@ extends Node2D
 	preload("res://entity/enemy/initial_enemy/maggot/maggot_spawner.tscn")
 ]
 
+@export_category("random_spawn")
 @export var random_spawn:bool = false
 @export var spawn_multipler:float = 1
+@export_category("rule_spawn")
+#@export var end_extra_time:= 30
 @export var PathArray:Array[enemy_spawner]
 var index:int=0
 var spawn_time_line:Array[Dictionary] = []
@@ -47,7 +52,7 @@ func _sort(temp_a:Dictionary,temp_b:Dictionary)->bool:
 
 
 func _on_timer_timeout():
-	get_tree().call_group("order","queue_redraw")
+	#get_tree().call_group("order","queue_redraw")
 	if !random_spawn:
 		rule_spawn()
 	else:
@@ -60,7 +65,7 @@ func rand_spawn()->void:
 	spawn_enemy(randi_range(0,2),start_position/2+1,start_position,end_position)
 	timer.start(randf_range(0,1)/spawn_multipler)
 
-
+ 
 func rule_spawn()->void:
 	spawn_enemy(spawn_time_line[index]["enemy_type"],spawn_time_line[index]["enemy_faction"],\
 	spawn_time_line[index]["spawn_position"],spawn_time_line[index]["end_position"])
