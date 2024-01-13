@@ -159,5 +159,6 @@ texture = ExtResource("5_14bwp")
 offset = Vector2(-17, 39)
 
 [node name="RandomAudioPlayer" parent="." instance=ExtResource("6_pk82f")]
+bus = &"magic"
 stream_array = Array[AudioStream]([ExtResource("7_s8bfp"), ExtResource("6_00kbk")])
 max_pitch = 1.0

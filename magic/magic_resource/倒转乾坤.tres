@@ -13,3 +13,4 @@ show_weight = 1
 magic_icon = ExtResource("2_n0veg")
 card_sprite = ExtResource("1_7up8g")
 magic = ExtResource("1_yemyq")
+price = 1000

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtnw12nn4fpj6"]
+[gd_scene load_steps=9 format=3 uid="uid://dtnw12nn4fpj6"]
 
 [ext_resource type="Script" path="res://magic/magic_scene/倒转乾坤/taichi.gd" id="1_6oph8"]
 [ext_resource type="Texture2D" uid="uid://c6o5cmcllmft5" path="res://magic/magic_scene/倒转乾坤/升级版太极.png" id="2_jui5w"]
+[ext_resource type="PackedScene" uid="uid://xi3mskq0sk5" path="res://misc/random_player/random_audio_player/random_audio_player.tscn" id="3_f72o3"]
+[ext_resource type="AudioStream" uid="uid://c505pbkry4d6n" path="res://magic/magic_scene/倒转乾坤/倒转乾坤.wav" id="4_k8g8l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6gj4"]
 bg_color = Color(0, 0, 0, 0.0862745)
@@ -98,3 +100,7 @@ hframes = 14
 libraries = {
 "": SubResource("AnimationLibrary_2h1d6")
 }
+
+[node name="RandomAudio2D" parent="." instance=ExtResource("3_f72o3")]
+bus = &"magic"
+stream_array = Array[AudioStream]([ExtResource("4_k8g8l")])

@@ -368,7 +368,7 @@ shortcut = SubResource("Shortcut_m4bh4")
 offset_left = -78.5
 offset_right = 78.5
 offset_bottom = 84.0
-all_seconds = 5
+all_seconds = 60
 all_minutes = 0
 
 [connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]

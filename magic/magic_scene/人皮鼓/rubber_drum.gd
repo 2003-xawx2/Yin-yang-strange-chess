@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var except_range:float = 228
+@onready var random_audio_player: random_audio = $RandomAudioPlayer
 var strong_shader:ShaderMaterial = preload("res://entity/enemy/initial_enemy/frog/mutation.tres")
 
 
@@ -14,6 +15,7 @@ func try_to_settle()->void:
 
 
 func settle_success()->void:
+	random_audio_player.play_random()
 	var enemies:Array = $Area2D.get_overlapping_bodies()
 	enemies = enemies.filter(_filter)
 	for _frog in enemies:

@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var detect_range:=200
+@onready var random_audio_2d: = $RandomAudio2D
+
 
 func _ready():
 	change_modulate($Panel,1)
@@ -11,6 +13,7 @@ func try_to_settle()->void:
 
 
 func settle_success()->void:
+	random_audio_2d.play_random() 
 	change_modulate($Panel,0)
 	var enemies :Array = update_enemies()
 	for enemy in enemies:

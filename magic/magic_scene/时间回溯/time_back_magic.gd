@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var random_audio_player: random_audio = $RandomAudioPlayer
 
 
 func _ready():
@@ -15,6 +16,7 @@ func settle_fail()->void:
 
 
 func settle_success()->void:
+	random_audio_player.play_random()
 	$AnimationPlayer.play("roll")
 	await $AnimationPlayer.animation_finished
 	#$AnimationPlayer.play("roll")
