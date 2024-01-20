@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="check_point" load_steps=3 format=3 uid="uid://tkbew5a7u2y0"]
 
-[ext_resource type="PackedScene" uid="uid://0m30030spux7" path="res://world/initial_world/initial_world.tscn" id="1_hsd8p"]
+[ext_resource type="PackedScene" uid="uid://cwrm11u1xteqh" path="res://world/second_world/w_2.tscn" id="1_0bqmw"]
 [ext_resource type="Script" path="res://misc/resource/csutom/check_point.gd" id="2_rvbxx"]
 
 [resource]
 script = ExtResource("2_rvbxx")
-check_name = "h1"
+check_name = "h2"
 description = "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，你看不懂哈哈哈"
 riddle = "你要写什么谜语？"
-check_point_scene = ExtResource("1_hsd8p")
+check_point_scene = ExtResource("1_0bqmw")
 check_score = "未通过"
 check_status = 2
 reward_tower = "倒转乾坤"

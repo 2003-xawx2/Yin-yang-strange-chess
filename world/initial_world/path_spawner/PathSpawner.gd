@@ -13,11 +13,13 @@ signal victory
 @export_category("random_spawn")
 @export var random_spawn:bool = false
 @export var spawn_multipler:float = 1
+@export var paths:Array[EnemyPath]
 @export_category("rule_spawn")
 #@export var end_extra_time:= 30
 @export var PathArray:Array[enemy_spawner]
 var index:int=0
 var spawn_time_line:Array[Dictionary] = []
+
 
 
 func _ready():
@@ -60,9 +62,8 @@ func _on_timer_timeout():
 
 
 func rand_spawn()->void:
-	var start_position :int = randi_range(0,3)
-	var end_position := (start_position+2)%4
-	spawn_enemy(randi_range(0,2),start_position/2+1,start_position,end_position)
+	var enemy_path = paths.pick_random() as EnemyPath
+	spawn_enemy(randi_range(0,2),enemy_path.faction,enemy_path.start,enemy_path.end)
 	timer.start(randf_range(0,1)/spawn_multipler)
 
  

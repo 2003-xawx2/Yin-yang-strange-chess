@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=41 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="Script" path="res://world/initial_world/initial_world.gd" id="1_5lflu"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://ck4mbn35v5g5p" path="res://world/initial_world/path/initial_world.tres" id="15_q648t"]
 [ext_resource type="Resource" uid="uid://bpgppb2ygfnjp" path="res://world/initial_world/path/initial_world_2.tres" id="16_7x6io"]
 [ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="17_xe5gv"]
+[ext_resource type="Script" path="res://world/initial_world/path_spawner/enemy_path.gd" id="19_qlb34"]
 [ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="22_7huxj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buc1d"]
@@ -124,6 +125,30 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmxl8"]
 size = Vector2(2343, 258)
 
+[sub_resource type="Resource" id="Resource_6l8q7"]
+script = ExtResource("19_qlb34")
+start = 0
+end = 2
+faction = 2
+
+[sub_resource type="Resource" id="Resource_d7hbp"]
+script = ExtResource("19_qlb34")
+start = 1
+end = 3
+faction = 2
+
+[sub_resource type="Resource" id="Resource_0mt3v"]
+script = ExtResource("19_qlb34")
+start = 2
+end = 0
+faction = 1
+
+[sub_resource type="Resource" id="Resource_t8is8"]
+script = ExtResource("19_qlb34")
+start = 3
+end = 1
+faction = 1
+
 [sub_resource type="Resource" id="Resource_wq4de"]
 script = ExtResource("17_xe5gv")
 spawn_position = 2
@@ -161,6 +186,7 @@ events = [SubResource("InputEventKey_5yb8g")]
 [node name="InitialWorld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5lflu")
+current_world_index = 1
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -334,6 +360,7 @@ polygon = PackedVector2Array(-12, 471, -82, 415, 286, 111, 342, 179)
 y_sort_enabled = true
 random_spawn = true
 spawn_multipler = 0.3
+paths = Array[ExtResource("19_qlb34")]([SubResource("Resource_6l8q7"), SubResource("Resource_d7hbp"), SubResource("Resource_0mt3v"), SubResource("Resource_t8is8")])
 PathArray = Array[ExtResource("17_xe5gv")]([ExtResource("15_q648t"), ExtResource("16_7x6io"), SubResource("Resource_wq4de"), SubResource("Resource_c4l2k")])
 
 [node name="left_top" type="Node2D" parent="PathSpawner"]

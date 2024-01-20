@@ -27,5 +27,5 @@ magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([E
 tower_resources = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("18_1rsl0"), ExtResource("13_meh6r"), ExtResource("15_02uya"), ExtResource("17_icxaj"), ExtResource("12_hcy2f"), ExtResource("19_djxhr"), ExtResource("19_djxhr"), ExtResource("14_84css"), ExtResource("15_w4am1")])
 owned_magic = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("1_l5csn"), ExtResource("6_iwahu"), ExtResource("2_sj5ht"), ExtResource("10_m3uaf")])
 owned_tower = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("12_hcy2f"), ExtResource("13_meh6r"), ExtResource("14_84css"), ExtResource("15_02uya"), ExtResource("15_w4am1"), ExtResource("17_icxaj"), ExtResource("18_1rsl0"), ExtResource("19_djxhr")])
-moneys = 95026
+moneys = 95040
 check_index = 2
