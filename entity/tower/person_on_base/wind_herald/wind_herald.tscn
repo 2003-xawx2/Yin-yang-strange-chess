@@ -1,8 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjvfpsk46rm5h"]
+[gd_scene load_steps=14 format=3 uid="uid://bjvfpsk46rm5h"]
 
 [ext_resource type="Script" path="res://entity/tower/person_on_base/wind_herald/wind_herald.gd" id="1_32p7i"]
 [ext_resource type="PackedScene" uid="uid://xdpw4663si8y" path="res://entity/tower/person_on_base/human_settle_com/settle_area.tscn" id="3_m0xdf"]
 [ext_resource type="Texture2D" uid="uid://camdma05r5a16" path="res://entity/tower/person_on_base/wind_herald/飞廉风神front.png" id="3_pr8f3"]
+[ext_resource type="PackedScene" uid="uid://xi3mskq0sk5" path="res://misc/random_player/random_audio_player/random_audio_player.tscn" id="4_u5co4"]
+[ext_resource type="AudioStream" uid="uid://bbta802aouvlk" path="res://entity/tower/person_on_base/wind_herald/绿球.wav" id="5_2oopq"]
+[ext_resource type="AudioStream" uid="uid://b31bwyaukxris" path="res://entity/tower/person_on_base/wind_herald/风（弱.wav" id="6_pnmq2"]
+[ext_resource type="AudioStream" uid="uid://cx16ah0hj4i3u" path="res://entity/tower/person_on_base/wind_herald/风.wav" id="7_qvc3v"]
 
 [sub_resource type="Animation" id="Animation_hcypf"]
 length = 0.001
@@ -189,3 +193,14 @@ position = Vector2(0, -31)
 scale = Vector2(3, 3)
 texture = ExtResource("3_pr8f3")
 hframes = 12
+
+[node name="audio" type="Node" parent="."]
+
+[node name="Ball" parent="audio" instance=ExtResource("4_u5co4")]
+stream = ExtResource("5_2oopq")
+stream_array = Array[AudioStream]([ExtResource("5_2oopq"), ExtResource("6_pnmq2")])
+
+[node name="Hurricane" parent="audio" instance=ExtResource("4_u5co4")]
+stream = ExtResource("7_qvc3v")
+bus = &"tower"
+stream_array = Array[AudioStream]([ExtResource("7_qvc3v")])

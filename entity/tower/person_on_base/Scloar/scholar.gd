@@ -2,6 +2,7 @@ extends basic_human
 
 @onready var link := preload("res://entity/tower/person_on_base/Scloar/link.tscn")
 @onready var graphic := $Graphic
+@onready var random_audio_player: random_audio = $RandomAudioPlayer
 
 
 func _ready() -> void:
@@ -14,6 +15,7 @@ func small_attack()->void:
 	if target == null:
 		return
 	update_direction()
+	random_audio_player.play_random()
 	recoil()
 	for i in range(3):
 		var bullet: = link.instantiate()
@@ -29,7 +31,6 @@ func update_enemies_attack()->void:
 		animation_player.play("idle")
 	else:
 		animation_player.play("attack")
-
 
 
 func adjust_direction(_direction:Vector2)->void:

@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://we4gu7625hbw"]
+[gd_scene load_steps=14 format=3 uid="uid://we4gu7625hbw"]
 
 [ext_resource type="Script" path="res://entity/tower/person_on_base/Scloar/scholar.gd" id="1_yo565"]
 [ext_resource type="PackedScene" uid="uid://xdpw4663si8y" path="res://entity/tower/person_on_base/human_settle_com/settle_area.tscn" id="2_3d7lf"]
 [ext_resource type="Texture2D" uid="uid://b2rtvyq8rb2uh" path="res://entity/tower/person_on_base/Scloar/书生背面.png" id="2_4a3un"]
 [ext_resource type="Texture2D" uid="uid://ycxpy3aro4by" path="res://entity/tower/person_on_base/Scloar/书生front.png" id="3_wa2ms"]
 [ext_resource type="Texture2D" uid="uid://bj022jatfsa4r" path="res://entity/tower/person_on_base/Scloar/flag.png" id="4_mt0t6"]
+[ext_resource type="PackedScene" uid="uid://xi3mskq0sk5" path="res://misc/random_player/random_audio_player/random_audio_player.tscn" id="6_ehlta"]
+[ext_resource type="AudioStream" uid="uid://0b2phojc0n6i" path="res://entity/tower/person_on_base/Scloar/书生1(1).wav" id="7_6wwfr"]
 
 [sub_resource type="Animation" id="Animation_vwrjk"]
 length = 0.001
@@ -185,3 +187,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_85ljq")
+
+[node name="RandomAudioPlayer" parent="." instance=ExtResource("6_ehlta")]
+stream = ExtResource("7_6wwfr")
+bus = &"tower"
+stream_array = Array[AudioStream]([ExtResource("7_6wwfr")])

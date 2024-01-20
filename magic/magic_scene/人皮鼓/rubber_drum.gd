@@ -29,7 +29,6 @@ func settle_success()->void:
 	queue_free()
 
 
-
 func _filter(_frog:Node2D)->bool:
 	if _frog is frog:
 		return true
