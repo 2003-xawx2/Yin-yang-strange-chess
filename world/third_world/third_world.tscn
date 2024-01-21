@@ -1,0 +1,527 @@
+[gd_scene load_steps=46 format=3 uid="uid://dpf56ij3d1kjt"]
+
+[ext_resource type="Script" path="res://world/third_world/third_world.gd" id="1_cixgn"]
+[ext_resource type="Texture2D" uid="uid://b7p20hekhq1xm" path="res://world/third_world/asset/background.png" id="1_cohl5"]
+[ext_resource type="Texture2D" uid="uid://b6qy04li6r4me" path="res://world/third_world/asset/hill.png" id="2_7w8o7"]
+[ext_resource type="Texture2D" uid="uid://b3jcjhgcxa441" path="res://world/third_world/asset/map.png" id="3_mb8ka"]
+[ext_resource type="Texture2D" uid="uid://b4m33mgi6jph2" path="res://world/third_world/asset/fense.png" id="4_bayy8"]
+[ext_resource type="PackedScene" uid="uid://dwm1bdc1qdow4" path="res://misc/camera/scripy_camera.tscn" id="4_eap5w"]
+[ext_resource type="Texture2D" uid="uid://bmbscqpr54sxu" path="res://world/third_world/asset/front_tree.png" id="5_lunp5"]
+[ext_resource type="Texture2D" uid="uid://blix6n4a74vjt" path="res://world/third_world/asset/wooden_stake.png" id="6_3nakk"]
+[ext_resource type="Texture2D" uid="uid://eru44rwlhfy1" path="res://world/third_world/asset/stone_fense1.png" id="6_222hr"]
+[ext_resource type="Texture2D" uid="uid://dlj5ckjnvkjs4" path="res://world/third_world/asset/stone_fense2.png" id="7_1awjf"]
+[ext_resource type="Texture2D" uid="uid://bewtyohbxt2ji" path="res://world/third_world/asset/stone.png" id="7_tcht2"]
+[ext_resource type="Texture2D" uid="uid://bkxxb161vlafg" path="res://world/third_world/asset/wooden_fense.png" id="8_h3ail"]
+[ext_resource type="Texture2D" uid="uid://cs1abgq2q6cmt" path="res://world/third_world/asset/bush2.png" id="9_ki4lq"]
+[ext_resource type="Texture2D" uid="uid://dexd3bwpfo3mp" path="res://world/third_world/asset/bush3.png" id="9_usppa"]
+[ext_resource type="Texture2D" uid="uid://1hnlvw54yesi" path="res://world/third_world/asset/rose.png" id="11_34g7p"]
+[ext_resource type="Texture2D" uid="uid://b84hlrwjbxrrw" path="res://world/third_world/asset/amazon_leaf.png" id="11_068or"]
+[ext_resource type="Texture2D" uid="uid://23mx6ju4ga43" path="res://world/third_world/asset/bush1.png" id="11_abtfr"]
+[ext_resource type="Texture2D" uid="uid://blbv5bcys3jks" path="res://world/third_world/asset/purple_flower1.png" id="12_5enfr"]
+[ext_resource type="Texture2D" uid="uid://d2ywdjc3b7ayx" path="res://world/third_world/asset/shit_grass/grass1.png" id="13_h4giw"]
+[ext_resource type="Texture2D" uid="uid://btwfx8butgpst" path="res://world/third_world/asset/purple_flower2.png" id="13_l6q85"]
+[ext_resource type="Texture2D" uid="uid://ob81bdminnny" path="res://world/third_world/asset/grass_ball1.png" id="13_lmdp5"]
+[ext_resource type="Texture2D" uid="uid://p0scaenycc66" path="res://world/third_world/asset/shit_grass/grass2.png" id="14_3oksr"]
+[ext_resource type="Texture2D" uid="uid://cuw877cr3er45" path="res://world/third_world/asset/grass_ball2.png" id="14_6rsy0"]
+[ext_resource type="Texture2D" uid="uid://dhbfbhfoyei67" path="res://world/third_world/asset/dandelion1.png" id="14_hw467"]
+[ext_resource type="Texture2D" uid="uid://cugwlfoeljsdv" path="res://world/third_world/asset/dandelion2.png" id="15_8eo2s"]
+[ext_resource type="Texture2D" uid="uid://dtyjq58yg3ccm" path="res://world/third_world/asset/shit_grass/grass3.png" id="15_o6t8f"]
+[ext_resource type="Texture2D" uid="uid://c2mkl88cm073j" path="res://world/third_world/asset/tree.png" id="16_0o003"]
+[ext_resource type="Texture2D" uid="uid://bc624grsld57r" path="res://world/third_world/asset/shit_grass/grass4.png" id="16_cg2wp"]
+[ext_resource type="Texture2D" uid="uid://d1cc6atd54rs" path="res://world/third_world/asset/vine_tree.png" id="17_1qd68"]
+[ext_resource type="Texture2D" uid="uid://rdftryb2p8wr" path="res://world/third_world/asset/shit_grass/grass5.png" id="17_dms2b"]
+[ext_resource type="Texture2D" uid="uid://b4xe7ysdfw2el" path="res://world/third_world/asset/shit_grass/grass6.png" id="18_o76ut"]
+[ext_resource type="Texture2D" uid="uid://cxpfleimwvtep" path="res://world/third_world/asset/flower_tree.png" id="18_w7b8k"]
+[ext_resource type="Texture2D" uid="uid://djvlubrcgordf" path="res://world/third_world/asset/background_tree.png" id="19_mxvhg"]
+[ext_resource type="Texture2D" uid="uid://dlryxi17033qc" path="res://world/third_world/asset/shit_grass/grass7.png" id="19_rn8md"]
+[ext_resource type="Texture2D" uid="uid://busf2s2826kh7" path="res://world/third_world/asset/shit_grass/grass8.png" id="20_gbr7x"]
+[ext_resource type="Texture2D" uid="uid://ydfqa2vfxvap" path="res://world/third_world/asset/shadow.png" id="20_r8rf0"]
+[ext_resource type="Texture2D" uid="uid://4cjiuveoxf82" path="res://world/third_world/asset/shit_grass/grass9.png" id="21_gno30"]
+[ext_resource type="Texture2D" uid="uid://bsh282ebpff6v" path="res://world/third_world/asset/border_wall1.png" id="22_rnof5"]
+[ext_resource type="Texture2D" uid="uid://de7xvuao03mdc" path="res://world/third_world/asset/border_wall2.png" id="23_apkl4"]
+[ext_resource type="Texture2D" uid="uid://dd2f6qc4ub32e" path="res://world/third_world/asset/base.png" id="30_tb82w"]
+[ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="32_a70qo"]
+[ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="32_etabu"]
+[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="33_cuid2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0jf1"]
+radius = 151.78
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wkgmp"]
+vertices = PackedVector2Array(1802, 330, 2625, 40, 2625, 41, 2431, 345, 1802, 331, 2908, -36, 2903, 206, -959, 215, -957, -102, -518, -56, -348, 302, -135, 697, 105, 446, 164, 939, 1174, 503, 1012, 804, 973, 1158, 992, 1007, 973, 1159, 2015, 1285, 1869, 1478, 2906, 1483, 2905, 1267)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 5, 6, 3), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 10, 9, 12, 13), PackedInt32Array(13, 12, 14, 15), PackedInt32Array(4, 3, 15, 14), PackedInt32Array(16, 13, 15, 17), PackedInt32Array(18, 16, 17, 19, 20), PackedInt32Array(21, 20, 19, 22)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-515, -66, 109, 436, 1173, 493, 1799, 321, 2622, 31, 2919, -50, 2913, 214, 2434, 355, 1021, 811, 1003, 1000, 2016, 1275, 2915, 1257, 2917, 1494, 1869, 1488, 970, 1168, 161, 949, -144, 704, -354, 311, -970, 224, -967, -114)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="ThirdWorld" type="Node2D"]
+script = ExtResource("1_cixgn")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Map"]
+
+[node name="BackGround" type="ParallaxLayer" parent="Map/ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+
+[node name="GreenBack" type="Sprite2D" parent="Map/ParallaxBackground/BackGround"]
+position = Vector2(1000, 600)
+scale = Vector2(15, 14.955)
+texture = ExtResource("1_cohl5")
+
+[node name="Hill" type="Sprite2D" parent="Map/ParallaxBackground/BackGround"]
+position = Vector2(1200, 1060)
+scale = Vector2(9, 9)
+texture = ExtResource("2_7w8o7")
+
+[node name="PlayGround" type="Sprite2D" parent="Map"]
+position = Vector2(1000, 559.75)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("3_mb8ka")
+
+[node name="First" type="Sprite2D" parent="Map"]
+
+[node name="StoneFenseLeft" type="Sprite2D" parent="Map/First"]
+position = Vector2(-377, -441)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("6_222hr")
+
+[node name="StoneFenseRight" type="Sprite2D" parent="Map/First"]
+position = Vector2(2584, -441)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("7_1awjf")
+
+[node name="WoodenStake1" type="Sprite2D" parent="Map/First"]
+position = Vector2(1713, 213)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("6_3nakk")
+
+[node name="WoodenStake2" type="Sprite2D" parent="Map/First"]
+z_index = 1
+position = Vector2(1988, 545)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("6_3nakk")
+
+[node name="Stone1" type="Sprite2D" parent="Map/First"]
+position = Vector2(354, 265)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("7_tcht2")
+
+[node name="Stone2" type="Sprite2D" parent="Map/First"]
+position = Vector2(1836, 1063)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("7_tcht2")
+
+[node name="Stone3" type="Sprite2D" parent="Map/First"]
+z_index = 1
+position = Vector2(1209, 1186.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("7_tcht2")
+
+[node name="WoodenFense1" type="Sprite2D" parent="Map/First"]
+z_index = 1
+position = Vector2(758, 1097)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("8_h3ail")
+
+[node name="WoodenFense2" type="Sprite2D" parent="Map/First"]
+position = Vector2(2249.3, 1096.25)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("8_h3ail")
+
+[node name="Second" type="Sprite2D" parent="Map"]
+
+[node name="Bash" type="Sprite2D" parent="Map/Second"]
+z_index = 1
+
+[node name="BashLeft" type="Sprite2D" parent="Map/Second/Bash"]
+position = Vector2(-805, 1495)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("9_usppa")
+
+[node name="Bash1" type="Sprite2D" parent="Map/Second/Bash"]
+position = Vector2(-111.5, -404.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("9_ki4lq")
+
+[node name="Bash2" type="Sprite2D" parent="Map/Second/Bash"]
+position = Vector2(468, -290.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("9_ki4lq")
+
+[node name="Bash3" type="Sprite2D" parent="Map/Second/Bash"]
+position = Vector2(2607, -394)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("9_ki4lq")
+
+[node name="Bash4" type="Sprite2D" parent="Map/Second/Bash"]
+position = Vector2(-40, 1467)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_abtfr")
+
+[node name="Grass" type="Sprite2D" parent="Map/Second"]
+
+[node name="Grass1" type="Sprite2D" parent="Map/Second/Grass"]
+z_index = 2
+position = Vector2(-496, 426.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("13_h4giw")
+
+[node name="Grass2" type="Sprite2D" parent="Map/Second/Grass"]
+z_index = 2
+position = Vector2(529.5, 1116)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_3oksr")
+
+[node name="Grass3" type="Sprite2D" parent="Map/Second/Grass"]
+z_index = 2
+position = Vector2(1494, 1353)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("15_o6t8f")
+
+[node name="Grass4" type="Sprite2D" parent="Map/Second/Grass"]
+z_index = 2
+position = Vector2(2458, 1481.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("16_cg2wp")
+
+[node name="Grass5" type="Sprite2D" parent="Map/Second/Grass"]
+position = Vector2(2515, 1078)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("17_dms2b")
+
+[node name="Grass6" type="Sprite2D" parent="Map/Second/Grass"]
+z_index = 2
+position = Vector2(1736, 626.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("18_o76ut")
+
+[node name="Grass7" type="Sprite2D" parent="Map/Second/Grass"]
+z_index = 2
+position = Vector2(2505.7, 450.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("19_rn8md")
+
+[node name="Grass8" type="Sprite2D" parent="Map/Second/Grass"]
+position = Vector2(2505.8, -176.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("20_gbr7x")
+
+[node name="Grass9" type="Sprite2D" parent="Map/Second/Grass"]
+position = Vector2(943, 156)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("21_gno30")
+
+[node name="GrassBall" type="Sprite2D" parent="Map/Second"]
+
+[node name="GrassBall1" type="Sprite2D" parent="Map/Second/GrassBall"]
+position = Vector2(2244.5, 8.7)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("13_lmdp5")
+
+[node name="GrassBall2" type="Sprite2D" parent="Map/Second/GrassBall"]
+z_index = 2
+position = Vector2(-35.5, 977.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_6rsy0")
+
+[node name="GrassBall3" type="Sprite2D" parent="Map/Second/GrassBall"]
+position = Vector2(2597, 892)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_6rsy0")
+flip_h = true
+
+[node name="AmazonLeaf" type="Sprite2D" parent="Map/Second"]
+
+[node name="AmazonLeaf1" type="Sprite2D" parent="Map/Second/AmazonLeaf"]
+z_index = 2
+position = Vector2(-235, 726)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_068or")
+
+[node name="AmazonLeaf2" type="Sprite2D" parent="Map/Second/AmazonLeaf"]
+position = Vector2(819, 213)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_068or")
+
+[node name="AmazonLeaf3" type="Sprite2D" parent="Map/Second/AmazonLeaf"]
+position = Vector2(1940.5, 1001.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_068or")
+
+[node name="Rose" type="Sprite2D" parent="Map/Second"]
+
+[node name="Rose1" type="Sprite2D" parent="Map/Second/Rose"]
+position = Vector2(1099.5, 270)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_34g7p")
+
+[node name="Rose2" type="Sprite2D" parent="Map/Second/Rose"]
+z_index = 1
+position = Vector2(2287.4, 792.3)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_34g7p")
+
+[node name="PurpleFlower" type="Sprite2D" parent="Map/Second"]
+
+[node name="PurpleFlower1" type="Sprite2D" parent="Map/Second/PurpleFlower"]
+position = Vector2(1950.5, 118)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("12_5enfr")
+
+[node name="PurpleFlower2" type="Sprite2D" parent="Map/Second/PurpleFlower"]
+z_index = 2
+position = Vector2(963, 1178)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("13_l6q85")
+
+[node name="Dandelion" type="Sprite2D" parent="Map/Second"]
+
+[node name="Dandelion1" type="Sprite2D" parent="Map/Second/Dandelion"]
+z_index = 2
+position = Vector2(1019, 1315)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_hw467")
+
+[node name="Dandelion2" type="Sprite2D" parent="Map/Second/Dandelion"]
+z_index = 2
+position = Vector2(2435, 1515)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_hw467")
+
+[node name="Dandelion3" type="Sprite2D" parent="Map/Second/Dandelion"]
+position = Vector2(1484, 203)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_hw467")
+
+[node name="Dandelion4" type="Sprite2D" parent="Map/Second/Dandelion"]
+position = Vector2(2520, -262)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_hw467")
+
+[node name="Dandelion5" type="Sprite2D" parent="Map/Second/Dandelion"]
+z_index = 2
+position = Vector2(-406, 545)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_hw467")
+
+[node name="Dandelion6" type="Sprite2D" parent="Map/Second/Dandelion"]
+position = Vector2(1228, 840)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_hw467")
+
+[node name="Dandelion7" type="Sprite2D" parent="Map/Second/Dandelion"]
+position = Vector2(2539, 1125)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("15_8eo2s")
+
+[node name="Third" type="Sprite2D" parent="Map"]
+z_index = 3
+
+[node name="Tree1" type="Sprite2D" parent="Map/Third"]
+position = Vector2(-425, 275)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("16_0o003")
+
+[node name="Tree2" type="Sprite2D" parent="Map/Third"]
+position = Vector2(59, -191)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("16_0o003")
+
+[node name="Tree3" type="Sprite2D" parent="Map/Third"]
+position = Vector2(991, -286)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("16_0o003")
+
+[node name="VineTree" type="Sprite2D" parent="Map/Third"]
+y_sort_enabled = true
+position = Vector2(1284.9, 674)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("17_1qd68")
+
+[node name="FlowerTree" type="Sprite2D" parent="Map/Third"]
+position = Vector2(692, 1329)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("18_w7b8k")
+
+[node name="TreeBackground" type="Sprite2D" parent="Map/Third"]
+position = Vector2(1850.5, -423.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("19_mxvhg")
+
+[node name="Fourth" type="Sprite2D" parent="Map"]
+z_index = 4
+
+[node name="Shadow" type="Sprite2D" parent="Map/Fourth"]
+position = Vector2(1000, 559.75)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("20_r8rf0")
+
+[node name="Fense" type="Sprite2D" parent="Map/Fourth"]
+position = Vector2(-734, 1329)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("4_bayy8")
+
+[node name="BorderWall" type="Sprite2D" parent="Map/Fourth"]
+
+[node name="BorderWall1" type="Sprite2D" parent="Map/Fourth/BorderWall"]
+position = Vector2(781.5, 1552.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("22_rnof5")
+
+[node name="BorderWall2" type="Sprite2D" parent="Map/Fourth/BorderWall"]
+position = Vector2(2320.5, 1552.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("22_rnof5")
+
+[node name="BorderWall3" type="Sprite2D" parent="Map/Fourth/BorderWall"]
+position = Vector2(2805, 1501.5)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("23_apkl4")
+
+[node name="FrontTree" type="Sprite2D" parent="Map/Fourth"]
+position = Vector2(1000, 559.75)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("5_lunp5")
+
+[node name="Base" type="Sprite2D" parent="Map"]
+
+[node name="Base1" type="Sprite2D" parent="Map/Base"]
+z_index = 5
+position = Vector2(-516, 717)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("30_tb82w")
+
+[node name="Base2" type="Sprite2D" parent="Map/Base"]
+position = Vector2(539, 175)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("30_tb82w")
+
+[node name="Base3" type="Sprite2D" parent="Map/Base"]
+z_index = 5
+position = Vector2(245, 1201)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("30_tb82w")
+
+[node name="Base4" type="Sprite2D" parent="Map/Base"]
+z_index = 5
+position = Vector2(1518, 1478)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("30_tb82w")
+
+[node name="Base5" type="Sprite2D" parent="Map/Base"]
+z_index = 5
+position = Vector2(2391.7, 583.3)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("30_tb82w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map"]
+position = Vector2(105, 105)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Base1" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(-619, 611)
+shape = SubResource("CircleShape2D_l0jf1")
+
+[node name="Base2" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(142, 1097)
+shape = SubResource("CircleShape2D_l0jf1")
+
+[node name="Base3" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(1417, 1372)
+shape = SubResource("CircleShape2D_l0jf1")
+
+[node name="Base4" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(2297, 484)
+shape = SubResource("CircleShape2D_l0jf1")
+
+[node name="Base5" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(439, 75)
+shape = SubResource("CircleShape2D_l0jf1")
+
+[node name="WoodenFense1" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1925, 918)
+polygon = PackedVector2Array(-3, -2, 81, -5, 82, 133, -1, 129)
+
+[node name="WoodenFense2" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(2103, 939)
+polygon = PackedVector2Array(-2, -5, 74, -7, 74, 129, 1, 130)
+
+[node name="WoodenFense3" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(2283, 946)
+polygon = PackedVector2Array(-2, -5, 74, -7, 74, 129, 1, 130)
+
+[node name="WoodenFense4" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(437, 917)
+polygon = PackedVector2Array(-2, -5, 74, -7, 74, 129, 1, 130)
+
+[node name="WoodenFense5" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(611, 937)
+polygon = PackedVector2Array(-2, -5, 74, -7, 74.0001, 58.6627, 74, 129, 1, 130)
+
+[node name="WoodenFense6" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(791, 943)
+polygon = PackedVector2Array(-2, -5, 74, -7, 74, 74.0601, 74, 129, 1, 130)
+
+[node name="Tree1" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1110, 765)
+polygon = PackedVector2Array(15, -10, -49, 33, 23, 70, 70, 70, 129, 73, 152, 43, 188, 21, 131, -11, 114, -52, 114, -94, 114, -140, 32, -170)
+
+[node name="Tree2" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(-120, -97)
+polygon = PackedVector2Array(15, -10, -45, 40, 27, 76, 75, 82, 129, 76, 183, 52, 152, 13, 131, -11, 114, -52, 114, -94, 114, -140, 33, -137)
+
+[node name="Tree3" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(812, -195)
+polygon = PackedVector2Array(15, -10, -39, 42, 21, 75, 84, 75, 132, 69, 186, 51, 152, 13, 131, -11, 114, -52, 114, -94, 114, -140, 27, -132)
+
+[node name="Tree4" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(-604, 369)
+polygon = PackedVector2Array(15, -10, -46, 42, 23, 71, 80, 77, 131, 77, 190, 42, 152, 13, 131, -11, 114, -52, 114, -94, 114, -140, 29, -129)
+
+[node name="WoodenStake1" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1462, 65)
+polygon = PackedVector2Array(-1, -2, 108, -20, 189, -21, 291, -12, 292, 73, 213, 94, 123, 97, -6, 95)
+
+[node name="WoodenStake2" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1736, 399)
+polygon = PackedVector2Array(-1, -2, 108, -20, 189, -21, 291, -12, 292, 73, 213, 94, 123, 97, -6, 95)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+position = Vector2(1032, 1072)
+polygon = PackedVector2Array(2, -1, 28, -36, 64, -48, 92, -34, 93, 9, 120, 5, 144, 18, 147, 38, 137, 54, 115, 58, 109, 63, 92, 55, 74, 38, 57, 38, 45, 44, 9, 41, -1, 23)
+
+[node name="ScripyCamera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("4_eap5w")]
+position = Vector2(984, 570)
+map = NodePath("../Map/PlayGround")
+acceleration = 2.4
+zoom_adjust_percent = 0.08
+zoom_min_limit = 0.59
+zoom_max_limit = 1.95
+
+[node name="PathSpawner" parent="." instance=ExtResource("32_a70qo")]
+random_spawn = true
+spawn_multipler = 0.3
+
+[node name="LeftTop" type="Node2D" parent="PathSpawner"]
+position = Vector2(-842, 79)
+
+[node name="RightTop" type="Node2D" parent="PathSpawner"]
+position = Vector2(2871, 102)
+
+[node name="RightBottom" type="Node2D" parent="PathSpawner"]
+position = Vector2(2852, 1328)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="PathSpawner"]
+navigation_polygon = SubResource("NavigationPolygon_wkgmp")
+
+[node name="InGameUI" parent="." instance=ExtResource("32_etabu")]
+
+[node name="Button" type="Button" parent="InGameUI"]
+offset_right = 93.0
+offset_bottom = 42.0
+
+[node name="TimeManager" parent="InGameUI" instance=ExtResource("33_cuid2")]
+
+[connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]

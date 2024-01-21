@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="list_saving" load_steps=21 format=3 uid="uid://cihybajqnvdsm"]
+[gd_resource type="Resource" script_class="list_saving" load_steps=21 format=3 uid="uid://be5hqnxg01m4j"]
 
 [ext_resource type="Resource" uid="uid://r3b5c7fj2c5o" path="res://magic/magic_resource/人皮鼓.tres" id="1_l5csn"]
 [ext_resource type="Script" path="res://misc/resource/csutom/list_saving.gd" id="1_yxi8r"]
@@ -25,7 +25,7 @@
 script = ExtResource("1_yxi8r")
 magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("1_l5csn"), ExtResource("2_sj5ht"), ExtResource("3_dfghy"), ExtResource("4_k3rmi"), ExtResource("5_n501t"), ExtResource("6_iwahu"), ExtResource("7_mq03x"), ExtResource("8_qhrrn"), ExtResource("9_nkfo5"), ExtResource("10_m3uaf"), ExtResource("11_c2itm")])
 tower_resources = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("18_1rsl0"), ExtResource("13_meh6r"), ExtResource("15_02uya"), ExtResource("17_icxaj"), ExtResource("12_hcy2f"), ExtResource("19_djxhr"), ExtResource("19_djxhr"), ExtResource("14_84css"), ExtResource("15_w4am1")])
-owned_magic = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("1_l5csn"), ExtResource("6_iwahu"), ExtResource("2_sj5ht"), ExtResource("10_m3uaf")])
-owned_tower = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([ExtResource("12_hcy2f"), ExtResource("13_meh6r"), ExtResource("14_84css"), ExtResource("15_02uya"), ExtResource("15_w4am1"), ExtResource("17_icxaj"), ExtResource("18_1rsl0"), ExtResource("19_djxhr")])
-moneys = 95026
+owned_magic = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("10_m3uaf")])
+owned_tower = Array[Resource("res://misc/resource/csutom/card_resource.gd")]([])
+moneys = 104
 check_index = 2

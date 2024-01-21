@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="check_point" load_steps=3 format=3 uid="uid://cusebxgpvkl3l"]
+[gd_resource type="Resource" script_class="check_point" load_steps=3 format=3 uid="uid://dceo6jetjg465"]
 
 [ext_resource type="PackedScene" uid="uid://0m30030spux7" path="res://world/initial_world/initial_world.tscn" id="1_dtpi7"]
 [ext_resource type="Script" path="res://misc/resource/csutom/check_point.gd" id="2_0x8c2"]

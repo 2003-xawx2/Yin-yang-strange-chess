@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://world/level_selection_map/level_selection_map.gd" id="1_iyj73"]
 [ext_resource type="Script" path="res://misc/custom_node/interact.gd" id="2_6re3r"]
 [ext_resource type="Texture2D" uid="uid://dxgtkafain8ih" path="res://assets/level_select&borad/level_select/ad8e65e762c742bd89a0b5511e634e8a~tplv-xv4ileqgde-resize-w-750.image.jpeg" id="2_nof18"]
-[ext_resource type="Resource" uid="uid://ckikcbrmccdpb" path="res://world/level_selection_map/check_resources/H1.tres" id="2_sfp75"]
+[ext_resource type="Resource" uid="uid://ckhmwsy8a865" path="res://world/level_selection_map/check_resources/H1.tres" id="2_sfp75"]
 [ext_resource type="Script" path="res://world/level_selection_map/board/board.gd" id="3_fqcao"]
-[ext_resource type="Resource" uid="uid://tkbew5a7u2y0" path="res://world/level_selection_map/check_resources/H2.tres" id="3_uxpqy"]
+[ext_resource type="Resource" uid="uid://jjb0qpl6famr" path="res://world/level_selection_map/check_resources/H2.tres" id="3_uxpqy"]
 [ext_resource type="PackedScene" uid="uid://l57nab3irni0" path="res://world/level_selection_map/board/piece.tscn" id="4_edby0"]
-[ext_resource type="Resource" uid="uid://bpcg2aqtk5r4v" path="res://world/level_selection_map/check_resources/H3.tres" id="4_pt5hr"]
-[ext_resource type="Resource" uid="uid://1ss06vchhppx" path="res://world/level_selection_map/check_resources/H4.tres" id="5_cx0eg"]
-[ext_resource type="Resource" uid="uid://cutbn55gv1jif" path="res://world/level_selection_map/check_resources/H5.tres" id="6_3pxyu"]
-[ext_resource type="Resource" uid="uid://bnum48le2ykwt" path="res://world/level_selection_map/check_resources/H6.tres" id="7_jxpm2"]
-[ext_resource type="Resource" uid="uid://cusebxgpvkl3l" path="res://world/level_selection_map/check_resources/H7.tres" id="8_axn7b"]
-[ext_resource type="Resource" uid="uid://dqm16eqxgrln4" path="res://world/level_selection_map/check_resources/H8.tres" id="9_litrb"]
-[ext_resource type="Resource" uid="uid://cswmeug2yt0jd" path="res://world/level_selection_map/check_resources/H9.tres" id="10_qolqx"]
+[ext_resource type="Resource" uid="uid://dhjaj3yw8odkx" path="res://world/level_selection_map/check_resources/H3.tres" id="4_pt5hr"]
+[ext_resource type="Resource" uid="uid://bnobi3a7plw7p" path="res://world/level_selection_map/check_resources/H4.tres" id="5_cx0eg"]
+[ext_resource type="Resource" uid="uid://1xpqq0y5y7sq" path="res://world/level_selection_map/check_resources/H5.tres" id="6_3pxyu"]
+[ext_resource type="Resource" uid="uid://bfk66f3gyfmw6" path="res://world/level_selection_map/check_resources/H6.tres" id="7_jxpm2"]
+[ext_resource type="Resource" uid="uid://dceo6jetjg465" path="res://world/level_selection_map/check_resources/H7.tres" id="8_axn7b"]
+[ext_resource type="Resource" uid="uid://doj6emrgoes82" path="res://world/level_selection_map/check_resources/H8.tres" id="9_litrb"]
+[ext_resource type="Resource" uid="uid://p6gh51iybsha" path="res://world/level_selection_map/check_resources/H9.tres" id="10_qolqx"]
 [ext_resource type="PackedScene" uid="uid://bso1iq6giuu31" path="res://ui/magic_tower_manual/magic_tower_manual.tscn" id="16_038tp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nh7g"]
@@ -428,10 +428,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 43.79
-offset_top = -647.475
-offset_right = 717.001
-offset_bottom = 647.48
+offset_left = 2347.79
+offset_top = 0.525024
+offset_right = 3021.0
+offset_bottom = 1295.48
 grow_horizontal = 0
 grow_vertical = 2
 
