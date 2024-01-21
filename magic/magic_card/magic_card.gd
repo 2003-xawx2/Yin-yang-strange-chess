@@ -14,7 +14,7 @@ var if_mouse_in:bool = false
 var click:bool = false:
 	set(value):
 		click = value
-		if value == true: 
+		if value == true:
 			modulate = Color.BLUE_VIOLET
 			pass
 		else:
@@ -30,7 +30,7 @@ func _ready():
 func _process(delta):
 	if magic_instance == null:
 		return
-	offset = Global.camera.global_position-get_viewport_rect().size/2/zoom	
+	offset = Global.camera.global_position-get_viewport_rect().size/2/zoom
 	zoom = Global.camera.zoom
 	magic_instance.global_position = get_viewport().get_mouse_position()/zoom+offset
 	#magic_instance.global_position = get_viewport().get_mouse_position()
@@ -59,7 +59,7 @@ func in_game_gui(event:InputEvent)->void:
 		if event.button_mask == 1:
 			try_to_settle()
 			click_timer.start()
-			
+
 		if event.button_mask == 0:
 			if click_timer.wait_time-click_timer.time_left<.5:
 				click = true

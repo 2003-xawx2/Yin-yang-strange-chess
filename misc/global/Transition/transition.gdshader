@@ -10,21 +10,21 @@ uniform vec2 size = vec2(16., 16.);
 
 void fragment(){
     vec2 a = (1./SCREEN_PIXEL_SIZE) / size;
-    
+
     vec2 uv=UV;
     uv *= a;
-    
+
     vec2 i_uv = floor(uv);
     vec2 f_uv = fract(uv);
-    
+
     float wave = max(0.,i_uv.x/(a.x) - position);
-    
+
     vec2 center = f_uv*2.-1.;
     float circle = length(center);
     circle = 1. - step(wave,circle);
-    
+
     //vec4 color = mix(in_color, out_color, step(0.5, in_out));
     vec4 color = mix(in_color, out_color, in_out);
-    
+
     COLOR=vec4(circle) * color;
 }

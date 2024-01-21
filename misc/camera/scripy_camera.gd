@@ -77,7 +77,7 @@ func accelerate_to_direction(direction:Vector2,delta:float)->void:
 		position.y=limit_top+view_size_y/2/camera_2d.zoom.x
 		direction.y=0
 		current_speed.y = 0
-	
+
 	current_speed =current_speed.lerp(direction*speed,1-exp(-delta*acceleration))
 	position+=current_speed*delta
 

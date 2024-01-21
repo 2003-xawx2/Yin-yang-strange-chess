@@ -49,17 +49,17 @@ func settle_success()->void:
 			return true
 		else:
 			return false)
-	
+
 	if enemies.size() == 0:
 		settle_fail()
 		return
-	
+
 	enemies.sort_custom(func(a:CharacterBody2D,b:CharacterBody2D)->bool:
 		if a.global_position.distance_squared_to(global_position)<\
 		b.global_position.distance_squared_to(global_position):
 			return true
 		return false)
-	
+
 	target = enemies[0]
 	var temp := (global_position - target.global_position).normalized()
 	circle_center = temp * initial_radius+global_position
@@ -79,31 +79,31 @@ var if_hit: = false
 func _process(delta: float) -> void:
 	if target!=null:
 		enemy_position = target.global_position
-	
+
 	if if_hit:
 		rotate_accel -= delta*2
-	
+
 	else:
 		rotate_speed += delta * rotate_accel
 	var delta_move = delta * rotate_speed
 	degree += delta_move
 	radius = radius.rotated(delta_move)
 	delta_move = abs(delta_move)
-	
+
 	var enemy_length:=circle_center.distance_to(enemy_position)
 	radius_length = radius.length()
 	var delta_length = (enemy_length - radius_length)/((degrees_at_all-degree)/delta_move)
 	radius = radius/radius_length
 	radius_length += delta_length
 	radius *= radius_length
-	
+
 	global_position = circle_center + radius
-	
+
 	if radius.dot(Vector2.RIGHT)>0:
 		graphic.scale.x = -1
 	else:
 		graphic.scale.x = 1
-	
+
 	if degrees_at_all - abs(degree) < .8 and !if_hit:
 		if_hit = true
 		explosive()

@@ -40,7 +40,7 @@ func _physics_process(delta):
 	line_position+=delta*direction.normalized()*speed
 	rotate_position = rotate_position/last_radius*initial_radius
 	rotate_position = rotate_position.rotated(delta*rotate_mul/initial_radius)
-	
+
 	position = line_position + rotate_position
 
 

@@ -81,10 +81,10 @@ func take_physics(state: State, delta: float) -> void:
 	match state:
 		State.PATH_FOLLOWING:
 			follow_path(delta)
-			
+
 		State.WALKING:
 			move(delta)
-		
+
 		State.FIGHTING:
 			stand(delta)
 
@@ -101,7 +101,7 @@ func get_next_state(state: State) -> State:
 			if detect_enemy.global_position.distance_squared_to(global_position)<=pow(attack_range,2):
 				return State.FIGHTING
 		State.FIGHTING:
-			
+
 			if detect_enemy == null:
 				attack_timer.stop()
 				return State.PATH_FOLLOWING
@@ -148,7 +148,7 @@ func move(delta:float)->void:
 
 func stand(delta:float)->void:
 	move_com.accelerate_to_direction(Vector2.ZERO,delta)
-	
+
 	if detect_enemy == null:
 		return
 	flip_on_enemy()
@@ -178,7 +178,7 @@ func update_detect_enemy():
 		var easy_enemies = enemies.filter(_filter_easy)
 		if easy_enemies.size()!=0:
 			enemies = easy_enemies
-		
+
 		var distance : float = enemies[0].global_position.distance_squared_to(global_position)
 		var min_distance: float = distance
 		detect_enemy = enemies[0]

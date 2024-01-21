@@ -13,7 +13,7 @@ func try_to_settle()->void:
 
 
 func settle_success()->void:
-	random_audio_2d.play_random() 
+	random_audio_2d.play_random()
 	change_modulate($Panel,0)
 	var enemies :Array = update_enemies()
 	for enemy in enemies:
@@ -25,7 +25,7 @@ func settle_success()->void:
 		var temp:Vector2 = enemy.target_global_position
 		enemy.target_global_position = enemy.spawn_position
 		enemy.spawn_position = temp
-	
+
 	$AnimationPlayer.play("ease_in_out")
 	await $AnimationPlayer.animation_finished
 	queue_free()

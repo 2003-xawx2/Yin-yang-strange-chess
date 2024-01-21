@@ -39,16 +39,16 @@ vec3 hsv2rgb(vec3 c)
 void fragment() {
 	vec4 tex = texture(TEXTURE, UV);
 	vec3 hsv = rgb2hsv(tex.rgb);
-	
+
 	vec2 angle_vec = vec2(cos(angle/180.0*PI),sin(angle/180.0*PI));
 	float _uv_pos = dot(vec2(UV.x-0.5, UV.y-0.5),angle_vec) + 0.5;
-	
+
 	// the .r here represents HUE, .g is SATURATION, .b is LUMINANCE
 	vec4 color = vec4(1.0);
-	
+
 	if (_uv_pos < start_pos) {color = color_start;}
 	if (_uv_pos > end_pos) {color = color_end;}
-	
+
 	if (_uv_pos > start_pos && _uv_pos < end_pos){
 		if (midpos_enabled && mid_pos > start_pos && mid_pos < end_pos){
 			if (_uv_pos > mid_pos){
@@ -62,27 +62,27 @@ void fragment() {
 			color = mix(color_start, color_end, (_uv_pos-start_pos)/(end_pos-start_pos));
 		}
 	}
-	
+
 	vec3 _c = rgb2hsv(color.rgb);
 	vec3 new_color = vec3(_c.r,mix(_c.g,hsv.g,keep_saturation),mix(_c.b,hsv.b,keep_luminance));
-	
+
 	tex = vec4(hsv2rgb(new_color),tex.a);
-	
+
 	//Range参数在这里生效：超出Range范围时调整其实际filling值
 	float _filling = effect_filling;
-	
+
 	if (range_start > 0.0){
 		if (_uv_pos < (range_start - range_softedge)){_filling = 0.0;}
 		if (_uv_pos > (range_start - range_softedge) && _uv_pos < (range_start + range_softedge)){
 			_filling *= (_uv_pos - (range_start - range_softedge))/ (range_softedge*2.0) ;}
 		}
-		
+
 	if (range_end < 1.0 && range_end > range_start){
 		if (_uv_pos > (range_end + range_softedge)){_filling = 0.0;}
 		if (_uv_pos > (range_end - range_softedge) && _uv_pos < (range_end + range_softedge)){
 			_filling *= 1.0 - (_uv_pos - (range_end - range_softedge))/ (range_softedge*2.0) ;}
 		}
-	
+
 	COLOR = mix( texture(TEXTURE, UV), tex, _filling);
 	COLOR.a = texture(TEXTURE, UV).a;
 }
