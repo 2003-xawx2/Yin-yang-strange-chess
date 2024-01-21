@@ -8,6 +8,7 @@ colors = PackedColorArray(1, 0.948063, 0.54758, 1, 0.108169, 0.105735, 0, 1, 0, 
 gradient = SubResource("Gradient_5fyfo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="RadialLight" type="PointLight2D"]
 energy = 1.3

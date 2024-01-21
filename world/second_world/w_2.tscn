@@ -1,14 +1,699 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwrm11u1xteqh"]
+[gd_scene load_steps=59 format=3 uid="uid://cwrm11u1xteqh"]
 
 [ext_resource type="Script" path="res://world/second_world/w_2.gd" id="1_w4too"]
+[ext_resource type="Texture2D" uid="uid://x6dhpqgfdeww" path="res://world/second_world/second_world.png" id="3_ye8rn"]
+[ext_resource type="Texture2D" uid="uid://2pvifwmjnys1" path="res://world/second_world/ground.png" id="4_gmyyq"]
+[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="5_dp3e7"]
+[ext_resource type="Texture2D" uid="uid://cskhiny5qtnqb" path="res://world/second_world/tree2.png" id="5_j1ov6"]
+[ext_resource type="Texture2D" uid="uid://cij8utrw2rr4p" path="res://world/second_world/tree3.png" id="6_7kqpk"]
+[ext_resource type="Texture2D" uid="uid://dkvawv55y2bq8" path="res://world/second_world/tree.png" id="7_kjops"]
+[ext_resource type="Texture2D" uid="uid://birrh1rw5klsm" path="res://world/second_world/wall down.png" id="8_bqnxv"]
+[ext_resource type="Texture2D" uid="uid://dg428yb4l3ccv" path="res://world/second_world/wall left.png" id="9_dtc1b"]
+[ext_resource type="Texture2D" uid="uid://db3gy7ebdbpb2" path="res://world/second_world/wall right.png" id="10_fyhha"]
 [ext_resource type="PackedScene" uid="uid://dwm1bdc1qdow4" path="res://misc/camera/scripy_camera.tscn" id="10_tx2nb"]
+[ext_resource type="Texture2D" uid="uid://bikwlo6lkkndv" path="res://world/second_world/wood flat.png" id="11_6ssi3"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="11_rrwti"]
+[ext_resource type="Texture2D" uid="uid://dfjtnkokwxbv0" path="res://world/second_world/woodwood.png" id="12_eggjr"]
+[ext_resource type="Texture2D" uid="uid://bhkx2hhwrswx8" path="res://world/second_world/bridge.png" id="13_xwvaj"]
+[ext_resource type="Texture2D" uid="uid://s0xo1a0el5g6" path="res://world/second_world/floor.png" id="14_dwied"]
+[ext_resource type="Texture2D" uid="uid://y1uimpqgefc6" path="res://world/second_world/flower2.png" id="15_akv7k"]
+[ext_resource type="Texture2D" uid="uid://v8gawoekl2p6" path="res://world/second_world/flower3.png" id="16_okrrr"]
+[ext_resource type="Texture2D" uid="uid://c7uf5pr2vx2p0" path="res://world/second_world/flower4.png" id="17_poaxc"]
+[ext_resource type="Texture2D" uid="uid://bql7yuxulmu62" path="res://world/second_world/flower.png" id="18_w1ial"]
+[ext_resource type="Texture2D" uid="uid://bp67edsbj43bf" path="res://world/second_world/foreground.png" id="19_er7c3"]
+[ext_resource type="Texture2D" uid="uid://oj1wmm0mbcw7" path="res://world/second_world/grass1.png" id="20_ne2o8"]
+[ext_resource type="Texture2D" uid="uid://cvblxtr2sumbk" path="res://world/second_world/grass2.png" id="21_pc8u5"]
+[ext_resource type="Texture2D" uid="uid://codvps5wmiyw6" path="res://world/second_world/grass3.png" id="22_6h5km"]
+[ext_resource type="Texture2D" uid="uid://ndshv7cbd1h5" path="res://world/second_world/grass4.png" id="23_y8brg"]
+[ext_resource type="Texture2D" uid="uid://ky0hlhteecg7" path="res://world/second_world/grass.png" id="24_gds8j"]
+[ext_resource type="Texture2D" uid="uid://bdosfpmqiinrk" path="res://world/second_world/grassheap2.png" id="25_tbmrr"]
+[ext_resource type="Texture2D" uid="uid://dmbs17qe6e5fa" path="res://world/second_world/grassheap.png" id="26_koi1j"]
+[ext_resource type="Texture2D" uid="uid://vdf0qr2w5ysg" path="res://world/second_world/light wood.png" id="27_iuy3k"]
+[ext_resource type="Texture2D" uid="uid://cr3kwgwwxiobt" path="res://world/second_world/light.png" id="28_r4360"]
+[ext_resource type="PackedScene" uid="uid://dx178en2untiq" path="res://misc/light/radial_light/radial_light.tscn" id="29_ntag6"]
+[ext_resource type="Texture2D" uid="uid://dygkx8cvlglbg" path="res://world/second_world/barrier.png" id="30_u7hbw"]
+[ext_resource type="Texture2D" uid="uid://byys20kk8dhce" path="res://world/second_world/蝴蝶.png" id="31_w8ko7"]
+[ext_resource type="Texture2D" uid="uid://b2e7ut5ap2fbr" path="res://world/second_world/瀑布.png" id="32_grlvx"]
+[ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="33_f3ni8"]
+[ext_resource type="Script" path="res://world/initial_world/path_spawner/enemy_path.gd" id="34_0g6xu"]
+[ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="35_e57v8"]
+[ext_resource type="Texture2D" uid="uid://dli41pabumi3h" path="res://world/second_world/base.png" id="36_a86du"]
+[ext_resource type="Texture2D" uid="uid://ywk84huhal1x" path="res://world/second_world/base_2.png" id="37_ccems"]
+
+[sub_resource type="Animation" id="Animation_4s8rj"]
+resource_name = "fly"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1128, 539), Vector2(1114, 531), Vector2(1108, 546), Vector2(1120, 555), Vector2(1121, 569), Vector2(1107, 569), Vector2(1104, 560), Vector2(1077, 560), Vector2(1079, 560), Vector2(1070, 571), Vector2(1059, 573), Vector2(1059, 573)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RadialLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lt8vq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RadialLight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1069, 626)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16vkr"]
+_data = {
+"RESET": SubResource("Animation_lt8vq"),
+"fly": SubResource("Animation_4s8rj")
+}
+
+[sub_resource type="Animation" id="Animation_0g2i7"]
+resource_name = "fly"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 2, 2.1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RadialLight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1069, 626), Vector2(1054, 614), Vector2(1036, 622), Vector2(1015, 629), Vector2(1001, 620), Vector2(993, 607), Vector2(993, 590), Vector2(1000, 579), Vector2(991, 569), Vector2(982, 570), Vector2(969, 575)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rl0mq"]
+_data = {
+"RESET": SubResource("Animation_lt8vq"),
+"fly": SubResource("Animation_0g2i7")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afddy"]
+atlas = ExtResource("32_grlvx")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj6fu"]
+atlas = ExtResource("32_grlvx")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugnnb"]
+atlas = ExtResource("32_grlvx")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cao5"]
+atlas = ExtResource("32_grlvx")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_emgpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afddy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj6fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugnnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cao5")
+}],
+"loop": true,
+"name": &"flow",
+"speed": 4.0
+}]
+
+[sub_resource type="Resource" id="Resource_bmcei"]
+script = ExtResource("34_0g6xu")
+start = 0
+end = 3
+faction = 2
+
+[sub_resource type="Resource" id="Resource_20386"]
+script = ExtResource("34_0g6xu")
+start = 1
+end = 3
+faction = 2
+
+[sub_resource type="Resource" id="Resource_3etnh"]
+script = ExtResource("34_0g6xu")
+start = 2
+end = 4
+faction = 2
+
+[sub_resource type="Resource" id="Resource_x68f8"]
+script = ExtResource("34_0g6xu")
+start = 2
+end = 5
+faction = 2
+
+[sub_resource type="Resource" id="Resource_x6uyc"]
+script = ExtResource("34_0g6xu")
+start = 3
+end = 0
+faction = 1
+
+[sub_resource type="Resource" id="Resource_kxxh4"]
+script = ExtResource("34_0g6xu")
+start = 3
+end = 1
+faction = 1
+
+[sub_resource type="Resource" id="Resource_ys1gi"]
+script = ExtResource("34_0g6xu")
+start = 4
+end = 2
+faction = 1
+
+[sub_resource type="Resource" id="Resource_ovff6"]
+script = ExtResource("34_0g6xu")
+start = 5
+end = 2
+faction = 1
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cmvvl"]
+vertices = PackedVector2Array(-1188, -181, 3589, -181, 3546, 51, 1054, -27, -1158, 35, 536, -4, 758, 61, 974, 80, 853, 327, 971, 652, 799, 604, 926, 859, 1783, 1272, 3608, 1253, 3570, 1485, -1289, 1475, -1206, 906, -1225, 705, 606, 724, 1291, 877, 1110, 668, 1303, 652, 1420, 879, 1549, 382, 3635, 408, 3623, 620, 1734, 588, 1414, 434, 1589, 654, 1449, 633, 1510, 987, 1326, 1164, 1587, 1216, -1268, 1289, 1109, 1277)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 5, 3, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 11), PackedInt32Array(11, 18, 10), PackedInt32Array(19, 11, 9, 20), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(27, 23, 26, 28, 29), PackedInt32Array(29, 28, 30, 22, 21), PackedInt32Array(31, 22, 30, 32), PackedInt32Array(15, 33, 34), PackedInt32Array(12, 15, 34), PackedInt32Array(32, 12, 34, 31)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1167, 46, 535, 6, 750, 69, 843, 328, 790, 598, 603, 714, -1237, 695, -1216, 917, 926, 869, 1291, 887, 1406, 889, 1318, 1157, 1107, 1267, -1277, 1280, -1301, 1485, 3579, 1496, 3621, 1243, 1784, 1262, 1595, 1208, 1520, 987, 1598, 661, 1736, 598, 3633, 631, 3646, 399, 1548, 372, 1403, 428, 1437, 624, 1302, 642, 1110, 658, 981, 643, 984, 83, 1059, -17, 3568, -29, 3601, -191, -1200, -191)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="W2" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_w4too")
 
-[node name="ScripyCamera" parent="." instance=ExtResource("10_tx2nb")]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1153, 580)
+scale = Vector2(9.00698, 8.99583)
+texture = ExtResource("3_ye8rn")
+
+[node name="ScripyCamera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("10_tx2nb")]
+position = Vector2(1199, 616)
+map = NodePath("../Sprite2D")
 acceleration = 2.4
-zoom_min_limit = 0.8
+zoom_adjust_percent = 0.08
 
 [node name="InGameUI" parent="." instance=ExtResource("11_rrwti")]
+
+[node name="TimeManager" parent="InGameUI" instance=ExtResource("5_dp3e7")]
+offset_left = -78.5
+offset_right = 78.5
+offset_bottom = 84.0
+all_minutes = 2
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-7959, -4818)
+scale = Vector2(9, 9)
+
+[node name="Ground" type="Sprite2D" parent="World"]
+position = Vector2(1012, 464)
+texture = ExtResource("4_gmyyq")
+offset = Vector2(0, 136)
+
+[node name="Tree2" type="Sprite2D" parent="World"]
+position = Vector2(918, 543)
+texture = ExtResource("5_j1ov6")
+offset = Vector2(0, -23)
+
+[node name="Tree3" type="Sprite2D" parent="World"]
+position = Vector2(1076, 657)
+texture = ExtResource("6_7kqpk")
+offset = Vector2(0, -20)
+
+[node name="Tree" type="Sprite2D" parent="World"]
+position = Vector2(920, 703)
+texture = ExtResource("7_kjops")
+offset = Vector2(-2, -22)
+
+[node name="WallDown" type="Sprite2D" parent="World"]
+position = Vector2(958, 709)
+texture = ExtResource("8_bqnxv")
+offset = Vector2(1, -9)
+
+[node name="WallLeft" type="Sprite2D" parent="World"]
+position = Vector2(803, 639)
+texture = ExtResource("9_dtc1b")
+offset = Vector2(0, -10)
+
+[node name="WallRight" type="Sprite2D" parent="World"]
+position = Vector2(1219, 539)
+texture = ExtResource("10_fyhha")
+offset = Vector2(0, 19)
+
+[node name="WoodFlat" type="Sprite2D" parent="World"]
+position = Vector2(1013, 483)
+texture = ExtResource("11_6ssi3")
+offset = Vector2(0, 10)
+
+[node name="Woodwood" type="Sprite2D" parent="World"]
+position = Vector2(856, 607)
+texture = ExtResource("12_eggjr")
+offset = Vector2(0, -4)
+
+[node name="Woodwood2" type="Sprite2D" parent="World"]
+position = Vector2(1175, 667)
+texture = ExtResource("12_eggjr")
+offset = Vector2(0, -4)
+
+[node name="Bridge" type="Sprite2D" parent="World"]
+position = Vector2(1020, 603)
+texture = ExtResource("13_xwvaj")
+offset = Vector2(0, 19)
+
+[node name="Floor" type="Sprite2D" parent="World"]
+position = Vector2(855.667, 473.667)
+texture = ExtResource("14_dwied")
+offset = Vector2(-3.66667, 101.333)
+
+[node name="Floor2" type="Sprite2D" parent="World"]
+position = Vector2(1174, 638)
+texture = ExtResource("14_dwied")
+flip_h = true
+
+[node name="Flower2" type="Sprite2D" parent="World"]
+position = Vector2(1012, 669)
+texture = ExtResource("15_akv7k")
+offset = Vector2(-1, -9)
+
+[node name="Flower3" type="Sprite2D" parent="World"]
+position = Vector2(1102, 667)
+texture = ExtResource("16_okrrr")
+offset = Vector2(1, -6)
+
+[node name="Flower4" type="Sprite2D" parent="World"]
+position = Vector2(1073, 669)
+texture = ExtResource("17_poaxc")
+offset = Vector2(0, -9)
+
+[node name="Flower" type="Sprite2D" parent="World"]
+position = Vector2(945, 603)
+texture = ExtResource("18_w1ial")
+offset = Vector2(0, -10)
+
+[node name="Flower5" type="Sprite2D" parent="World"]
+position = Vector2(1061, 507)
+texture = ExtResource("18_w1ial")
+offset = Vector2(0, -10)
+
+[node name="Foreground" type="Sprite2D" parent="World"]
+position = Vector2(1012, 731)
+texture = ExtResource("19_er7c3")
+offset = Vector2(0, -130)
+
+[node name="Grass1" type="Sprite2D" parent="World"]
+position = Vector2(964, 593)
+texture = ExtResource("20_ne2o8")
+offset = Vector2(-2, -13)
+
+[node name="Grass2" type="Sprite2D" parent="World"]
+position = Vector2(1185, 508)
+texture = ExtResource("21_pc8u5")
+offset = Vector2(0, -6)
+
+[node name="Grass3" type="Sprite2D" parent="World"]
+position = Vector2(944, 557)
+texture = ExtResource("22_6h5km")
+offset = Vector2(-4, -10)
+
+[node name="Grass4" type="Sprite2D" parent="World"]
+position = Vector2(1066, 604)
+texture = ExtResource("23_y8brg")
+
+[node name="Grass" type="Sprite2D" parent="World"]
+position = Vector2(1076, 609)
+texture = ExtResource("24_gds8j")
+offset = Vector2(0, -4)
+
+[node name="Grass5" type="Sprite2D" parent="World"]
+position = Vector2(1055, 575)
+texture = ExtResource("24_gds8j")
+offset = Vector2(0, -4)
+
+[node name="Grass6" type="Sprite2D" parent="World"]
+position = Vector2(1129, 542)
+texture = ExtResource("24_gds8j")
+offset = Vector2(0, -4)
+
+[node name="Grass7" type="Sprite2D" parent="World"]
+position = Vector2(976, 636)
+texture = ExtResource("24_gds8j")
+offset = Vector2(0, -4)
+
+[node name="Grassheap2" type="Sprite2D" parent="World"]
+position = Vector2(1186, 506)
+texture = ExtResource("25_tbmrr")
+offset = Vector2(0, -7)
+
+[node name="Grassheap" type="Sprite2D" parent="World"]
+position = Vector2(1015, 706)
+texture = ExtResource("26_koi1j")
+offset = Vector2(0, -9)
+
+[node name="LightWood" type="Sprite2D" parent="World"]
+position = Vector2(809, 597)
+texture = ExtResource("27_iuy3k")
+offset = Vector2(5, -17)
+
+[node name="Light" type="Sprite2D" parent="World/LightWood"]
+position = Vector2(9, -18)
+texture = ExtResource("28_r4360")
+
+[node name="RadialLight" parent="World/LightWood/Light" instance=ExtResource("29_ntag6")]
+
+[node name="LightWood3" type="Sprite2D" parent="World"]
+position = Vector2(1130, 662)
+texture = ExtResource("27_iuy3k")
+offset = Vector2(5, -17)
+
+[node name="Light2" type="Sprite2D" parent="World/LightWood3"]
+position = Vector2(9, -19)
+texture = ExtResource("28_r4360")
+
+[node name="RadialLight" parent="World/LightWood3/Light2" instance=ExtResource("29_ntag6")]
+
+[node name="LightWood4" type="Sprite2D" parent="World"]
+position = Vector2(1216, 662)
+texture = ExtResource("27_iuy3k")
+offset = Vector2(-6, -17)
+flip_h = true
+
+[node name="Light3" type="Sprite2D" parent="World/LightWood4"]
+position = Vector2(-10, -20)
+texture = ExtResource("28_r4360")
+
+[node name="RadialLight" parent="World/LightWood4/Light3" instance=ExtResource("29_ntag6")]
+
+[node name="LightWood2" type="Sprite2D" parent="World"]
+position = Vector2(896, 600)
+texture = ExtResource("27_iuy3k")
+offset = Vector2(-5, -19)
+flip_h = true
+
+[node name="Light4" type="Sprite2D" parent="World/LightWood2"]
+position = Vector2(-9, -21)
+texture = ExtResource("28_r4360")
+
+[node name="RadialLight" parent="World/LightWood2/Light4" instance=ExtResource("29_ntag6")]
+
+[node name="Barrier" type="Sprite2D" parent="World"]
+position = Vector2(852, 601)
+texture = ExtResource("30_u7hbw")
+offset = Vector2(2, -8)
+
+[node name="Barrier2" type="Sprite2D" parent="World"]
+position = Vector2(851, 542)
+texture = ExtResource("30_u7hbw")
+offset = Vector2(2, -8)
+
+[node name="Barrier3" type="Sprite2D" parent="World"]
+position = Vector2(1171, 605)
+texture = ExtResource("30_u7hbw")
+offset = Vector2(2, -8)
+
+[node name="Barrier4" type="Sprite2D" parent="World"]
+position = Vector2(1172, 662)
+texture = ExtResource("30_u7hbw")
+offset = Vector2(2, -8)
+
+[node name="蝴蝶" type="Sprite2D" parent="World"]
+position = Vector2(1069, 626)
+texture = ExtResource("31_w8ko7")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/蝴蝶"]
+libraries = {
+"": SubResource("AnimationLibrary_16vkr")
+}
+autoplay = "fly"
+speed_scale = 0.3
+
+[node name="RadialLight" parent="World/蝴蝶" instance=ExtResource("29_ntag6")]
+scale = Vector2(0.3, 0.3)
+
+[node name="蝴蝶2" type="Sprite2D" parent="World"]
+position = Vector2(1069, 626)
+texture = ExtResource("31_w8ko7")
+flip_h = true
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/蝴蝶2"]
+libraries = {
+"": SubResource("AnimationLibrary_rl0mq")
+}
+autoplay = "fly"
+speed_scale = 0.4
+
+[node name="RadialLight" parent="World/蝴蝶2" instance=ExtResource("29_ntag6")]
+scale = Vector2(0.3, 0.3)
+
+[node name="waterfall" type="AnimatedSprite2D" parent="World"]
+position = Vector2(1004, 592)
+sprite_frames = SubResource("SpriteFrames_emgpe")
+animation = &"flow"
+autoplay = "flow"
+frame_progress = 0.184336
+offset = Vector2(-45, -24)
+
+[node name="waterfall2" type="AnimatedSprite2D" parent="World"]
+position = Vector2(1019, 593)
+sprite_frames = SubResource("SpriteFrames_emgpe")
+animation = &"flow"
+autoplay = "flow"
+frame_progress = 0.398091
+offset = Vector2(-45, -24)
+
+[node name="TowerContainer" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(1076.44, 554.667)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer"]
+scale = Vector2(9, 9)
+texture = ExtResource("36_a86du")
+
+[node name="TowerContainer2" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(1116.67, 553.556)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer2"]
+scale = Vector2(9, 9)
+texture = ExtResource("36_a86du")
+
+[node name="TowerContainer3" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(1156.56, 554.111)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer3"]
+scale = Vector2(9, 9)
+texture = ExtResource("36_a86du")
+
+[node name="TowerContainer4" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(1194.89, 554.889)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer4"]
+scale = Vector2(9, 9)
+texture = ExtResource("36_a86du")
+
+[node name="TowerContainer9" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(875.111, 652.889)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer9"]
+y_sort_enabled = true
+scale = Vector2(9, 9)
+texture = ExtResource("36_a86du")
+
+[node name="TowerContainer5" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(878.778, 558.333)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer5"]
+y_sort_enabled = true
+scale = Vector2(9, 9)
+texture = ExtResource("37_ccems")
+
+[node name="TowerContainer6" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(840.444, 559.445)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer6"]
+y_sort_enabled = true
+scale = Vector2(9, 9)
+texture = ExtResource("37_ccems")
+
+[node name="TowerContainer7" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(1148.89, 648.778)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer7"]
+y_sort_enabled = true
+scale = Vector2(9, 9)
+texture = ExtResource("37_ccems")
+
+[node name="TowerContainer8" parent="World" instance=ExtResource("35_e57v8")]
+y_sort_enabled = true
+position = Vector2(1194.33, 648.778)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TowerContainer8"]
+scale = Vector2(9, 9)
+texture = ExtResource("37_ccems")
+
+[node name="FunctionalMap" type="Node2D" parent="."]
+
+[node name="PathSpawner" parent="." instance=ExtResource("33_f3ni8")]
+random_spawn = true
+spawn_multipler = 0.2
+paths = Array[ExtResource("34_0g6xu")]([SubResource("Resource_bmcei"), SubResource("Resource_20386"), SubResource("Resource_3etnh"), SubResource("Resource_x68f8"), SubResource("Resource_x6uyc"), SubResource("Resource_kxxh4"), SubResource("Resource_ys1gi"), SubResource("Resource_ovff6")])
+
+[node name="Marker2D" type="Marker2D" parent="PathSpawner"]
+position = Vector2(-944, -96)
+
+[node name="Marker2D2" type="Marker2D" parent="PathSpawner"]
+position = Vector2(-953, 764)
+
+[node name="Marker2D3" type="Marker2D" parent="PathSpawner"]
+position = Vector2(-978, 1350)
+
+[node name="Marker2D4" type="Marker2D" parent="PathSpawner"]
+position = Vector2(3243, -100)
+
+[node name="Marker2D5" type="Marker2D" parent="PathSpawner"]
+position = Vector2(3250, 508)
+
+[node name="Marker2D6" type="Marker2D" parent="PathSpawner"]
+position = Vector2(3259, 1379)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="PathSpawner"]
+navigation_polygon = SubResource("NavigationPolygon_cmvvl")

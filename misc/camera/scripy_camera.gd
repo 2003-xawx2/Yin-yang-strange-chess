@@ -34,11 +34,11 @@ func _ready():
 	limit_top=used.position.y*map.scale.y+map.global_position.y-2
 	limit_left=used.position.x*map.scale.x+map.global_position.x+2
 	limit_right=used.end.x*map.scale.x+map.global_position.x-2
-	#camera_2d.limit_bottom = limit_bottom
-	#camera_2d.limit_top = limit_top
-	#camera_2d.limit_left = limit_left
-	#camera_2d.limit_right = limit_right
-	#camera_2d.reset_smoothing()
+	camera_2d.limit_bottom = limit_bottom
+	camera_2d.limit_top = limit_top
+	camera_2d.limit_left = limit_left
+	camera_2d.limit_right = limit_right
+	camera_2d.reset_smoothing()
 	#
 	zoom = camera_2d.zoom.x
 
