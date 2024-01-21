@@ -70,7 +70,7 @@ func _ready():
 func _process(delta):
 	if basic_tower_instance == null:
 		return
-	offset = Global.camera.global_position-get_viewport_rect().size/2/zoom	
+	offset = Global.camera.global_position-get_viewport_rect().size/2/zoom
 	zoom = Global.camera.zoom
 	basic_tower_instance.global_position = get_viewport().get_mouse_position()/zoom+offset
 #	var relative:Vector2 = basic_tower_instance.global_position - temp_global_position
@@ -150,7 +150,7 @@ func in_game_gui(event:InputEvent)->void:
 			if click != true and try_to_consume():
 				try_to_settle()
 			$ClickTimer.start()
-			
+
 		if event.button_mask == 0:
 			if if_mouse_in and $ClickTimer.wait_time - $ClickTimer.time_left < .2 and try_to_consume():
 				click = true
@@ -158,7 +158,7 @@ func in_game_gui(event:InputEvent)->void:
 				click = false
 				if basic_tower_instance==null:
 					settle_fail()
-					$ClickTimer.stop() 
+					$ClickTimer.stop()
 					return
 				if basic_tower_instance.if_has_settle_place == false:
 					settle_fail()

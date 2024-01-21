@@ -10,7 +10,7 @@ func _ready() -> void:
 	var amount :int = Global.item.moneys
 	money.text = str(amount)
 	TOWER_MAGIC_SAVING.collect_moneys(amount)
-	
+
 	var _score : float = Global.item.item_amounts[Global.item.item_dictionary[dropper.Drop.coin]]/float(Global.item.coins)
 	var grade:String
 	if _score > .9:
@@ -21,7 +21,7 @@ func _ready() -> void:
 		grade = "及格"
 	else:
 		grade = "继续加油"
-	
+
 	RECORD.update_grade(grade)
 	score.text = grade
 

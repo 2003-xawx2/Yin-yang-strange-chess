@@ -15,7 +15,7 @@ const TOWER_MAGIC_SAVING = preload("res://world/level_selection_map/tower&magic_
 func _ready() -> void:
 	update_money()
 	update_card_pool()
-	
+
 	var index := 0
 	for child in grid_container.get_children():
 		child.buy.connect(update_money)
@@ -53,7 +53,7 @@ func update_card_pool()->void:
 			if TOWER_MAGIC_SAVING.owned_tower.has(card):
 				return false
 		return true)
-	
+
 	card_pool.shuffle()
 
 
@@ -61,7 +61,7 @@ func _on_fresh_pressed() -> void:
 	TOWER_MAGIC_SAVING.collect_moneys(-fresh_price)
 	update_card_pool()
 	update_money()
-	
+
 	var index := 0
 	for child in grid_container.get_children():
 		#update

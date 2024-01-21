@@ -18,7 +18,7 @@ var resources_dic:Dictionary = {}
 func collect_moneys(amount:int)->bool:
 	if moneys + amount < 0:
 		return false
-	
+
 	moneys += amount
 	ResourceSaver.save(self)
 	return true
@@ -39,10 +39,10 @@ func update_dic() -> void:
 func add(name:String)->void:
 	update_dic()
 	var new = resources_dic.get(name,null)
-	
+
 	if new == null:
 		return
-	
+
 	if new is magic_card:
 		if owned_magic.has(new):
 			return

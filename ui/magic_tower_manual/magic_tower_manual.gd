@@ -82,7 +82,7 @@ func get_new_card(_name:String)->void:
 	for card in cards:
 		if card.get_child(0)._card_resource.name == _name:
 			card.get_child(0).new_card()
-			
+
 	#if if_fold:
 		#animation_player.play("ease_in")
 		#await animation_player.animation_finished

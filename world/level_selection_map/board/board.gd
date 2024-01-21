@@ -24,10 +24,10 @@ func check()->bool:
 		if child.if_correct == false:
 			flag = false
 			break
-	
+
 	if flag:
 		victory.emit()
-	
+
 	return flag
 
 

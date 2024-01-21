@@ -29,7 +29,7 @@ func _on_second_timer_timeout() -> void:
 
 
 func update_text()->void:
-	text = "%02d" % minutes +":"+ "%02d" % seconds  
+	text = "%02d" % minutes +":"+ "%02d" % seconds
 
 
 

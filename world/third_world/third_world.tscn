@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dpf56ij3d1kjt"]
+[gd_scene load_steps=53 format=3 uid="uid://dpf56ij3d1kjt"]
 
 [ext_resource type="Script" path="res://world/third_world/third_world.gd" id="1_cixgn"]
 [ext_resource type="Texture2D" uid="uid://b7p20hekhq1xm" path="res://world/third_world/asset/background.png" id="1_cohl5"]
@@ -43,9 +43,40 @@
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="32_a70qo"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="32_etabu"]
 [ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="33_cuid2"]
+[ext_resource type="Shader" path="res://world/initial_world/grass.gdshader" id="38_76qxk"]
+[ext_resource type="Script" path="res://world/initial_world/path_spawner/enemy_path.gd" id="42_o0d14"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8wp4"]
+shader = ExtResource("38_76qxk")
+shader_parameter/swing_a = 2.0
+shader_parameter/swing_multipler = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0jf1"]
 radius = 151.78
+
+[sub_resource type="Resource" id="Resource_8tqfw"]
+script = ExtResource("42_o0d14")
+start = 0
+end = 1
+faction = 1
+
+[sub_resource type="Resource" id="Resource_0p1lr"]
+script = ExtResource("42_o0d14")
+start = 0
+end = 2
+faction = 1
+
+[sub_resource type="Resource" id="Resource_vetib"]
+script = ExtResource("42_o0d14")
+start = 2
+end = 0
+faction = 2
+
+[sub_resource type="Resource" id="Resource_lvx4y"]
+script = ExtResource("42_o0d14")
+start = 1
+end = 0
+faction = 2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wkgmp"]
 vertices = PackedVector2Array(1802, 330, 2625, 40, 2625, 41, 2431, 345, 1802, 331, 2908, -36, 2903, 206, -959, 215, -957, -102, -518, -56, -348, 302, -135, 697, 105, 446, 164, 939, 1174, 503, 1012, 804, 973, 1158, 992, 1007, 973, 1159, 2015, 1285, 1869, 1478, 2906, 1483, 2905, 1267)
@@ -55,6 +86,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="ThirdWorld" type="Node2D"]
 script = ExtResource("1_cixgn")
+current_world_index = 3
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -379,6 +411,8 @@ scale = Vector2(9.5, 9.5)
 texture = ExtResource("23_apkl4")
 
 [node name="FrontTree" type="Sprite2D" parent="Map/Fourth"]
+z_index = 2
+material = SubResource("ShaderMaterial_b8wp4")
 position = Vector2(1000, 559.75)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("5_lunp5")
@@ -502,6 +536,8 @@ zoom_max_limit = 1.95
 [node name="PathSpawner" parent="." instance=ExtResource("32_a70qo")]
 random_spawn = true
 spawn_multipler = 0.3
+paths = Array[ExtResource("42_o0d14")]([SubResource("Resource_8tqfw"), SubResource("Resource_0p1lr"), SubResource("Resource_vetib"), SubResource("Resource_lvx4y")])
+PathArray = Array[Resource("res://misc/resource/csutom/enemy_spawner.gd")]([])
 
 [node name="LeftTop" type="Node2D" parent="PathSpawner"]
 position = Vector2(-842, 79)

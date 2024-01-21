@@ -37,7 +37,7 @@ func move_in(object:CanvasItem)->void:
 	var if_move_in:bool = out_place == object.get_parent().get_parent()
 	if if_move_in and in_place_index == max_in_place_amounts:
 		return
-	
+
 	var start_position :Vector2 = object.global_position
 	object.get_parent().remove_child(object)
 	if if_move_in:

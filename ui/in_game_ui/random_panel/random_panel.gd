@@ -54,7 +54,7 @@ func _on_timer_timeout():
 	instance.sprite = random_card.magic_icon
 	instance.magic = random_card.magic
 	instance.global_position = spaw_position.global_position
-	
+
 	amounts_need_to_spawn -= 1
 	if amounts_need_to_spawn > 0:
 		timer.start(randf_range(-time_offset,time_offset)+basic_time_interval)
@@ -96,9 +96,9 @@ func save()->void:
 func load()->void:
 	for child in spaw_position.get_children():
 		spaw_position.remove_child(child)
-	
+
 	var temp := time_back[index]
-	
+
 	for card_container in temp:
 		var instance = magic_card_container.instantiate()
 		spaw_position.add_child(instance)

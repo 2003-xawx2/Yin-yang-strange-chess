@@ -4,7 +4,7 @@ class_name basic_base
 @onready var settle_area = $SettleArea
 
 var id:int
-var human_reset_position:Vector2 
+var human_reset_position:Vector2
 var human:Node2D
 var if_has_settle_place:bool = false
 var settle_place:Node2D

@@ -17,7 +17,7 @@ var if_in_game:bool=false:
 		if value == true:
 			start_game.emit()
 	get:
-		return if_in_game 
+		return if_in_game
 
 
 func emit_start_game()->void:

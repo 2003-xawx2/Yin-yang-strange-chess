@@ -56,11 +56,11 @@ func _on_interact_area_interact() -> void:
 func exchange_chess(temp:Sprite2D)->void:
 	if tween and tween.is_running():
 		tween.kill()
-	
+
 	radius_move = (global_position - temp.global_position)/2
 	circle_center = (temp.global_position + global_position)/2
 	tween_rotation = 0
-	
+
 	can_interact = false
 	set_process(true)
 	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
