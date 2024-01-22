@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cwrm11u1xteqh"]
+[gd_scene load_steps=50 format=3 uid="uid://cwrm11u1xteqh"]
 
 [ext_resource type="Script" path="res://world/second_world/w_2.gd" id="1_w4too"]
 [ext_resource type="Texture2D" uid="uid://x6dhpqgfdeww" path="res://world/second_world/second_world.png" id="3_ye8rn"]
@@ -35,10 +35,60 @@
 [ext_resource type="Texture2D" uid="uid://byys20kk8dhce" path="res://world/second_world/蝴蝶.png" id="31_w8ko7"]
 [ext_resource type="Texture2D" uid="uid://b2e7ut5ap2fbr" path="res://world/second_world/瀑布.png" id="32_grlvx"]
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="33_f3ni8"]
-[ext_resource type="Script" path="res://world/initial_world/path_spawner/enemy_path.gd" id="34_0g6xu"]
 [ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="35_e57v8"]
 [ext_resource type="Texture2D" uid="uid://dli41pabumi3h" path="res://world/second_world/base.png" id="36_a86du"]
 [ext_resource type="Texture2D" uid="uid://ywk84huhal1x" path="res://world/second_world/base_2.png" id="37_ccems"]
+
+[sub_resource type="Animation" id="Animation_lt8vq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RadialLight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1069, 626)]
+}
 
 [sub_resource type="Animation" id="Animation_4s8rj"]
 resource_name = "fly"
@@ -91,57 +141,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_lt8vq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RadialLight:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1069, 626)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_16vkr"]
@@ -244,54 +243,6 @@ animations = [{
 "name": &"flow",
 "speed": 4.0
 }]
-
-[sub_resource type="Resource" id="Resource_bmcei"]
-script = ExtResource("34_0g6xu")
-start = 0
-end = 3
-faction = 2
-
-[sub_resource type="Resource" id="Resource_20386"]
-script = ExtResource("34_0g6xu")
-start = 1
-end = 3
-faction = 2
-
-[sub_resource type="Resource" id="Resource_3etnh"]
-script = ExtResource("34_0g6xu")
-start = 2
-end = 4
-faction = 2
-
-[sub_resource type="Resource" id="Resource_x68f8"]
-script = ExtResource("34_0g6xu")
-start = 2
-end = 5
-faction = 2
-
-[sub_resource type="Resource" id="Resource_x6uyc"]
-script = ExtResource("34_0g6xu")
-start = 3
-end = 0
-faction = 1
-
-[sub_resource type="Resource" id="Resource_kxxh4"]
-script = ExtResource("34_0g6xu")
-start = 3
-end = 1
-faction = 1
-
-[sub_resource type="Resource" id="Resource_ys1gi"]
-script = ExtResource("34_0g6xu")
-start = 4
-end = 2
-faction = 1
-
-[sub_resource type="Resource" id="Resource_ovff6"]
-script = ExtResource("34_0g6xu")
-start = 5
-end = 2
-faction = 1
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cmvvl"]
 vertices = PackedVector2Array(-1188, -181, 3589, -181, 3546, 51, 1054, -27, -1158, 35, 536, -4, 758, 61, 974, 80, 853, 327, 971, 652, 799, 604, 926, 859, 1783, 1272, 3608, 1253, 3570, 1485, -1289, 1475, -1206, 906, -1225, 705, 606, 724, 1291, 877, 1110, 668, 1303, 652, 1420, 879, 1549, 382, 3635, 408, 3623, 620, 1734, 588, 1414, 434, 1589, 654, 1449, 633, 1510, 987, 1326, 1164, 1587, 1216, -1268, 1289, 1109, 1277)
@@ -673,9 +624,9 @@ texture = ExtResource("37_ccems")
 [node name="FunctionalMap" type="Node2D" parent="."]
 
 [node name="PathSpawner" parent="." instance=ExtResource("33_f3ni8")]
+y_sort_enabled = true
 random_spawn = true
 spawn_multipler = 0.2
-paths = Array[ExtResource("34_0g6xu")]([SubResource("Resource_bmcei"), SubResource("Resource_20386"), SubResource("Resource_3etnh"), SubResource("Resource_x68f8"), SubResource("Resource_x6uyc"), SubResource("Resource_kxxh4"), SubResource("Resource_ys1gi"), SubResource("Resource_ovff6")])
 
 [node name="Marker2D" type="Marker2D" parent="PathSpawner"]
 position = Vector2(-944, -96)

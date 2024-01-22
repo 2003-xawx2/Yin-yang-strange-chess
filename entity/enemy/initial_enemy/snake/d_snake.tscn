@@ -217,10 +217,12 @@ shape = SubResource("CapsuleShape2D_573xx")
 droppers = Array[Resource("res://misc/resource/csutom/dropper.gd")]([ExtResource("2_xmcmk"), ExtResource("3_bpn1e"), ExtResource("5_8otgt")])
 
 [node name="HealthManager" parent="." index="3"]
+y_sort_enabled = false
 offset_left = -22.3529
 offset_top = -101.765
 offset_right = 22.6471
 offset_bottom = -93.7647
+pivot_offset = Vector2(22.8934, 103.927)
 max_health = 12
 
 [node name="Graphic" parent="." index="4"]

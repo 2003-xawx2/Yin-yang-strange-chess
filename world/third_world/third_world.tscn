@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dpf56ij3d1kjt"]
+[gd_scene load_steps=47 format=3 uid="uid://dpf56ij3d1kjt"]
 
 [ext_resource type="Script" path="res://world/third_world/third_world.gd" id="1_cixgn"]
 [ext_resource type="Texture2D" uid="uid://b7p20hekhq1xm" path="res://world/third_world/asset/background.png" id="1_cohl5"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="32_a70qo"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="32_etabu"]
 [ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="33_cuid2"]
+[ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="39_lpetk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0jf1"]
 radius = 151.78
@@ -54,9 +55,12 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-515, -66, 109, 436, 11
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="ThirdWorld" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_cixgn")
 
 [node name="Map" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-4332, -3162)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Map"]
 
@@ -74,348 +78,366 @@ scale = Vector2(9, 9)
 texture = ExtResource("2_7w8o7")
 
 [node name="PlayGround" type="Sprite2D" parent="Map"]
-position = Vector2(1000, 559.75)
+position = Vector2(5540, 2252)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("3_mb8ka")
+offset = Vector2(-21.8947, 154.711)
 
-[node name="First" type="Sprite2D" parent="Map"]
-
-[node name="StoneFenseLeft" type="Sprite2D" parent="Map/First"]
-position = Vector2(-377, -441)
+[node name="StoneFenseLeft" type="Sprite2D" parent="Map"]
+position = Vector2(3924, 2803)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("6_222hr")
+offset = Vector2(3.26316, -8.63158)
 
-[node name="StoneFenseRight" type="Sprite2D" parent="Map/First"]
-position = Vector2(2584, -441)
+[node name="StoneFenseRight" type="Sprite2D" parent="Map"]
+position = Vector2(6942, 2813)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("7_1awjf")
+offset = Vector2(-2.73685, -9.68421)
 
-[node name="WoodenStake1" type="Sprite2D" parent="Map/First"]
-position = Vector2(1713, 213)
+[node name="WoodenStake1" type="Sprite2D" parent="Map"]
+position = Vector2(6057, 3375)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("6_3nakk")
+offset = Vector2(-1.26315, -9.53674e-06)
 
-[node name="WoodenStake2" type="Sprite2D" parent="Map/First"]
-z_index = 1
-position = Vector2(1988, 545)
+[node name="WoodenStake2" type="Sprite2D" parent="Map"]
+position = Vector2(6321, 3769)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("6_3nakk")
+offset = Vector2(-0.10527, -6.52632)
 
-[node name="Stone1" type="Sprite2D" parent="Map/First"]
-position = Vector2(354, 265)
+[node name="Stone1" type="Sprite2D" parent="Map"]
+position = Vector2(4682, 3364)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("7_tcht2")
+offset = Vector2(0.421051, 6.63158)
 
-[node name="Stone2" type="Sprite2D" parent="Map/First"]
-position = Vector2(1836, 1063)
+[node name="Stone2" type="Sprite2D" parent="Map"]
+position = Vector2(6174, 4163)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("7_tcht2")
+offset = Vector2(-0.631592, 6.52631)
 
-[node name="Stone3" type="Sprite2D" parent="Map/First"]
-z_index = 1
-position = Vector2(1209, 1186.5)
+[node name="Stone3" type="Sprite2D" parent="Map"]
+position = Vector2(5542, 4375)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("7_tcht2")
+offset = Vector2(-0.105263, -2.78947)
 
-[node name="WoodenFense1" type="Sprite2D" parent="Map/First"]
-z_index = 1
-position = Vector2(758, 1097)
+[node name="WoodenFense1" type="Sprite2D" parent="Map"]
+position = Vector2(5087, 4336)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("8_h3ail")
+offset = Vector2(0.315788, -8.10526)
 
-[node name="WoodenFense2" type="Sprite2D" parent="Map/First"]
-position = Vector2(2249.3, 1096.25)
+[node name="WoodenFense2" type="Sprite2D" parent="Map"]
+position = Vector2(6582, 4325)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("8_h3ail")
+offset = Vector2(-0.0736694, -7.02629)
 
-[node name="Second" type="Sprite2D" parent="Map"]
-
-[node name="Bash" type="Sprite2D" parent="Map/Second"]
-z_index = 1
-
-[node name="BashLeft" type="Sprite2D" parent="Map/Second/Bash"]
-position = Vector2(-805, 1495)
+[node name="BashLeft" type="Sprite2D" parent="Map"]
+position = Vector2(3527, 4657)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("9_usppa")
 
-[node name="Bash1" type="Sprite2D" parent="Map/Second/Bash"]
-position = Vector2(-111.5, -404.5)
+[node name="Bash1" type="Sprite2D" parent="Map"]
+position = Vector2(4208, 2865)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("9_ki4lq")
+offset = Vector2(1.31579, -11.3158)
 
-[node name="Bash2" type="Sprite2D" parent="Map/Second/Bash"]
-position = Vector2(468, -290.5)
+[node name="Bash2" type="Sprite2D" parent="Map"]
+position = Vector2(4789, 2965)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("9_ki4lq")
+offset = Vector2(1.15789, -9.8421)
 
-[node name="Bash3" type="Sprite2D" parent="Map/Second/Bash"]
-position = Vector2(2607, -394)
+[node name="Bash3" type="Sprite2D" parent="Map"]
+position = Vector2(6930, 2883)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("9_ki4lq")
+offset = Vector2(0.947357, -12.1053)
 
-[node name="Bash4" type="Sprite2D" parent="Map/Second/Bash"]
-position = Vector2(-40, 1467)
+[node name="Bash4" type="Sprite2D" parent="Map"]
+position = Vector2(4271, 4740)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("11_abtfr")
+offset = Vector2(2.21053, -11.6842)
 
-[node name="Grass" type="Sprite2D" parent="Map/Second"]
-
-[node name="Grass1" type="Sprite2D" parent="Map/Second/Grass"]
-z_index = 2
-position = Vector2(-496, 426.5)
+[node name="Grass1" type="Sprite2D" parent="Map"]
+position = Vector2(4052, 3751)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("13_h4giw")
+offset = Vector2(-22.7368, -17.1053)
 
-[node name="Grass2" type="Sprite2D" parent="Map/Second/Grass"]
-z_index = 2
-position = Vector2(529.5, 1116)
+[node name="Grass2" type="Sprite2D" parent="Map"]
+position = Vector2(4806, 4300)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_3oksr")
+offset = Vector2(5.84211, -2.31579)
 
-[node name="Grass3" type="Sprite2D" parent="Map/Second/Grass"]
-z_index = 2
-position = Vector2(1494, 1353)
+[node name="Grass3" type="Sprite2D" parent="Map"]
+position = Vector2(6146, 4628)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("15_o6t8f")
+offset = Vector2(-33.6842, -11.8947)
 
-[node name="Grass4" type="Sprite2D" parent="Map/Second/Grass"]
-z_index = 2
-position = Vector2(2458, 1481.5)
+[node name="Grass4" type="Sprite2D" parent="Map"]
+position = Vector2(6792, 4675)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("16_cg2wp")
+offset = Vector2(-0.21051, -3.31578)
 
-[node name="Grass5" type="Sprite2D" parent="Map/Second/Grass"]
-position = Vector2(2515, 1078)
+[node name="Grass5" type="Sprite2D" parent="Map"]
+position = Vector2(6862, 4327)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("17_dms2b")
+offset = Vector2(-1.57895, -9.15789)
 
-[node name="Grass6" type="Sprite2D" parent="Map/Second/Grass"]
-z_index = 2
-position = Vector2(1736, 626.5)
+[node name="Grass6" type="Sprite2D" parent="Map"]
+position = Vector2(6063, 3834)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("18_o76ut")
+offset = Vector2(0.526321, -4.78947)
 
-[node name="Grass7" type="Sprite2D" parent="Map/Second/Grass"]
-z_index = 2
-position = Vector2(2505.7, 450.5)
+[node name="Grass7" type="Sprite2D" parent="Map"]
+position = Vector2(6963, 3772)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("19_rn8md")
+offset = Vector2(-13.1895, -16.7895)
 
-[node name="Grass8" type="Sprite2D" parent="Map/Second/Grass"]
-position = Vector2(2505.8, -176.5)
+[node name="Grass8" type="Sprite2D" parent="Map"]
+position = Vector2(6834, 2999)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("20_gbr7x")
+offset = Vector2(0.400024, -1.42105)
 
-[node name="Grass9" type="Sprite2D" parent="Map/Second/Grass"]
-position = Vector2(943, 156)
+[node name="Grass9" type="Sprite2D" parent="Map"]
+position = Vector2(5333, 3256)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("21_gno30")
+offset = Vector2(-6.10526, 6.52631)
 
-[node name="GrassBall" type="Sprite2D" parent="Map/Second"]
-
-[node name="GrassBall1" type="Sprite2D" parent="Map/Second/GrassBall"]
-position = Vector2(2244.5, 8.7)
+[node name="GrassBall1" type="Sprite2D" parent="Map"]
+position = Vector2(6538, 3261)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("13_lmdp5")
+offset = Vector2(4.05263, -9.50526)
 
-[node name="GrassBall2" type="Sprite2D" parent="Map/Second/GrassBall"]
-z_index = 2
-position = Vector2(-35.5, 977.5)
+[node name="GrassBall2" type="Sprite2D" parent="Map"]
+position = Vector2(4308, 4230)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_6rsy0")
+offset = Vector2(-1.21053, -9.52631)
 
-[node name="GrassBall3" type="Sprite2D" parent="Map/Second/GrassBall"]
-position = Vector2(2597, 892)
+[node name="GrassBall3" type="Sprite2D" parent="Map"]
+position = Vector2(6946, 4130)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_6rsy0")
+offset = Vector2(-1.78949, -8)
 flip_h = true
 
-[node name="AmazonLeaf" type="Sprite2D" parent="Map/Second"]
-
-[node name="AmazonLeaf1" type="Sprite2D" parent="Map/Second/AmazonLeaf"]
-z_index = 2
-position = Vector2(-235, 726)
+[node name="AmazonLeaf1" type="Sprite2D" parent="Map"]
+position = Vector2(4101, 4034)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("11_068or")
+offset = Vector2(-0.421053, -15.3684)
 
-[node name="AmazonLeaf2" type="Sprite2D" parent="Map/Second/AmazonLeaf"]
-position = Vector2(819, 213)
+[node name="AmazonLeaf2" type="Sprite2D" parent="Map"]
+position = Vector2(5197, 3507)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("11_068or")
+offset = Vector2(-4.84211, -13.8947)
 
-[node name="AmazonLeaf3" type="Sprite2D" parent="Map/Second/AmazonLeaf"]
-position = Vector2(1940.5, 1001.5)
+[node name="AmazonLeaf3" type="Sprite2D" parent="Map"]
+position = Vector2(6341, 4294)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("11_068or")
+offset = Vector2(-7.21053, -13.7368)
 
-[node name="Rose" type="Sprite2D" parent="Map/Second"]
-
-[node name="Rose1" type="Sprite2D" parent="Map/Second/Rose"]
-position = Vector2(1099.5, 270)
+[node name="Rose1" type="Sprite2D" parent="Map"]
+position = Vector2(5486, 3544)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("11_34g7p")
+offset = Vector2(-5.73685, -11.7895)
 
-[node name="Rose2" type="Sprite2D" parent="Map/Second/Rose"]
-z_index = 1
-position = Vector2(2287.4, 792.3)
+[node name="Rose2" type="Sprite2D" parent="Map"]
+position = Vector2(6620, 4076)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("11_34g7p")
+offset = Vector2(-0.0631561, -12.8105)
 
-[node name="PurpleFlower" type="Sprite2D" parent="Map/Second"]
-
-[node name="PurpleFlower1" type="Sprite2D" parent="Map/Second/PurpleFlower"]
-position = Vector2(1950.5, 118)
+[node name="PurpleFlower1" type="Sprite2D" parent="Map"]
+position = Vector2(6291, 3271)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("12_5enfr")
+offset = Vector2(-0.89473, 0.947365)
 
-[node name="PurpleFlower2" type="Sprite2D" parent="Map/Second/PurpleFlower"]
-z_index = 2
-position = Vector2(963, 1178)
+[node name="PurpleFlower2" type="Sprite2D" parent="Map"]
+position = Vector2(5314, 4471)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("13_l6q85")
+offset = Vector2(-2, -13.7895)
 
-[node name="Dandelion" type="Sprite2D" parent="Map/Second"]
-
-[node name="Dandelion1" type="Sprite2D" parent="Map/Second/Dandelion"]
-z_index = 2
-position = Vector2(1019, 1315)
+[node name="Dandelion1" type="Sprite2D" parent="Map"]
+position = Vector2(5351, 4551)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_hw467")
+offset = Vector2(0, -7.78947)
 
-[node name="Dandelion2" type="Sprite2D" parent="Map/Second/Dandelion"]
-z_index = 2
-position = Vector2(2435, 1515)
+[node name="Dandelion2" type="Sprite2D" parent="Map"]
+position = Vector2(6772, 4727)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_hw467")
+offset = Vector2(-0.526306, -5.26317)
 
-[node name="Dandelion3" type="Sprite2D" parent="Map/Second/Dandelion"]
-position = Vector2(1484, 203)
+[node name="Dandelion3" type="Sprite2D" parent="Map"]
+position = Vector2(5819, 3433)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_hw467")
+offset = Vector2(-0.315796, -7.15789)
 
-[node name="Dandelion4" type="Sprite2D" parent="Map/Second/Dandelion"]
-position = Vector2(2520, -262)
+[node name="Dandelion4" type="Sprite2D" parent="Map"]
+position = Vector2(6862, 2959)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_hw467")
+offset = Vector2(-1.05264, -6.21053)
 
-[node name="Dandelion5" type="Sprite2D" parent="Map/Second/Dandelion"]
-z_index = 2
-position = Vector2(-406, 545)
+[node name="Dandelion5" type="Sprite2D" parent="Map"]
+position = Vector2(3933, 3774)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_hw467")
+offset = Vector2(-0.736843, -7.05263)
 
-[node name="Dandelion6" type="Sprite2D" parent="Map/Second/Dandelion"]
-position = Vector2(1228, 840)
+[node name="Dandelion6" type="Sprite2D" parent="Map"]
+position = Vector2(5564, 4052)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("14_hw467")
+offset = Vector2(-0.421051, -5.26316)
 
-[node name="Dandelion7" type="Sprite2D" parent="Map/Second/Dandelion"]
-position = Vector2(2539, 1125)
+[node name="Dandelion7" type="Sprite2D" parent="Map"]
+position = Vector2(6861, 4339)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("15_8eo2s")
+offset = Vector2(1.05261, -5.47369)
 
-[node name="Third" type="Sprite2D" parent="Map"]
-z_index = 3
-
-[node name="Tree1" type="Sprite2D" parent="Map/Third"]
-position = Vector2(-425, 275)
+[node name="Tree1" type="Sprite2D" parent="Map"]
+position = Vector2(3903, 3758)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("16_0o003")
+offset = Vector2(0.421051, -33.7895)
 
-[node name="Tree2" type="Sprite2D" parent="Map/Third"]
-position = Vector2(59, -191)
+[node name="Tree2" type="Sprite2D" parent="Map"]
+position = Vector2(4381, 3178)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("16_0o003")
+offset = Vector2(1.05263, -21.7895)
 
-[node name="Tree3" type="Sprite2D" parent="Map/Third"]
-position = Vector2(991, -286)
+[node name="Tree3" type="Sprite2D" parent="Map"]
+position = Vector2(5332, 3114)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("16_0o003")
+offset = Vector2(-0.947372, -25.0526)
 
-[node name="VineTree" type="Sprite2D" parent="Map/Third"]
-y_sort_enabled = true
-position = Vector2(1284.9, 674)
+[node name="VineTree" type="Sprite2D" parent="Map"]
+position = Vector2(5606, 4030)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("17_1qd68")
+offset = Vector2(1.14735, -20.421)
 
-[node name="FlowerTree" type="Sprite2D" parent="Map/Third"]
-position = Vector2(692, 1329)
+[node name="FlowerTree" type="Sprite2D" parent="Map"]
+position = Vector2(5027, 4698)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("18_w7b8k")
+offset = Vector2(-0.315796, -21.7895)
 
-[node name="TreeBackground" type="Sprite2D" parent="Map/Third"]
-position = Vector2(1850.5, -423.5)
+[node name="TreeBackground" type="Sprite2D" parent="Map"]
+position = Vector2(6204, 2858)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("19_mxvhg")
+offset = Vector2(-2.26315, -12.5789)
 
-[node name="Fourth" type="Sprite2D" parent="Map"]
-z_index = 4
-
-[node name="Shadow" type="Sprite2D" parent="Map/Fourth"]
-position = Vector2(1000, 559.75)
+[node name="Shadow" type="Sprite2D" parent="Map"]
+position = Vector2(5085, 2712)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("20_r8rf0")
+offset = Vector2(26, 106.289)
 
-[node name="Fense" type="Sprite2D" parent="Map/Fourth"]
-position = Vector2(-734, 1329)
+[node name="Fense" type="Sprite2D" parent="Map"]
+position = Vector2(3603, 4802)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("4_bayy8")
+offset = Vector2(-0.526321, -32.7368)
 
-[node name="BorderWall" type="Sprite2D" parent="Map/Fourth"]
-
-[node name="BorderWall1" type="Sprite2D" parent="Map/Fourth/BorderWall"]
-position = Vector2(781.5, 1552.5)
+[node name="BorderWall1" type="Sprite2D" parent="Map"]
+position = Vector2(5100, 4856)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("22_rnof5")
+offset = Vector2(1.42106, -14.8948)
 
-[node name="BorderWall2" type="Sprite2D" parent="Map/Fourth/BorderWall"]
-position = Vector2(2320.5, 1552.5)
+[node name="BorderWall2" type="Sprite2D" parent="Map"]
+position = Vector2(6659, 4775)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("22_rnof5")
+offset = Vector2(-0.684219, -6.36842)
 
-[node name="BorderWall3" type="Sprite2D" parent="Map/Fourth/BorderWall"]
-position = Vector2(2805, 1501.5)
+[node name="BorderWall3" type="Sprite2D" parent="Map"]
+position = Vector2(7133, 4779)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("23_apkl4")
+offset = Vector2(0.421051, -12.1579)
 
-[node name="FrontTree" type="Sprite2D" parent="Map/Fourth"]
-position = Vector2(1000, 559.75)
+[node name="FrontTree" type="Sprite2D" parent="Map"]
+position = Vector2(5363, 5076)
 scale = Vector2(9.5, 9.5)
 texture = ExtResource("5_lunp5")
+offset = Vector2(-3.26315, -142.553)
 
-[node name="Base" type="Sprite2D" parent="Map"]
+[node name="TowerContainer1" parent="Map" instance=ExtResource("39_lpetk")]
+y_sort_enabled = true
+position = Vector2(3816, 3879)
 
-[node name="Base1" type="Sprite2D" parent="Map/Base"]
-z_index = 5
-position = Vector2(-516, 717)
-scale = Vector2(9.5, 9.5)
+[node name="Base1" type="Sprite2D" parent="Map/TowerContainer1"]
+scale = Vector2(23.75, 23.75)
 texture = ExtResource("30_tb82w")
 
-[node name="Base2" type="Sprite2D" parent="Map/Base"]
-position = Vector2(539, 175)
-scale = Vector2(9.5, 9.5)
+[node name="TowerContainer2" parent="Map" instance=ExtResource("39_lpetk")]
+y_sort_enabled = true
+position = Vector2(4871, 3337)
+
+[node name="Base2" type="Sprite2D" parent="Map/TowerContainer2"]
+scale = Vector2(23.75, 23.75)
 texture = ExtResource("30_tb82w")
 
-[node name="Base3" type="Sprite2D" parent="Map/Base"]
-z_index = 5
-position = Vector2(245, 1201)
-scale = Vector2(9.5, 9.5)
+[node name="TowerContainer3" parent="Map" instance=ExtResource("39_lpetk")]
+y_sort_enabled = true
+position = Vector2(4577, 4363)
+
+[node name="Base3" type="Sprite2D" parent="Map/TowerContainer3"]
+scale = Vector2(23.75, 23.75)
 texture = ExtResource("30_tb82w")
 
-[node name="Base4" type="Sprite2D" parent="Map/Base"]
-z_index = 5
-position = Vector2(1518, 1478)
-scale = Vector2(9.5, 9.5)
+[node name="TowerContainer4" parent="Map" instance=ExtResource("39_lpetk")]
+y_sort_enabled = true
+position = Vector2(5850, 4640)
+
+[node name="Base4" type="Sprite2D" parent="Map/TowerContainer4"]
+scale = Vector2(23.75, 23.75)
 texture = ExtResource("30_tb82w")
 
-[node name="Base5" type="Sprite2D" parent="Map/Base"]
-z_index = 5
-position = Vector2(2391.7, 583.3)
-scale = Vector2(9.5, 9.5)
+[node name="TowerContainer5" parent="Map" instance=ExtResource("39_lpetk")]
+y_sort_enabled = true
+position = Vector2(6723.7, 3745.3)
+
+[node name="Base5" type="Sprite2D" parent="Map/TowerContainer5"]
+scale = Vector2(23.75, 23.75)
 texture = ExtResource("30_tb82w")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Map"]
-position = Vector2(105, 105)
+visible = false
+position = Vector2(4437, 3267)
 collision_layer = 2
 collision_mask = 2
 
@@ -500,8 +522,9 @@ zoom_min_limit = 0.59
 zoom_max_limit = 1.95
 
 [node name="PathSpawner" parent="." instance=ExtResource("32_a70qo")]
+y_sort_enabled = true
 random_spawn = true
-spawn_multipler = 0.3
+spawn_multipler = 0.2
 
 [node name="LeftTop" type="Node2D" parent="PathSpawner"]
 position = Vector2(-842, 79)
@@ -522,6 +545,7 @@ offset_right = 93.0
 offset_bottom = 42.0
 
 [node name="TimeManager" parent="InGameUI" instance=ExtResource("33_cuid2")]
+all_minutes = 2
 
 [connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]
