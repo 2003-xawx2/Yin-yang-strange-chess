@@ -286,6 +286,7 @@ radius = 37.1214
 radius = 64.0312
 
 [node name="Frog" groups=["frog"] instance=ExtResource("1_5jw4i")]
+y_sort_enabled = false
 motion_mode = 1
 script = ExtResource("2_odx8i")
 graphic_scale = -1.0

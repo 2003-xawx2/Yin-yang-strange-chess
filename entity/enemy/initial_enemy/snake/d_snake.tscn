@@ -197,6 +197,7 @@ radius = 37.0611
 radius = 2.0
 
 [node name="dSnake" groups=["snake"] instance=ExtResource("1_bj1y5")]
+y_sort_enabled = false
 scale = Vector2(1.85, 1.85)
 motion_mode = 1
 script = ExtResource("2_nvhi2")
