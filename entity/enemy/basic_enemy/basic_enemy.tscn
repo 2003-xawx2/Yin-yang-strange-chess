@@ -26,7 +26,6 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy", "order"]]
-y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_hpubo")
