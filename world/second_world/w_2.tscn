@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cwrm11u1xteqh"]
+[gd_scene load_steps=50 format=3 uid="uid://cwrm11u1xteqh"]
 
 [ext_resource type="Script" path="res://world/second_world/w_2.gd" id="1_w4too"]
 [ext_resource type="Texture2D" uid="uid://x6dhpqgfdeww" path="res://world/second_world/second_world.png" id="3_ye8rn"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://bql7yuxulmu62" path="res://world/second_world/flower.png" id="18_w1ial"]
 [ext_resource type="Texture2D" uid="uid://bp67edsbj43bf" path="res://world/second_world/foreground.png" id="19_er7c3"]
 [ext_resource type="Texture2D" uid="uid://oj1wmm0mbcw7" path="res://world/second_world/grass1.png" id="20_ne2o8"]
-[ext_resource type="Shader" path="res://world/initial_world/grass.gdshader" id="21_orjpa"]
 [ext_resource type="Texture2D" uid="uid://cvblxtr2sumbk" path="res://world/second_world/grass2.png" id="21_pc8u5"]
 [ext_resource type="Texture2D" uid="uid://codvps5wmiyw6" path="res://world/second_world/grass3.png" id="22_6h5km"]
 [ext_resource type="Texture2D" uid="uid://ndshv7cbd1h5" path="res://world/second_world/grass4.png" id="23_y8brg"]
@@ -36,17 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://byys20kk8dhce" path="res://world/second_world/蝴蝶.png" id="31_w8ko7"]
 [ext_resource type="Texture2D" uid="uid://b2e7ut5ap2fbr" path="res://world/second_world/瀑布.png" id="32_grlvx"]
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="33_f3ni8"]
-[ext_resource type="Script" path="res://world/initial_world/path_spawner/enemy_path.gd" id="34_0g6xu"]
 [ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="35_e57v8"]
 [ext_resource type="Texture2D" uid="uid://dli41pabumi3h" path="res://world/second_world/base.png" id="36_a86du"]
 [ext_resource type="Texture2D" uid="uid://ywk84huhal1x" path="res://world/second_world/base_2.png" id="37_ccems"]
-[ext_resource type="Shader" path="res://world/second_world/ray.gdshader" id="39_d67wd"]
-[ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="42_pta13"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25kkp"]
-shader = ExtResource("21_orjpa")
-shader_parameter/swing_a = 1.0
-shader_parameter/swing_multipler = 0.2
 
 [sub_resource type="Animation" id="Animation_lt8vq"]
 length = 0.001
@@ -253,190 +244,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_45g3k"]
-shader = ExtResource("39_d67wd")
-shader_parameter/angle = 0.24
-shader_parameter/position = -0.09
-shader_parameter/spread = 0.248
-shader_parameter/cutoff = 0.216
-shader_parameter/falloff = 0.445
-shader_parameter/edge_fade = 0.374
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = true
-shader_parameter/seed = 5.0
-
-[sub_resource type="Animation" id="Animation_kwvmf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/angle")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.24]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.09]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/cutoff")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.216]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/spread")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.248]
-}
-
-[sub_resource type="Animation" id="Animation_h471i"]
-resource_name = "flow"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/angle")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.24, 0.01]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.09, 0.11]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/cutoff")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.216, 0.137]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/spread")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.248, 0.461]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_80oq0"]
-_data = {
-"RESET": SubResource("Animation_kwvmf"),
-"flow": SubResource("Animation_h471i")
-}
-
-[sub_resource type="Resource" id="Resource_bmcei"]
-script = ExtResource("34_0g6xu")
-start = 0
-end = 3
-faction = 2
-
-[sub_resource type="Resource" id="Resource_20386"]
-script = ExtResource("34_0g6xu")
-start = 1
-end = 3
-faction = 2
-
-[sub_resource type="Resource" id="Resource_3etnh"]
-script = ExtResource("34_0g6xu")
-start = 2
-end = 4
-faction = 2
-
-[sub_resource type="Resource" id="Resource_x68f8"]
-script = ExtResource("34_0g6xu")
-start = 2
-end = 5
-faction = 2
-
-[sub_resource type="Resource" id="Resource_x6uyc"]
-script = ExtResource("34_0g6xu")
-start = 3
-end = 0
-faction = 1
-
-[sub_resource type="Resource" id="Resource_kxxh4"]
-script = ExtResource("34_0g6xu")
-start = 3
-end = 1
-faction = 1
-
-[sub_resource type="Resource" id="Resource_ys1gi"]
-script = ExtResource("34_0g6xu")
-start = 4
-end = 2
-faction = 1
-
-[sub_resource type="Resource" id="Resource_ovff6"]
-script = ExtResource("34_0g6xu")
-start = 5
-end = 2
-faction = 1
-
-[sub_resource type="Resource" id="Resource_tufdy"]
-script = ExtResource("42_pta13")
-spawn_position = 0
-end_position = 0
-enemy_type = 0
-enemy_faction = 1
-showing_time = 0.0
-show_interval = 0.0
-show_amounts = 0
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cmvvl"]
 vertices = PackedVector2Array(-1188, -181, 3589, -181, 3546, 51, 1054, -27, -1158, 35, 536, -4, 758, 61, 974, 80, 853, 327, 971, 652, 799, 604, 926, 859, 1783, 1272, 3608, 1253, 3570, 1485, -1289, 1475, -1206, 906, -1225, 705, 606, 724, 1291, 877, 1110, 668, 1303, 652, 1420, 879, 1549, 382, 3635, 408, 3623, 620, 1734, 588, 1414, 434, 1589, 654, 1449, 633, 1510, 987, 1326, 1164, 1587, 1216, -1268, 1289, 1109, 1277)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 5, 3, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 11), PackedInt32Array(11, 18, 10), PackedInt32Array(19, 11, 9, 20), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(27, 23, 26, 28, 29), PackedInt32Array(29, 28, 30, 22, 21), PackedInt32Array(31, 22, 30, 32), PackedInt32Array(15, 33, 34), PackedInt32Array(12, 15, 34), PackedInt32Array(32, 12, 34, 31)])
@@ -462,7 +269,6 @@ zoom_adjust_percent = 0.08
 [node name="InGameUI" parent="." instance=ExtResource("11_rrwti")]
 
 [node name="TimeManager" parent="InGameUI" instance=ExtResource("5_dp3e7")]
-visible = false
 offset_left = -78.5
 offset_right = 78.5
 offset_bottom = 84.0
@@ -488,11 +294,6 @@ position = Vector2(1076, 657)
 texture = ExtResource("6_7kqpk")
 offset = Vector2(0, -20)
 
-[node name="Tree4" type="Sprite2D" parent="World"]
-position = Vector2(1105.78, 497.333)
-texture = ExtResource("6_7kqpk")
-offset = Vector2(0, -20)
-
 [node name="Tree" type="Sprite2D" parent="World"]
 position = Vector2(920, 703)
 texture = ExtResource("7_kjops")
@@ -514,7 +315,7 @@ texture = ExtResource("10_fyhha")
 offset = Vector2(0, 19)
 
 [node name="WoodFlat" type="Sprite2D" parent="World"]
-position = Vector2(1012.67, 484.778)
+position = Vector2(1013, 483)
 texture = ExtResource("11_6ssi3")
 offset = Vector2(0, 10)
 
@@ -569,7 +370,6 @@ texture = ExtResource("18_w1ial")
 offset = Vector2(0, -10)
 
 [node name="Foreground" type="Sprite2D" parent="World"]
-material = SubResource("ShaderMaterial_25kkp")
 position = Vector2(1012, 731)
 texture = ExtResource("19_er7c3")
 offset = Vector2(0, -130)
@@ -821,28 +621,12 @@ scale = Vector2(0.1, 0.1)
 scale = Vector2(9, 9)
 texture = ExtResource("37_ccems")
 
-[node name="ray" type="ColorRect" parent="World"]
-z_index = 1
-material = SubResource("ShaderMaterial_45g3k")
-offset_left = 786.0
-offset_top = 476.0
-offset_right = 1242.0
-offset_bottom = 724.0
-mouse_filter = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="World/ray"]
-libraries = {
-"": SubResource("AnimationLibrary_80oq0")
-}
-autoplay = "flow"
-speed_scale = 0.001
-
 [node name="FunctionalMap" type="Node2D" parent="."]
 
 [node name="PathSpawner" parent="." instance=ExtResource("33_f3ni8")]
+y_sort_enabled = true
+random_spawn = true
 spawn_multipler = 0.2
-paths = Array[ExtResource("34_0g6xu")]([SubResource("Resource_bmcei"), SubResource("Resource_20386"), SubResource("Resource_3etnh"), SubResource("Resource_x68f8"), SubResource("Resource_x6uyc"), SubResource("Resource_kxxh4"), SubResource("Resource_ys1gi"), SubResource("Resource_ovff6")])
-PathArray = Array[ExtResource("42_pta13")]([SubResource("Resource_tufdy")])
 
 [node name="Marker2D" type="Marker2D" parent="PathSpawner"]
 position = Vector2(-944, -96)
