@@ -1,0 +1,253 @@
+[gd_scene load_steps=32 format=3 uid="uid://wrn5un224uq3"]
+
+[ext_resource type="Script" path="res://world/fourth_world/fourth_world.gd" id="1_5h5x3"]
+[ext_resource type="Texture2D" uid="uid://dic8eqe2pe308" path="res://world/fourth_world/assets/1底部.png" id="1_ldht2"]
+[ext_resource type="Texture2D" uid="uid://dx8jsvkrtwgfe" path="res://world/fourth_world/assets/完成图.png" id="1_oo2xi"]
+[ext_resource type="Texture2D" uid="uid://dhno286ofd5wh" path="res://world/fourth_world/assets/2道路.png" id="2_mkevi"]
+[ext_resource type="PackedScene" uid="uid://dwm1bdc1qdow4" path="res://misc/camera/scripy_camera.tscn" id="3_qiohn"]
+[ext_resource type="Texture2D" uid="uid://ddpn8eh6viq7n" path="res://world/fourth_world/assets/平台/floor1.png" id="4_rihmx"]
+[ext_resource type="Texture2D" uid="uid://beofrwudoxvv0" path="res://world/fourth_world/assets/4栏杆.png" id="5_4qf7v"]
+[ext_resource type="Texture2D" uid="uid://dc4tnrc6vem25" path="res://world/fourth_world/assets/平台/floor2.png" id="5_70bn8"]
+[ext_resource type="Texture2D" uid="uid://bg55001o6w6jd" path="res://world/fourth_world/assets/5红色路障.png" id="6_43epy"]
+[ext_resource type="Texture2D" uid="uid://bvymmyx58nodw" path="res://world/fourth_world/assets/平台/floor3.png" id="6_uxoq2"]
+[ext_resource type="Texture2D" uid="uid://x7lmiwdd0thq" path="res://world/fourth_world/assets/平台/floor4.png" id="7_2dnwr"]
+[ext_resource type="Texture2D" uid="uid://dx22ppx4jgfae" path="res://world/fourth_world/assets/6盲道.png" id="7_cfmpm"]
+[ext_resource type="Texture2D" uid="uid://77ar3a0luil8" path="res://world/fourth_world/assets/平台/floor5.png" id="8_uhda3"]
+[ext_resource type="Texture2D" uid="uid://cgndl7go1ds01" path="res://world/fourth_world/assets/7安全出行.png" id="8_vvp2x"]
+[ext_resource type="Texture2D" uid="uid://nsjyanmi4eb8" path="res://world/fourth_world/assets/8路障.png" id="9_ps236"]
+[ext_resource type="Texture2D" uid="uid://bgj5fs4tgfwgc" path="res://world/fourth_world/assets/9花圃.png" id="10_tm022"]
+[ext_resource type="Texture2D" uid="uid://c2c3uimykoddj" path="res://world/fourth_world/assets/10垃圾桶.png" id="11_nx0hm"]
+[ext_resource type="Texture2D" uid="uid://ditjhkl1c3pc4" path="res://world/fourth_world/assets/11路灯.png" id="12_qaumu"]
+[ext_resource type="Texture2D" uid="uid://m8q1yohcg3q2" path="res://world/fourth_world/assets/12草.png" id="13_qgki4"]
+[ext_resource type="Texture2D" uid="uid://eursvnd7bja5" path="res://world/fourth_world/assets/13树.png" id="14_g0oi1"]
+[ext_resource type="Texture2D" uid="uid://mhnp0fgmptr2" path="res://world/fourth_world/assets/14电线杆.png" id="15_bhkwq"]
+[ext_resource type="Texture2D" uid="uid://bsalsvlbqnfkp" path="res://world/fourth_world/assets/15轨道.png" id="16_3cleo"]
+[ext_resource type="Texture2D" uid="uid://csj1hew5rtn1d" path="res://world/fourth_world/assets/19火车.png" id="17_5tpm0"]
+[ext_resource type="Texture2D" uid="uid://cn0xbdc350532" path="res://world/fourth_world/assets/16栏杆.png" id="18_walae"]
+[ext_resource type="Texture2D" uid="uid://jqv38fhof1dj" path="res://world/fourth_world/assets/17挂灯.png" id="19_5jjv6"]
+[ext_resource type="Texture2D" uid="uid://df4l0yi51empq" path="res://world/fourth_world/assets/18前景栏杆.png" id="20_gftiv"]
+[ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="22_apq57"]
+[ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="23_gv08e"]
+[ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="23_kb6vy"]
+[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="24_nwwh4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u8o01"]
+vertices = PackedVector2Array(3019, -27, 3020, 47, 3014, 47, 2937, 40, 2594, -228, 1401, 1599, 1796, 1707, 249, 1707, 171, 1575, 2382, -122, 2381, -122, 1403, 1228, 1231, 1232, 2980, -483, 3007, -505, 3007, -489, 2950, -458, -635, 1715, 64, 1521, 3019, -493, 2922, -435, -252, 1113, -261, 1237, -1007, 1552, -1012, 1554, -1017, 1463, -1017, 1462, -959, 1229, -914, 1071, -471, 1007, -469, 1007, -923, 1683, -992, 1707, 2567, 7, 1763, 407, 1821, 223, 1451, 285, 1467, 609, 1763, 547, 1474, 900, 2935, 135, 2991, 431, 2765, 515, 2895, 585, 2533, 855, 2465, 739, 1999, 795, 2164, 946, 1823, 902, 1857, 733, 2587, -245, 2379, -178, 2276, -501, 2914, -522, 2911, -441, 493, 768, 521, 969, 497, 975, 265, 759, 333, 573, 71, 1510, -908, 1718, 1380, 969, 1819, 915, 1522, 1139, 1491, 1149, 978, 1132, 512, 1002, 998, 1306, 660, 1279, 263, 1079, 494, 987, 453, 405, 620, 295, 621, 296, 655, 490, 2950, -474, -1036, 1270, -133, 1125, -61, 891, 4, 1095, -60, 890, 913, 397, 870, 192, 1291, 134, 1036, 47, 1455, -144, 1797, -334, 1036, 46, 1398, -324, 1790, -515, 1798, -334, 2102, -467)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 4), PackedInt32Array(11, 6, 5, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(8, 7, 17, 18), PackedInt32Array(19, 0, 4, 20), PackedInt32Array(21, 22, 23, 24, 25, 26, 27, 28, 29, 30), PackedInt32Array(31, 32, 23, 22), PackedInt32Array(4, 3, 33, 9), PackedInt32Array(9, 33, 34, 35), PackedInt32Array(36, 35, 34, 37), PackedInt32Array(37, 34, 38, 39), PackedInt32Array(40, 3, 2, 41), PackedInt32Array(42, 40, 41, 43), PackedInt32Array(42, 43, 44, 45), PackedInt32Array(46, 45, 44, 47, 48), PackedInt32Array(49, 46, 48, 39), PackedInt32Array(50, 51, 52, 53, 54), PackedInt32Array(55, 56, 57, 58, 59), PackedInt32Array(31, 22, 60, 18, 17, 61), PackedInt32Array(39, 38, 49), PackedInt32Array(62, 39, 48, 63, 64, 65), PackedInt32Array(66, 62, 65, 11, 12), PackedInt32Array(67, 66, 12, 68, 69, 70), PackedInt32Array(71, 67, 70), PackedInt32Array(59, 72, 73, 74, 75, 55), PackedInt32Array(16, 76, 13), PackedInt32Array(26, 77, 27), PackedInt32Array(78, 21, 30, 79, 80), PackedInt32Array(71, 70, 80, 79, 81, 58, 57), PackedInt32Array(82, 75, 74, 83, 84), PackedInt32Array(84, 83, 85, 86), PackedInt32Array(87, 86, 85, 88, 89, 90), PackedInt32Array(91, 87, 90, 92), PackedInt32Array(52, 92, 90), PackedInt32Array(52, 90, 53), PackedInt32Array(4, 50, 54, 20), PackedInt32Array(19, 20, 16, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1028, 1442, -1022, 1570, -570, 1337, -539, 1095, -132, 1136, 149, 1073, 533, 977, 503, 770, 662, 498, 920, 405, 1300, 141, 1462, -137, 1802, -325, 2105, -457, 2269, -489, 2373, -165, 2917, -345, 2925, -533, 1789, -525, 1393, -333, 1029, 39, 865, 183, 617, 287, 445, 399, 325, 567, 257, 751, -287, 971, -923, 1063), PackedVector2Array(-959, 1629, -915, 1729, -635, 1725, 249, 1717, 1817, 1717, 1417, 1229, 1709, 969, 1797, 909, 2165, 957, 2537, 865, 2901, 593, 3001, 433, 3029, -27, 3029, -507, 2941, -483, 2925, 133, 2757, 509, 2461, 729, 2001, 785, 1801, 697, 1725, 489, 1489, 625, 1473, 889, 1289, 1025, 1149, 1077, 1385, 1589, 173, 1565, -303, 1321), PackedVector2Array(-1047, 1265, -1001, 1721, -729, 1629, -43, 1705, 85, 1509, -251, 1233, -243, 1121, 261, 1089, 657, 1289, 1001, 1317, 1525, 1149, 1829, 921, 1877, 749, 1773, 545, 1773, 413, 2569, 17, 3031, 59, 3017, -527, 2790, -339, 2377, -131, 1817, 213, 1441, 277, 1457, 609, 1465, 925, 977, 1121, 517, 993, 257, 789, -623, 1041)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="FourthWorld" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_5h5x3")
+
+[node name="Done" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1000, 600)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("1_oo2xi")
+
+[node name="Map" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Map"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Map/ParallaxBackground"]
+motion_scale = Vector2(1, 0.5)
+
+[node name="Background" type="Sprite2D" parent="Map/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1000, 600)
+scale = Vector2(12, 12)
+texture = ExtResource("1_ldht2")
+
+[node name="Road" type="Sprite2D" parent="Map"]
+position = Vector2(2496, -1477)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("2_mkevi")
+offset = Vector2(-157.474, 218.632)
+
+[node name="Platform1" type="Sprite2D" parent="Map"]
+position = Vector2(279, -40)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("4_rihmx")
+offset = Vector2(-0.526316, 38.3158)
+
+[node name="Platform2" type="Sprite2D" parent="Map"]
+position = Vector2(223, 1213)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("5_70bn8")
+offset = Vector2(-3.89473, 4.00002)
+
+[node name="Platform3" type="Sprite2D" parent="Map"]
+position = Vector2(1260, 1434)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("6_uxoq2")
+offset = Vector2(-16.9474, -0.736847)
+
+[node name="Platform4" type="Sprite2D" parent="Map"]
+position = Vector2(2577, 192)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("7_2dnwr")
+offset = Vector2(1.47369, 10.4211)
+
+[node name="Platform5" type="Sprite2D" parent="Map"]
+position = Vector2(1815, -259)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("8_uhda3")
+offset = Vector2(0.736847, 11.8947)
+
+[node name="Fense" type="Sprite2D" parent="Map"]
+position = Vector2(2188, -1061)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("5_4qf7v")
+offset = Vector2(-125.053, 174.842)
+
+[node name="RedCone" type="Sprite2D" parent="Map"]
+position = Vector2(1000, 600)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("6_43epy")
+
+[node name="BlindTrack" type="Sprite2D" parent="Map"]
+position = Vector2(2647, -1373)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("7_cfmpm")
+offset = Vector2(-173.368, 207.684)
+
+[node name="SafeSign" type="Sprite2D" parent="Map"]
+position = Vector2(2701, -1346)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("8_vvp2x")
+offset = Vector2(-179.053, 204.842)
+
+[node name="Roadblock" type="Sprite2D" parent="Map"]
+position = Vector2(-453, 1324)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("9_ps236")
+offset = Vector2(152.947, -76.2105)
+
+[node name="FlowerBed" type="Sprite2D" parent="Map"]
+position = Vector2(1000, 600)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("10_tm022")
+
+[node name="Bin" type="Sprite2D" parent="Map"]
+position = Vector2(1246, 845)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("11_nx0hm")
+offset = Vector2(-25.8947, -25.7895)
+
+[node name="TrafficLight" type="Sprite2D" parent="Map"]
+position = Vector2(587, 819)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("12_qaumu")
+offset = Vector2(43.4737, -23.0526)
+
+[node name="Grass" type="Sprite2D" parent="Map"]
+position = Vector2(1000, 600)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("13_qgki4")
+
+[node name="Tree" type="Sprite2D" parent="Map"]
+position = Vector2(1000, 600)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("14_g0oi1")
+
+[node name="WirePole" type="Sprite2D" parent="Map"]
+position = Vector2(2357, 1003)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("15_bhkwq")
+offset = Vector2(-142.842, -42.4211)
+
+[node name="TrainTrack" type="Sprite2D" parent="Map"]
+position = Vector2(-558, 273)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("16_3cleo")
+offset = Vector2(164, 34.4211)
+
+[node name="Train" type="Sprite2D" parent="Map"]
+position = Vector2(-515, 418)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("17_5tpm0")
+offset = Vector2(-14.5263, -75.7895)
+
+[node name="TrainFense" type="Sprite2D" parent="Map"]
+position = Vector2(-422, 421)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("18_walae")
+offset = Vector2(149.684, 18.8421)
+
+[node name="TrainLight" type="Sprite2D" parent="Map"]
+position = Vector2(1000, 600)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("19_5jjv6")
+
+[node name="Front" type="Sprite2D" parent="Map"]
+position = Vector2(934, 2230)
+scale = Vector2(9.5, 9.5)
+texture = ExtResource("20_gftiv")
+offset = Vector2(6.94737, -171.579)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+polygon = PackedVector2Array(-558, 1319, -408, 1329, -337, 1297, -508, 1274)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Map/StaticBody2D"]
+polygon = PackedVector2Array(-679, 998, -541, 1002, -387, 971, -209, 928, 5, 869, 181, 803, 258, 763, 268, 666, 300, 581, 389, 443, 516, 331, 692, 230, 893, 157, 1000, 22, 1198, -162, 1371, -321, 1558, -445, 1555, -541, 1232, -349, 1065, -185, 896, 56, 545, 135, 355, 330, 197, 624, 104, 734, -400, 870, -668, 927)
+
+[node name="ScripyCamera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("3_qiohn")]
+map = NodePath("../Map/Road")
+acceleration = 2.4
+zoom_adjust_percent = 0.08
+zoom_min_limit = 0.59
+zoom_max_limit = 1.95
+
+[node name="PathSpawner" parent="." instance=ExtResource("22_apq57")]
+y_sort_enabled = true
+random_spawn = true
+spawn_multipler = 0.2
+
+[node name="LeftBottom" type="Node2D" parent="PathSpawner"]
+position = Vector2(-797, 1684)
+
+[node name="Node2D" type="Node2D" parent="PathSpawner"]
+position = Vector2(-973, 1495)
+
+[node name="RightTop" type="Node2D" parent="PathSpawner"]
+position = Vector2(2851, -485)
+
+[node name="Node2D2" type="Node2D" parent="PathSpawner"]
+position = Vector2(2990, -449)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="PathSpawner"]
+navigation_polygon = SubResource("NavigationPolygon_u8o01")
+
+[node name="ForbiddenArea" type="Area2D" parent="."]
+script = ExtResource("23_gv08e")
+damage = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ForbiddenArea"]
+polygon = PackedVector2Array(-869, -241, -860, 227, -932, 589, -893, 697, -803, 922, -633, 957, -299, 909, 133, 786, 205, 722, 283, 559, 438, 305, 742, 145, 889, 87, 1033, -58, 1164, -183, 1390, -402, 1510, -540)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="ForbiddenArea"]
+polygon = PackedVector2Array(-226, 1243, 199, 1519, 1317, 1554, 1228, 1319, 929, 1398, 631, 1389, 323, 1275, 190, 1157)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="ForbiddenArea"]
+polygon = PackedVector2Array(1466, 1237, 1733, 1103, 1822, 986, 2298, 1024, 2729, 912, 3034, 564, 3017, 1742, 2292, 1718, 1966, 1675, 1657, 1502)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="ForbiddenArea"]
+polygon = PackedVector2Array(1820, 458, 1817, 569, 1931, 705, 2283, 728, 2626, 620, 2804, 385, 2880, 191, 2531, 115)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="ForbiddenArea"]
+polygon = PackedVector2Array(2215, -421, 1681, -167, 1482, -44, 1364, 117, 1389, 189, 1542, 227, 1783, 181, 2025, 62, 2326, -120)
+
+[node name="InGameUI" parent="." instance=ExtResource("23_kb6vy")]
+
+[node name="TimeManager" parent="InGameUI" instance=ExtResource("24_nwwh4")]
+
+[node name="Button" type="Button" parent="InGameUI"]
+offset_right = 65.0
+offset_bottom = 25.0
+
+[connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]
