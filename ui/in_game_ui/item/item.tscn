@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2tqxya7186np"]
+[gd_scene load_steps=11 format=3 uid="uid://c2tqxya7186np"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/item/item.gd" id="1_j23l1"]
 [ext_resource type="Texture2D" uid="uid://dd8lnqpuvsa1p" path="res://assets/drop/drop_icon/毒牙.png" id="2_66ajn"]
+[ext_resource type="Texture2D" uid="uid://dcqg17f3w7gyw" path="res://assets/ui/drop_inventory/drop_inventory.png" id="2_opc7e"]
 [ext_resource type="Texture2D" uid="uid://oox8ovainomr" path="res://assets/drop/drop_icon/蹼.png" id="3_ib44j"]
 [ext_resource type="Texture2D" uid="uid://2a1d3h77vlti" path="res://assets/drop/drop_icon/蛇信子.png" id="3_q8tjl"]
 [ext_resource type="Texture2D" uid="uid://uur1ba7g5jhd" path="res://assets/drop/drop_icon/蜘蛛丝.png" id="4_1vf1a"]
@@ -17,6 +18,11 @@ offset_top = 1157.0
 offset_right = 532.77
 offset_bottom = 1297.0
 script = ExtResource("1_j23l1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(265, 107)
+scale = Vector2(4.2, 6)
+texture = ExtResource("2_opc7e")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

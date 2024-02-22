@@ -10,7 +10,8 @@ var minutes:=0
 
 func _ready() -> void:
 	Global.start_game.connect(func()->void:
-		second_timer.start())
+		second_timer.start()
+		$AnimationPlayer.play("time"))
 	seconds = all_seconds
 	minutes = all_minutes
 	update_text()
@@ -21,8 +22,10 @@ func _on_second_timer_timeout() -> void:
 	if minutes == 0 and seconds == -1:
 		Global.emit_victory()
 		second_timer.stop()
+		$AnimationPlayer.play("stop")
 		return
 	if seconds == -1:
+
 		seconds = 59
 		minutes -= 1
 	update_text()

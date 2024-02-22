@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://wrn5un224uq3"]
+[gd_scene load_steps=34 format=3 uid="uid://wrn5un224uq3"]
 
 [ext_resource type="Script" path="res://world/fourth_world/fourth_world.gd" id="1_5h5x3"]
 [ext_resource type="Texture2D" uid="uid://dic8eqe2pe308" path="res://world/fourth_world/assets/1底部.png" id="1_ldht2"]
@@ -27,9 +27,13 @@
 [ext_resource type="Texture2D" uid="uid://jqv38fhof1dj" path="res://world/fourth_world/assets/17挂灯.png" id="19_5jjv6"]
 [ext_resource type="Texture2D" uid="uid://df4l0yi51empq" path="res://world/fourth_world/assets/18前景栏杆.png" id="20_gftiv"]
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="22_apq57"]
+[ext_resource type="Shader" path="res://world/fourth_world/train.gdshader" id="22_ga21q"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="23_gv08e"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="23_kb6vy"]
 [ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="24_nwwh4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adwlp"]
+shader = ExtResource("22_ga21q")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8o01"]
 vertices = PackedVector2Array(3019, -27, 3020, 47, 3014, 47, 2937, 40, 2594, -228, 1401, 1599, 1796, 1707, 249, 1707, 171, 1575, 2382, -122, 2381, -122, 1403, 1228, 1231, 1232, 2980, -483, 3007, -505, 3007, -489, 2950, -458, -635, 1715, 64, 1521, 3019, -493, 2922, -435, -252, 1113, -261, 1237, -1007, 1552, -1012, 1554, -1017, 1463, -1017, 1462, -959, 1229, -914, 1071, -471, 1007, -469, 1007, -923, 1683, -992, 1707, 2567, 7, 1763, 407, 1821, 223, 1451, 285, 1467, 609, 1763, 547, 1474, 900, 2935, 135, 2991, 431, 2765, 515, 2895, 585, 2533, 855, 2465, 739, 1999, 795, 2164, 946, 1823, 902, 1857, 733, 2587, -245, 2379, -178, 2276, -501, 2914, -522, 2911, -441, 493, 768, 521, 969, 497, 975, 265, 759, 333, 573, 71, 1510, -908, 1718, 1380, 969, 1819, 915, 1522, 1139, 1491, 1149, 978, 1132, 512, 1002, 998, 1306, 660, 1279, 263, 1079, 494, 987, 453, 405, 620, 295, 621, 296, 655, 490, 2950, -474, -1036, 1270, -133, 1125, -61, 891, 4, 1095, -60, 890, 913, 397, 870, 192, 1291, 134, 1036, 47, 1455, -144, 1797, -334, 1036, 46, 1398, -324, 1790, -515, 1798, -334, 2102, -467)
@@ -165,10 +169,12 @@ texture = ExtResource("16_3cleo")
 offset = Vector2(164, 34.4211)
 
 [node name="Train" type="Sprite2D" parent="Map"]
-position = Vector2(-515, 418)
-scale = Vector2(9.5, 9.5)
+material = SubResource("ShaderMaterial_adwlp")
+position = Vector2(-384, 334)
+rotation = -0.000557467
+scale = Vector2(9, 9.5)
 texture = ExtResource("17_5tpm0")
-offset = Vector2(-14.5263, -75.7895)
+offset = Vector2(-17.0504, -75.2393)
 
 [node name="TrainFense" type="Sprite2D" parent="Map"]
 position = Vector2(-422, 421)
