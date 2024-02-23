@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://hwjvikxtn2nd"]
+[gd_scene load_steps=8 format=3 uid="uid://hwjvikxtn2nd"]
 
 [ext_resource type="Script" path="res://magic/magic_card/magic_card_container.gd" id="1_5wg40"]
 [ext_resource type="PackedScene" uid="uid://pm0bndb3p488" path="res://magic/magic_card/magic_card.tscn" id="1_dvpvd"]
+[ext_resource type="Texture2D" uid="uid://c0nxagbwigqd1" path="res://ui/in_game_ui/random_panel/Assets/卡牌选框.png" id="3_lkqdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft53n"]
 size = Vector2(100, 120)
@@ -116,6 +117,12 @@ shape = SubResource("RectangleShape2D_ft53n")
 
 [node name="MagicCard" parent="." instance=ExtResource("1_dvpvd")]
 pivot_offset = Vector2(60, 60)
+
+[node name="卡牌选框" type="Sprite2D" parent="MagicCard"]
+position = Vector2(8.75, 7.05)
+scale = Vector2(4.15, 4.07)
+texture = ExtResource("3_lkqdv")
+offset = Vector2(10, 13)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(60, 60)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn3oniutt1wks"]
+[gd_scene load_steps=9 format=3 uid="uid://cn3oniutt1wks"]
 
 [ext_resource type="Script" path="res://ui/in_game_ui/in_game_ui.gd" id="1_odvlc"]
 [ext_resource type="PackedScene" uid="uid://ccm3axekxda35" path="res://ui/in_game_ui/random_panel/random_panel.tscn" id="2_agrda"]
+[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="5_gvm17"]
+[ext_resource type="Script" path="res://ui/in_game_ui/DropItemManager.gd" id="6_vfp1b"]
 [ext_resource type="PackedScene" uid="uid://c2tqxya7186np" path="res://ui/in_game_ui/item/item.tscn" id="8_eyfw1"]
 [ext_resource type="PackedScene" uid="uid://bo51ar17h0rh" path="res://ui/in_game_ui/plant_zoobie_way_lay_out/pick_card.tscn" id="15_peu5v"]
 
@@ -18,24 +20,63 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njh5h"]
+
 [node name="InGameUI" type="CanvasLayer" node_paths=PackedStringArray("in_place")]
 process_mode = 3
 script = ExtResource("1_odvlc")
 in_place = NodePath("InPlace/MarginContainer/HBoxContainer")
 
 [node name="RandomPanel" parent="." instance=ExtResource("2_agrda")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -875.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 140.0
+grow_horizontal = 0
+grow_vertical = 1
 expence_on_ran = 0
 
 [node name="Item" parent="." instance=ExtResource("8_eyfw1")]
+offset_left = 902.0
+offset_top = -165.0
+offset_right = 1435.77
+offset_bottom = -25.0
+
+[node name="TimeManager" parent="Item" instance=ExtResource("5_gvm17")]
+layout_mode = 1
+offset_left = -103.885
+offset_top = 249.0
+offset_right = 76.115
+offset_bottom = 333.0
+
+[node name="Option" type="Button" parent="Item/TimeManager"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -242.5
+offset_top = 5.0
+offset_right = -196.5
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 51
+icon_alignment = 1
 
 [node name="PickCard" parent="." node_paths=PackedStringArray("move_manager") instance=ExtResource("15_peu5v")]
+offset_top = 1500.0
+offset_bottom = 2800.0
 move_manager = NodePath("..")
 
 [node name="InPlace" type="Panel" parent="."]
-offset_left = 540.0
-offset_top = 1157.0
-offset_right = 1428.0
-offset_bottom = 1297.0
+offset_left = -1.0
+offset_top = -7.0
+offset_right = 887.0
+offset_bottom = 133.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0mx61")
 
 [node name="MarginContainer" type="MarginContainer" parent="InPlace"]
@@ -154,16 +195,16 @@ horizontal_alignment = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Option" type="Button" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -150.0
-offset_bottom = 78.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 51
-text = "menu"
-icon_alignment = 1
+[node name="DropItemManager" type="Panel" parent="."]
+offset_left = 909.0
+offset_top = 3.0
+offset_right = 1427.0
+offset_bottom = 186.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_njh5h")
+script = ExtResource("6_vfp1b")
+target_position = Vector2(902, 20)
 
+[connection signal="pressed" from="Item/TimeManager/Option" to="." method="_on_option_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Option" to="." method="_on_option_pressed"]
+[connection signal="mouse_entered" from="DropItemManager" to="DropItemManager" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="DropItemManager" to="DropItemManager" method="_on_mouse_exited"]

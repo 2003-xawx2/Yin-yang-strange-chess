@@ -6,7 +6,7 @@ extends Panel
 @export var basic_time_interval:float = 2
 @export var time_offset:float = 1
 
-@onready var amount_label = $Panel/MarginContainer/VBoxContainer/AmountLabel
+@onready var amount_label = $DrawPanel/AmountLabel
 @onready var magic_card_container = preload("res://magic/magic_card/magic_card_container.tscn")
 @onready var spaw_position = $SpawPosition
 @onready var timer = $Timer
@@ -17,7 +17,7 @@ const card_interval:int = 140
 var magic_resources:Array[magic_card]
 var amounts_need_to_spawn:int:
 	set(value):
-		amount_label.text = "卡牌机里还有" + str(value) + "张"
+		amount_label.text = str(value)
 		amounts_need_to_spawn = value
 		if value > 0 and timer.is_stopped():
 			timer.start(.5)
@@ -54,7 +54,7 @@ func _on_timer_timeout():
 	instance.sprite = random_card.magic_icon
 	instance.magic = random_card.magic
 	instance.global_position = spaw_position.global_position
-	
+
 	amounts_need_to_spawn -= 1
 	if amounts_need_to_spawn > 0:
 		timer.start(randf_range(-time_offset,time_offset)+basic_time_interval)
@@ -96,12 +96,14 @@ func save()->void:
 func load()->void:
 	for child in spaw_position.get_children():
 		spaw_position.remove_child(child)
-	
+
 	var temp := time_back[index]
-	
+
 	for card_container in temp:
 		var instance = magic_card_container.instantiate()
 		spaw_position.add_child(instance)
 		instance.sprite = card_container["sprite"]
 		instance.magic = card_container["magic"]
 		instance.global_position = card_container["global_position"]
+
+

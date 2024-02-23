@@ -40,7 +40,7 @@ func change_a(a:float)->void:
 		a_tween.kill()
 	a_tween = create_tween().set_ease(Tween.EASE_OUT)
 	a_tween.tween_method(set_alpha,get_alpha(),a,.4)
- 
+
 
 func _on_disappear_timer_timeout() -> void:
 	settle_fail()

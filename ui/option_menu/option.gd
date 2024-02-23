@@ -9,7 +9,7 @@ func _ready() -> void:
 	effect_index = AudioServer.get_bus_index("effect")
 	$VBoxContainer/SoundEffect/HSlider.value = db_to_linear(AudioServer.get_bus_volume_db(effect_index))
 	$VBoxContainer/MusicSound/HSlider.value = db_to_linear(AudioServer.get_bus_volume_db(music_index))
-	
+
 
 func _on_back_pressed() -> void:
 	queue_free()

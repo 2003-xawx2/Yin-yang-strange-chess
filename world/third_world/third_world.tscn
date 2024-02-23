@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dpf56ij3d1kjt"]
+[gd_scene load_steps=46 format=3 uid="uid://dpf56ij3d1kjt"]
 
 [ext_resource type="Script" path="res://world/third_world/third_world.gd" id="1_cixgn"]
 [ext_resource type="Texture2D" uid="uid://b7p20hekhq1xm" path="res://world/third_world/asset/background.png" id="1_cohl5"]
@@ -42,7 +42,6 @@
 [ext_resource type="Texture2D" uid="uid://dd2f6qc4ub32e" path="res://world/third_world/asset/base.png" id="30_tb82w"]
 [ext_resource type="PackedScene" uid="uid://6mbeay3b7br3" path="res://world/initial_world/path_spawner/path_spawner.tscn" id="32_a70qo"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="32_etabu"]
-[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="33_cuid2"]
 [ext_resource type="PackedScene" uid="uid://bu1qgln4rm4rm" path="res://entity/tower/tower_container/tower_container.tscn" id="39_lpetk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0jf1"]
@@ -543,9 +542,6 @@ navigation_polygon = SubResource("NavigationPolygon_wkgmp")
 [node name="Button" type="Button" parent="InGameUI"]
 offset_right = 93.0
 offset_bottom = 42.0
-
-[node name="TimeManager" parent="InGameUI" instance=ExtResource("33_cuid2")]
-all_minutes = 2
 
 [connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]

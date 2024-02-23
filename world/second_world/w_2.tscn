@@ -268,9 +268,7 @@ zoom_adjust_percent = 0.08
 
 [node name="InGameUI" parent="." instance=ExtResource("11_rrwti")]
 
-[node name="TimeManager" parent="InGameUI" instance=ExtResource("5_dp3e7")]
-offset_left = -78.5
-offset_right = 78.5
+[node name="TimeManager2" parent="InGameUI" instance=ExtResource("5_dp3e7")]
 offset_bottom = 84.0
 all_minutes = 2
 

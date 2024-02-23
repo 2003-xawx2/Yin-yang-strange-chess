@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_iu0le")
 current_index = -1
-grade = "优秀"
+grade = "未通过"

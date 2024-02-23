@@ -23,13 +23,13 @@ var spawn_time_line:Array[Dictionary] = []
 func _ready():
 	Global.current_world = get_parent()
 	#转换一下时间线生成怪物
-	
+
 	if random_spawn:
 		timer.start(.05)
 		return
-	
+
 	for enemy in PathArray:
-		for i in range(enemy.show_amounts): 
+		for i in range(enemy.show_amounts):
 			var temp:Dictionary
 			if enemy.show_interval == 0:
 				enemy.show_interval = .1
@@ -39,7 +39,7 @@ func _ready():
 			temp["spawn_position"] = enemy.spawn_position
 			temp["end_position"] = enemy.end_position
 			spawn_time_line.append(temp)
-	
+
 	spawn_time_line.sort_custom(_sort)
 	timer.start(.05)
 
@@ -65,13 +65,13 @@ func rand_spawn()->void:
 	spawn_enemy(randi_range(0,2),start_position/2+1,start_position,end_position)
 	timer.start(randf_range(0,1)/spawn_multipler)
 
- 
+
 func rule_spawn()->void:
 	spawn_enemy(spawn_time_line[index]["enemy_type"],spawn_time_line[index]["enemy_faction"],\
 	spawn_time_line[index]["spawn_position"],spawn_time_line[index]["end_position"])
-	
+
 	if index+1 == spawn_time_line.size():return
-	
+
 	var delta_time :float =  spawn_time_line[index+1]["time"] - spawn_time_line[index]["time"]
 	while delta_time==0:
 		index+=1

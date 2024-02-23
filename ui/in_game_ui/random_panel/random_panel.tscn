@@ -1,39 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccm3axekxda35"]
+[gd_scene load_steps=11 format=3 uid="uid://ccm3axekxda35"]
 
-[ext_resource type="Shader" path="res://ui/in_game_ui/random_panel/band.gdshader" id="1_865jg"]
-[ext_resource type="Texture2D" uid="uid://cxschrd5ciucc" path="res://assets/tower_defense/line.png" id="2_6yp6m"]
+[ext_resource type="Texture2D" uid="uid://dyve0xwhx6ffj" path="res://ui/in_game_ui/random_panel/Assets/slot.png" id="3_t82sm"]
+[ext_resource type="Theme" uid="uid://bom6o00y4xegp" path="res://ui/_shared/default_theme.tres" id="3_tjdmf"]
 [ext_resource type="Script" path="res://ui/in_game_ui/random_panel/random_panel.gd" id="3_uxvog"]
-[ext_resource type="Resource" uid="uid://de2a5xxlpb8jj" path="res://magic/magic_resource/倒转乾坤.tres" id="4_ajtul"]
+[ext_resource type="Texture2D" uid="uid://cdcpa3ufbbx13" path="res://ui/in_game_ui/random_panel/Assets/teeth.png" id="5_3hynf"]
+[ext_resource type="Texture2D" uid="uid://ba8vm0a6igs64" path="res://ui/in_game_ui/random_panel/Assets/button.png" id="6_ipo4a"]
+[ext_resource type="Script" path="res://ui/in_game_ui/random_panel/buttonhover.gd" id="7_jrcud"]
+[ext_resource type="Texture2D" uid="uid://slmapqh0d6iu" path="res://ui/in_game_ui/random_panel/Assets/button_32.png" id="7_lxm2f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkn8w"]
-shader = ExtResource("1_865jg")
-shader_parameter/speed = -0.2
-shader_parameter/size_scale = 1.0
-shader_parameter/color = Color(0.717647, 0.482353, 0.639216, 0.713726)
-shader_parameter/pattern = ExtResource("2_6yp6m")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_110eg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5imj"]
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 0.45098, 0.784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpycw"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.945098, 0, 0.627451, 1)
-border_blend = true
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a520v"]
+texture = ExtResource("3_t82sm")
+texture_margin_left = 9.45914
+texture_margin_top = 8.91861
+texture_margin_right = 17.7021
+texture_margin_bottom = 7.9727
+region_rect = Rect2(1.35378, 11.1768, 117.158, 41.3499)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qurg0"]
 size = Vector2(173.5, 243)
 
 [node name="RandomPanel" type="Panel"]
 process_mode = 1
-material = SubResource("ShaderMaterial_qkn8w")
 custom_minimum_size = Vector2(2.08165e-12, 140)
 anchors_preset = 7
 anchor_left = 0.5
@@ -48,25 +37,88 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(1150, 126)
 size_flags_vertical = 8
-theme_override_styles/panel = SubResource("StyleBoxFlat_m5imj")
+theme = ExtResource("3_tjdmf")
+theme_override_styles/panel = SubResource("StyleBoxTexture_110eg")
 script = ExtResource("3_uxvog")
-magic_resources = Array[Resource("res://misc/resource/csutom/magic_card.gd")]([ExtResource("4_ajtul")])
 
-[node name="Border" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mpycw")
+[node name="BackGround" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_right = 228.0
+offset_bottom = 39.0
+scale = Vector2(3.55, 3.55)
+theme_override_styles/panel = SubResource("StyleBoxTexture_a520v")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="SpawPosition" type="Node2D" parent="."]
+position = Vector2(875, 8)
+
+[node name="DrawPanel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = -38.0
+offset_right = 42.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_3hynf")
+stretch_mode = 4
+
+[node name="AmountLabel" type="Label" parent="DrawPanel"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+offset_left = 381.0
+offset_top = 62.0
+offset_right = 528.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 50
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DrawPanel"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 79.0
+offset_right = 447.0
+offset_bottom = 119.0
+scale = Vector2(2.46, 2.46)
+texture = ExtResource("6_ipo4a")
+
+[node name="DrawCardButton" type="TextureButton" parent="DrawPanel"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -164.0
+offset_top = -149.0
+offset_right = -123.0
+offset_bottom = -109.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3.08, 3.08)
+texture_normal = ExtResource("7_lxm2f")
+texture_pressed = ExtResource("3_t82sm")
+texture_hover = ExtResource("7_lxm2f")
+texture_disabled = ExtResource("7_lxm2f")
+texture_focused = ExtResource("7_lxm2f")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("7_jrcud")
+hover_color = Color(0.838603, 0.867163, 0.956675, 1)
+
 [node name="End" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(16, 0)
+position = Vector2(45, 0)
 collision_layer = 64
 collision_mask = 64
 
@@ -74,49 +126,9 @@ collision_mask = 64
 position = Vector2(-86, 70)
 shape = SubResource("RectangleShape2D_qurg0")
 
-[node name="SpawPosition" type="Node2D" parent="."]
-position = Vector2(875, 6)
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 712.0
-offset_right = 875.0
-offset_bottom = 140.0
-pivot_offset = Vector2(107, 0)
-
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 2
-text = "花费5骨头抽"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AmountLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 2
-text = "卡牌机里有10张"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 2
-text = "抽！"
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="DrawPanel/DrawCardButton" to="DrawPanel/DrawCardButton" method="_on_button_down"]
+[connection signal="button_up" from="DrawPanel/DrawCardButton" to="DrawPanel/DrawCardButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="DrawPanel/DrawCardButton" to="DrawPanel/DrawCardButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="DrawPanel/DrawCardButton" to="DrawPanel/DrawCardButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="DrawPanel/DrawCardButton" to="." method="_on_button_pressed"]

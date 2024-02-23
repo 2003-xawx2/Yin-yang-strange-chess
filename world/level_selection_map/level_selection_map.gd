@@ -31,11 +31,11 @@ func _ready() -> void:
 	check_points = luo_shu.get_children()
 	update_progress()
 	update_stats()
-	
+
 	var current_index = RECORD.current_index
 	if current_index != -1:
 		_on_interact(current_index)
-	
+
 	var i := 0
 	for _check_point in check_points:
 		_check_point.interact.connect(_on_interact.bind(i))

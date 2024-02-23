@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2tqxya7186np"]
+[gd_scene load_steps=13 format=3 uid="uid://c2tqxya7186np"]
 
+[ext_resource type="Theme" uid="uid://bom6o00y4xegp" path="res://ui/_shared/default_theme.tres" id="1_d0ts2"]
 [ext_resource type="Script" path="res://ui/in_game_ui/item/item.gd" id="1_j23l1"]
 [ext_resource type="Texture2D" uid="uid://dd8lnqpuvsa1p" path="res://assets/drop/drop_icon/毒牙.png" id="2_66ajn"]
 [ext_resource type="Texture2D" uid="uid://dcqg17f3w7gyw" path="res://assets/ui/drop_inventory/drop_inventory.png" id="2_opc7e"]
@@ -11,18 +12,39 @@
 [ext_resource type="Texture2D" uid="uid://dtvta0pn46frq" path="res://assets/drop/drop_icon/骨头.png" id="8_ej1jr"]
 [ext_resource type="Texture2D" uid="uid://iju8iavfsse8" path="res://assets/drop/drop_icon/头.png" id="9_6a83b"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_axvlj"]
+texture = ExtResource("2_opc7e")
+texture_margin_left = 6.6214
+texture_margin_top = 6.35113
+texture_margin_right = 6.75653
+texture_margin_bottom = 14.459
+region_rect = Rect2(6, 11, 132, 37)
+
 [node name="Item" type="Panel"]
 custom_minimum_size = Vector2(2.08165e-12, 140)
-offset_left = -1.0
-offset_top = 1157.0
-offset_right = 532.77
-offset_bottom = 1297.0
+offset_left = 9.0
+offset_top = 1121.0
+offset_right = 542.77
+offset_bottom = 1261.0
+theme = ExtResource("1_d0ts2")
 script = ExtResource("1_j23l1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(265, 107)
-scale = Vector2(4.2, 6)
-texture = ExtResource("2_opc7e")
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -19.0
+offset_right = 186.0
+offset_bottom = 49.0
+scale = Vector2(2.83, 2.83)
+theme_override_styles/panel = SubResource("StyleBoxTexture_axvlj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 529.0
+offset_bottom = 136.0
+color = Color(0.211765, 0.0980392, 0.0431373, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -53,7 +75,7 @@ texture = ExtResource("2_66ajn")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/SnakeDrop/SnakeTooth"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -69,7 +91,7 @@ texture = ExtResource("3_q8tjl")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/SnakeDrop/SnakeTail"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -88,7 +110,7 @@ texture = ExtResource("3_ib44j")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/FrogDrop/FrogLeg"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -104,7 +126,7 @@ texture = ExtResource("4_1vf1a")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/FrogDrop/FrogSilk"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -123,7 +145,7 @@ texture = ExtResource("5_curvw")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MaggotDrop/MaggotFoot"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -139,7 +161,7 @@ texture = ExtResource("6_qbb8q")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MaggotDrop/MaggotLink"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -158,7 +180,7 @@ texture = ExtResource("8_ej1jr")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MiscDrop/Bone"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -174,7 +196,7 @@ texture = ExtResource("9_6a83b")
 [node name="Label" type="Label" parent="MarginContainer/Dropper/MiscDrop/Coin"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

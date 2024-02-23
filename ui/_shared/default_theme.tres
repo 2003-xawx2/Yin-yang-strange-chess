@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bom6o00y4xegp"]
+
+[ext_resource type="FontFile" uid="uid://v0b01wonxe51" path="res://ui/_shared/Rockboxcond12.ttf" id="1_krdp7"]
+
+[resource]
+Label/colors/font_color = Color(0.950024, 0.90792, 0.839438, 1)
+Label/colors/font_outline_color = Color(0.450207, 0.523782, 0.798711, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.396078)
+Label/constants/outline_size = 12
+Label/constants/shadow_offset_x = 6
+Label/constants/shadow_offset_y = 6
+Label/constants/shadow_outline_size = 4
+Label/font_sizes/font_size = 80
+Label/fonts/font = ExtResource("1_krdp7")

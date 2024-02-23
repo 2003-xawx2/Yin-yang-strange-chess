@@ -1,8 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://wrn5un224uq3"]
+[gd_scene load_steps=32 format=3 uid="uid://wrn5un224uq3"]
 
 [ext_resource type="Script" path="res://world/fourth_world/fourth_world.gd" id="1_5h5x3"]
 [ext_resource type="Texture2D" uid="uid://dic8eqe2pe308" path="res://world/fourth_world/assets/1底部.png" id="1_ldht2"]
-[ext_resource type="Texture2D" uid="uid://dx8jsvkrtwgfe" path="res://world/fourth_world/assets/完成图.png" id="1_oo2xi"]
 [ext_resource type="Texture2D" uid="uid://dhno286ofd5wh" path="res://world/fourth_world/assets/2道路.png" id="2_mkevi"]
 [ext_resource type="PackedScene" uid="uid://dwm1bdc1qdow4" path="res://misc/camera/scripy_camera.tscn" id="3_qiohn"]
 [ext_resource type="Texture2D" uid="uid://ddpn8eh6viq7n" path="res://world/fourth_world/assets/平台/floor1.png" id="4_rihmx"]
@@ -30,7 +29,6 @@
 [ext_resource type="Shader" path="res://world/fourth_world/train.gdshader" id="22_ga21q"]
 [ext_resource type="Script" path="res://c_manager/area_box/hurt_box/hurt_area.gd" id="23_gv08e"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="23_kb6vy"]
-[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="24_nwwh4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_adwlp"]
 shader = ExtResource("22_ga21q")
@@ -44,12 +42,6 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="FourthWorld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5h5x3")
-
-[node name="Done" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1000, 600)
-scale = Vector2(9.5, 9.5)
-texture = ExtResource("1_oo2xi")
 
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -248,8 +240,6 @@ polygon = PackedVector2Array(1820, 458, 1817, 569, 1931, 705, 2283, 728, 2626, 6
 polygon = PackedVector2Array(2215, -421, 1681, -167, 1482, -44, 1364, 117, 1389, 189, 1542, 227, 1783, 181, 2025, 62, 2326, -120)
 
 [node name="InGameUI" parent="." instance=ExtResource("23_kb6vy")]
-
-[node name="TimeManager" parent="InGameUI" instance=ExtResource("24_nwwh4")]
 
 [node name="Button" type="Button" parent="InGameUI"]
 offset_right = 65.0

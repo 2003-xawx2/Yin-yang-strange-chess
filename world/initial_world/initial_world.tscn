@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://0m30030spux7"]
+[gd_scene load_steps=35 format=3 uid="uid://0m30030spux7"]
 
 [ext_resource type="Script" path="res://world/initial_world/initial_world.gd" id="1_5lflu"]
 [ext_resource type="PackedScene" uid="uid://cn3oniutt1wks" path="res://ui/in_game_ui/in_game_ui.tscn" id="1_ja3ku"]
@@ -23,7 +23,6 @@
 [ext_resource type="Resource" uid="uid://ck4mbn35v5g5p" path="res://world/initial_world/path/initial_world.tres" id="15_q648t"]
 [ext_resource type="Resource" uid="uid://bpgppb2ygfnjp" path="res://world/initial_world/path/initial_world_2.tres" id="16_7x6io"]
 [ext_resource type="Script" path="res://misc/resource/csutom/enemy_spawner.gd" id="17_xe5gv"]
-[ext_resource type="PackedScene" uid="uid://bhew2j6mtdgya" path="res://ui/time_manager/time_manager.tscn" id="22_7huxj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buc1d"]
 shader = ExtResource("6_nug2j")
@@ -364,13 +363,6 @@ zoom_adjust_percent = 0.08
 offset_right = 93.0
 offset_bottom = 42.0
 shortcut = SubResource("Shortcut_m4bh4")
-
-[node name="TimeManager" parent="InGameUI" instance=ExtResource("22_7huxj")]
-offset_left = -78.5
-offset_right = 78.5
-offset_bottom = 84.0
-all_seconds = 60
-all_minutes = 0
 
 [connection signal="button_down" from="InGameUI/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="InGameUI/Button" to="." method="_on_button_button_up"]
